@@ -12,7 +12,7 @@
 */
 class Photos extends Controller {
 
-    function Photos() {
+    public function __construct() {
         parent::Controller();
         $this->load->model('Photo_mdl');
         $this->load->model('Album_mdl');

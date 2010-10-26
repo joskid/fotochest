@@ -24,7 +24,7 @@ class Album_mdl extends CI_Model {
     var $albumTable;
     var $photoTable;
 
-    function Album_mdl(){
+    public function __construct(){
         parent::CI_Model();
         $this->photoTable = $this->config->item('photoTable');
         $this->albumTable = $this->config->item('albumTable');

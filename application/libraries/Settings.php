@@ -19,7 +19,7 @@ class Settings {
 
     private $ci;
 
-    function Settings(){
+    public function __construct(){
         $this->ci =& get_instance();
         $this->settingTable = $this->ci->config->item('settingTable');
         

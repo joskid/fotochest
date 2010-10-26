@@ -11,7 +11,7 @@
  */
 class Upload extends Controller {
 
-    function Upload()
+    public function __construct()
     {
         parent::Controller();
         $this->load->model('Album_mdl');

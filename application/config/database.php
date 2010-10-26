@@ -41,10 +41,10 @@
 $active_group = 'dev';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'fotochest1.db.3913146.hostedresource.com';
-$db['default']['username'] = 'fotochest1';
-$db['default']['password'] = 'dc1986LINDY';
-$db['default']['database'] = 'fotochest1';
+$db['default']['hostname'] = '';
+$db['default']['username'] = '';
+$db['default']['password'] = '';
+$db['default']['database'] = '';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;

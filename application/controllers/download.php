@@ -12,6 +12,11 @@
 class Download extends Controller {
     //put your code here
 
+    public function __construct()
+    {
+        parent::Controller();
+    }
+
 
     public function downloadAlbum($albumName){
         

@@ -13,7 +13,7 @@ class Album_lib {
 
     private $ci;
 
-    function Album_lib()
+    public function __contruct()
     {
         $this->ci = get_instance();
     }

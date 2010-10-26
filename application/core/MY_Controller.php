@@ -11,7 +11,7 @@
  */
 class MY_Controller extends Controller {
 
-    function MY_Controller(){
+    function __construct(){
         parent::Controller();
         
 

@@ -2,7 +2,7 @@
 
 class Users extends Controller {
 
-    function Users(){
+    public function __construct(){
         parent::Controller();
         $this->User_mdl->userTable = $this->config->item('userTable');
     }

@@ -7,7 +7,7 @@
 
 class Albums extends Controller {
 
-    public function Albums(){
+    public function __construct(){
         parent::Controller();
         $this->load->model('Album_mdl');
         $this->load->model('Photo_mdl');

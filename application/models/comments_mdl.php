@@ -1,5 +1,11 @@
 <?php
-
+/**
+ *
+ *
+ * @todo CRUD
+ *
+ *
+ */
 
 
 
@@ -13,7 +19,7 @@ class Comments_mdl extends CI_Model{
   var $commentPhotoID;
   var $commentTable;
 
-  function Comments_mdl(){
+  public function __construct(){
       parent::CI_Model();
       $this->commentTable = $this->config->item('commentsTable');
       

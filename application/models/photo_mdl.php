@@ -3,7 +3,7 @@
 * FotoChest - a web based photo album
 * Copyright (C) 2009-2010 Derek Stegelman http://stegelman.com
 *
- * @todo several functions can be combined.
+ * @todo several functions can be combined./CRUD
  *
 */
 
@@ -22,7 +22,7 @@ class Photo_mdl extends CI_Model {
     var $isProfilePicture;
 
     
-    public function Photo_mdl() {
+    public function __construct() {
         parent::CI_Model();
         $this->photoTable = $this->config->item('photoTable');
         $this->albumTable = $this->config->item('albumTable');    

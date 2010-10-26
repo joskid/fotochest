@@ -13,7 +13,7 @@ class Photo_lib {
     
     private $ci;
 
-    function Photo_lib()
+    public function __construct()
     {
         $this->ci =& get_instance();
     }

@@ -32,7 +32,7 @@ class User_mdl extends CI_Model {
     var $userDateCreated;
     var $userTable;
 
-    function User_mdl(){
+    public function __construct(){
         parent::CI_Model();
         $this->userTable = $this->config->item('userTable');
         

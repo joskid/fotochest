@@ -1,0 +1,356 @@
+/*************************************
+ *
+ * Admin Common Styles
+ *
+ * Not being used?
+ *
+ *
+ *
+ */
+/* Blue Color - #2aaee5; */
+/* Dark Blue - 124D65; */
+/* Alertnate Brown - 985100; */
+body
+{
+font-family:"Yanone Kaffeesatz";
+
+}
+
+
+h1, h2, h3
+{
+	margin-bottom:7px;
+}
+
+body #main-wrapper
+{
+
+}
+
+/* Toolbar */
+
+
+.mainContent
+{
+margin-right:15px;
+margin-left:275px;
+}
+
+
+
+
+/* Buttons */
+
+.button
+{
+    height:32px;
+    display:block;
+    background: #2aaee5;
+    background: -webkit-gradient(linear, left top, left bottom, from(#2aaee5), to(#124D65));
+    background: -moz-linear-gradient(top,  #2aaee5,  #124D65);
+    border-radius:5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    text-align:center;
+    margin-top:10px;
+    margin-bottom:10px;
+	cursor:pointer;
+}
+
+.button span
+{
+    
+    margin-left:10px;
+    font-size:19pt;
+    display:block;
+   
+}
+
+.button.nextAction
+{
+    background: -webkit-gradient(linear, left top, left bottom, from(#00ace7), to(#0f8fb8));
+    background: -moz-linear-gradient(top, #00ace7, #0f8fb8);
+}
+
+/*
+
+ old button
+
+a.button.nextAction
+{
+    background:#287a28;
+    background: -webkit-gradient(linear, left top, left bottom, from(#3db73c), to(#287a28));
+    background: -moz-linear-gradient(top,  #3db73c,  #287a28);
+}
+
+
+*/
+
+
+
+a.button:hover
+{
+background: -webkit-gradient(linear, left top, left bottom, from(#124d65), to(#2aaee5));
+    background: -moz-linear-gradient(top,  #249BCB,  #2aaee5);
+    }
+
+a.button.add
+{
+	background:#fff;
+	color:#2aaee5;
+	margin-bottom:30px;
+}
+
+a.button.small
+{
+	height:20px;
+	width:100px;
+	
+}
+
+a.button.small span
+{
+	font-size:12pt;
+}
+
+.box
+{
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	-o-border-radius:3px;
+	border-radius:3px;
+	border: 5px solid #fff;
+	position:relative;
+	/*background:#985100;*/
+	background:#70C6E9;
+	padding:5px;
+}
+
+
+/* Sidebar Styles */
+
+.sidebar
+{
+	width:230px;
+	min-height:900px;
+	background:#000;
+	color:#fff;
+	padding-right:15px;
+	padding-left:15px;
+	float:left;
+}
+
+.sidebar h1,
+h1.logo,
+a.logo
+{
+	font-size:35pt;
+	/*text-shadow: 2px 2px 4px #fff;*/
+	display:inline-block;
+}
+
+a.logo
+{
+	color:#124D65;
+}
+
+.sidebar h1 span,
+h1.logo span,
+a.logo span
+{
+	color:#2aaee5;
+}
+
+.sidebar h2
+{
+	text-transform:uppercase;
+	margin-bottom:50px;
+	font-size:17pt;
+	margin-top:10px;
+}
+
+.sidebar ol
+{
+	
+}
+
+.sidebar li a
+{
+	display:block;
+	color:#0E3D50;
+}
+
+.sidebar li a:hover
+{
+	color:#fff;
+}
+/* Notifications - different colors */
+
+.notification
+{
+	display:block;
+	-moz-border-radius:3px;
+	margin-top:10px;
+}
+
+.notification p
+{
+	color:#333333;
+	line-height:16px;
+	margin-bottom:7px;
+	margin-left:35px;
+	margin-right:25px;
+	margin-top:8px;
+}
+
+.notification.error
+{
+	background:#F5DCDD;
+	border:1px solid #EC9B9B;
+}
+
+.notification.success
+{
+	background:#ddf4ce;
+	border:1px solid #726b67;
+}
+
+.notification.warning
+{
+	background:#f1eebf;
+	border:1px solid #d3c200;
+}
+
+.notification.info
+{
+	background:#dce6f3;
+	border:1px solid #50b0fc;
+}
+.section
+{
+	
+}
+
+.section .sectionInner
+{
+	
+}
+
+.section a.button
+{
+	-moz-border-radius:5px;
+	-wekbit-border-radius:5px;
+	border-radius:5px;
+	background: #2aaee5;
+    background: -webkit-gradient(linear, left top, left bottom, from(#2aaee5), to(#124D65));
+    background: -moz-linear-gradient(top,  #2aaee5,  #124D65);
+	width:100px;
+	height:25px;
+	font-size:14pt;
+	color:#fff;
+}
+.section a.button span
+{
+	
+
+	font-size:14pt;
+}
+
+
+.section .sectionInner .imageListing img.thumb
+{
+	width:65px;
+	padding:5px;
+	background:#fff;
+
+}
+
+.section .sectionInner .imageListing
+{
+	height:auto;
+}
+
+.section .sectionInner .imageListing .imageListingInner
+{
+
+	margin-left:10px;
+}
+
+
+/* Common Form Stuff */
+
+.form .formItem label
+{
+	display:block;
+}
+
+.form input.submitButton
+{
+	margin-top:10px;
+}
+
+label
+{
+	display:block;
+}
+
+/* End Forms */
+
+/* Overwrite for stupid javascript */
+
+#message
+{
+	display:block !important;
+}
+
+
+.centerMain
+{
+	margin-top:20px;
+	padding-left:280px;
+}
+
+.centerMain a
+{
+	color:#2AAEE5;
+}
+
+.centerMain .pagination
+{
+	clear:both;
+	text-align: center;
+}
+
+
+/* View albums/View photos */
+
+
+.itemContainer
+{
+	width:250px;
+	float:left;
+	position: relative;
+	padding:7px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

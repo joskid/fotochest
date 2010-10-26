@@ -1,0 +1,550 @@
+/* Import Reset */
+
+@import url("../reset.css");
+
+body
+{
+    font-size:11pt;
+    text-align:center;
+    background: #cccccc;
+    font-family:'Yanone Kaffeesatz', Arial;
+}
+
+.button
+{
+    height:17px;
+    display:block;
+    background: #2aaee5;
+    background: -webkit-gradient(linear, left top, left bottom, from(#2aaee5), to(#124D65));
+    background: -moz-linear-gradient(top,  #2aaee5,  #124D65);
+    border-radius:3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    text-align:center;
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-right:7px;
+    padding-left:7px;
+    width:auto;
+    margin-bottom:10px;
+    cursor:pointer;
+}
+
+
+
+a.button.nextAction
+{
+    background: -webkit-gradient(linear, left top, left bottom, from(#00ace7), to(#0f8fb8));
+    background: -moz-linear-gradient(top, #00ace7, #0f8fb8);
+}
+
+a.button.small
+{
+    height:24px;
+}
+
+a.button.small span
+{
+    font-size:14pt;
+}
+
+/*
+
+
+Input styles
+
+*/
+
+
+.content #load
+{
+  text-align:center;
+}
+
+
+/* <!-- Common Form Styles --> */
+
+.form .formItem label
+{
+    display:block;
+    color:#7A7A7A;
+    font-weight:bold;
+}
+
+.form .formItem input[type='text'],
+.form .formItem input[type='email'],
+.form .formItem input[type='password']
+{
+    font-size:14pt;
+    margin: 5px 0px 5px 0;
+    border:1px solid #AAAAAA;
+    background:#F8F8F8;
+    width:100%;
+    -moz-border-radius:3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+/* <!-- End Form Styles --> */
+
+/* <!-- Begin Common Notification Styles --> */
+
+/* Notifications - different colors */
+
+.notification
+{
+	display:block;
+	-moz-border-radius:3px;
+ -webkit-border-radius: 3px;
+	margin-top:10px;
+ margin-bottom:10px;
+}
+
+.notification.show
+{
+  display:block;
+}
+
+.notification.hide
+{
+  display:none;
+}
+
+.notification p
+{
+	color:#333333;
+	line-height:16px;
+	margin-bottom:7px;
+	margin-left:35px;
+	margin-right:25px;
+	margin-top:8px;
+}
+
+.notification.error
+{
+	background:#F5DCDD;
+	border:1px solid #EC9B9B;
+}
+
+.notification.success
+{
+	background:#ddf4ce;
+	border:1px solid #726b67;
+}
+
+.notification.warning
+{
+	background:#f1eebf;
+	border:1px solid #d3c200;
+}
+
+.notification.error p a
+{
+    color:#0f8fb8;
+}
+
+.notification.info
+{
+	background:#dce6f3;
+	border:1px solid #50b0fc;
+}
+
+/* <!-- End Notification Styles --> */
+
+/* <!-- Begin Login Styles --> */
+
+body.loginPage
+{
+    text-align:center;
+}
+
+.login
+{
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    border:10px solid #bbbbbb;
+    padding:20px;
+    margin: 0 auto;
+    text-align:left;
+    width:321px;
+    margin-top:15%;
+}
+
+.login h1
+{
+    border-bottom: 1px solid #bbbbbb;
+    margin-bottom:20px;
+    font-weight:normal;
+    font-size:18px;
+    padding-bottom:3px;
+    padding-top:6px;
+    padding-left:24px;
+    background: url("../../images/admin/FotoChestLogoLogin.png") no-repeat left;
+    
+}
+
+
+.login input.loginBtn,
+input.button
+{
+    background:#3B6B9C;
+    color:#fff;
+    height:28px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: 3px solid #3b6b9c;
+    cursor: pointer;
+    text-transform:uppercase;
+    float:right;
+}
+
+input.button
+{
+    float:none;
+}
+
+.login input.loginBtn:hover
+{
+    background: #4b87c4;
+    border-color:#4b87c4;
+}
+
+.login a
+{
+    color: #2aaee5;
+}
+
+/* <!-- End Login Styles --> */
+
+/* <!-- Begin Dashboard --> */
+
+body #mainWrapper
+{
+    width:1000px;
+    text-align:left;
+    margin: 0 auto;
+
+}
+
+#mainWrapper h1.logo,
+#mainWrapper a.logo
+{
+    color:#000;
+    font-size:26pt;
+    margin-top:50px;
+    text-decoration:none;
+    display:block;
+    background: url("../../images/admin/FotoChestLogoSmall.png") no-repeat left;
+    padding-left:48px;
+}
+
+
+#mainWrapper h1.logo span,
+#mainWrapper a.logo span
+{
+    color:#0f8fb8;
+    margin-top:90px;
+    font-size:26pt;
+}
+
+#mainWrapper div.nav
+{
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    /*background: #322C27;*/
+/*    background: #985100;*/
+    background:#000;
+    margin-top:47px;
+    height:50px;
+    position:relative;
+    margin-bottom: 10px;
+    
+}
+
+div.nav ul
+{
+    margin-left:40px;
+}
+
+div.nav ul li
+{
+    display:inline-block;
+    margin-right:15px;
+    margin-top:5px;
+    
+}
+
+div.nav ul li a
+{
+    /*color:#7F746D;*/
+    color:#fff;
+    margin-left:15px;
+    margin-right:15px;
+}
+
+div.nav ul li a:hover
+{
+    color:#fff;
+}
+
+div.nav ul li.active
+{
+    background:#0f8fb8;
+    border: 1px solid #4175AA;
+    -moz-border-radius:5px;
+    -webkit-border-radius: 5px;
+    padding-top:10px;
+    padding-bottom:10px;
+    
+}
+
+div.nav ul li.active a
+{
+    color:#fff;
+}
+
+div.nav span.logout
+{
+    position:absolute;
+    right:20px;
+    top:20px;
+/*    color:#7F746D;*/
+    color:#fff;
+
+}
+
+div.nav span.logout a
+{
+/*    color: #3b6b9c;*/
+    color: #fff;
+}
+
+
+#mainWrapper .content
+{
+    width:790px;
+    margin-bottom:20px;
+    
+}
+
+#mainWrapper .content h2
+{
+    height:30px;
+    background:#000;
+    color:#fff;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    padding-top:20px;
+    padding-left:15px;
+    
+}
+
+#mainWrapper .content .album,
+.content .photo,
+.content .user
+{
+    position:relative;
+    margin-top:20px;
+    min-height:100px;
+    padding-bottom:10px;
+    border-bottom:1px solid #bbbbbb;
+}
+
+#mainWrapper .content .album
+{
+    min-height:100px;
+}
+
+.content .album img,
+.content .photo img
+{
+    background:#fff;
+    padding:5px;
+}
+
+.content .album h3,
+.content .photo h3
+{
+    position:absolute;
+    top:0;
+    left:96px;
+}
+
+.content .album h3 a
+{
+    color:#000;
+}
+
+.content .album p,
+.content .photo p
+{
+    width:400px;
+    top:16px;
+    left:95px;
+    position:absolute;
+}
+
+.content .album dl,
+.content .photo dl,
+.content .user dl
+{
+    width:160px;
+    top:0;
+    right:124px;
+    position:absolute;
+    
+}
+
+.content .album dl br,
+.content .photo dl br,
+.content .user dl br
+{
+    margin-bottom:5px;
+}
+
+.content .album dt,
+.content .photo dt,
+.content .user dt
+{
+    font-weight:bold;
+}
+
+
+
+.content .album dt,
+.content .album dd,
+.content .photo dt,
+.content .photo dd,
+.content .user dd,
+.content .user dt
+{
+    display:inline-block;
+    width:50px;
+}
+
+.content .album dd,
+.content .photo dd,
+.content .user dd
+{
+    width:100px;
+}
+
+.content .album ul.actions,
+.content .photo ul.actions,
+.content .user ul.actions
+{
+    position:absolute;
+    right:0;
+    top:0;
+    width:110px;
+    display:none;
+}
+
+.content .album:hover ul.actions,
+.content .photo:hover ul.actions,
+.content .user:hover ul.actions
+{
+    display:block;
+}
+
+#settings a.button.nextAction
+{
+    width:120px;
+    margin-top:15px;
+}
+
+
+/* <!-- Pagination --> */
+
+.pagination
+{
+	text-align:center;
+}
+
+.pagination a
+{
+	color:#000;
+	text-decoration:none;
+	
+}
+
+/* <!-- End Pagination --> */
+
+#mainWrapper .sidebar
+{
+    width:200px;
+    float:left;
+}
+
+.sidebar .profile
+{
+    position: relative;
+}
+
+.sidebar .profile .profilePic
+{
+    padding:5px;
+    background:#fff;
+    float:left;
+}
+
+.sidebar .profile ul
+{
+    position: absolute;
+    left:94px;
+}
+
+.sidebar .profile ul li
+{
+    display:block;
+}
+
+.sidebar .profile ul li:last-child
+{
+    border-right:none;
+}
+
+.sidebar .profile ul li a
+{
+    color:#000;
+    
+}
+
+.sidebar .profile ul li a:hover
+{
+    text-decoration:underline;
+}
+
+/* <! -- End Sidebar --> */
+
+/* <! -- Begin Footer --> */
+
+#mainWrapper .footer
+{
+    clear:both;
+    height:51px;
+    margin-top:20px;
+    margin-bottom:20px;
+    background: #000;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding-left:20px;
+    padding-right:20px;
+}
+
+.footer .version
+{
+    margin-left:50px;
+    color:#fff;
+    padding-top:16px;
+    display:inline-block;
+}
+
+
+
+
+

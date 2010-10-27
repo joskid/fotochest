@@ -13,26 +13,81 @@ class Album_lib {
 
     private $ci;
 
+    var $albumName;
+    var $albumCreateDate;
+    var $albumID;
+    var $albumParentID;
+    var $albumDesc;
+    var $albumFriendlyName;
+    
+
     public function __contruct()
     {
         $this->ci = get_instance();
     }
 
 
-//    public function getAlbumThumbFileName($albumName){
-//
-//
-//
-//        $albumID = getAlbumID($albumName);
-//        $selectAlbumInfo = "SELECT * FROM $this->photoTable WHERE photoAlbumID = $albumID LIMIT 1";
-//        log_message('info', 'Album_mdl::getAlbumThumbFileName() is executing a query ' . $selectAlbumInfo);
-//        $execute = $this->db->query($selectAlbumInfo);
-//        foreach($execute->result() as $row){
-//            $filename = $row->photoFileName;
-//        }
-//        return $filename;
-//
-//    }
+    /**********************************************
+     *  createAlbum
+     *
+     *  Params(); None - Accepts object properties
+     *  returns null; 
+     * ********************************************
+     */
+
+    public function createAlbum(){
+
+        log_message('info', 'Executing createAlbum method'); // Log for information purposes.
+        // Once a new photo is uploaded to the album it bcomes the thumbnail....
+
+        // Load the Model
+
+        $this->ci->load->model('Album_mdl');
+
+        // Load up the variables
+        $this->ci->Album_mdl->albumName = $this->albumName;
+        $this->ci->Album_mdl->albumParentID = $this->albumParentID;
+        $this->ci->Album_mdl->albumFriendlyName = $this->albumFriendlyName;
+
+        // Call the CRUD Method
+        $this->ci->Album_mdl->create();
+
+        mkdir("./img_stor/albums/" . $this->albumName);
+        mkdir("./img_stor/albums/" . $this->albumName . "/originals");
+        mkdir("./img_stor/albums/" . $this->albumName . "/thumbs");
+    }
+    
+    /**
+     *  Delete Album
+     * @param AlbumID, and the path of the site.  (Can we grab this here???)
+     * 
+     * 
+     */
+
+
+
+    public function deleteAlbum($albumID, $path){
+
+        // Load the Album Model
+        $this->ci->load->model('Album_mdl');
+
+        // Call the delete Method
+        $this->ci->Album_mdl->delete($albumID);
+        
+
+        $deletePhotos = "DELETE FROM $this->photoTable WHERE photoAlbumID = $albumID";
+        log_message('info', 'album_mdl::deleteAlbum executed a query ' . $deletePhotos);
+        $this->db->query($deletePhotos);
+
+        $this->load->helper('file');
+
+        delete_files($path . "img_stor/albums/" . $this->albumName);
+        rmdir('./img_stor/albums/' . $this->albumName);
+        log_message('info', 'Removing directory for album ' . $this->albumName);
+
+    }
+
+
 
     public function findAlbumThumbnails($albumID, $neededPhotos= 3){
 

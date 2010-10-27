@@ -6,7 +6,7 @@
 * @subpackage PhotoMgmt
 * @author Derek Stegelman
 *
-* Modified on Oct 18 2010
+* Modified on Oct 26 2010
 *
 *
 */
@@ -30,45 +30,51 @@ class Album_mdl extends CI_Model {
         $this->albumTable = $this->config->item('albumTable');
     }
 
-    /**********************************************
-     *  createAlbum
+    /**
      *
-     *  Params(); None - Accepts object properties
-     *  returns null;
-     * ********************************************
+     * CRUD operations
+     *
+     *
      */
 
-    public function createAlbum(){
-
-        log_message('info', 'Executing createAlbum method'); // Log for information purposes.
-        // Once a new photo is uploaded to the album it bcomes the thumbnail....
-        $this->albumCreateDate = date("y/m/d");
-        $albumData = array('albumCreateDate'=>$this->albumCreateDate,
-            'albumName'=>$this->albumName, 'albumParentID'=>$this->albumParentID, 'albumFriendlyName'=>$this->albumFriendlyName);
-        $albumCreateQuery = $this->db->insert_string($this->albumTable, $albumData); // Building the insert query.
-        log_message('info', 'Album_mdl::createAlbum() is executing a query ' . $albumCreateQuery);
-        $this->db->query($albumCreateQuery);
-        mkdir("./img_stor/albums/" . $this->albumName);
-        mkdir("./img_stor/albums/" . $this->albumName . "/originals");
-        mkdir("./img_stor/albums/" . $this->albumName . "/thumbs");     
+    public function create()
+    {
+        $albumData = array('albumName'=>$this->albumName, 'albumCreateDate'=>date("m/y/d"), 'albumParentID'=>$this->albumParentID,
+                           'albumDesc'=>$this->albumDesc, 'albumFriendlyName'=>$this->albumFriendlyName);
+        $this->db->insert($this->albumTable, $albumData);
     }
 
-    public function deleteAlbum($albumID, $path){
-        $deleteSQL = "DELETE FROM $this->albumTable WHERE albumID = $albumID";
-        log_message('info', 'album_mdl::deleteAlbum executed a query ' . $deleteSQL);
-        $this->db->query($deleteSQL);
-        
-        $deletePhotos = "DELETE FROM $this->photoTable WHERE photoAlbumID = $albumID";
-        log_message('info', 'album_mdl::deleteAlbum executed a query ' . $deletePhotos);
-        $this->db->query($deletePhotos);
-        
-        $this->load->helper('file');
 
-        delete_files($path . "img_stor/albums/" . $this->albumName);
-        rmdir('./img_stor/albums/' . $this->albumName);
-        log_message('info', 'Removing directory for album ' . $this->albumName);
-
+    public function read($albumID = null)
+    {
+        if ($albumID == null)
+        {
+            $readData = $this->db->get($this->albumTable);
+        }
+        else
+        {
+            $readData = $this->db->get_where($this->albumTable, array('albumID'=>$albumID));
+        }
+        return $readData;
     }
+
+    public function update($albumID)
+    {
+        $albumData = array('albumName'=>$this->albumName, 'albumParentID'=>$this->albumParentID,
+                           'albumDesc'=>$this->albumDesc, 'albumFriendlyName'=>$this->albumFriendlyName);
+        $this->db->where('albumID', $albumID);
+        $this->db->update($this->albumTable, $albumData);
+    }
+
+    public function delete($albumID)
+    {
+        $this->db->delete($this->albumTable, array('albumID'=>$albumID));
+    }
+
+
+
+
+    
 
     /*****************************************************
      *

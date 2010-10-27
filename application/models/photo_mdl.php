@@ -5,6 +5,8 @@
 *
  * @todo several functions can be combined./CRUD
  *
+ * Last updated October 27 2010
+ *
 */
 
 
@@ -27,6 +29,56 @@ class Photo_mdl extends CI_Model {
         $this->photoTable = $this->config->item('photoTable');
         $this->albumTable = $this->config->item('albumTable');    
     }
+
+
+    /**
+     * CRUD
+     *
+     *
+     *
+     *
+     */
+
+    public function create()
+    {
+        $insertData = array('photoAlbumName'=>$this->photoAlbumName,
+            'photoFileName'=>$this->photoFileName,
+            'photoTitle'=>$this->photoTitle,
+            'photoDesc'=>$this->photoDesc,
+            'photoCreatedDate'=>date("m/d/y"),
+            'isProfilePicture'=>0);
+        $this->db->insert($this->photoTable, $insertData);
+    }
+
+    public function read($photoID = null)
+    {
+        if ($photoID == null)
+        {
+            $photoData = $this->db->get($this->photoTable);
+        }
+        else
+        {
+            $photoData = $this->db->get_where($this->photoTable, array('photoID'=>$photoID));
+        }
+        return $photoData;
+    }
+
+    public function update($photoID)
+    {
+        $updateData = array('photoAlbumName'=>$this->photoAlbumName,
+            'photoFileName'=>$this->photoFileName,
+            'photoTitle'=>$this->photoTitle,
+            'photoDesc'=>$this->photoDesc,
+            'isProfilePicture'=>$this->isProfilePicture);
+        $this->db->where('photoID', $photoID);
+        $this->db->update($this->photoTable, $updateData);
+    }
+
+    public function delete($photoID)
+    {
+        $this->db->delete($this->photoTable, array('photoID'=>$photoID));
+    }
+
 
     
     public function getPublicPhotoStream($pageNum = 0){

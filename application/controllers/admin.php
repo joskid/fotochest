@@ -341,16 +341,20 @@ class Admin extends Controller {
 	}
     
     public function viewAlbum($albumName){
-        $albumID = $this->Album_mdl->getAlbumID($albumName);
+        $albumID = getAlbumID($albumName);
+        // Load the library
+        $this->load->library('photo_lib');
+
+        // Call the method
         $this->data['photos'] = $this->Photo_mdl->getAlbumPhotos($albumID);
-        $this->data['allAlbums'] = $this->Album_mdl->getAllAlbums();
+        $this->data['allAlbums'] = $this->Album_mdl->read();
         $this->data['albumName'] = $albumName;
         $this->data['albumID'] = $albumID;
-        $this->data['albumFriendlyName'] = $this->Album_mdl->getAlbumFriendlyName($albumID);
-        $albumCount = $this->Album_mdl->getAlbumCount($albumID);
+        $this->data['albumFriendlyName'] = getAlbumFriendlyName($albumID);
+       
         $this->load->library('pagination');
         $config['base_url'] = base_url() . 'admin/viewAlbumPage/' . $albumName;
-        $config['total_rows'] = $albumCount;
+        $config['total_rows'] = $this->Album_mdl->getAlbumCount($albumID);
         $config['per_page'] = '21';
         $config['uri_segment'] = 4;
         $this->pagination->initialize($config);

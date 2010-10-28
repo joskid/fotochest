@@ -63,6 +63,11 @@ class Photo_mdl extends CI_Model {
         return $photoData;
     }
 
+    public function readProfilePicture()
+    {
+        $photoData = $this->db->get_where($this->photoTable, array('isProfilePic'=>1));
+    }
+
     public function update($photoID, $updateData)
     {
         

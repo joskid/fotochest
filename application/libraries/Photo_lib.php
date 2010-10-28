@@ -137,10 +137,13 @@ class Photo_lib {
     }
 
     public function getProfilePicture(){
-        $select = "SELECT * FROM $this->photoTable WHERE isProfilePic = 1";
-        log_message('info', 'Photo_mdl::getProfilePicture() is executing a query ' . $select);
-        $exe = $this->db->query($select);
-        return $exe;
+        // Load the model
+        $this->ci->load->model('Photo_mdl');
+
+        // Call the method
+        $photoData = $this->ci->Photo_mdl->readProfilePicture();
+
+        return $photoData;
     }
 
     

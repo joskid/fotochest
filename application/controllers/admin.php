@@ -256,13 +256,16 @@ class Admin extends Controller {
     
 
     public function albums(){
+
+        // Load the Library
+        $this->load->library('album_lib');
         
 
         $this->data['albums'] = $this->Album_mdl->getAlbumAdminInfo(0);
 	$this->load->library('pagination');
 
         $config['base_url'] = base_url() . 'admin/albumsPage/';
-        $config['total_rows'] = $this->Album_mdl->getNumAlbums();
+        $config['total_rows'] = $this->album_lib->getTotalAlbumCount();
         $config['per_page'] = '5';
 
         $this->pagination->initialize($config);
@@ -291,6 +294,9 @@ class Admin extends Controller {
     }
 
     public function movePhotoAction($albumID, $photoID){
+
+        // Load the library
+        $this->load->library('album_lib');
     
       $albumName = getAlbumName($albumID);
       $this->Photo_mdl->photoAlbumID = $albumID;
@@ -303,11 +309,11 @@ class Admin extends Controller {
         $this->data['albumName'] = $albumName;
         
         $this->data['albumFriendlyName'] = getAlbumFriendlyName($albumID);
-        $albumCount = $this->Album_mdl->getAlbumCount($albumID);
+        
         $this->load->library('pagination');
 
         $config['base_url'] = base_url() . 'admin/viewAlbumPage/' . $albumName;
-        $config['total_rows'] = $albumCount;
+        $config['total_rows'] = $this->album_lib->getTotalAlbumCount();
         $config['per_page'] = '21';
 
         $this->pagination->initialize($config);

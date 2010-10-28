@@ -1,14 +1,16 @@
 <?php
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * 
+ * @name Settings library
+ * @author Derek Stegelman
+ * @package FotoChest
+ * @subpackage FotoChest Libraries
+ *
+ * Last updated October 27 2010
+ *
+ *
  */
 
-/**
- * Description of Settings_lib
- *
- * @author derek
- */
 class Settings_lib {
     //put your code here
     var $settingID;
@@ -21,7 +23,6 @@ class Settings_lib {
     public function __construct(){
         $this->ci =& get_instance();
         $this->settingTable = $this->ci->config->item('settingTable');
-
     }
 
     public function getSetting($settingName){

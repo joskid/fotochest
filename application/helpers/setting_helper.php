@@ -15,8 +15,12 @@ function setSetting($settingName, $settingValue){
 
 function isOverPhotoLimit(){
     $CI =& get_instance();
-    $CI->load->model('Photo_mdl');
-    $photoNum = $CI->Photo_mdl->getPhotoCount();
+
+    // Load the photo library
+    $CI->load->library('photo_lib');
+
+    // Call the count method
+    $photoNum = $CI->photo_lib->getPhotoCount();
     
     $planType = $CI->settings_lib->getSetting('planType');
     switch ($planType){
@@ -51,17 +55,24 @@ function getPhotoLimit(){
 
 function getPhotoCount(){
     $CI =& get_instance();
-    $CI->load->model('Photo_mdl');
-    $count = $CI->Photo_mdl->getPhotoCount();
+
+    // Load the photo library
+    $CI->load->library('photo_lib');
+
+    // Call the method
+    $count = $CI->photo_lib->getPhotoCount();
     return $count;
 }
 
 function getAlbumCount(){
     $CI =& get_instance();
-    $CI->load->model('Album_mdl');
-    $count = $CI->Album_mdl->getTotalAlbumCount();
-    return $count;
 
+    // Load the library
+    $CI->load->library('album_lib');
+
+    // Call the method
+    $count = $CI->album_lib->getTotalAlbumCount();
+    return $count;
 }
 
 

@@ -6,7 +6,7 @@ function getAlbumFriendlyName($albumID)
 {
     $CI =& get_instance();
     $CI->load->model('Album_mdl');
-    $exe = $CI->Album_mdl->getAlbumInfo($albumID);
+    $exe = $CI->Album_mdl->read($albumID);
     foreach($exe->result() as $row){
         $albumFriendly = $row->albumFriendlyName;
     }

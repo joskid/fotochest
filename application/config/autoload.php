@@ -38,7 +38,7 @@
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('database', 'session', 'form_validation', 'encrypt', 'image_lib', 'settings');
+$autoload['libraries'] = array('database', 'session', 'encrypt', 'image_lib', 'settings_lib');
 
 
 /*

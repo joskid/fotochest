@@ -58,10 +58,9 @@ class Album_mdl extends CI_Model {
         return $readData;
     }
 
-    public function update($albumID)
+    public function update($albumID, $albumData)
     {
-        $albumData = array('albumName'=>$this->albumName, 'albumParentID'=>$this->albumParentID,
-                           'albumDesc'=>$this->albumDesc, 'albumFriendlyName'=>$this->albumFriendlyName);
+        
         $this->db->where('albumID', $albumID);
         $this->db->update($this->albumTable, $albumData);
     }
@@ -76,40 +75,10 @@ class Album_mdl extends CI_Model {
 
     
 
-    /*****************************************************
-     *
-     *
-     *  addPhotoAlbum - Adds a photo to a specific album.
-     *  Mostly just executes a query to add it to the db.
-     *
-     *  Params: $photoID (The id of the actual photo),
-     *  $albumID: Id of the album to add it to.
-     *
-     *  Returns null
-     * **************************************************
-     */
-
-    public function addPhotoAlbum($photoID, $albumID){
-
-        log_message('info', 'Adding photo:' . $photoID . " to album ID: " . $albumID);
-        $addPhotoData = array('photoAlbumID'=>$albumID);
-        $where = "photoID = $photoID";
-        $updateString = $this->db->update_string($this->photoTable, $addPhotoData, $where);
-        log_message('info', 'Album_mdl::addPhotoAlbum() is executing a query ' . $updateString);
-        $this->db->query($updateString);
-    }
-
+    
    
 
-    public function getTotalAlbumCount(){
-
-        $select = "SELECT * FROM $this->albumTable";
-        $exe = $this->db->query($select);
-        log_message('info', 'Album_mdl::getTotalAlbumCount() is executing a query ' . $select);
-        $count = $exe->num_rows();
-        return $count;
-
-    }
+    
 
 
     
@@ -125,10 +94,8 @@ class Album_mdl extends CI_Model {
      */
     public function getAlbums($parent){
 
-        //$selectAlbums = "SELECT * FROM $this->albumTable, $this->photoTable WHERE albumParentID = $parent and photoAlbumID = albumID GROUP BY albumName";
-        $selectAlbums = "SELECT * FROM $this->albumTable WHERE albumParentID = $parent";
-        log_message('info', 'Album_mdl::getAlbums() is executing a query ' . $selectAlbums);
-        $getAlbumInfo = $this->db->query($selectAlbums);
+        
+        $getAlbumInfo = $this->db->get_where($this->albumTable, array('albumParentID'=>$parent));
         return $getAlbumInfo;
     }
 
@@ -158,12 +125,7 @@ class Album_mdl extends CI_Model {
         return $exe;
     }
 
-    public function getAlbumInfo($albumID){
-        $selectAlbum = "SELECT * FROM $this->albumTable WHERE albumID = $albumID";
-        log_message('info', 'Album_mdl::getAlbumInfo() is executing a query ' . $selectAlbum);
-        $exe = $this->db->query($selectAlbum);
-        return $exe;
-    }
+    
     
     public function getAlbumCount($albumID){
         $select = "SELECT * FROM $this->photoTable WHERE photoAlbumID = $albumID";
@@ -182,12 +144,7 @@ class Album_mdl extends CI_Model {
     }
     
 	
-    public function getNumAlbums(){
-        $select = "SELECT * FROM $this->albumTable";
-        $execute = $this->db->query($select);
-        $count = $execute->num_rows();
-        return $count;
-    }
+    
 
     public function getAlbumByName($albumName)
     {
@@ -196,13 +153,6 @@ class Album_mdl extends CI_Model {
         return $albumInfo;
     }
 
-    public function getAllAlbums(){
-        $selectAlbums = "SELECT * FROM $this->albumTable";
-        $getAlbumInfo = $this->db->query($selectAlbums);
-        return $getAlbumInfo;
-    }
-
-    
     
     public function getAlbumAdminInfo($pageNum){
         if ($pageNum == 0){
@@ -242,21 +192,5 @@ class Album_mdl extends CI_Model {
         }
     }
     
-//    public function getProfilePhoto(){
-//        $getPhoto = "SELECT * FROM $this->photoTable, $this->albumTable WHERE photoLibrary.photoAlbumID = photoAlbums.albumID AND photoLibrary.photoID = 1";
-//        $photo = $this->db->query($getPhoto);
-//        $checkForNull = $photo->num_rows();
-//        if ($checkForNull != 0){
-//            foreach($photo->result() as $row){
-//                $albumName = $row->albumName;
-//                $fileName = $row->photoFileName;
-//            }
-//            $photoURL = base_url() . "/img_stor/albums/" . $albumName . "/thumbs/" . $fileName;
-//            return $photoURL;
-//        } else {
-//            return FALSE;
-//        }
-//
-//    }
 }
 ?>

@@ -148,27 +148,53 @@ class Album_lib {
 
     }
 
-//    public function getAlbumFriendlyName($albumID){
-//
-//        //Deprecated...
-//        log_message('error', 'getAlbumFriendlyName has been used.  This method is deprecated...');
-//        $selectAlbum = "SELECT * FROM $this->albumTable WHERE albumID = $albumID";
-//        log_message('info', 'Album_mdl::getAlbumFriendlyName() is executing a query ' . $selectAlbum);
-//        $exe = $this->db->query($selectAlbum);
-//        foreach($exe->result() as $row){
-//            $albumFriendly = $row->albumFriendlyName;
-//        }
-//        return $albumFriendly;
-//    }
-//
-//    public function getAlbumName($albumID){
-//        $selectAlbum = "SELECT * FROM $this->albumTable WHERE albumID = $albumID";
-//        log_message('info', 'Album_mdl::getAlbumName is executing a query ' . $selectAlbum);
-//        $execute = $this->db->query($selectAlbum);
-//        foreach($execute->result() as $row){
-//            $albumName = $row->albumName;
-//        }
-//        return $albumName;
-//    }
+
+    /*****************************************************
+     *
+     *
+     *  addPhotoAlbum - Adds a photo to a specific album.
+     *  Mostly just executes a query to add it to the db.
+     *
+     *  Params: $photoID (The id of the actual photo),
+     *  $albumID: Id of the album to add it to.
+     *
+     *  Returns null
+     * **************************************************
+     */
+
+    public function addPhotoToAlbum($photoID, $albumID){
+
+        // loading data
+        $addPhotoData = array('photoAlbumID'=>$albumID);
+
+        // Load Album Model
+        $this->ci->load->model('Album_mdl');
+
+        // Call update Method
+        $this->ci->Album_mdl->update($photoID, $addPhotoData);
+    }
+    
+    /**
+     * getTotalAlbumcount()
+     *
+     * Gets total albums in teh system
+     * @return integer
+     * 
+     * 
+     */
+
+    public function getTotalAlbumCount(){
+
+        // Load the model
+        $this->ci->load->model('Album_mdl');
+
+        // Call the read CRUD Method
+        $getAlbums = $this->ci->Album_mdl->read();
+
+        // Return the count
+        return $getAlbums->num_rows();
+
+    }
+
 }
 ?>

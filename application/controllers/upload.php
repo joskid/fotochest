@@ -16,6 +16,7 @@ class Upload extends Controller {
         parent::Controller();
         $this->load->model('Album_mdl');
         $this->load->model('Photo_mdl');
+        $this->load->library('photo_lib');
     }
 
      public function multiUpload($albumID){
@@ -27,7 +28,7 @@ class Upload extends Controller {
         
         log_message('debug', 'Trying to upload singleUpload admin method hit.');
 
-        $albumName = $this->Album_mdl->getAlbumName($albumID);
+        $albumName = getAlbumName($albumID);
 
         $config['upload_path'] = './img_stor/albums/' . $albumName . '/originals/';
         $config['allowed_types'] = '*';
@@ -43,13 +44,15 @@ class Upload extends Controller {
         $file = $photoData['file_name'];
         $photoLocation = './img_stor/albums/' . $albumName . '/originals/' . $file;
         log_message('debug', 'Trying to place this photo from ' . $photoLocation);
-        $this->Photo_mdl->buildMainThumb($photoLocation, $file, $albumName);
+        
+
+        $this->photo_lib->buildMainThumb($photoLocation, $file, $albumName);
         $this->Photo_mdl->photoAlbumID = $albumID;
         $this->Photo_mdl->photoCreatedDate = date("y/m/d");
         $this->Photo_mdl->photoDesc = null;
         $this->Photo_mdl->photoFileName = $file;
         $this->Photo_mdl->photoTitle = $file;
-        $this->Photo_mdl->addPhoto();
+        $this->Photo_mdl->create();
         log_message('info', 'Adding a phoot single upload complete');
         return true;
 

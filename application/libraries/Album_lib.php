@@ -21,9 +21,9 @@ class Album_lib {
     var $albumFriendlyName;
     
 
-    public function __contruct()
+    public function __construct()
     {
-        $this->ci = get_instance();
+        $this->ci =& get_instance();
     }
 
 

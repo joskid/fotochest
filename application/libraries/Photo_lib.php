@@ -27,6 +27,16 @@ class Photo_lib {
     // Global CI variable.
     private $ci;
 
+    // Object properties
+    var $photoAlbumID;  // ID of the Album that the photo belongs to.
+    var $photoAlbumName;
+    var $photoFileName;
+    var $photoTitle;
+    var $photoDesc;
+    var $photoCreatedDate;
+    var $photoID;
+    var $isProfilePicture;
+
     public function __construct()
     {
         $this->ci =& get_instance();
@@ -97,24 +107,27 @@ class Photo_lib {
 
         // @todo Actually move the file...
 
-        $photoInfo = $this->getPhotoInfo($this->photoID);
+        //Load Photo Model
+        $this->ci->load->model('Photo_mdl');
+
+        $photoInfo = $this->ci->Photo_mdl->read($this->photoID);
         foreach($photoInfo->result() as $row){
             $oldAlbumID = $row->photoAlbumID;
             $fileName = $row->photoFileName;
-
         }
 
-        $albumInfo = $this->getAlbumDetails($oldAlbumID);
-        foreach($albumInfo->result() as $oldAlbum){
+        // Load Album Model
+        $this->ci->load->model('Album_mdl');
 
+        $albumInfo = $this->ci->Album_mdl->read($oldAlbumID);
+        foreach($albumInfo->result() as $oldAlbum){
             $oldAlbumName = $oldAlbum->albumName;
         }
 
-        $newAlbumInfo = $this->getAlbumDetails($this->photoAlbumID);
+        $newAlbumInfo = $this->ci->Album_mdl->read($this->photoAlbumID);
         foreach($newAlbumInfo->result() as $newAlbum){
 
             $newAlbumName = $newAlbum->albumName;
-
         }
 
         //Move the thumb first.
@@ -141,12 +154,7 @@ class Photo_lib {
 
         $updateQuery = array('photoAlbumID'=>$this->photoAlbumID);
 
-        $where = "photoID = $this->photoID";
-
-        $updateString = $this->db->update_string( $this->photoTable, $updateQuery, $where);
-
-        log_message('info', 'Query executed by Photo_mdl::movePhoto() ' . $updateString);
-        $this->db->query($updateString);
+        $this->ci->Photo_mdl->update($this->photoID, $updateQuery);
 
     }
 

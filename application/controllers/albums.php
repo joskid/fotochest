@@ -15,17 +15,13 @@
 // ----------------------------------------------------------------
 
 /**
-* Album Library
+* Album Controller
 *
 * @package		FotoChest
 * @category		Libraries
 * @author		Derek Stegelman
 */
-/*
-* FotoChest - a web based photo album
-* Copyright (C) 2009-2010 Derek Stegelman http://derek.stegelman.com
-*
-*/
+
 
 class Albums extends Controller {
 

@@ -15,22 +15,14 @@
 // ----------------------------------------------------------------
 
 /**
-* Album Library
+* Admin Controller
 *
 * @package		FotoChest
-* @category		Libraries
+* @category		Controllers
 * @author		Derek Stegelman
 */
-/*
-* FotoChest - a web based photo album
-* Copyright (C) 2009-2010 FotoChest/Nuts and Bolts Dev Team http://fotochest.com
-*
-*  @author Derek Stegelman
-*  @updated October 16 2010
- * @todo clean up. Refactor
-*
-*
-*/
+
+
 
 class Admin extends Controller {
   

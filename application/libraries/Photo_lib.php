@@ -45,6 +45,14 @@ class Photo_lib {
         return $photoFileName;
     }
 
+       /**
+	 * Autoloads the given class.
+	 *
+	 * @access	public
+	 * @param	string	The name of the class
+	 * @return	bool	Whether the class was loaded or not
+	 */
+
     public function buildMainThumb($photoDirectory, $photoFileName, $albumName){
 
         $main_size['image_library'] = 'gd2';

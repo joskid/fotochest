@@ -14,27 +14,17 @@
 // ----------------------------------------------------------------
 
 /**
-* Album Library
+* Setting Library
 *
 * @package		FotoChest
 * @category		Libraries
 * @author		Derek Stegelman
 */
 
-/**
- * 
- * @name Settings library
- * @author Derek Stegelman
- * @package FotoChest
- * @subpackage FotoChest Libraries
- *
- * Last updated October 27 2010
- *
- *
- */
 
 class Settings_lib {
-    //put your code here
+
+    
     var $settingID;
     var $settingName;
     var $settingValue;

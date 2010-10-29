@@ -22,16 +22,6 @@
 * @author		Derek Stegelman
 */
 
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of upload
- *
- * @author derek
- */
 class Upload extends Controller {
 
     public function __construct()

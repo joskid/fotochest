@@ -1,4 +1,4 @@
-<?php defined('SYSPATH') or exit('No direct script access allowed');
+<?php
 /**
 * FotoChest
 *

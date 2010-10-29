@@ -65,12 +65,13 @@ class Photo_mdl extends CI_Model {
 
     public function create()
     {
-        $insertData = array('photoAlbumName'=>$this->photoAlbumName,
+        $insertData = array(
             'photoFileName'=>$this->photoFileName,
             'photoTitle'=>$this->photoTitle,
             'photoDesc'=>$this->photoDesc,
             'photoCreatedDate'=>date("m/d/y"),
-            'isProfilePicture'=>0);
+            'photoAlbumID' =>$this->photoAlbumID,
+            'isProfilePic'=>0);
         $this->db->insert($this->photoTable, $insertData);
     }
 

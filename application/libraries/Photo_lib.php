@@ -1,4 +1,4 @@
-<?php defined('SYSPATH') or exit('No direct script access allowed');
+<?php
 /**
 * FotoChest
 *
@@ -67,7 +67,7 @@ class Photo_lib {
         } else {
 
         }
-        $this->image_lib->clear();
+        $this->ci->image_lib->clear();
     }
 
     public function getPhotoCount(){

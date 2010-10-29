@@ -1,16 +1,30 @@
-<?php
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+<?php defined('SYSPATH') or exit('No direct script access allowed');
+/**
+* FotoChest
+*
+* FotoChest is a simple photo management web based application.
+*
+* @package		FotoChest
+* @version		1.0
+* @author		Derek Stegelman <fotochest.com|stegelman.com>
+* @license		Apache License v2.0
+* @copyright		2010 FotoChest
+*/
+
+// ----------------------------------------------------------------
 
 /**
- * Description of Photo_lib
- *
- * @author derek
- */
+* Photo Library
+*
+* @package		FotoChest
+* @category		Libraries
+* @author		Derek Stegelman
+*/
+
+
 class Photo_lib {
-    
+
+    // Global CI variable.
     private $ci;
 
     public function __construct()

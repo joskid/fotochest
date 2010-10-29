@@ -1,4 +1,26 @@
-<?php
+<?php defined('SYSPATH') or exit('No direct script access allowed');
+/**
+* FotoChest
+*
+* FotoChest is a simple photo management web based application.
+*
+* @package		FotoChest
+* @version		1.0
+* @author		Derek Stegelman <fotochest.com|stegelman.com>
+* @license		Apache License v2.0
+* @copyright		2010 FotoChest
+*/
+
+// ----------------------------------------------------------------
+
+/**
+* Album Library
+*
+* @package		FotoChest
+* @category		Libraries
+* @author		Derek Stegelman
+*/
+
 /**
  * 
  * @name Settings library

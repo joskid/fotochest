@@ -1,21 +1,24 @@
-<?php
-/*
-* FotoChest - a web based photo album
-* Copyright (C) 2009-2010 Derek Stegelman http://derek.stegelman.com
+<?php 
+/**
+* FotoChest
 *
-* This program is free software; you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation; either version 2 of the License, or (at
-* your option) any later version.
+* FotoChest is a simple photo management web based application.
 *
-* This program is distributed in the hope that it will be useful, but
-* WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-* General Public License for more details.
+* @package		FotoChest
+* @version		1.0
+* @author		Derek Stegelman <fotochest.com|stegelman.com>
+* @license		Apache License v2.0
+* @copyright		2010 FotoChest
+*/
+
+// ----------------------------------------------------------------
+
+/**
+* Album Library
 *
-* You should have received a copy of the GNU General Public License
-* along with this program; if not, write to the Free Software
-* Foundation, Inc., 51 Franklin Street - Fifth Floor, Boston, MA  02110-1301, USA.
+* @package		FotoChest
+* @category		Libraries
+* @author		Derek Stegelman
 */
 
 class User_mdl extends CI_Model {

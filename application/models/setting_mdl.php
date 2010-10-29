@@ -1,14 +1,25 @@
-<?php
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+<?php 
+/**
+* FotoChest
+*
+* FotoChest is a simple photo management web based application.
+*
+* @package		FotoChest
+* @version		1.0
+* @author		Derek Stegelman <fotochest.com|stegelman.com>
+* @license		Apache License v2.0
+* @copyright		2010 FotoChest
+*/
+
+// ----------------------------------------------------------------
 
 /**
- * Description of setting_mdl
- *
- * @author derek
- */
+* Album Library
+*
+* @package		FotoChest
+* @category		Libraries
+* @author		Derek Stegelman
+*/
 class Setting_mdl extends CI_Model {
 
     var $settingID;

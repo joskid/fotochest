@@ -136,12 +136,50 @@ class User_lib {
         // Load the encryption library
         $this->ci->load->library('encrypt');
 
-        $encryptPassword = ;
-
+        // Encrypt the password
+        $encryptPassword = $this->ci->encrypt->encode($this->userPassword);
         
+        // Load the User Model
+        $this->ci->load->model('User_mdl');
+        
+        // Set properties for the update
+        $this->ci->User_mdl->userPassword = $encryptPassword;
+        $this->ci->User_mdl->userFirstName = $this->userFirstName;
+        $this->ci->User_mdl->userEmail = $this->userEmail;
+        $this->ci->User_mdl->userLastName = $this->userLastName;
+        $this->ci->User_mdl->userID = $this->userID;
+
+        // Fire off the update
+        $this->ci->User_mdl->update();   
     }
 
+    function resetPassword($password)
+    {
+
+        // Load encryption library
+        $this->ci->load->library('encrypt');
+
+        $pass_encrypt = $this->ci->encrypt->encode($password);
+        $data = array('pass'=>$pass_encrypt);
+        $where = "email = '$this->userEmail'";
+        $setQuery = $this->db->update_string($this->userTable, $data, $where);
+        $this->db->query($setQuery);
+        $this->load->helper('email');
+        if(valid_email($this->userEmail)){
+            $this->load->library('email');
+
+            $this->email->from('support@fotochest.com', 'FotoChest Support');
+            $this->email->to($this->userEmail);
 
 
+            $this->email->subject('Your Password has been reset.');
+            $this->email->message('Your password has been set to ' . $password);
+
+            $this->email->send();
+            $message = $this->email->print_debugger();
+
+            return $message;
+        }
+    }
 }
 ?>

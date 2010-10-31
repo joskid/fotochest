@@ -76,10 +76,11 @@ class User_mdl extends CI_Model {
     }
     
 
-    function update($userData, $userID)
+    function update()
     {
-       
-        $this->db->where('userID', $userID);
+
+       $data = array('userPassword'=>$this->userPassword, 'userFirstName'=>$this->userFirstName, 'userLastName'=>$this->userLastName, 'userEmail'=>$this->userEmail);
+        $this->db->where('userID', $this->userID);
         $this->db->update($this->userTable, $data);
     }
 
@@ -98,63 +99,10 @@ class User_mdl extends CI_Model {
 
 
 
-    function saveUser(){
-
-        $encryptPass = $this->encrypt->encode($this->userPassword);
-
-        $data = array('email'=>$this->userEmail, 'pass'=>$encryptPass, 'firstName'=>$this->userFirstName, 'lastName'=>$this->userLastName);
-        $where = "userID = $this->userUserID";
-        $updateString = $this->db->update_string($this->userTable, $data, $where);
-        log_message('info', 'User_mdl::saveUser() is trying to execute a query ' . $updateString);
-        $this->db->query($updateString);
-    }
-
 
     
-    function changePassword($oldPassword, $newPassword, $userEmail){
-        
-        $this->userEmail = $userEmail;
-        
-        $getOldPassword = "SELECT * FROM $this->userTable WHERE email = $this->userEmail";
-        $getPass = $this->db->query($getOldPassword);
-        foreach ($getPass->result() as $row){
-            $dbOldPassword = $row->Pass;
-        }
-        if ($oldPassword == $dbOldPassword){
-            // Continue changing the password
-            $setData = array('Pass'=>$newPassword);
-            $setQuery = $this->db->update_string($setData, $userTable);
-            $this->db->query($setQuery);
-        } else {
-            return -1;
-        }
-    }
 
-    function resetPassword($password)
-    {
-
-        $pass_encrypt = $this->encrypt->encode($password);
-        $data = array('pass'=>$pass_encrypt);
-        $where = "email = '$this->userEmail'";
-        $setQuery = $this->db->update_string($this->userTable, $data, $where);
-        $this->db->query($setQuery);
-        $this->load->helper('email');
-        if(valid_email($this->userEmail)){
-            $this->load->library('email');
-
-            $this->email->from('support@fotochest.com', 'FotoChest Support');
-            $this->email->to($this->userEmail);
-
-
-            $this->email->subject('Your Password has been reset.');
-            $this->email->message('Your password has been set to ' . $password);
-
-            $this->email->send();
-            $message = $this->email->print_debugger();
-
-            return $message;
-    }
-    }
+    
   
 
     public function getUserIDUsername($userName){

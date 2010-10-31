@@ -33,8 +33,8 @@ function getProfilePicture(){
 
 function isLoggedIn(){
     $CI =& get_instance();
-    $CI->load->model('User_mdl');
-    $loggedIn = $CI->User_mdl->isLoggedIn();
+    $CI->load->library('user_lib');
+    $loggedIn = $CI->user_lib->isLoggedIn();
     return $loggedIn;
 
 }
@@ -42,8 +42,16 @@ function isLoggedIn(){
 function getPassword($userID){
     $CI =& get_instance();
     $CI->load->model('User_mdl');
-    $password = $CI->User_mdl->getUserPassword($userID);
-    return $password;
+    $userData = $CI->User_mdl->read($userID);
+    foreach($userData->result() as $user)
+    {
+        $password = $user->userPassword;
+    }
+
+    // Load the encryption library
+    $CI->load->library('encrypt');
+    $encrypted = $CI->encrypt->decode($password);
+    return $encrypted;
 }
 
 

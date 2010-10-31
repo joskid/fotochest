@@ -90,21 +90,6 @@ class User_mdl extends CI_Model {
     }
 
 
-    // User Methods
-
-    // Login Method
-
-   
-    // Logout Method
-
-
-
-
-    
-
-    
-  
-
     public function getUserIDFromEmail($email){
         $select = "SELECT userID FROM $this->userTable WHERE userEmail = '$email'";
         log_message('info', 'User_mdl::getUserIDUsername() is executing a query ' . $select);

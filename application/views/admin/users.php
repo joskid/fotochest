@@ -14,11 +14,11 @@ $this->load->view('admin/navigation', $data);
 
             <div class="user">
                  
-                <h3><?php echo $row->firstName; ?> <?php echo $row->lastName; ?></h3>
+                <h3><?php echo $row->userFirstName; ?> <?php echo $row->userLastName; ?></h3>
                 
                 <dl>
                     <dt>Email:</dt>
-                    <dd><?php echo $row->email; ?></dd>
+                    <dd><?php echo $row->userEmail; ?></dd>
 
                 </dl>
                 <ul class="actions">

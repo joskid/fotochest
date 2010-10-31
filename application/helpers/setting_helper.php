@@ -22,6 +22,9 @@ function isOverPhotoLimit(){
 
     // Call the count method
     $photoNum = $CI->photo_lib->getPhotoCount();
+
+    // Load the Setting Library
+    $CI->load->library('setting_lib');
     
     $planType = $CI->setting_lib->getSetting('planType');
     switch ($planType){

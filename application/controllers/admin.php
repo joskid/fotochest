@@ -28,7 +28,7 @@ class Admin extends Controller {
   
     public function __construct(){
         parent::Controller();
-        if($this->User_mdl->isLoggedIn() == TRUE){
+        if(isLoggedIn() == TRUE){
             $this->load->model('Photo_mdl');
             $this->load->model('Album_mdl');
 

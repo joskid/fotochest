@@ -2,7 +2,8 @@
 
 function getSetting($settingName){
     $CI =& get_instance();
-    
+    // Load Setting library
+    $CI->load->library('setting_lib');
     $settingValue = $CI->setting_lib->getSetting($settingName);
     return $settingValue;
 }

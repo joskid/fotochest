@@ -22,7 +22,7 @@
 */
 
 
-class Settings_lib {
+class Setting_lib {
 
 
     var $settingID;

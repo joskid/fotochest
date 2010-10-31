@@ -9,6 +9,7 @@
 * @author		Derek Stegelman <fotochest.com|stegelman.com>
 * @license		Apache License v2.0
 * @copyright		2010 FotoChest
+* @link                 <http://fotochest.com>
 */
 
 // ----------------------------------------------------------------
@@ -29,10 +30,8 @@ class User_lib {
     // Object Properties
 
     var $userEmail;
-    var $userUserID;
-    var $userName;
+    var $userID;
     var $userPassword;
-    var $userGroupID;
     var $userLastName;
     var $userFirstName;
     var $userDateCreated;

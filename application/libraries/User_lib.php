@@ -77,8 +77,8 @@ class User_lib {
                 log_message('debug', 'User_mdl: User ' . $this->userEmail . ' has logged in successfully.');
                 $newdata = array(
                        'isLoggedIn'  => '1',
-                       'email'=> $dbEmail,
-                       'userid'=> $dbUserID,
+                       'email'=> $storedEmail,
+                       'userid'=> $storedUserID,
                    );
                 $this->ci->session->set_userdata($newdata);
                 return $storedUserID;

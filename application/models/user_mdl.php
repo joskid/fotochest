@@ -105,14 +105,14 @@ class User_mdl extends CI_Model {
     function getFirstName(){
         $this->userUserID = $this->session->userdata('userid');
         
-        $getName = "SELECT FirstName
+        $getName = "SELECT userFirstName
         FROM $this->userTable
-        WHERE UserID = $this->userUserID LIMIT 1";
+        WHERE userID = $this->userUserID LIMIT 1";
 
         
         $excQuery = $this->db->query($getName);
         foreach ($excQuery->result() as $row){
-            $firstName = $row->FirstName;
+            $firstName = $row->userFirstName;
             
         }
         return $firstName;

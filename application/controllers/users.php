@@ -97,13 +97,20 @@ class Users extends Controller {
         $this->User_mdl->register();
         
     }
+
+    public function logout()
+    {
+        // Load the library
+        $this->load->library('user_lib');
+
+        // Call Logout Method
+        $this->user_lib->logout();
+
+        // Redirect to the login screen
+        redirect('users/loginError/1');
+    }
   
-  public function logout(){
-    $this->User_mdl->logout();
-    redirect('users/loginError/1');
-    
-  }
-  
+
     public function forgotPassword(){
 
         $this->load->library('form_validation');

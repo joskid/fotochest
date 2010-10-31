@@ -76,10 +76,10 @@ class User_mdl extends CI_Model {
     }
     
 
-    function update()
+    function update($data)
     {
 
-       $data = array('userPassword'=>$this->userPassword, 'userFirstName'=>$this->userFirstName, 'userLastName'=>$this->userLastName, 'userEmail'=>$this->userEmail);
+       
         $this->db->where('userID', $this->userID);
         $this->db->update($this->userTable, $data);
     }
@@ -105,8 +105,8 @@ class User_mdl extends CI_Model {
     
   
 
-    public function getUserIDUsername($userName){
-        $select = "SELECT userID FROM $this->userTable WHERE email = '$userName'";
+    public function getUserIDFromEmail($email){
+        $select = "SELECT userID FROM $this->userTable WHERE userEmail = '$email'";
         log_message('info', 'User_mdl::getUserIDUsername() is executing a query ' . $select);
         $dump = $this->db->query($select);
         foreach($dump->result() as $row){

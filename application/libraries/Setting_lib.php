@@ -24,7 +24,7 @@
 
 class Settings_lib {
 
-    
+
     var $settingID;
     var $settingName;
     var $settingValue;

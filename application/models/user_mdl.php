@@ -14,10 +14,10 @@
 // ----------------------------------------------------------------
 
 /**
-* Album Library
+* User Model
 *
 * @package		FotoChest
-* @category		Libraries
+* @category		Models
 * @author		Derek Stegelman
 */
 
@@ -41,129 +41,66 @@ class User_mdl extends CI_Model {
         
     }
 
+    // CRUD.
+
+    function create()
+    {
+        $this->dateCreated = date('m/y/d');
+        $userData = array('userEmail'=>$this->userEmail,
+                          'userFirstName'=>$this->userFirstName,
+                          'userLastName'=>$this->userLastName,
+                          'userDateCreated'=>$this->dateCreated,
+                          'userPassword'=>$this->userPassword);
+
+        $this->db->insert($this->userTable, $userData);
+
+    }
+
+    function read($userID = null)
+    {
+        if($userID == null)
+        {
+            $readData = $this->db->get($this->userTable);
+        }
+        else
+        {
+            $readData = $this->db->get_where($this->userTable, array('userID'=>$userID));
+        }
+        return $userID;
+    }
+
+    public function readEmail($userEmail)
+    {
+        $readData = $this->db->get_where($this->userTable, array('userEmail'=>'$userEmail'));
+        return $readData;
+    }
+    
+
+    function update()
+    {
+        $userData = array('email'=>$this->userEmail,
+                          'firstName'=>$this->userFirstName,
+                          'lastName'=>$this->userLastName);
+
+
+        $this->db->where('userID', $this->userID);
+        $this->db->update($this->userTable, $data);
+    }
+
+    function delete($userID)
+    {
+        $this->db->delete($this->userTable, array('userID'=>$userID));
+    }
+
+
     // User Methods
 
     // Login Method
 
-    function login(){
-
-           // Check the Username and Password against the Database
-
-        // Encrypt the given Password so it can be
-        // compared to the one in the database.
-
-        // Grab User info for this Username
-        //The Code block below is replacing validation for the moment.
-
-       
-        if (isset($this->userEmail)){
-
-        } else {
-            log_message('debug', 'User_mdl: No useremail supplied.');
-            return -1;
-        }
-        if (isset($this->userPassword)){
-
-        } else {
-            log_message('debug', 'User_mdl: No password supplied.');
-            return -1;
-        }
-
-
-         // Set the Users Table.
-        
-        // Build The select query.
-
-        $UserQuery = "SELECT email, pass, userID FROM
-        $this->userTable WHERE email = '$this->userEmail' LIMIT 1";
-
-        // Exectute Query
-
-        $query = $this->db->query($UserQuery);
-
-        if ($query->num_rows() == 0){
-            log_message('debug', 'User_mdl: $query->num_rows() returned a null or 0 value.');
-            return -1; // This indicates that the query returned no records.  ERROR.
-        } else {}
-        $getUsersInfo = $this->db->query($UserQuery);
-        log_message('debug', 'User_mdl: Executing query to find password. ' . $UserQuery);
-
-        // Get The Info
-
-        foreach ($getUsersInfo->result() as $row){
-            $dbPassword = $row->pass; // Fetched Password
-            $dbUserID = $row->userID; // Fetched User ID
-            $dbEmail = $row->email;
-            
-        }
-
-        // Decode password.
-
-        $unencryptPass = $this->encrypt->decode($dbPassword);
-
-        
-        // Check the password against the password provided.
-
-        if ($unencryptPass == $this->userPassword){
-
-            // User Is Authenticated
-            log_message('debug', 'User_mdl: User ' . $this->userEmail . ' has logged in successfully.');
-            $newdata = array(
-                   'isLoggedIn'  => '1',
-                   'email'=> $dbEmail,
-                   'userid'=> $dbUserID,
-                  
-               );
-
-        $this->session->set_userdata($newdata);
-
-            return $dbUserID;
-           
-        }
-        else
-        {
-            log_message('debug', 'User_mdl: User ' . $this->userEmail . ' could no be authenticated.');
-            return -1;
-        }
-
-    }
-
+   
     // Logout Method
 
-    function logout(){
 
-        // Destroy Session Data
-
-        $this->session->sess_destroy();
-        
-    }
-
-    function isLoggedIn(){
-        log_message('debug', 'isLoggedIn method hit');
-        if ($this->session->userdata("isLoggedIn") == 1){
-            return TRUE;
-        } else {
-            return FALSE;
-        }
-    }
-
-    function register(){
-        
-        
-        date_default_timezone_set('UTC');
-        $this->userDateCreated = date("m/d/y");
-        
-        
-            //Start Registration.
-            
-            $encryptPassword = $this->encrypt->encode($this->userPassword);
-            $userData = array('email'=>$this->userEmail, 'pass'=>$encryptPassword,
-                'firstName'=>$this->userFirstName, 'lastName'=>$this->userLastName,
-                'dateCreated'=>$this->userDateCreated);
-            
-            $userInsert = $this->db->insert_string($this->userTable, $userData);
-            $this->db->query($userInsert);
-    }
 
     function getUsers(){
         $select = "SELECT * FROM $this->userTable";

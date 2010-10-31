@@ -71,7 +71,8 @@ class User_mdl extends CI_Model {
 
     public function readEmail($userEmail)
     {
-        $readData = $this->db->get_where($this->userTable, array('userEmail'=>'$userEmail'));
+        $select = "SELECT * FROM $this->userTable WHERE userEmail = '$userEmail'";
+        $readData = $this->db->query($select);
         return $readData;
     }
     

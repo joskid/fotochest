@@ -46,9 +46,15 @@ class Users extends Controller {
     }
     else
     {
-        $this->User_mdl->userEmail = $this->input->post('userEmail');
-        $this->User_mdl->userPassword = $this->input->post('userPassword');
-        $userID = $this->User_mdl->login();
+        // Load User Authentication Library
+        $this->load->library('user_lib');
+
+        // Load Library Vars.
+        $this->user_lib->userEmail = $this->input->post('userEmail');
+        $this->user_lib->userPassword = $this->input->post('userPassword');
+
+        // Call Login Method
+        $userID = $this->user_lib->login();
         if ($userID != -1)
         {
             redirect('admin/dashboard');

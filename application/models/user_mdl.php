@@ -66,7 +66,7 @@ class User_mdl extends CI_Model {
         {
             $readData = $this->db->get_where($this->userTable, array('userID'=>$userID));
         }
-        return $userID;
+        return $readData;
     }
 
     public function readEmail($userEmail)

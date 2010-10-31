@@ -131,5 +131,17 @@ class User_lib {
         
     }
 
+    public function saveUser()
+    {
+        // Load the encryption library
+        $this->ci->load->library('encrypt');
+
+        $encryptPassword = ;
+
+        
+    }
+
+
+
 }
 ?>

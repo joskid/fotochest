@@ -76,14 +76,10 @@ class User_mdl extends CI_Model {
     }
     
 
-    function update()
+    function update($userData, $userID)
     {
-        $userData = array('email'=>$this->userEmail,
-                          'firstName'=>$this->userFirstName,
-                          'lastName'=>$this->userLastName);
-
-
-        $this->db->where('userID', $this->userID);
+       
+        $this->db->where('userID', $userID);
         $this->db->update($this->userTable, $data);
     }
 
@@ -102,45 +98,6 @@ class User_mdl extends CI_Model {
 
 
 
-    function getUsers(){
-        $select = "SELECT * FROM $this->userTable";
-        log_message('info', 'User_mdl::getUsers() is executing a query ' . $select);
-        $dump = $this->db->query($select);
-        return $dump;
-    }
-
-    function getUserInfo($userID){
-        $select = "SELECT * FROM $this->userTable WHERE userID = $userID LIMIT 1";
-        log_message('info', 'User_mdl::getUserInfo() is executing a query ' . $select);
-        $dump = $this->db->query($select);
-        return $dump;
-    }
-
-    function getUserPassword($userID){
-        $select = "SELECT * FROM $this->userTable WHERE userID = $userID LIMIT 1";
-        log_message('info', 'User_mdl::getUserPassword() is executing a query ' . $select);
-        $dump = $this->db->query($select);
-        foreach($dump->result() as $row){
-            $encryptPass = $row->pass;
-        }
-
-        $decode = $this->encrypt->decode($encryptPass);
-        return $decode;
-    }
-
-    
-    function getCurrentUser(){
-        $this->userUserID = $this->session->userdata('UserID');
-        
-        $userQuery = "SELECT email FROM $this->userTable WHERE userID = $this->userUserID LIMIT 1";
-
-        $executeQuery = $this->db->query($userQuery);
-        foreach ($executeQuery->result() as $row){
-            $this->userEmail = $row->Email;
-        }
-        return $this->userEmail;
-    }
-
     function saveUser(){
 
         $encryptPass = $this->encrypt->encode($this->userPassword);
@@ -152,11 +109,7 @@ class User_mdl extends CI_Model {
         $this->db->query($updateString);
     }
 
-    function deleteUser(){
-        $delete = "DELETE FROM $this->userTable WHERE userID = $this->userUserID";
-        log_message('info', 'User_mdl::deleteUser() is trying to execute a query ' . $delete);
-        $this->db->query($delete);
-    }
+
     
     function changePassword($oldPassword, $newPassword, $userEmail){
         
@@ -177,7 +130,8 @@ class User_mdl extends CI_Model {
         }
     }
 
-    function resetPassword($password){
+    function resetPassword($password)
+    {
 
         $pass_encrypt = $this->encrypt->encode($password);
         $data = array('pass'=>$pass_encrypt);
@@ -190,7 +144,7 @@ class User_mdl extends CI_Model {
 
             $this->email->from('support@fotochest.com', 'FotoChest Support');
             $this->email->to($this->userEmail);
-           
+
 
             $this->email->subject('Your Password has been reset.');
             $this->email->message('Your password has been set to ' . $password);
@@ -199,20 +153,9 @@ class User_mdl extends CI_Model {
             $message = $this->email->print_debugger();
 
             return $message;
-        }
-
     }
-
+    }
   
-
-    public function getUserName(){
-        $userName = $this->session->userdata('username');
-        return $userName;
-    }
-    public function getUserID(){
-        $userID = $this->session->userdata('userid');
-        return $userID;
-    }
 
     public function getUserIDUsername($userName){
         $select = "SELECT userID FROM $this->userTable WHERE email = '$userName'";

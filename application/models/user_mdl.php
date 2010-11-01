@@ -26,10 +26,8 @@ class User_mdl extends CI_Model {
     // User Properties
 
     var $userEmail;
-    var $userUserID;
-    var $userName;
+    var $userID;
     var $userPassword;
-    var $userGroupID;
     var $userLastName;
     var $userFirstName;
     var $userDateCreated;

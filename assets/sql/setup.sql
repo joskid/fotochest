@@ -85,10 +85,10 @@ VALUES
 
 CREATE TABLE `photoUsers` (
   `userID` int(11) NOT NULL auto_increment,
-  `email` varchar(45) default NULL,
-  `pass` varchar(255) default NULL,
-  `firstName` varchar(255) default NULL,
-  `lastName` varchar(255) default NULL,
-  `dateCreated` date default NULL,
+  `userEmail` varchar(45) default NULL,
+  `userPassword` varchar(255) default NULL,
+  `userFirstName` varchar(255) default NULL,
+  `userLastName` varchar(255) default NULL,
+  `userDateCreated` date default NULL,
   PRIMARY KEY  (`userID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;

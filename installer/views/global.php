@@ -29,8 +29,7 @@
 					<li><span id="<?php echo $this->uri->segment(2, '') == 'complete' ? 'current' : '' ?>"><?php echo lang('final'); ?></span></li>
 				</ul>
 			</div>
-		</div>
-			
+		</div>	
 		<!-- Content -->
 		<div id="content">
 			<div class="container">

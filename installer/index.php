@@ -42,7 +42,7 @@
  * as this file.
  *
  */
-	$system_path = "../system/codeigniter";
+	$system_path = "../system";
 
 /*
  *---------------------------------------------------------------

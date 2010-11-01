@@ -12,14 +12,14 @@
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/installer.js"></script>
 
-		<title>PyroCMS Installer</title>
+		<title>FotoChest Installer</title>
 	</head>
 	<body>
 		
 		<!-- Header -->
 		<div id="header">
 			<div class="container">
-				<img src="<?php echo base_url(); ?>assets/images/logo.png" alt="PyroCMS" />
+				<img src="<?php echo base_url(); ?>assets/images/FotoChestLogoSmall.png" alt="FotoChest" />
 				<ul id="menu">
 					<li><?php echo anchor('', lang('intro'), $this->uri->segment(2, '') == '' ? 'id="current"' : ''); ?></li>
 					<li><?php echo anchor('installer/step_1', lang('step1'), $this->uri->segment(2, '') == 'step_1' ? 'id="current"' : ''); ?></li>

@@ -16,3 +16,7 @@ but as with all software there are still issues.  We are planning on releasing 1
 
 * Installer
 * Ability to rotate images
+* Updates to the Admin Controller to seperate Admin Content.
+* Rewrite the admin controller.
+* Add Comments
+* Multi Lingual

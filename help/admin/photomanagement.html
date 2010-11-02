@@ -33,7 +33,7 @@
 <table cellpadding="0" cellspacing="0" border="0" style="width:100%">
 <tr>
 <td id="breadcrumb">
-<a href="http://fotochest.com/">FotoChest Home</a> &nbsp;&#8250;&nbsp; <a href="../index.htlml">FotoChest Help/Developer's Guide</a> &nbsp;&#8250;&nbsp; Installatioin Instructions
+<a href="http://fotochest.com/">FotoChest Home</a> &nbsp;&#8250;&nbsp; <a href="../index.htlml">FotoChest Help/Developer's Guide</a> &nbsp;&#8250;&nbsp; Photo Management
 </td>
 <td id="searchbox"><form method="get" action="http://www.google.com/search"><input type="hidden" name="as_sitesearch" id="as_sitesearch" value="codeigniter.com/user_guide/" />Search User Guide&nbsp; <input type="text" class="input" style="width:200px;" name="q" id="q" size="31" maxlength="255" value="" />&nbsp;<input type="submit" class="submit" name="sa" value="Go" /></form></td>
 </tr>
@@ -46,34 +46,13 @@
 <!-- START CONTENT -->
 <div id="content">
 
-    <h1>Intalling FotoChest</h1>
-    <p>We are working hard to provide FotoChest with an automated web based installer, but until then, follow these simple steps to get up and working.</p>
-    <h2>Requirements</h2>
-    <ul>
-        <li>Web server with PHP 5 and the ability to <a href="http://codeigniter.com/user_guide/general/requirements.html">run CodeIgniter</a></li>
-        <li>CodeIgniter compatable database.</li>
-        <li>GD2 Library.  You can use the others supported by CodeIgniter but you need to change it manually.</li>
-        <li>At least 15 mb of memory to process photo uploads.</li>
-    </ul>
-    <h2>Database</h2>
-    <ul>
-        <li>Create a new database to use with FotoChest.  Any database supported by CodeIgniter can be used.</li>
-        <li>Run setup.sql which can be found in /assets/sql/setup.sql</li>
-        <li>Update /config/database.php with your database credentials.</li>
-        <li>If you altered the name of your tables (not recommended) you can force the application to point to them by changing the values in /config/settings.php</li>
-
-    </ul>
-    <h2>Configuration</h2>
-    <ul>
-        <li>In the photoSettings database table modify the absolute file path to point to where FotoChest will be installed.  Often times this is from the absolute root of your host.</li>
-
-    </ul>
-    <h2>Run the Installer</h2>
-    <ul>
-        <li>After uploading your modified files, point your browser to /fotochestroot/installer/install.  This creates a user in the database with an account of admin@admin.com and a password of admin.  The installer should be deleted immedietly after running.</li>
-    </ul>
-    <h2>Troubleshooting</h2>
-    <p>If you have problems check out the <a href="http://forums.fotochest.com">forums</a> or post a ticket on <a href="http://github.com/fotochest">github.com</a></p>
+    <h1>Photo Management</h1>
+    <h2>Uploading Photos</h2>
+    <p>At the current time of this writing only the flash uploader is capable of uploading new images to the system.  Planned for a later version is the addition of a single upload control.</p>
+    <img src="../images/screenshots/flashUpload.png" alt="Flash Upload"/>
+    <p>To upload a photo simply click browse, and select all the photos you want to upload.  Once
+    you are done click the link below the control that says "Edit or View your photos now!".</p>
+    <h2>Moving Photos</h2>
 
 </div>
 <!-- END CONTENT -->

@@ -44,8 +44,8 @@ function create_menu(basepath)
 				
 		'<h3>Administrative Functions</h3>' +
 		'<ul>' +
-		'<li><a href="'+base+'admin/photomangement.html">Photo Management</a></li>' +
-                '<li><a href="'+base+'admin/albummangement.html">Album Management</a></li>' +
+		'<li><a href="'+base+'admin/photomanagement.html">Photo Management</a></li>' +
+                '<li><a href="'+base+'admin/albummanagement.html">Album Management</a></li>' +
                 '<li><a href="'+base+'admin/usermanagement.html">User Management</a></li>' +
                 '<li><a href="'+base+'admin/settings.html">Settings</a></li>' +
 		

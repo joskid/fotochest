@@ -25,7 +25,7 @@ class Users extends Controller {
 
     public function __construct(){
         parent::Controller();
-        $this->User_mdl->userTable = $this->config->item('userTable');
+        
     }
   
   public function login(){
@@ -64,10 +64,6 @@ class Users extends Controller {
             redirect('users/loginError/2');
         }
     }
-
-
-
-    
   }
   
   public function loginError($errorType){

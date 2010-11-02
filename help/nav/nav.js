@@ -8,7 +8,7 @@ function create_menu(basepath)
 
 		'<ul>' +
 		'<li><a href="'+base+'index.html">User Guide Home</a></li>' +	
-		'<li><a href="'+base+'toc.html">Table of Contents Page</a></li>' +
+		
 		'</ul>' +	
 
 		'<h3>Basic Info</h3>' +
@@ -25,11 +25,7 @@ function create_menu(basepath)
 			
 		'</ul>' +
 		
-		'<h3>Introduction</h3>' +
-		'<ul>' +
-			'<li><a href="'+base+'overview/getting_started.html">Getting Started</a></li>' +
 			
-		'</ul>' +	
 
 				
 		'</td><td class="td_sep" valign="top">' +
@@ -49,6 +45,9 @@ function create_menu(basepath)
 		'<h3>Administrative Functions</h3>' +
 		'<ul>' +
 		'<li><a href="'+base+'admin/photomangement.html">Photo Management</a></li>' +
+                '<li><a href="'+base+'admin/albummangement.html">Album Management</a></li>' +
+                '<li><a href="'+base+'admin/usermanagement.html">User Management</a></li>' +
+                '<li><a href="'+base+'admin/settings.html">Settings</a></li>' +
 		
 		'</ul>' +
 
@@ -63,8 +62,8 @@ function create_menu(basepath)
 
 		'<h3>Additional Resources</h3>' +
 		'<ul>' +
-		'<li><a href="http://codeigniter.com/forums/">Community Forums</a></li>' +
-		'<li><a href="http://codeigniter.com/wiki/">Community Wiki</a></li>' +
+		'<li><a href="http://forums.fotochest.com">Community Forums</a></li>' +
+		
 		'</ul>' +	
 		
 		'</td></tr></table>');

@@ -214,15 +214,8 @@ class Installer_lib {
 		$data['user_password'] 	= sha1($data['user_password'] . $user_salt);
 
 		// Get the SQL for the default data and parse it
-		$user_sql		= file_get_contents('./sql/default-user.sql');
-		$user_sql		= str_replace('__EMAIL__', 		$data['user_email'], 		$user_sql);
-		$user_sql		= str_replace('__USERNAME__', 	$data['user_name'], 		$user_sql);
-		$user_sql		= str_replace('__DISPLAYNAME__', 	$data['user_firstname'] . ' ' . $data['user_firstname'], 		$user_sql);
-		$user_sql		= str_replace('__PASSWORD__', 	$data['user_password'], 	$user_sql);
-		$user_sql		= str_replace('__FIRSTNAME__', 	$data['user_firstname'], 	$user_sql);
-		$user_sql		= str_replace('__LASTNAME__', 	$data['user_lastname'], 	$user_sql);
-		$user_sql		= str_replace('__SALT__', 		$user_salt,					$user_sql);
-		$user_sql		= str_replace('__NOW__', 		time(),						$user_sql);
+		$user_sql		= file_get_contents('./sql/setup.sql');
+		
 		
 		// Create a connection
 		if( !$this->db = mysql_connect($server, $username, $password) )

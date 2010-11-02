@@ -15,3 +15,4 @@ but as with all software there are still issues.  We are planning on releasing 1
 ###Version 2.0 (Release in Spring of 2011)
 
 * Installer
+* Ability to rotate images

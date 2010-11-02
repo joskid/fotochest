@@ -6,6 +6,7 @@
 		<!-- Stylesheets -->
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/reset.css" type="text/css" />
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css" type="text/css" />
+                <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
 		<script type="text/javascript">
             var base_url = '<?php echo base_url(); ?>';
 		</script>
@@ -19,7 +20,8 @@
 		<!-- Header -->
 		<div id="header">
 			<div class="container">
-				<img src="<?php echo base_url(); ?>assets/images/FotoChestLogoSmall.png" alt="FotoChest" />
+				<img src="<?php echo base_url(); ?>assets/images/FotoChestLogoSmall.png" alt="FotoChest" style="margin-top:20px;"/>
+                                <h1 style="vertical-align:super; display:inline-block; margin-left:10px; color:#fff;">FotoChest</h1>
 				<ul id="menu">
 					<li><?php echo anchor('', lang('intro'), $this->uri->segment(2, '') == '' ? 'id="current"' : ''); ?></li>
 					<li><?php echo anchor('installer/step_1', lang('step1'), $this->uri->segment(2, '') == 'step_1' ? 'id="current"' : ''); ?></li>

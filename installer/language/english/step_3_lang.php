@@ -21,4 +21,4 @@ $lang['step4']			= 'Step 4';
 $lang['retry']			= 'Try again';
 
 // messages
-$lang['step1_failure']		= 'U moet de benodigde database settings in het formulier hieronder invullen.';
+$lang['step1_failure']		= 'FUCK.';

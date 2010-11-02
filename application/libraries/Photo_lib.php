@@ -106,6 +106,7 @@ class Photo_lib {
     public function movePhoto(){
 
         // @todo Actually move the file...
+        // @todo update this function
 
         //Load Photo Model
         $this->ci->load->model('Photo_mdl');

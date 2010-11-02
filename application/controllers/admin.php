@@ -44,7 +44,7 @@ class Admin extends Controller {
     }
 	
     public function savePhoto(){
-      
+      // @todo Move this...
 
         log_message('debug','Save Photo Method hit');
         
@@ -104,6 +104,8 @@ class Admin extends Controller {
     }
 
     function do_userSave(){
+
+        // @todo move this.
         $this->User_mdl->userEmail = $this->input->post('userEmail');
         $this->User_mdl->userPassword = $this->input->post('userPassword');
         $this->User_mdl->userFirstName = $this->input->post('userFirstName');
@@ -115,6 +117,8 @@ class Admin extends Controller {
     }
 
     function do_photoDelete(){
+
+        // @todo move this
 
       $this->Photo_mdl->photoID = $this->input->post('photoID');
       $this->Photo_mdl->deletePhoto();
@@ -128,6 +132,8 @@ class Admin extends Controller {
     }
 
     function do_userDelete(){
+
+        // @todo move this.
         $this->User_mdl->userUserID = $this->input->post('userUserID');
         $this->User_mdl->deleteUser();
     }
@@ -194,6 +200,8 @@ class Admin extends Controller {
 
     public function photoUpload($albumID){
 
+        // @todo photo Upload or MultiUpload which one is it?
+
         $this->data['albumID'] = $albumID;
         $this->load->view('admin/photoUpload', $this->data);
     }
@@ -229,6 +237,8 @@ class Admin extends Controller {
 
    
     public function createAlbum(){
+
+// @todo mov ethis
         
 
 
@@ -238,7 +248,11 @@ class Admin extends Controller {
         $this->Album_mdl->createAlbum();
     }
 
+
+
     public function saveAlbum(){
+
+        // @todo move this.
 
         $this->Album_mdl->albumFriendlyName = $this->input->post('albumFriendlyName');
         $this->Album_mdl->albumID = $this->input->post('albumID');
@@ -261,6 +275,8 @@ class Admin extends Controller {
     }
 
     public function do_delete(){
+
+        // @todo remoe this.
         $albumID = $this->input->post('albumID');
 
       $path = getSetting('absolutePath');

@@ -4,7 +4,8 @@
 
 function getAlbumDropdownList(){
         $ci =& get_instance();
-        $albums = $ci->Album_mdl->getAllAlbums();
+        $ci->load->model('Album_mdl');
+        $albums = $ci->Album_mdl->read();
         $options = array();
         foreach($albums->result() as $row){
             $options[$row->albumID] = $row->albumName;

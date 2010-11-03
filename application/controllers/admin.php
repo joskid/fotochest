@@ -92,7 +92,7 @@ class Admin extends Controller {
     public function addUser(){
 
 
-        $this->load->view('admin/modals/addUser', $this->data);
+        $this->load->view('admin/modals/addUser');
     }
 
     public function editUser($userID){
@@ -417,8 +417,8 @@ class Admin extends Controller {
     
     public function addAlbum(){
         
-        $data['albumDropDown'] = $this->Album_mdl->getAlbumDropdownList();
-        $this->load->view('admin/modals/addAlbum', $data);
+        
+        $this->load->view('admin/modals/addAlbum');
     }
     
     public function importModal(){

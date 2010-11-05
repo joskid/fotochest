@@ -177,6 +177,11 @@ class Photo_lib {
         return $photoData;
     }
 
+    public function rotateImage($rotation, $photoID)
+    {
+        
+    }
+
     
 }
 ?>

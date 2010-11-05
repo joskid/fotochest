@@ -98,7 +98,7 @@ class Admin extends Controller {
     public function editUser($userID){
 
 
-        $this->data['userInfo'] = $this->User_mdl->getUserInfo($userID);
+        $this->data['userInfo'] = $this->User_mdl->read($userID);
 
         $this->load->view('admin/modals/editUser', $this->data);
     }

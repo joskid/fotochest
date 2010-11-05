@@ -54,9 +54,9 @@ class User_mdl extends CI_Model {
 
     }
 
-    function read($userID = null)
+    function read($userID = NULL)
     {
-        if($userID == null)
+        if($userID == NULL)
         {
             $readData = $this->db->get($this->userTable);
         }

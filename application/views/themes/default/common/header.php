@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <?php echo theme_css('styles'); ?>
         <?php echo link_tag('assets/css/styles.css'); ?>
         <?php if (getSetting('siteTheme') == 0){
             echo link_tag('assets/css/blackTheme.css');

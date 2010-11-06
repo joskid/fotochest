@@ -5,7 +5,7 @@
         <?php //echo theme_css('styles'); ?>
         
         
-        <title><?php //echo $template['title']; ?></title>
+        <title><?php //echo $template['title']; ?> DAMINT</title>
        
     </head>
 

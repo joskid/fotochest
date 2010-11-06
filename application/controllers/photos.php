@@ -53,15 +53,9 @@ class Photos extends Controller {
         $this->data['pages'] =  $this->pagination->create_links();
         $this->data['totalPhotos'] = $this->db->count_all($this->config->item('photoTable'));
         $this->data['photoData'] = $this->Photo_mdl->getPublicPhotoStream();
-        //$this->load->view('photoStream', $this->data);
-        $this->template->title('Photo Index Using Templates');
-        $this->template->set_partial('header', 'partials/header');
-        $this->template->set_theme('default');
-        $this->template->set_layout('stream');
-        $this->template->append_metadata('<link rel="stylesheet" href="/application/themes/default/css/styles.css" type="text/css">');
-        //$this->template->set_layout('photoStream');
-        //$this->template->set_layout('test');
-        $this->template->build('photoStream', $this->data);
+        
+        // Build the Theme
+        $this->load->view('themes/' . getSetting('themeName') . '/layouts/photoStream', $this->data);
     }
 
     public function slideshow($albumName){

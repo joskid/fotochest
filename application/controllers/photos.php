@@ -55,9 +55,11 @@ class Photos extends Controller {
         $this->data['photoData'] = $this->Photo_mdl->getPublicPhotoStream();
         //$this->load->view('photoStream', $this->data);
         $this->template->title('Photo Index Using Templates');
-        $this->template->set_partial('header', 'header');
+        $this->template->set_partial('header', 'partials/header');
+        $this->template->set_theme('default');
+        $this->template->set_layout('stream');
         //$this->template->set_layout('photoStream');
-        $this->template->set_layout('test');
+        //$this->template->set_layout('test');
         $this->template->build('photoStream', $this->data);
     }
 

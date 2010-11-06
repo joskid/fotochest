@@ -54,7 +54,10 @@ class Photos extends Controller {
         $this->data['totalPhotos'] = $this->db->count_all($this->config->item('photoTable'));
         $this->data['photoData'] = $this->Photo_mdl->getPublicPhotoStream();
         //$this->load->view('photoStream', $this->data);
-        $this->load->view('themes/default/views/photoStream', $this->data);
+        $this->template->title('Photo Index Using Templates');
+        $this->template->set_partial('header', 'partials/header');
+        //$this->template->set_layout('photoStream');
+        $this->template->build('photoStream', $this->data);
     }
 
     public function slideshow($albumName){

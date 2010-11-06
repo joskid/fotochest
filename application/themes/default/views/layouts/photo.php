@@ -1,6 +1,7 @@
 <?php $this->load->view('common/header'); ?>
     <body>
         <div id="wrapper">
+            <h1>THIS IS USING THE TEMPLATE ENGINE</h1>
                         <?php if (isLoggedIn() == FALSE) {
 
                  echo anchor('admin/dashboard', 'Sign In', array('class'=>'signin'));

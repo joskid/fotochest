@@ -1,9 +1,10 @@
-<?php $this->load->view('themes/default/common/header');
+<?php //$this->load->view('themes/default/common/header');
 $queryCount = $photoData->num_rows();
 ?>
 
 <body>
     <div id="wrapper">
+        <h1>THIS IS THE TEMPLATE ENGINE!!!</h1>
                     <?php if (isLoggedIn() == FALSE) {
 
                  echo anchor('admin/dashboard', 'Sign In', array('class'=>'signin'));

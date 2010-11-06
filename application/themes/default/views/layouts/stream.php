@@ -1,6 +1,7 @@
 <?php //$this->load->view('themes/default/common/header');
 $queryCount = $photoData->num_rows();
 echo $template['partials']['header'];
+echo $template['metadata'];
 ?>
 
 <body>

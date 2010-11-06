@@ -29,7 +29,7 @@ function css($fileName){
 
 function theme_css($fileName)
 {
-    $builtURL = base_url() . "application/views/themes/" . getSetting('themeName') . "/assets/" . $fileName . ".css";
+    $builtURL = base_url() . "application/themes/" . getSetting('themeName') . "/css/" . $fileName . ".css";
     $outputCSS = "<link href='$builtURL' type='text/css' rel='stylesheet'>";
     return $outputCSS;
 }

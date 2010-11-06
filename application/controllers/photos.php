@@ -58,6 +58,7 @@ class Photos extends Controller {
         $this->template->set_partial('header', 'partials/header');
         $this->template->set_theme('default');
         $this->template->set_layout('stream');
+        $this->template->append_metadata('<link rel="stylesheet" href="/application/themes/default/css/styles.css" type="text/css">');
         //$this->template->set_layout('photoStream');
         //$this->template->set_layout('test');
         $this->template->build('photoStream', $this->data);

@@ -47,34 +47,29 @@
 <div id="content">
 
     <h1>Themes</h1>
-    <p>We are working hard to provide FotoChest with an automated web based installer, but until then, follow these simple steps to get up and working.</p>
-    <h2>Requirements</h2>
+    <h2>Anatomy of a Theme</h2>
+    <p>All Themes must contain the following:</p>
     <ul>
-        <li>Web server with PHP 5 and the ability to <a href="http://codeigniter.com/user_guide/general/requirements.html">run CodeIgniter</a></li>
-        <li>CodeIgniter compatable database.</li>
-        <li>GD2 Library.  You can use the others supported by CodeIgniter but you need to change it manually.</li>
-        <li>At least 15 mb of memory to process photo uploads.</li>
+        <li>Stylesheets - These are located in /assets/themes/themename/css</li>
+        <li>Standard Views - All are located in /application/views/themes/themename/layouts
+            <ul>
+                <li>photoStream.php</li>
+                <li>albums.php</li>
+                <li>photo.php</li>
+                <li>slideshow.php</li>
+                <li>viewAlbum.php</li>
+            </ul>
+        </li>
+        <li>It's also helpful to include common partial views like headers and footers in the directory /application/views/themes/themename/common</li>
     </ul>
-    <h2>Database</h2>
-    <ul>
-        <li>Create a new database to use with FotoChest.  Any database supported by CodeIgniter can be used.</li>
-        <li>Run setup.sql which can be found in /assets/sql/setup.sql</li>
-        <li>Update /config/database.php with your database credentials.</li>
-        <li>If you altered the name of your tables (not recommended) you can force the application to point to them by changing the values in /config/settings.php</li>
-
-    </ul>
-    <h2>Configuration</h2>
-    <ul>
-        <li>In the photoSettings database table modify the absolute file path to point to where FotoChest will be installed.  Often times this is from the absolute root of your host.</li>
-
-    </ul>
-    <h2>Run the Installer</h2>
-    <ul>
-        <li>After uploading your modified files, point your browser to /fotochestroot/installer/install.  This creates a user in the database with an account of admin@admin.com and a password of admin.  The installer should be deleted immedietly after running.</li>
-    </ul>
-    <h2>Troubleshooting</h2>
-    <p>If you have problems check out the <a href="http://forums.fotochest.com">forums</a> or post a ticket on <a href="http://github.com/fotochest">github.com</a></p>
-
+    <p>
+        Before the the end of your initial head tag you must call the required view.  The required view resides in /application/views/common/required.php.
+        The required view handles required css and javascript for normal operation of FotoChest.
+    </p>
+    <code>
+        <?php $this->load->view('common/required'); ?>
+    </code>
+    
 </div>
 <!-- END CONTENT -->
 

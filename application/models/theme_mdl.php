@@ -71,16 +71,31 @@ class Theme_mdl extends CI_Model {
         return $readData;
     }
 
-    public function update($albumID, $albumData)
+    public function readActive()
+    {
+        $readData = $this->db->get_where($this->_themeTable, array('themeActive'=>1));
+        return $readData;
+    }
+
+    public function update($themeID, $themeData)
     {
 
-        $this->db->where('albumID', $albumID);
-        $this->db->update($this->albumTable, $albumData);
+        $this->db->where('themeID', $themeID);
+        $this->db->update($this->_themeTable, $themeData);
+    }
+
+    public function shutdownTheme()
+    {
+        $data = array('themeActive'=>0);
+        $this->db->where('themeActive', 1);
+        $this->db->update($this->_themeTable, $data);
     }
 
     public function delete($albumID)
     {
         $this->db->delete($this->albumTable, array('albumID'=>$albumID));
     }
+
+    
 }
 ?>

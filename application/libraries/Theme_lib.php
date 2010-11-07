@@ -49,13 +49,40 @@ class Theme_lib {
     {
 
         // Load Theme Model
-        $this->ci->load->model('theme_mdl');
+        $this->ci->load->model('Theme_mdl');
 
         // Get Data
-        $themes = $this->ci->theme_mdl->read();
+        $themes = $this->ci->Theme_mdl->read();
 
         return $themes;
 
+    }
+
+    public function getCurrentTheme()
+    {
+        // Load the model
+        $this->ci->load->model('Theme_mdl');
+
+        $theme = $this->ci->Theme_mdl->readActive();
+        foreach($theme->result() as $themeInfo)
+        {
+            $themeName = $themeInfo->themeName;
+        }
+
+        return $themeName;
+    }
+
+    public function changeTheme($newThemeID)
+    {
+        // Load the Model
+        $this->ci->load->model('Theme_mdl');
+
+        // Turn off current theme
+        $this->ci->Theme_mdl->shutdownTheme();
+
+        // Turn on new theme
+        $data = array('themeActive'=>1);
+        $this->ci->Theme_mdl->update($newThemeID, $data);
     }
 }
 ?>

@@ -50,7 +50,7 @@ $autoload['libraries'] = array('database', 'session', 'image_lib');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('html', 'url', 'form', 'file', 'thumb', 'user', 'setting', 'asset', 'controls', 'photo', 'album');
+$autoload['helper'] = array('html', 'url', 'form', 'file', 'thumb', 'user', 'setting', 'asset', 'controls', 'photo', 'album', 'theme');
 
 
 /*

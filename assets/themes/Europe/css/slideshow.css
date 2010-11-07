@@ -1,0 +1,16 @@
+body
+{
+  background:#000;
+}
+
+#myGallery
+{
+  height:650px;
+  width:100%;
+}
+
+.imageElement img.full
+{
+  max-width:650px;
+  max-height:650px;
+}

@@ -1,0 +1,202 @@
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+@import url("reset.css");
+@import url("common.css");
+@import url("blackTheme.css");
+
+.photoContainer .photo
+{
+    margin-right:50px;
+    margin-top:40px;
+    width:255px;
+    position:relative;
+    height:300px;
+
+}
+
+.photoContainer div.photo:hover
+{
+
+}
+
+.photoContainer .photo h2
+{
+    display:none;
+    position:absolute;
+    bottom:32px;
+    left:8px;
+}
+
+.photoContainer .photo.album
+{
+    margin-top:70px;
+}
+
+.photoContainer .photo.album h2
+{
+    display:block;
+    position:absolute;
+    top:-45px;
+    z-index: 1;
+    
+}
+
+.photoContainer .photo img.thumb
+{
+    max-height: 240px;
+    max-width: 240px;
+    padding:8px 8px 8px 8px;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    -o-border-radius:4px;
+    border-radius:4px;
+}
+
+#facebox .popup .body .content .image img
+{
+    max-width:800px;
+    max-height:1200px;
+}
+
+.profilePic
+{
+
+    padding:3px;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    -o-border-radius:3px;
+    border-radius:3px;
+}
+
+#wrapper div.nav h1
+{
+    display:inline-block;
+    font-size:21pt;
+    margin-left:16px;
+    margin-top:32px;
+    vertical-align:top;
+}
+
+.nav a
+{
+	margin-bottom:5px;
+	display:inline-block;
+}
+
+.nav ol
+{
+    display: block;
+}
+
+.nav li
+{
+    display:inline;
+    margin-right:15px;
+}
+
+.nav li a
+{
+    
+}
+
+.photoPage .photo
+{
+    float:left;
+}
+
+.photoPage .photo h2
+{
+    font-size:20px;
+    margin-top:7px;
+}
+
+.photoPage .photo img
+{
+	padding:10px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	-o-border-radius:3px;
+	border-radius:3px;
+}
+
+.photoPage .photoInfo
+{
+    float:right;
+    width:270px;
+    margin-left:20px;
+}
+
+.photoPage .nav
+{
+    margin-bottom: 10px;
+}
+
+
+.photoPage .photoInfo dl
+{
+
+}
+
+.photoPage .photoInfo dl dt,
+.photoPage .photoInfo dl dd
+{
+    display:inline-block;
+}
+
+.photoPage .photoInfo dl dt
+{
+    width:64px;
+}
+
+.photoPage .photoInfo dl dd
+{
+
+    width:220px;
+}
+
+.photoPage .photoComments
+{
+    clear:both;
+}
+
+.photoPage .photoComments h3
+{
+    
+}
+
+.photoPage .photoComments textarea
+{
+    
+}
+
+.photoPage .photoComments a.button
+{
+    width:200px;
+}
+
+
+/* Spefific To albums */
+
+.album img
+{
+    position: absolute;
+}
+
+/* @todo update for webkit and opera */
+
+.album img.img2
+{
+    -moz-transform: rotate(-12deg);
+    -webkit-transform: rotate(-12deg);
+}
+
+.album img.img3
+{
+    -moz-transform: rotate(12deg);
+    -webkit-transform: rotate(12deg);
+}
+
+

@@ -464,5 +464,17 @@ class Admin extends Controller {
 
         $this->load->view('admin/themeAdmin', $this->data);
     }
+
+    public function activateTheme($themeID)
+    {
+        // Load the Theme Library
+        $this->load->library('theme_lib');
+
+        // Change the theme
+        $this->theme_lib->changeTheme($themeID);
+
+        // Redirect to the theme page.
+        redirect('admin/themes');
+    }
 }
 ?>

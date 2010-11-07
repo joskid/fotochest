@@ -55,7 +55,7 @@ class Photos extends Controller {
         $this->data['photoData'] = $this->Photo_mdl->getPublicPhotoStream();
         
         // Build the Theme
-        $this->load->view('themes/' . getSetting('themeName') . '/layouts/photoStream', $this->data);
+        $this->load->view('themes/' . getTheme() . '/layouts/photoStream', $this->data);
     }
 
     public function slideshow($albumName){

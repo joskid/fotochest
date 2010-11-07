@@ -84,7 +84,7 @@ class Admin extends Controller {
 
     public function users(){
 
-
+    
         $this->data['users'] = $this->User_mdl->read();
         $this->load->view('admin/users', $this->data);
     }

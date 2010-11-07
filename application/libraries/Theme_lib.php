@@ -15,7 +15,7 @@
 // ----------------------------------------------------------------
 
 /**
-* Album Library
+* Theme Library
 *
 * @package		FotoChest
 * @category		Libraries
@@ -29,7 +29,7 @@
 * @subpackage PhotoMgmt
 * @author Derek Stegelman
 *
-* Modified on Oct 26 2010
+* Modified on Nov 7 2010
 *
 *
 */

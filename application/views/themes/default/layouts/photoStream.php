@@ -12,12 +12,6 @@ $queryCount = $photoData->num_rows();
                  echo anchor('admin/dashboard', 'Administration', array('class'=>'signin'));
              }
 ?>
-        <div class="topNav">
-            <ul>
-               
-            </ul>
-        </div>
-
         <div class="nav">
             <a href="<?php echo base_url(); ?>">
                 <?php

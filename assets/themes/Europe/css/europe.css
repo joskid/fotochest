@@ -1,9 +1,22 @@
+/* 
+    Document   : europe
+    Created on : Nov 8, 2010, 1:32:02 PM
+    Author     : derek
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
 /* Black Theme */
 
 
 body
 {
-    
+
     background:#000;
     color:#fff;
 }
@@ -12,7 +25,7 @@ a:link,
 a:visited,
 a:active
 {
-   
+
     color:#fff;
 }
 
@@ -24,7 +37,7 @@ a:hover
 
 a.button
 {
-   
+
 	background: #2aaee5;
     background: -webkit-gradient(linear, left top, left bottom, from(#2aaee5), to(#124D65));
     background: -moz-linear-gradient(top,  #2aaee5,  #124D65);
@@ -39,12 +52,12 @@ a.button:hover
 
 .photoContainer .photo h2
 {
-    color:#000;   
+    color:#000;
 }
 
 .photoContainer .photo.album h2
 {
-    color:#fff;   
+    color:#fff;
 }
 
 .photoContainer .photo img.thumb
@@ -61,4 +74,5 @@ a.button:hover
 {
 	background:#fff;
 }
+
 

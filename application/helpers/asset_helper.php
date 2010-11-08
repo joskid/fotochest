@@ -34,4 +34,16 @@ function theme_css($fileName)
     return $outputCSS;
 }
 
+function theme_js($fileName)
+{
+    $builtJS = base_url() . "assets/themes/" . getTheme() . "/js/" . $fileName . ".js";
+    $outputJS = "<script type='text/css' src='$builtJS'></script>";
+    return $outputJS;
+}
+
+function theme_img($fileName)
+{
+    
+}
+
 ?>

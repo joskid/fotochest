@@ -13,6 +13,8 @@
                 <?php
                 foreach($photoInfo->result() as $row){
                   ?>
+                <a class="button previous" href="<?php echo site_url(); ?>photos/view/<?php echo $row->albumName; ?>/<?php echo $row->photoID - 1; ?>"><span>Previous</span></a>
+                <a class="button next" href="<?php echo site_url(); ?>photos/view/<?php echo $row->albumName; ?>/<?php echo $row->photoID + 1; ?>"><span>Next</span></a>
                 <div class="nav">
                     <a href="<?php echo base_url(); ?>albums/view/<?php echo $albumNameURL; ?>"><?php echo getAlbumThumb($row->albumID); ?><h1><?php echo $row->albumFriendlyName; ?></h1></a>
                       <ol>

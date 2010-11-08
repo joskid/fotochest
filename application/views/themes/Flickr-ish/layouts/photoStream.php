@@ -1,4 +1,4 @@
-<?php $this->load->view('themes/' . getSetting('themeName') . '/common/header');
+<?php $this->load->view('themes/' . getTheme() . '/common/header');
 $queryCount = $photoData->num_rows();
 ?>
 

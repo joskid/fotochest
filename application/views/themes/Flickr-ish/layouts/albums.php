@@ -1,4 +1,4 @@
-<?php $this->load->view('common/header'); ?>
+<?php $this->load->view('themes/' . getTheme() . '/common/header'); ?>
     <body>
          <div id="wrapper">
              <?php if (isLoggedIn() == FALSE) {

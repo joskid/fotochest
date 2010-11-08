@@ -92,3 +92,20 @@ CREATE TABLE `photoUsers` (
   `userDateCreated` date default NULL,
   PRIMARY KEY  (`userID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+
+--- Template Table ---
+
+CREATE TABLE `photoThemes` (
+  `themeID` int(11) DEFAULT NULL,
+  `themeName` varchar(255) DEFAULT NULL,
+  `themeAuthor` varchar(255) DEFAULT NULL,
+  `themeActive` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+INSERT INTO `photoThemes` (`themeID`,`themeName`,`themeAuthor`,`themeActive`)
+VALUES
+	(1, 'default', 'Derek Stegelman', 0),
+	(2, 'Flickr-ish', 'Derek Stegelman', 1),
+	(3, 'Europe', 'Derek and Lindy Stegelman', 0);
+

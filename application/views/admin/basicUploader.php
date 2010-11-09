@@ -12,7 +12,8 @@ $this->load->view('admin/navigation', $data);
 
     <?php echo form_open_multipart('/upload/basicUploader'); ?>
     <?php echo form_upload(); ?>
-    <?php echo form_submit(); ?>
+    <?php echo form_submit('submitUpload', 'Upload'); ?>
+    <?php echo form_close(); ?>
 
     <p>Done uploading?  <?php echo anchor('admin/viewAlbum/' . getAlbumName($albumID), 'Edit or view your pictures now.') ?></p>
 </div>

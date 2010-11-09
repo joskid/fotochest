@@ -71,9 +71,37 @@ class Upload extends Controller {
 
     }
 
-    public function basicUploader()
+    public function basicUploader($albumID)
     {
-        
+        $albumName = getAlbumName($albumID);
+        $config['upload_path'] = './img_stor/albums/' . $albumName . '/originals/';
+        $config['allowed_types'] = '*';
+        $this->load->helper('string');
+
+        $config['encrypt_name'] = TRUE;
+
+        $this->load->library('upload', $config);
+        if(!$this->upload->do_upload())
+        {
+            $this->load->view('admin/photoUpload');
+        }
+        else
+        {
+        $photoData = $this->upload->data();
+        $file = $photoData['file_name'];
+        $photoLocation = './img_stor/albums/' . $albumName . '/originals/' . $file;
+        log_message('debug', 'Trying to place this photo from ' . $photoLocation);
+
+
+        $this->photo_lib->buildMainThumb($photoLocation, $file, $albumName);
+        $this->Photo_mdl->photoAlbumID = $albumID;
+        $this->Photo_mdl->photoCreatedDate = date("y/m/d");
+        $this->Photo_mdl->photoDesc = null;
+        $this->Photo_mdl->photoFileName = $file;
+        $this->Photo_mdl->photoTitle = '';
+        $this->Photo_mdl->create();
+        log_message('info', 'Adding a phoot single upload complete');
+        }
     }
 
 }

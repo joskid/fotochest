@@ -6,7 +6,7 @@ $this->load->view('admin/navigation', $data);
         <div class="content right" id="albumContent">
             <h2>Albums</h2>
            <?php if ($albums->num_rows() == 0) { ?>
-            <h3>You need to <?php echo anchor('admin/multiUpload', 'add photos', array('rel'=>'facebox')); ?> to your albums.  Go ahead, its easy!</h3>
+            <h3>You need to <?php echo anchor('admin/photoUpload/1', 'add photos'); ?> to your albums.  Go ahead, its easy!</h3>
             <?php } ?>
             <?php
             foreach($albums->result() as $row){

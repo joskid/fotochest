@@ -48,7 +48,7 @@ class User_mdl extends CI_Model {
                           'userFirstName'=>$this->userFirstName,
                           'userLastName'=>$this->userLastName,
                           'userDateCreated'=>$this->dateCreated,
-                          'userPassword'=>$this->userPassword);
+                          'userPassword'=>$Password);
 
         $this->db->insert($this->userTable, $userData);
 

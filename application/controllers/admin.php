@@ -244,11 +244,12 @@ class Admin extends Controller {
 // @todo mov ethis
         
 
-
-        $this->Album_mdl->albumName = $this->input->post('albumName');
-        $this->Album_mdl->albumFriendlyName = $this->input->post('albumFriendlyName');
-        $this->Album_mdl->albumParentID = $this->input->post('albumID');
-        $this->Album_mdl->createAlbum();
+        // Load the Library
+        $this->load->library('album_lib');
+        $this->album_lib->albumName = $this->input->post('albumName');
+        $this->album_lib->albumFriendlyName = $this->input->post('albumFriendlyName');
+        $this->album_lib->albumParentID = $this->input->post('albumID');
+        $this->album_lib->createAlbum();
     }
 
 

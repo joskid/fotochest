@@ -64,11 +64,16 @@ class Upload extends Controller {
         $this->Photo_mdl->photoCreatedDate = date("y/m/d");
         $this->Photo_mdl->photoDesc = null;
         $this->Photo_mdl->photoFileName = $file;
-        $this->Photo_mdl->photoTitle = $file;
+        $this->Photo_mdl->photoTitle = '';
         $this->Photo_mdl->create();
         log_message('info', 'Adding a phoot single upload complete');
         return true;
 
+    }
+
+    public function basicUploader()
+    {
+        
     }
 
 }

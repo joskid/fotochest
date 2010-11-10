@@ -2,7 +2,7 @@
     <h1>Move to Album</h1>
     <?php foreach($albums->result() as $row){ ?>
      <div class="album">
-       <?php echo getAlbumThumb($row->albumID); ?>
+       <?php echo getAlbumThumbs($row->albumID, 1, TRUE); ?>
         <h3><?php echo $row->albumFriendlyName; ?></h3>
         <p>
             <?php echo $row->albumDesc; ?>

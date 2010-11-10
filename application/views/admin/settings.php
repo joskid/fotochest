@@ -21,10 +21,12 @@ $this->load->view('admin/navigation', $data);
             <label for="enableSlidedhow">Enable Slideshow:</label>
             <input type="checkbox" name="enableSlideshow" id="enableSlideshow" <?php echo isChecked(getSetting('enableSlideshow')); ?>>
         </div>
+        <!--
         <div class="formItem">
             <label for="enableComments">Enable Comments</label>
-            <input type="checkbox" name="enableComments" id="enableComments" <?php echo isChecked(getSetting('enableComments')); ?>>
+            <input type="checkbox" name="enableComments" id="enableComments" <?php //echo isChecked(getSetting('enableComments')); ?>>
         </div>
+        -->
         <input type="submit" value="Save Changes" class="button">
        
     </div>

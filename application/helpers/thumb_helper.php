@@ -1,6 +1,6 @@
 <?php
 
-
+/* Consider deprecating this function */
 function getAlbumThumb($albumID){
     $CI =& get_instance();
     $CI->load->model('Album_mdl');

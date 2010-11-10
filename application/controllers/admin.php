@@ -266,7 +266,7 @@ class Admin extends Controller {
 
     public function editAlbum($albumID){
 
-        $this->data['albumData'] = $this->Album_mdl->getAlbumInfo($albumID);
+        $this->data['albumData'] = $this->Album_mdl->read($albumID);
 
 
         $this->load->view('admin/modals/editAlbum', $this->data);

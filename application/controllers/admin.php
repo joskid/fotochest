@@ -365,7 +365,7 @@ class Admin extends Controller {
         $this->load->library('pagination');
 
         $config['base_url'] = base_url() . 'admin/albumsPage/';
-        $config['total_rows'] = $this->Album_mdl->getNumAlbums();
+        $config['total_rows'] = getAlbumCount();
         $config['per_page'] = '5';
 
         $this->pagination->initialize($config);

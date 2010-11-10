@@ -37,6 +37,7 @@ function getAlbumPhotoCount($albumID){
 function getAlbumID($albumName)
 {
     $CI =& get_instance();
+    $CI->load->model('Album_mdl');
     $getAlbumInfo = $CI->Album_mdl->getAlbumByName($albumName);
     if ($getAlbumInfo->num_rows() == 0){
 

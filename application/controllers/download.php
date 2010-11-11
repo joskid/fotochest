@@ -36,7 +36,7 @@ class Download extends MY_Controller {
 
     public function __construct()
     {
-        parent::Controller();
+        parent::MY_Controller();
     }
 
 

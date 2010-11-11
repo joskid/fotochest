@@ -31,10 +31,10 @@
 *
 *
 */
-class Photos extends MY_sController {
+class Photos extends MY_Controller {
 
     public function __construct() {
-        parent::Controller();
+        parent::MY_Controller();
         $this->load->model('Photo_mdl');
         $this->load->model('Album_mdl');
         $this->data['title'] = getSetting('siteName') . "'s Photos";     

@@ -10,6 +10,9 @@ function getSetting($settingName){
 
 function setSetting($settingName, $settingValue){
     $CI =& get_instance();
+
+    // Load the setting library
+    $CI->load->library('setting_lib');
     $CI->setting_lib->setSetting($settingName, $settingValue);
     return true;
 }

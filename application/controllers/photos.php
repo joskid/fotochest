@@ -31,7 +31,7 @@
 *
 *
 */
-class Photos extends Controller {
+class Photos extends MY_sController {
 
     public function __construct() {
         parent::Controller();

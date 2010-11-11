@@ -22,7 +22,7 @@
 */
 
 
-class Albums extends Controller {
+class Albums extends MY_Controller {
 
     public function __construct(){
         parent::Controller();

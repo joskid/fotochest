@@ -31,7 +31,7 @@
  *
  * @author derek
  */
-class Download extends Controller {
+class Download extends MY_Controller {
     //put your code here
 
     public function __construct()

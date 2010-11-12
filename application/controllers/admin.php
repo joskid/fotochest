@@ -458,5 +458,28 @@ class Admin extends CI_Controller {
         
         
     }
+
+    public function themes()
+    {
+        // Load Theme Library
+        $this->load->library('theme_lib');
+
+        // Get the Themes that are Installed
+        $this->data['themes'] = $this->theme_lib->getThemes();
+
+        $this->load->view('admin/themeAdmin', $this->data);
+    }
+
+    public function activateTheme($themeID)
+    {
+        // Load the Theme Library
+        $this->load->library('theme_lib');
+
+        // Change the theme
+        $this->theme_lib->changeTheme($themeID);
+
+        // Redirect to the theme page.
+        redirect('admin/themes');
+    }
 }
 ?>

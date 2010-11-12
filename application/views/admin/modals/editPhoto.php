@@ -4,8 +4,8 @@
     <img src="<?php echo base_url(); ?>img_stor/albums/<?php echo $albumName; ?>/thumbs/<?php echo $photoFileName; ?>" width="370">
 
     <div class="form" id="editPhoto">
-        <a class="button nextAction rotateCounter" style="display:none;"><span>Rotate Counter-Clockwise</span></a>
-        <a class="button nextAction rotateClock" style="display:none;"><span>Rotate Clockwise</span></a>
+        <a class="button nextAction rotateCounter"><span>Rotate Counter-Clockwise</span></a>
+        <a class="button nextAction rotateClock"><span>Rotate Clockwise</span></a>
         <div class="formItem">
             <label for="photoTitle">Photo Title:</label>
             <input type="text" name="photoTitle" id="photoTitle" value="<?php echo $photoTitle; ?>">

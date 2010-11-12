@@ -92,6 +92,7 @@ class Photo_mdl extends CI_Model {
         return $photoData;
     }
 
+
     public function update($photoID, $updateData)
     {
         

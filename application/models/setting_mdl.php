@@ -28,7 +28,7 @@ class Setting_mdl extends CI_Model {
     var $settingTable;
 
     public function  __construct() {
-        parent::CI_Model();
+        parent::__construct();
     }
 
     public function create()

@@ -24,7 +24,7 @@
 class Users extends CI_Controller {
 
     public function __construct(){
-        parent::CI_Controller();
+        parent::__construct();
         
     }
   

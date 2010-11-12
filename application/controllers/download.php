@@ -31,12 +31,12 @@
  *
  * @author derek
  */
-class Download extends MY_Controller {
+class Download extends CI_Controller {
     //put your code here
 
     public function __construct()
     {
-        parent::MY_Controller();
+        parent::__construct();
     }
 
 

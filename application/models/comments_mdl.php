@@ -34,7 +34,7 @@ class Comments_mdl extends CI_Model{
   var $commentTable;
 
   public function __construct(){
-      parent::CI_Model();
+      parent::__construct();
       $this->commentTable = $this->config->item('commentsTable');
       
   }

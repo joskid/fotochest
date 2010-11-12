@@ -26,7 +26,7 @@ class Upload extends CI_Controller {
 
     public function __construct()
     {
-        parent::CI_Controller();
+        parent::__construct();
         $this->load->model('Album_mdl');
         $this->load->model('Photo_mdl');
         $this->load->library('photo_lib');

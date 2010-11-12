@@ -34,7 +34,7 @@ class User_mdl extends CI_Model {
     var $userTable;
 
     public function __construct(){
-        parent::CI_Model();
+        parent::__construct();
         $this->userTable = $this->config->item('userTable');
         
     }

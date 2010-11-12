@@ -49,12 +49,10 @@ class Photo_mdl extends CI_Model {
 
     
     public function __construct() {
-        parent::CI_Model();
+        parent::__construct();
         $this->photoTable = $this->config->item('photoTable');
         $this->albumTable = $this->config->item('albumTable');    
     }
-
-
     /**
      * CRUD
      *

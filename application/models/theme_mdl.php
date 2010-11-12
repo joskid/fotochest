@@ -44,7 +44,7 @@ class Theme_mdl extends CI_Model {
 
     public function __construct()
     {
-        parent::CI_Model();
+        parent::__construct();
         $this->_themeTable = $this->config->item('themeTable');
 
     }

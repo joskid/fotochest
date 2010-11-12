@@ -27,7 +27,7 @@
 class Admin extends CI_Controller {
   
     public function __construct(){
-        parent::CI_Controller();
+        parent::__construct();
         if(isLoggedIn() == TRUE){
             $this->load->model('Photo_mdl');
             $this->load->model('Album_mdl');

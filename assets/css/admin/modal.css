@@ -321,9 +321,4 @@ a.button.small
 }
 
 
-/* Edit Photo */
 
-#editPhoto a.button.rotateClock
-{
-    background: url("../../images/admin/arrow_rotate_left.png");
-}

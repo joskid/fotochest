@@ -37,7 +37,7 @@ class Albums extends Controller {
     $albumInfo = $this->Album_mdl->getAlbums(0);  // Set to 0 for Root Albums
    
     $this->data['albumInfo'] = $albumInfo;
-    $this->load->view(getFullThemePath() . 'albums', $this->data);
+    $this->load->view('albums', $this->data);
     }
 
     public function view($albumName, $photoStart = 0){
@@ -74,14 +74,14 @@ class Albums extends Controller {
             $this->data['pages'] =  $this->pagination->create_links();
             $this->data['title'] = $this->data['albumFriendlyName'];
 
-            $this->load->view(getFullThemePath() . 'viewAlbum', $this->data);
+            $this->load->view('viewAlbum', $this->data);
         } else {
             // Get Children??
 
             $this->data['albumName'] = $albumName;
             $this->data['albumInfo'] = $this->Album_mdl->getAlbums($albumID);
             
-            $this->load->view(getFullThemePath() . 'albums', $this->data);
+            $this->load->view('albums', $this->data);
 
         }
        }
@@ -111,7 +111,8 @@ class Albums extends Controller {
 
         $this->data['pages'] =  $this->pagination->create_links();
 
-        $this->load->view(getFullThemePath() . 'viewAlbum');
+
+        $this->load->view('viewAlbum', $this->data);
         }
     }
 

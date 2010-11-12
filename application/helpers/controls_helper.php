@@ -20,19 +20,4 @@ function getAlbumDropdownListNoParent(){
     
 }
 
-function getPreviousURL($photoID, $albumName)
-{
-    if (checkPhoto($photoID, $albumName))
-    {
-        $newPhotoID = $photoID - 1;
-        $url = site_url() . "photos/view/" . $albumName . "/" . $newPhotoID;
-    }
-    return $url;
-}
-
-function getNextURL($photoID)
-{
-    
-}
-
 ?>

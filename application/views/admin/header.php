@@ -2,24 +2,27 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <?php echo css('admin/styles'); ?>
-        <?php echo css('admin/modal'); ?>
+        <?php echo link_tag("assets/css/admin/styles.css"); ?>
+        <?php echo link_tag("assets/css/admin/modal.css"); ?>
         <?php echo link_tag("assets/javascript/facebox/facebox.css"); ?>
+        <?php echo link_tag("assets/javascript/uploadify/uploadify.css"); ?>
         <?php echo link_tag("assets/javascript/lightbox/css/jquery.lightbox-0.5.css"); ?>
         <link rel="shortcut icon" href="<?php echo base_url(); ?>favicon.ico" />
          <!--[if IE]>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/ie.css">
         <![endif]-->
         <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
-        <?php echo getJquery(); ?>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/javascript/jquery/jquery-1.4.2.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/javascript/lightbox/js/jquery.lightbox-0.5.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/javascript/uploadify/swfobject.js"></script>
-        <?php echo js('lightbox/js/jquery.lightbox-0.5'); ?>
-        <?php echo js('facebox/facebox'); ?>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/javascript/uploadify/jquery.uploadify.v2.1.0.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/javascript/uploadify/swfobject.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/javascript/facebox/facebox.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/javascript/snapit.js"></script>
         <?php echo js('swfupload/swfupload'); ?>
         <?php echo js('swfupload/plugins/swfupload.queue'); ?>
         <?php echo js('swfupload/fileprogress'); ?>
         <?php echo js('swfupload/handlers'); ?>
-        <?php echo js('fotochest'); ?>
         <title>Manage Your Photos</title>
         <?php if (isset($albumID) && isset($isUpload)) { ?>
         <script type="text/javascript">

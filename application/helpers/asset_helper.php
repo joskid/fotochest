@@ -18,32 +18,11 @@ function js($url){
     $javascript = "<script type='text/javascript' src='$builtURL'></script>";
     return $javascript;
 }
-
 function css($fileName){
     $builtURL = base_url() . "assets/css/" . $fileName . ".css";
     $outputCSS = "<link href='$builtURL' type='text/css' rel='stylesheet'>";
     return $outputCSS;
 }
 
-/** Theme Specific Loaders **/
-
-function theme_css($fileName)
-{
-    $builtURL = base_url() . "assets/themes/" . getTheme() . "/css/" . $fileName . ".css";
-    $outputCSS = "<link href='$builtURL' type='text/css' rel='stylesheet'>";
-    return $outputCSS;
-}
-
-function theme_js($fileName)
-{
-    $builtJS = base_url() . "assets/themes/" . getTheme() . "/js/" . $fileName . ".js";
-    $outputJS = "<script type='text/css' src='$builtJS'></script>";
-    return $outputJS;
-}
-
-function theme_img($fileName)
-{
-    
-}
 
 ?>

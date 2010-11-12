@@ -456,42 +456,6 @@ div.nav span.logout a
     margin-top:15px;
 }
 
-/* <!--- Theme Admin ---> */
-
-.themes .theme
-{
-    margin-bottom:10px;
-    padding: 15px;
-    margin-top:10px;
-    border-bottom:1px solid #bbb;
-}
-
-.themes .theme h3
-{
-    font-size:14pt;
-    
-}
-.themes .theme img
-{
-    float:left;
-}
-
-.themes .theme ul
-{
-    float:left;
-    margin-left:10px;
-}
-
-.themes .theme ul a.button
-{
-    width:70px;
-}
-
-.themes .theme.active
-{
-    background:#FFFFE0;
-}
-
 
 /* <!-- Pagination --> */
 

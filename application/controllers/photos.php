@@ -53,9 +53,7 @@ class Photos extends CI_Controller {
         $this->data['pages'] =  $this->pagination->create_links();
         $this->data['totalPhotos'] = $this->db->count_all($this->config->item('photoTable'));
         $this->data['photoData'] = $this->Photo_mdl->getPublicPhotoStream();
-        
-        // Build the Theme
-        $this->load->view(getFullThemePath() . 'photoStream', $this->data);
+        $this->load->view('photoStream', $this->data);
     }
 
     public function slideshow($albumName){
@@ -68,7 +66,7 @@ class Photos extends CI_Controller {
         $this->data['photoInfo'] = $this->Photo_mdl->getAllAlbumPhotos($albumID);
         $this->data['albumName'] = $albumName;
         $this->data['title'] = getAlbumFriendlyName($albumID) . " slideshow";
-        $this->load->view(getFullThemePath() . 'slideshow', $this->data);
+        $this->load->view('slideshow', $this->data);
     }
 
     public function page($pageNum){
@@ -88,7 +86,7 @@ class Photos extends CI_Controller {
         $this->data['pages'] =  $this->pagination->create_links();
         $this->data['totalPhotos'] = $this->db->count_all($this->config->item('photoTable'));
         $this->data['photoData'] = $this->Photo_mdl->getPublicPhotoStream($pageNum);
-        $this->load->view(getFullThemePath() . 'photoStream', $this->data);
+        $this->load->view('photoStream', $this->data);
     }
 
     public function view($albumName,$photoID){
@@ -112,7 +110,7 @@ class Photos extends CI_Controller {
         
         $this->data['title'] = getPhotoTitle($photoID);
         
-        $this->load->view(getFullThemePath() . 'photo', $this->data);
+        $this->load->view('photo',$this->data);
         }
     }
 

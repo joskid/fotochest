@@ -20,10 +20,6 @@
                     <?php echo anchor('admin/settings', 'Settings'); ?>
 
                  </li>
-
-                 <?php if($pageNum == 4){ ?> <li class="active"> <?php } else { ?> <li> <?php } ?>
-                     <?php echo anchor('admin/themes', 'Themes'); ?>
-                 </li>
                 <li><a href="<?php echo base_url(); ?>" target="_blank">View Site</a></li>
                
 

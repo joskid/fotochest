@@ -1,4 +1,4 @@
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/javascript/snapit.js"></script>
+<?php echo js('fotochest'); ?>
 <div class="modal" id="deleteUser">
     <div class="form">
         <input type="hidden" name="userID" value="<?php echo $userID; ?>" id="userID">

@@ -1,5 +1,4 @@
-
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/javascript/snapit.js"></script>
+<?php echo js('fotochest'); ?>
 <div class="modal">
     <div class="addUser form" id="addUser">
       <h3>Add a User</h3>

@@ -1,4 +1,4 @@
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/javascript/snapit.js"></script>
+<?php echo js('fotochest'); ?>
 <div class="modal">
 
     <img src="<?php echo base_url(); ?>img_stor/albums/<?php echo $albumName; ?>/thumbs/<?php echo $photoFileName; ?>" width="370">

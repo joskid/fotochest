@@ -22,11 +22,11 @@
 * @author		Derek Stegelman
 */
 
-class Upload extends Controller {
+class Upload extends CI_Controller {
 
     public function __construct()
     {
-        parent::Controller();
+        parent::CI_Controller();
         $this->load->model('Album_mdl');
         $this->load->model('Photo_mdl');
         $this->load->library('photo_lib');

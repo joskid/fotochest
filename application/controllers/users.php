@@ -21,10 +21,10 @@
 * @author		Derek Stegelman
 */
 
-class Users extends Controller {
+class Users extends CI_Controller {
 
     public function __construct(){
-        parent::Controller();
+        parent::CI_Controller();
         
     }
   

@@ -31,7 +31,7 @@
  *
  * @author derek
  */
-class Installer extends Controller {
+class Installer extends CI_Controller {
 
 
     public function index(){

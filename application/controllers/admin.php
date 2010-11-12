@@ -24,10 +24,10 @@
 
 
 
-class Admin extends Controller {
+class Admin extends CI_Controller {
   
     public function __construct(){
-        parent::Controller();
+        parent::CI_Controller();
         if(isLoggedIn() == TRUE){
             $this->load->model('Photo_mdl');
             $this->load->model('Album_mdl');

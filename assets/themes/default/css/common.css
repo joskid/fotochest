@@ -1,0 +1,116 @@
+/********************************************
+ *
+ *  Front End Common Styles
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+
+body
+{
+    text-align:center;
+    font-family: 'Josefin Sans Std Light', arial, serif;
+}
+
+#wrapper
+{
+    text-align:left;
+    margin:0 auto;
+    width:960px; /* Used to be 1020px */
+    margin-top:20px;
+    position:relative;
+}
+
+#wrapper a.signin
+{
+    text-decoration: none;
+    position:absolute;
+    right:0;
+    top:7px;
+
+}
+
+#wrapper a.signin:hover
+{
+    text-decoration: underline;
+}
+
+.left
+{
+    float:left;
+}
+
+.right
+{
+    float:right;
+}
+
+.clear
+{
+    clear:both;
+}
+
+a:link,
+a:visited,
+a:active
+{
+    text-decoration: none;
+    
+}
+
+a:hover
+{
+    
+}
+
+
+/* End Globals */
+
+/* Pagination Commons */
+
+p.pagination
+{
+    text-align:center;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+/* End Pagination */
+
+/* Buttons */
+
+a.button
+{
+    height:32px;
+    display:block;
+	
+    border-radius:5px;
+	
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    text-align:center;
+    margin-top:10px;
+    margin-bottom:10px;
+	cursor:pointer;
+}
+
+a.button span
+{
+    margin-left:10px;
+    font-size:19pt;
+    display:block;  
+}
+
+a.button:hover
+{
+    
+}
+
+/* End Buttons */

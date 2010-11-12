@@ -10,6 +10,7 @@ $config['photoTable']= "photoLibrary";
 $config['albumTable']= "photoAlbums";
 $config['userTable']= "photoUsers";
 $config['commentsTable']= "photoComments";
+$config['themeTable'] = "photoThemes";
 
 
 ?>

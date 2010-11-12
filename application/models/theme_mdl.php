@@ -6,7 +6,7 @@
 * FotoChest is a simple photo management web based application.
 *
 * @package		FotoChest
-* @version		1.0
+* @version		1.5
 * @author		Derek Stegelman <fotochest.com|stegelman.com>
 * @license		Apache License v2.0
 * @copyright		2010 FotoChest
@@ -20,18 +20,6 @@
 * @package		FotoChest
 * @category		Models
 * @author		Derek Stegelman
-*/
-
-/*
-* FotoChest - a web based photo album
-* Copyright (C) 2009-2010 Derek Stegelman http://stegelman.com
-* @package FotoCore
-* @subpackage PhotoMgmt
-* @author Derek Stegelman
-*
-* Modified on Nov 7 2010
-*
-*
 */
 
 class Theme_mdl extends CI_Model {

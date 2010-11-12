@@ -6,7 +6,7 @@
 * FotoChest is a simple photo management web based application.
 *
 * @package		FotoChest
-* @version		1.0
+* @version		1.5
 * @author		Derek Stegelman <fotochest.com|stegelman.com>
 * @license		Apache License v2.0
 * @copyright		2010 FotoChest
@@ -91,6 +91,7 @@ class Photo_mdl extends CI_Model {
         $photoData = $this->db->get_where($this->photoTable, array('isProfilePic'=>1));
         return $photoData;
     }
+
 
     public function update($photoID, $updateData)
     {

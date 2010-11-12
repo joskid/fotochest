@@ -10,7 +10,7 @@
 /* Blue Color - #2aaee5; */
 /* Dark Blue - 124D65; */
 /* Alertnate Brown - 985100; */
-body
+/*body
 {
 font-family:"Yanone Kaffeesatz";
 
@@ -27,7 +27,7 @@ body #main-wrapper
 
 }
 
-/* Toolbar */
+ Toolbar 
 
 
 .mainContent
@@ -39,7 +39,7 @@ margin-left:275px;
 
 
 
-/* Buttons */
+ Buttons 
 
 .button
 {
@@ -72,7 +72,7 @@ margin-left:275px;
     background: -moz-linear-gradient(top, #00ace7, #0f8fb8);
 }
 
-/*
+
 
  old button
 
@@ -84,7 +84,7 @@ a.button.nextAction
 }
 
 
-*/
+
 
 
 
@@ -121,13 +121,13 @@ a.button.small span
 	border-radius:3px;
 	border: 5px solid #fff;
 	position:relative;
-	/*background:#985100;*/
+	background:#985100;
 	background:#70C6E9;
 	padding:5px;
 }
 
 
-/* Sidebar Styles */
+ Sidebar Styles 
 
 .sidebar
 {
@@ -145,7 +145,7 @@ h1.logo,
 a.logo
 {
 	font-size:35pt;
-	/*text-shadow: 2px 2px 4px #fff;*/
+	text-shadow: 2px 2px 4px #fff;
 	display:inline-block;
 }
 
@@ -184,7 +184,7 @@ a.logo span
 {
 	color:#fff;
 }
-/* Notifications - different colors */
+ Notifications - different colors 
 
 .notification
 {
@@ -277,7 +277,7 @@ a.logo span
 }
 
 
-/* Common Form Stuff */
+ Common Form Stuff 
 
 .form .formItem label
 {
@@ -294,9 +294,9 @@ label
 	display:block;
 }
 
-/* End Forms */
+ End Forms 
 
-/* Overwrite for stupid javascript */
+ Overwrite for stupid javascript 
 
 #message
 {
@@ -322,7 +322,7 @@ label
 }
 
 
-/* View albums/View photos */
+ View albums/View photos 
 
 
 .itemContainer
@@ -333,7 +333,7 @@ label
 	padding:7px;
 }
 
-
+*/
 
 
 

@@ -6,7 +6,7 @@
 * FotoChest is a simple photo management web based application.
 *
 * @package		FotoChest
-* @version		1.0
+* @version		1.5
 * @author		Derek Stegelman <fotochest.com|stegelman.com>
 * @license		Apache License v2.0
 * @copyright		2010 FotoChest
@@ -15,10 +15,10 @@
 // ----------------------------------------------------------------
 
 /**
-* Album Library
+* Upload Controller
 *
 * @package		FotoChest
-* @category		Libraries
+* @category		Controllers
 * @author		Derek Stegelman
 */
 
@@ -64,11 +64,44 @@ class Upload extends CI_Controller {
         $this->Photo_mdl->photoCreatedDate = date("y/m/d");
         $this->Photo_mdl->photoDesc = null;
         $this->Photo_mdl->photoFileName = $file;
-        $this->Photo_mdl->photoTitle = $file;
+        $this->Photo_mdl->photoTitle = '';
         $this->Photo_mdl->create();
         log_message('info', 'Adding a phoot single upload complete');
         return true;
 
+    }
+
+    public function basicUploader($albumID)
+    {
+        $albumName = getAlbumName($albumID);
+        $config['upload_path'] = './img_stor/albums/' . $albumName . '/originals/';
+        $config['allowed_types'] = '*';
+        $this->load->helper('string');
+
+        $config['encrypt_name'] = TRUE;
+
+        $this->load->library('upload', $config);
+        if(!$this->upload->do_upload())
+        {
+            $this->load->view('admin/photoUpload');
+        }
+        else
+        {
+        $photoData = $this->upload->data();
+        $file = $photoData['file_name'];
+        $photoLocation = './img_stor/albums/' . $albumName . '/originals/' . $file;
+        log_message('debug', 'Trying to place this photo from ' . $photoLocation);
+
+
+        $this->photo_lib->buildMainThumb($photoLocation, $file, $albumName);
+        $this->Photo_mdl->photoAlbumID = $albumID;
+        $this->Photo_mdl->photoCreatedDate = date("y/m/d");
+        $this->Photo_mdl->photoDesc = null;
+        $this->Photo_mdl->photoFileName = $file;
+        $this->Photo_mdl->photoTitle = '';
+        $this->Photo_mdl->create();
+        log_message('info', 'Adding a phoot single upload complete');
+        }
     }
 
 }

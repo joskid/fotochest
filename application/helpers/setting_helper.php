@@ -1,5 +1,27 @@
 <?php
 
+/**
+* FotoChest
+*
+* FotoChest is a simple photo management web based application.
+*
+* @package		FotoChest
+* @version		1.5
+* @author		Derek Stegelman <fotochest.com|stegelman.com>
+* @license		Apache License v2.0
+* @copyright		2010 FotoChest
+*/
+
+// ----------------------------------------------------------------
+
+/**
+* Setting Helper
+*
+* @package		FotoChest
+* @category		Helpers
+* @author		Derek Stegelman
+*/
+
 function getSetting($settingName){
     $CI =& get_instance();
     // Load Setting library

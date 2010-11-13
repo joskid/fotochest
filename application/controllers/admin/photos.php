@@ -50,7 +50,7 @@ class Photos extends Admin_Controller {
         log_message('debug','Photo update complete');
     }
 
-    public function dashboard(){
+    public function index(){
 
         $this->data['photos'] = $this->Photo_mdl->getAdminPhotoStream(0);
 

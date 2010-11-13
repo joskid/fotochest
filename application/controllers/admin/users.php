@@ -30,7 +30,7 @@ class Users extends Admin_Controller {
         parent::__construct();
     }
 
-    public function users(){
+    public function index(){
 
         // Load the model
         $this->load->model('User_mdl');

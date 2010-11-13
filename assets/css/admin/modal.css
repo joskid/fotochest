@@ -32,6 +32,20 @@
 
 /* Specific Modal Styles */
 
+/* Multi Upload Modal Styles */
+
+.modal .multiUpload select
+{
+  display:block;
+  margin-bottom:7px;
+}
+
+.modal .multiUpload .uploadifyQueue
+{
+  max-height:350px;
+  overflow-y:scroll;  
+}
+/* End Multi Upload Modal Styles */
 
 
 .addPhoto

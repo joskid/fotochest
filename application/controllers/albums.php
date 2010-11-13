@@ -31,6 +31,11 @@ class Albums extends CI_Controller {
         $this->data['title'] = getSetting('siteName') . "'s Photos";
     }
 
+    public function test()
+    {
+        $this->load->view('admin/userLogin');
+    }
+
     public function index(){
     // View All Albums...
 

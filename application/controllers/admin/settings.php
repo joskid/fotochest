@@ -22,7 +22,7 @@
 * @author		Derek Stegelman
 */
 
-class Settings extends Admin_Controller {
+class Settings extends MY_Controller {
 
     public function  __construct()
     {

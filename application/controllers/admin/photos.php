@@ -22,11 +22,16 @@
 * @author		Derek Stegelman
 */
 
-class Photos extends Admin_Controller {
+class Photos extends MY_Controller {
 
     public function  __construct()
     {
         parent::__construct();
+    }
+
+    public function test()
+    {
+        $this->load->view('admin/userLogin');
     }
 
     public function savePhoto(){

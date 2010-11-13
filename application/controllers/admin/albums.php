@@ -23,11 +23,13 @@
 */
 
 
-class Albums extends Admin_Controller {
+class Albums extends MY_Controller {
 
-    public function  __construct()
+    public function __construct()
     {
         parent::__construct();
+        $this->load->model('Album_mdl');
+        $this->load->model('Photo_mdl');
     }
 
     public function createAlbum(){
@@ -80,7 +82,7 @@ class Albums extends Admin_Controller {
     }
 
 
-    public function albums(){
+    public function index(){
 
         // Load the Library
         $this->load->library('album_lib');

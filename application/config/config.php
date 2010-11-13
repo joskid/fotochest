@@ -88,7 +88,7 @@ $config['charset'] = "UTF-8";
 | setting this variable to TRUE (boolean).  See the user guide for details.
 |
 */
-$config['enable_hooks'] = TRUE;
+$config['enable_hooks'] = FALSE;
 
 
 /*
@@ -351,13 +351,13 @@ $config['proxy_ips'] = '';
 | for base controllers and some third-party libraries.
 |
 */
-function __autoload($class)
-{
- if(strpos($class, 'CI_') !== 0)
- {
-  @include_once( APPPATH . 'core/'. $class . EXT );
- }
-}
+//function __autoload($class)
+//{
+// if(strpos($class, 'CI_') !== 0)
+// {
+//  @include_once( APPPATH . 'core/'. $class . EXT );
+// }
+//}
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */

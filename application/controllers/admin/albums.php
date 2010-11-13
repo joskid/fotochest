@@ -29,6 +29,146 @@ class Albums extends Admin_Controller {
     {
         parent::__construct();
     }
+
+    public function createAlbum(){
+
+// @todo mov ethis
+
+
+        // Load the Library
+        $this->load->library('album_lib');
+        $this->album_lib->albumName = $this->input->post('albumName');
+        $this->album_lib->albumFriendlyName = $this->input->post('albumFriendlyName');
+        $this->album_lib->albumParentID = $this->input->post('albumID');
+        $this->album_lib->createAlbum();
+    }
+
+
+
+    public function saveAlbum(){
+
+        // @todo move this.
+
+        $this->Album_mdl->albumFriendlyName = $this->input->post('albumFriendlyName');
+        $this->Album_mdl->albumID = $this->input->post('albumID');
+        $this->Album_mdl->albumDesc = $this->input->post('albumDesc');
+        $this->Album_mdl->updateAlbum();
+    }
+
+    public function editAlbum($albumID){
+
+        $this->data['albumData'] = $this->Album_mdl->read($albumID);
+
+
+        $this->load->view('admin/modals/editAlbum', $this->data);
+    }
+
+    public function deleteAlbum($albumID){
+
+      $this->data['albumID'] = $albumID;
+        $this->load->view('admin/modals/deleteAlbum', $this->data);
+    }
+
+    public function do_delete(){
+
+        // @todo remoe this.
+        $albumID = $this->input->post('albumID');
+
+      $path = getSetting('absolutePath');
+      $this->Album_mdl->deleteAlbum($albumID, $path);
+
+    }
+
+
+    public function albums(){
+
+        // Load the Library
+        $this->load->library('album_lib');
+
+
+        $this->data['albums'] = $this->Album_mdl->getAlbumAdminInfo(0);
+	$this->load->library('pagination');
+
+        $config['base_url'] = base_url() . 'admin/albumsPage/';
+        $config['total_rows'] = $this->album_lib->getTotalAlbumCount();
+        $config['per_page'] = '5';
+
+        $this->pagination->initialize($config);
+
+        $this->data['pages'] =  $this->pagination->create_links();
+        $this->load->view('admin/viewAlbums', $this->data);
+
+    }
+    // End Album Functions
+
+    // Begin photo functions
+
+    public function albumsPage($pageNum = 0){
+
+        $this->data['albums'] = $this->Album_mdl->getAlbumAdminInfo($pageNum);
+        $this->load->library('pagination');
+
+        $config['base_url'] = base_url() . 'admin/albumsPage/';
+        $config['total_rows'] = getAlbumCount();
+        $config['per_page'] = '5';
+
+        $this->pagination->initialize($config);
+
+        $this->data['pages'] =  $this->pagination->create_links();
+	$this->load->view('admin/viewAlbums', $this->data);
+	}
+
+    public function viewAlbum($albumName){
+        $albumID = getAlbumID($albumName);
+        // Load the library
+        $this->load->library('photo_lib');
+
+        // Call the method
+        $this->data['photos'] = $this->Photo_mdl->getAlbumPhotos($albumID);
+        $this->data['allAlbums'] = $this->Album_mdl->read();
+        $this->data['albumName'] = $albumName;
+        $this->data['albumID'] = $albumID;
+        $this->data['albumFriendlyName'] = getAlbumFriendlyName($albumID);
+
+        $this->load->library('pagination');
+        $config['base_url'] = base_url() . 'admin/viewAlbumPage/' . $albumName;
+        $config['total_rows'] = $this->Album_mdl->getAlbumCount($albumID);
+        $config['per_page'] = '21';
+        $config['uri_segment'] = 4;
+        $this->pagination->initialize($config);
+        $this->data['pages'] =  $this->pagination->create_links();
+        $this->load->view('admin/viewSingleAlbum', $this->data);
+    }
+
+    // May delete this method later.
+
+    public function viewAlbumPage($albumName, $albumPage){
+
+      $albumID = $this->Photo_mdl->getAlbumID($albumName);
+      $this->data['photos'] = $this->Photo_mdl->getAlbumPhotosPage($albumID, $albumPage);
+      $this->data['allAlbums'] = $this->Album_mdl->getAllAlbums();
+        $this->data['albumName'] = $albumName;
+        $this->data['albumFriendlyName'] = $this->Album_mdl->getAlbumFriendlyName($albumID);
+      $this->load->library('pagination');
+      $albumCount = $this->Album_mdl->getAlbumCount($albumID);
+
+        $config['base_url'] = base_url() . 'admin/viewAlbumPage/' . $albumName . '/';
+        $config['total_rows'] = $albumCount;
+        $config['per_page'] = '21';
+        $config['uri_segment'] = 4;
+
+        $this->pagination->initialize($config);
+
+        $this->data['pages'] =  $this->pagination->create_links();
+      $this->load->view('admin/viewSingleAlbum', $this->data);
+    }
+
+    public function addAlbum(){
+
+
+        $this->load->view('admin/modals/addAlbum');
+    }
+
     
 }
 ?>

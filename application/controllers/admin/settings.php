@@ -28,5 +28,45 @@ class Settings extends Admin_Controller {
     {
         parent::__construct();
     }
+
+    public function settings(){
+
+        /*
+         *
+         * Change to just settings and remove settings method
+         *
+         */
+
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('siteName', 'FotoChest Site Name', 'required|xss_clean');
+
+        if(!$this->form_validation->run())
+        {
+            $this->load->view('admin/settings');
+        }
+        else
+        {
+
+            if ($this->input->post('showPhotoTitle') == "on"){
+            setSetting('showPhotoTitle', 'TRUE');
+            } else {
+                setSetting('showPhotoTitle', 'FALSE');
+            }
+
+            if ($this->input->post('enableSlideshow') == "on"){
+                setSetting('enableSlideshow', 'TRUE');
+            } else {
+                setSetting('enableSlideshow', 'FALSE');
+            }
+            if ($this->input->post('enableComments') == "on"){
+                setSetting('enableComments', 'TRUE');
+            } else {
+                setSetting('enableComments', 'FALSE');
+            }
+            setSetting('siteName', $this->input->post('siteName'));
+            redirect('admin/settings');
+        }
+    }
 }
 ?>

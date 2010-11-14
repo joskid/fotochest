@@ -85,12 +85,15 @@ class Users extends Controller {
     
     public function do_register(){
         log_message('debug', 'Attempt made to register');
+
+        // Load User LIbrary
+        $this->load->library('user_lib');
         
-        $this->User_mdl->userEmail = $this->input->post('userEmail');
-        $this->User_mdl->userPassword = $this->input->post('userPassword');
-        $this->User_mdl->userFirstName = $this->input->post('userFirstName');
-        $this->User_mdl->userLastName = $this->input->post('userLastName');
-        $this->User_mdl->register();
+        $this->user_lib->userEmail = $this->input->post('userEmail');
+        $this->user_lib->userPassword = $this->input->post('userPassword');
+        $this->user_lib->userFirstName = $this->input->post('userFirstName');
+        $this->user_lib->userLastName = $this->input->post('userLastName');
+        $this->user_lib->register();
         
     }
 

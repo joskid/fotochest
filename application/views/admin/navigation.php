@@ -5,7 +5,7 @@
             <ul>
                 <?php if($pageNum == 1){ ?> <li class="active"> <?php } else { ?> <li> <?php } ?>
 
-                <?php echo anchor('admin/dashboard', 'Home'); ?>
+                <?php echo anchor('admin/photos', 'Home'); ?>
                 </li>
                 <?php if($pageNum == 2){ ?> <li class="active"> <?php } else { ?> <li> <?php } ?>
                     <?php echo anchor('admin/albums', 'Albums'); ?>

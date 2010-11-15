@@ -32,8 +32,15 @@
 | would be loaded.
 */
 
+// Update references to point the the new routes.
+
 $route['default_controller'] = "photos";
 $route['admin'] = "admin/photos";
+$route['login'] = "users/login";
+$route['photo/(:any)/(:any)'] = "photos/view/$1/$2";
+$route['admin/dashboard'] = "admin/photos";
+$route['album/(:any)'] = "albums/view/$1";
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

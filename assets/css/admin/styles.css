@@ -1,7 +1,7 @@
 /* Import Reset */
 
 @import url("../reset.css");
-
+@import url("forms.css");
 body
 {
     font-size:11pt;
@@ -62,30 +62,6 @@ Input styles
 }
 
 
-/* <!-- Common Form Styles --> */
-
-.form .formItem label
-{
-    display:block;
-    color:#7A7A7A;
-    font-weight:bold;
-}
-
-.form .formItem input[type='text'],
-.form .formItem input[type='email'],
-.form .formItem input[type='password']
-{
-    font-size:14pt;
-    margin: 5px 0px 5px 0;
-    border:1px solid #AAAAAA;
-    background:#F8F8F8;
-    width:100%;
-    -moz-border-radius:3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-}
-
-/* <!-- End Form Styles --> */
 
 /* <!-- Begin Common Notification Styles --> */
 

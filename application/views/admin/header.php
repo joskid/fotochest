@@ -6,6 +6,7 @@
         <?php echo css('admin/modal'); ?>
         <?php echo link_tag("assets/javascript/facebox/facebox.css"); ?>
         <?php echo link_tag("assets/javascript/lightbox/css/jquery.lightbox-0.5.css"); ?>
+        <?php echo link_tag("assets/javascript/Jcrop/jquery.jcrop.css"); ?>
         <link rel="shortcut icon" href="<?php echo base_url(); ?>favicon.ico" />
          <!--[if IE]>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/ie.css">
@@ -19,6 +20,7 @@
         <?php echo js('swfupload/plugins/swfupload.queue'); ?>
         <?php echo js('swfupload/fileprogress'); ?>
         <?php echo js('swfupload/handlers'); ?>
+        <?php echo js('Jcrop/jquery.jcrop'); ?>
         <?php echo js('fotochest'); ?>
         <title>Manage Your Photos</title>
         <?php if (isset($albumID) && isset($isUpload)) { ?>

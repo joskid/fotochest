@@ -1,0 +1,92 @@
+
+
+/* <!-- Common Form Styles --> */
+
+.form .formItem
+{
+    clear:both;
+    margin-bottom:10px;
+}
+
+.form .formItem label
+{
+    display:block;
+    color:#7A7A7A;
+    font-weight:bold;
+}
+
+.form .formItem.check label
+{
+    display:inline-block;
+}
+
+.form .formItem input[type='text'],
+.form .formItem input[type='email'],
+.form .formItem input[type='password']
+{
+    font-size:14pt;
+    margin: 5px 0px 5px 0;
+    border:1px solid #AAAAAA;
+    background:#F8F8F8;
+    width:100%;
+    -moz-border-radius:3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+#fullEdit .form .formItem img.photo
+{
+    float:left;
+}
+
+#fullEdit .form .editControls
+{
+    float:left;
+    margin: 30px 0px 0px 30px;
+    
+}
+
+#fullEdit .editControls dt,
+#fullEdit .editControls dd
+{
+    width:42%;
+    display:inline-block;
+}
+
+/* <!-- End Form Styles --> */
+
+
+.form .formItem img.photo
+{
+    padding:5px;
+    background:#fff;
+}
+
+/* Edit Photo */
+
+a.button.rotateClock,
+a.button.rotateCounter
+{
+    background: url("../../images/admin/arrow_rotate_left.png") no-repeat left;
+    width:140px;
+    height:19px;
+    padding: 4px 4px 5px 15px;
+    background-color:#fff;
+}
+
+a.button.rotateCounter
+{
+    background: url("../../images/admin/arrow_rotate_right.png") no-repeat left;
+    background-color: #fff;
+}
+
+a.button.rotateClock span,
+a.button.rotateCounter span
+{
+    color:#000;
+}
+
+a.button.auto
+{
+    width:auto;
+}

@@ -5,6 +5,14 @@
 *
 */
 
+/*-----------------------------------------------------
+ *
+ * Database Tables
+ *
+ *
+ */
+
+
 $config['settingTable'] = "photoSettings";
 $config['photoTable']= "photoLibrary";
 $config['albumTable']= "photoAlbums";

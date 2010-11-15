@@ -1,6 +1,6 @@
 <div class="footer">
     
-    <p class="version">&copy; 2010 FotoChest Version <?php echo getVersion(); ?></p>
+    <p class="version">&copy; 2010 <a href="http://fotochest.com" target="_blank">FotoChest</a> Version <?php echo getVersion(); ?></p>
   
 </div>
 

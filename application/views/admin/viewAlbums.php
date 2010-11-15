@@ -13,10 +13,10 @@ $this->load->view('admin/navigation', $data);
               ?>
             
             <div class="album">
-                <a href="<?php echo site_url('admin/viewAlbum/' . $row->albumName); ?>">
+                <a href="<?php echo site_url('admin/albums/viewAlbum/' . $row->albumName); ?>">
                     <?php echo getAlbumThumbs($row->albumID, 1, TRUE); ?>
                 </a>
-                <h3><?php echo anchor('admin/viewAlbum/' . $row->albumName, $row->albumFriendlyName); ?></h3>
+                <h3><?php echo anchor('admin/albums/viewAlbum/' . $row->albumName, $row->albumFriendlyName); ?></h3>
                 <p>
                     <?php echo $row->albumDesc; ?>
                 </p>
@@ -26,13 +26,13 @@ $this->load->view('admin/navigation', $data);
                     
                 </dl>
                 <ul class="actions">
-                    <li><a href="<?php echo base_url(); ?>admin/editAlbum/<?php echo $row->albumID; ?>" class="button nextAction" rel="facebox"><span>Edit</span></a></li>
-                    <li><a href="<?php echo site_url(); ?>admin/photoUpload/<?php echo $row->albumID; ?>" class="button nextAction"><span>Add Photos</span></a></li>
+                    <li><a href="<?php echo base_url(); ?>admin/albums/editAlbum/<?php echo $row->albumID; ?>" class="button nextAction" rel="facebox"><span>Edit</span></a></li>
+                    <li><a href="<?php echo site_url(); ?>admin/photos/photoUpload/<?php echo $row->albumID; ?>" class="button nextAction"><span>Add Photos</span></a></li>
                     
                     <?php if(getAlbumPhotoCount($row->albumID) < 150 && $row->albumID > 0) { ?>
                     <li><a href="<?php echo base_url(); ?>download/downloadAlbum/<?php echo $row->albumName; ?>" class="button" style="display:none;"><span>Download Album</span></a></li>
                     <?php } ?>
-                    <li><a href="<?php echo base_url(); ?>admin/deleteAlbum/<?php echo $row->albumID; ?>" class="button nextAction" rel="facebox"><span>Delete</span></a></li>
+                    <li><a href="<?php echo base_url(); ?>admin/albums/deleteAlbum/<?php echo $row->albumID; ?>" class="button nextAction" rel="facebox"><span>Delete</span></a></li>
 
                 </ul>
             </div>

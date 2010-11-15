@@ -212,6 +212,26 @@ class Photos extends MY_Controller {
 
 
     }
+
+    public function fullEdit($photoID)
+    {
+
+        $this->data['photoData'] = $this->Photo_mdl->getPhotoInfo($photoID);
+        $this->load->view('admin/fullFotoEdit', $this->data);
+    }
+
+    public function rotate($direction, $photoID)
+    {
+        if ($direction == "clockwise")
+        {
+            
+        }
+        else
+        {
+            
+        }
+        
+    }
 }
 
 ?>

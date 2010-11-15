@@ -18,6 +18,10 @@ but as with all software there are still issues.  We are planning on releasing 1
 
 * Installer
 * Ability to rotate images
+* Cropping Images
+* Stability Increase
+* Upgrade to Latest CI Platform
+* Some type of Themeing
 * Updates to the Admin Controller to seperate Admin Content.
 * Rewrite the admin controller.
 * Add Comments

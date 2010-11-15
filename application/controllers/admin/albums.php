@@ -15,10 +15,10 @@
 // ----------------------------------------------------------------
 
 /**
-* Admin Controller
+* Album Admin Controller
 *
 * @package		FotoChest
-* @category		Controllers
+* @category		Admin Controllers
 * @author		Derek Stegelman
 */
 
@@ -35,8 +35,6 @@ class Albums extends MY_Controller {
     public function createAlbum(){
 
 // @todo mov ethis
-
-
         // Load the Library
         $this->load->library('album_lib');
         $this->album_lib->albumName = $this->input->post('albumName');
@@ -104,6 +102,9 @@ class Albums extends MY_Controller {
     // End Album Functions
 
     // Begin photo functions
+
+    // Refactor so that we don't need two methods for the intial page and then pages after that...
+
 
     public function albumsPage($pageNum = 0){
 

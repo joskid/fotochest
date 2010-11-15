@@ -22,7 +22,7 @@
             }
             ?>
             <input type="submit" class="loginBtn" value="Login">
-            <?php echo anchor('users/forgotPassword', 'Forgot Password?'); ?>
+            <?php echo anchor('forgotPassword', 'Forgot Password?'); ?>
         </div>
         <?php echo form_close(); ?>
         <div class="clear"></div>

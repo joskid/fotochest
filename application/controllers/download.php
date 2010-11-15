@@ -21,16 +21,7 @@
 * @category		Libraries
 * @author		Derek Stegelman
 */
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- * Description of download
- *
- * @author derek
- */
 class Download extends CI_Controller {
     //put your code here
 
@@ -39,7 +30,6 @@ class Download extends CI_Controller {
         parent::__construct();
     }
 
-
     public function downloadAlbum($albumName){
         
 
@@ -47,20 +37,14 @@ class Download extends CI_Controller {
         ini_set("memory_limit","1600M");
 
         $path = getSetting('absoluteFilePath') . "img_stor/albums/" . $albumName . "/originals/";
-
-
-       $this->zip->read_dir($path, FALSE);
-
-
+        $this->zip->read_dir($path, FALSE);
         $this->zip->download($albumName . '.zip');
     }
 
     public function downloadFile($albumName, $fileName){
-
         $this->load->helper('download');
         $data = file_get_contents(getSetting('absoluteFilePath') . "img_stor/albums/" . $albumName . "/originals/" . $fileName); // Read the file's contents
-        force_download($fileName, $data);
-        
+        force_download($fileName, $data);    
     }
 }
 ?>

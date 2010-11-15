@@ -10,7 +10,7 @@ $this->load->view('admin/navigation', $data);
         <p>Photos Added</p>
        </div>
         <?php if($photos->num_rows() == 0) { ?>
-        <h3>You need to <?php echo anchor('admin/addAlbum', 'add an album', array('rel'=>'facebox')); ?> to start uploading photos!</h3>
+        <h3>You need to <?php echo anchor('admin/albums/addAlbum', 'add an album', array('rel'=>'facebox')); ?> to start uploading photos!</h3>
       <?php } ?>
         <?php foreach($photos->result() as $row)
         {
@@ -31,9 +31,9 @@ $this->load->view('admin/navigation', $data);
                 
             </dl>
             <ul class="actions">
-                <li><a href="<?php echo base_url(); ?>admin/editPhoto/<?php echo $row->photoID; ?>/N" class="button nextAction" rel="facebox"><span>Edit</span></a></li>
-                <li><a href="<?php echo base_url(); ?>admin/movePhoto/<?php echo $row->photoID; ?>" class="button nextAction" rel="facebox"><span>Move</span></a></li>
-                <li><a href="<?php echo base_url(); ?>admin/deletePhoto/<?php echo $row->photoID; ?>" class="button nextAction" rel="facebox"><span>Delete</span></a></li>
+                <li><a href="<?php echo base_url(); ?>admin/photos/editPhoto/<?php echo $row->photoID; ?>/N" class="button nextAction" rel="facebox"><span>Edit</span></a></li>
+                <li><a href="<?php echo base_url(); ?>admin/photos/movePhoto/<?php echo $row->photoID; ?>" class="button nextAction" rel="facebox"><span>Move</span></a></li>
+                <li><a href="<?php echo base_url(); ?>admin/photos/deletePhoto/<?php echo $row->photoID; ?>" class="button nextAction" rel="facebox"><span>Delete</span></a></li>
             </ul>
         </div>
         <?php

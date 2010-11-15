@@ -29,11 +29,6 @@ class Photos extends MY_Controller {
         parent::__construct();
     }
 
-    public function test()
-    {
-        $this->load->view('admin/userLogin');
-    }
-
     public function savePhoto(){
       // @todo Move this...
 
@@ -106,17 +101,6 @@ class Photos extends MY_Controller {
         $this->load->view('admin/photoUpload', $this->data);
     }
 
-
-
-
-    public function multiUpload(){
-
-         // Depecrated...@todo REMOVE
-
-        $this->data['albumDropDown'] = $this->Album_mdl->getAlbumDropdownList();
-        $this->load->view('admin/modals/multiFile', $this->data);
-    }
-
     public function editPhoto($photoID, $isFront){
 
         $this->data['isFront'] = $isFront;
@@ -131,13 +115,6 @@ class Photos extends MY_Controller {
             $this->data['albumID'] = $row->photoAlbumID;
         }
         $this->load->view('admin/modals/editPhoto', $this->data);
-    }
-
-    public function runImport($albumName){
-
-        $this->Photo_mdl->photoAlbumName = $albumName;
-        $this->Photo_mdl->importPhotos();
-        redirect('photos');
     }
 
     public function movePhoto($photoID){
@@ -180,36 +157,12 @@ class Photos extends MY_Controller {
 
     }
 
-    public function importModal(){
 
-        $data['albumDropDown'] = $this->Album_mdl->getAlbumDropdownList();
-        $this->load->view('admin/modals/addPhotoModal', $data);
-    }
-
-    public function uploadPhotos($albumID){
-        $this->data['albumID'] = $albumID;
-        $this->load->view('admin/photoUpload', $this->data);
-
-    }
 
     public function deletePhoto($photoID){
 
         $this->data['photoID'] = $photoID;
         $this->load->view('admin/modals/deletePhotoModal', $this->data);
-
-    }
-
-
-    public function processPhotos(){
-
-        log_message('debug', 'ProcessPhotos function hit.');
-
-        log_message('debug', 'Album and Photo model loaded with ProcessPhotos');
-        $albumName = $this->Album_mdl->getAlbumName($this->input->post('albumID'));
-        $this->Photo_mdl->photoAlbumName = $albumName;
-        log_message('debug', 'Begin photo import using admin controller');
-        $this->Photo_mdl->importPhotos();
-
 
     }
 

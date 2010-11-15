@@ -38,9 +38,12 @@ $route['default_controller'] = "photos";
 $route['admin'] = "admin/photos";
 $route['login'] = "users/login";
 $route['logout'] = "users/logout";
+$route['forgotpassword'] = "users/forgotPassword";
 $route['photo/(:any)/(:any)'] = "photos/view/$1/$2";
 $route['admin/dashboard'] = "admin/photos";
+$route['admin/album/(:any)'] = "admin/albums/viewAlbum/$1";
 $route['album/(:any)'] = "albums/view/$1";
+$route['album/(:any)/(:any)'] = "albums/view/$1/$2";
 
 
 /* End of file routes.php */

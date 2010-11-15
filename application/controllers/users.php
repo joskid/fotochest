@@ -29,8 +29,6 @@ class Users extends CI_Controller {
     }
   
   public function login(){
-    
-
     // Load Validation
 
     $this->load->library('form_validation');

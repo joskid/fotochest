@@ -17,7 +17,7 @@ $this->load->view('admin/navigation', $data);
                 <li>
                     <?php if ($newTheme->themeActive != 1) { ?>
                     
-                    <a class="button" href="<?php echo base_url(); ?>admin/activateTheme/<?php echo $newTheme->themeID; ?>"><span>Activate</span></a>
+                    <a class="button" href="<?php echo base_url(); ?>admin/themes/activateTheme/<?php echo $newTheme->themeID; ?>"><span>Activate</span></a>
                     <?php } ?>
                 </li>
             </ul>

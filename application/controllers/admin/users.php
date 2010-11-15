@@ -41,8 +41,6 @@ class Users extends MY_Controller {
     }
 
     public function addUser(){
-
-
         $this->load->view('admin/modals/addUser');
     }
 
@@ -71,15 +69,14 @@ class Users extends MY_Controller {
     function deleteUser($userID){
 
         $this->data['userID'] = $userID;
-
         $this->load->view('admin/modals/deleteUser', $this->data);
     }
 
     function do_userDelete(){
 
         // @todo move this.
-        $this->User_mdl->userUserID = $this->input->post('userUserID');
-        $this->User_mdl->deleteUser();
+        $userID = $this->input->post('userUserID');
+        $this->User_mdl->delete($userID);
     }
 
 }

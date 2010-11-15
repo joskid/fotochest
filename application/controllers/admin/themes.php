@@ -15,7 +15,7 @@ class Themes extends MY_Controller {
         parent::__construct();
     }
 
-    public function themes()
+    public function index()
     {
         // Load Theme Library
         $this->load->library('theme_lib');

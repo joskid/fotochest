@@ -37,6 +37,7 @@
 $route['default_controller'] = "photos";
 $route['admin'] = "admin/photos";
 $route['login'] = "users/login";
+$route['logout'] = "users/logout";
 $route['photo/(:any)/(:any)'] = "photos/view/$1/$2";
 $route['admin/dashboard'] = "admin/photos";
 $route['album/(:any)'] = "albums/view/$1";

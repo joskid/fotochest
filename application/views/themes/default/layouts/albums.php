@@ -3,10 +3,10 @@
          <div id="wrapper">
              <?php if (isLoggedIn() == FALSE) {
 
-                 echo anchor('admin/dashboard', 'Sign In', array('class'=>'signin'));
+                 echo anchor('login', 'Sign In', array('class'=>'signin'));
                  
              } else {
-                 echo anchor('admin/dashboard', 'Administration', array('class'=>'signin'));
+                 echo anchor('admin', 'Administration', array('class'=>'signin'));
              }
                 ?>
          <div class="nav">
@@ -19,7 +19,7 @@
                 <?php if (isLoggedIn() == TRUE){ ?>
                     
                     <li>
-                         <?php echo anchor('users/logout', 'Logout'); ?>
+                         <?php echo anchor('logout', 'Logout'); ?>
                     </li>
                     <?php } ?>
             </ol>

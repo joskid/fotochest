@@ -78,6 +78,15 @@ class Users extends MY_Controller {
 
     }
 
+    function do_userDelete(){
+
+        // @todo move this.
+        $this->load->model('User_mdl');
+        $userID = $this->input->post('userUserID');
+        $this->User_mdl->delete($userID);
+    }
+    
+
 
 
     function deleteUser($userID){

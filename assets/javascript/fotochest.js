@@ -18,7 +18,7 @@ jQuery(document).ready(function($) {
         
         $.ajax({
           type: "POST",
-          url: "/users/do_register",
+          url: "/admin/users/do_register",
           data: dataString,
           success: function(){
             $('#addUser').html("<div id='message'></div>");
@@ -42,7 +42,7 @@ jQuery(document).ready(function($) {
         
         $.ajax({
           type: "POST",
-          url: "/admin/createAlbum",
+          url: "/admin/albums/createAlbum",
           data: dataString,
           success: function(){
             $('#addAlbum').html("<div id='message'></div>");
@@ -54,26 +54,7 @@ jQuery(document).ready(function($) {
         return false;
       });
       
-      $("a.import").click(function(){
-        
-        var albumID =$("select#albumID").val();
-        var dataString =  'albumID=' + albumID;
-        $('#addPhotoContent').html("<div id='load'></div>");
-        $('#load').html("<img src='/assets/images/admin/ajax-loader.gif'>");
-        $('#load').append("<h3>Processing...(Grab a coffee...)</h3>");
-        $.ajax({
-          type: "POST",
-          url: "/admin/processPhotos",
-          data: dataString,
-          success: function(){
-            $('#addPhotoContent').html("<div id='message'></div>");
-            $('#message').html("<div class='notification success'><p>Woot! Photos Imported</p></div>")
-            .hide()
-          }
-        });
-        return false;
-      });
-      
+
       // Save/update a photo
       
       $("a.savePhotoBtn").click(function(){
@@ -91,7 +72,7 @@ jQuery(document).ready(function($) {
         $('#load').append("<h3>Processing...</h3>");
         $.ajax({
           type: "POST",
-          url: "/admin/savePhoto",
+          url: "/admin/photos/savePhoto",
           data: dataString,
           success: function(){
             $('#editPhoto').html("<div id='message'></div>");
@@ -132,7 +113,7 @@ jQuery(document).ready(function($) {
         $('#load').append("<h3>Processing...</h3>");
         $.ajax({
           type: "POST",
-          url: "/admin/saveAlbum",
+          url: "/admin/album/saveAlbum",
           data: dataString,
           success: function(){
             
@@ -142,33 +123,6 @@ jQuery(document).ready(function($) {
         return false;
             
       })
-
-      // save settings
-
-//      $("a.saveSettings").click(function(){
-//
-//        var siteName = $('input#siteName').val();
-//        var showPhotoTitle = $('input:checked#showPhotoTitle').val();
-//        var enableSlideshow = $('input:checked#enableSlideshow').val();
-//        var enableComments = $('input:checked#enableComments').val();
-//
-//        var dataString = 'siteName=' + siteName + '&showPhotoTitle=' + showPhotoTitle + '&enableSlideshow=' + enableSlideshow + '&enableComments=' + enableComments;
-//        $('#settings').html("<div id='load'></div>");
-//        $('#load').html("<img src='/assets/images/admin/ajax-loader.gif'>");
-//        $('#load').append("<h3>Processing...</h3>");
-//        $.ajax({
-//          type: "POST",
-//          url: "/admin/settings",
-//          data: dataString,
-//          success: function(){
-//           document.location.href="/admin/settings";
-//           return false;
-//          }
-//        });
-//        return false;
-//      })
-
-      // save user
 
       $("a.saveUser").click(function(){
 
@@ -185,7 +139,7 @@ jQuery(document).ready(function($) {
           $('#load').append("<h3>Processing...</h3>");
           $.ajax({
           type: "POST",
-          url: "/admin/do_userSave",
+          url: "/admin/users/do_userSave",
           data: dataString,
           success: function(){
            document.location.href="/admin/users";
@@ -208,7 +162,7 @@ jQuery(document).ready(function($) {
           $('#load').append("<h3>Processing...</h3>");
           $.ajax({
           type: "POST",
-          url: "/users/do_userDelete",
+          url: "/admin/users/do_userDelete",
           data: dataString,
           success: function(){
            document.location.href="/admin/users";
@@ -230,7 +184,7 @@ jQuery(document).ready(function($) {
           $('#load').append("<h3>Processing...</h3>");
           $.ajax({
             type: "POST",
-            url: "/admin/do_delete",
+            url: "/admin/album/do_delete",
             data: dataString,
             success: function(){
               $('#albumContent').load('/admin/albums #albumContent');
@@ -254,7 +208,7 @@ jQuery(document).ready(function($) {
          $('#load').append("<h3>Processing...</h3>");
          $.ajax({
             type: "POST",
-            url: "/admin/do_photoDelete",
+            url: "/admin/photos/do_photoDelete",
             data: dataString,
             success: function(){
               document.location.href="/admin/dashboard";

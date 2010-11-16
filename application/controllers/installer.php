@@ -37,7 +37,7 @@ class Installer extends CI_Controller {
     }
 
     public function install(){
-         $this->load->library('form_validation');
+         //$this->load->library('form_validation');
          $this->load->model('User_mdl');
 
     

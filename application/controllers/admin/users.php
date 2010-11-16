@@ -65,6 +65,20 @@ class Users extends MY_Controller {
 
 
     }
+    public function do_register(){
+        log_message('debug', 'Attempt made to register');
+
+        $this->load->library('user_lib');
+
+        $this->user_lib->userEmail = $this->input->post('userEmail');
+        $this->user_lib->userPassword = $this->input->post('userPassword');
+        $this->user_lib->userFirstName = $this->input->post('userFirstName');
+        $this->user_lib->userLastName = $this->input->post('userLastName');
+        $this->user_lib->register();
+
+    }
+
+
 
     function deleteUser($userID){
 
@@ -72,12 +86,7 @@ class Users extends MY_Controller {
         $this->load->view('admin/modals/deleteUser', $this->data);
     }
 
-    function do_userDelete(){
-
-        // @todo move this.
-        $userID = $this->input->post('userUserID');
-        $this->User_mdl->delete($userID);
-    }
+   
 
 }
 ?>

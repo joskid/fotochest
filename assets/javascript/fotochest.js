@@ -208,7 +208,7 @@ jQuery(document).ready(function($) {
           $('#load').append("<h3>Processing...</h3>");
           $.ajax({
           type: "POST",
-          url: "/admin/do_userDelete",
+          url: "/users/do_userDelete",
           data: dataString,
           success: function(){
            document.location.href="/admin/users";

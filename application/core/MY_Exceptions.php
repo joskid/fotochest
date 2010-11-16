@@ -63,7 +63,7 @@ class MY_Exceptions extends CI_Exceptions
 	 */
 	public function __construct()
 	{
-		parent::CI_Exceptions();
+		parent::__construct();
 		
 		// If we are in production, then lets dump out now.
 		if (IN_PRODUCTION)

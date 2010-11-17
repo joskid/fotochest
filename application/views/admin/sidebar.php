@@ -1,11 +1,11 @@
 <div class="sidebar">
    
 						<?php if($showAlbum == TRUE){ ?>
-            <a class="button nextAction" href="<?php echo base_url(); ?>admin/albums/addAlbum" rel="facebox"><span>Add Album</span></a>
+            <a class="newButton" href="<?php echo base_url(); ?>admin/albums/addAlbum" rel="facebox"><span>+</span>Add Album</a>
 						<?php } ?>
             <?php if($showUserButton == TRUE) { ?>
             <a class="button nextAction" href="<?php echo base_url(); ?>admin/users/addUser" rel="facebox"><span>Add User</span></a>
-            <a class="new" href="<?php echo base_url(); ?>admin/users/addUser" rel="facebox"><span>+</span>Add User</a>
+            <a class="newButton" href="<?php echo base_url(); ?>admin/users/addUser" rel="facebox"><span>+</span>Add User</a>
             <?php } ?>
             
             <div class="profile">

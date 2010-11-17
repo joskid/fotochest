@@ -1,6 +1,7 @@
 /* Import Reset */
 
 @import url("../reset.css");
+@import url("common.css");
 @import url("forms.css");
 body
 {
@@ -10,43 +11,6 @@ body
     font-family:'Yanone Kaffeesatz', Arial;
 }
 
-.button
-{
-    height:17px;
-    display:block;
-    background: #2aaee5;
-    background: -webkit-gradient(linear, left top, left bottom, from(#2aaee5), to(#124D65));
-    background: -moz-linear-gradient(top,  #2aaee5,  #124D65);
-    border-radius:3px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    text-align:center;
-    padding-top:5px;
-    padding-bottom:5px;
-    padding-right:7px;
-    padding-left:7px;
-    width:auto;
-    margin-bottom:10px;
-    cursor:pointer;
-}
-
-
-
-a.button.nextAction
-{
-    background: -webkit-gradient(linear, left top, left bottom, from(#00ace7), to(#0f8fb8));
-    background: -moz-linear-gradient(top, #00ace7, #0f8fb8);
-}
-
-a.button.small
-{
-    height:24px;
-}
-
-a.button.small span
-{
-    font-size:14pt;
-}
 
 /*
 

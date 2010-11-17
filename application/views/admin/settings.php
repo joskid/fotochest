@@ -28,7 +28,10 @@ $this->load->view('admin/navigation', $data);
         </div>
         -->
         <input type="submit" value="Save Changes" class="button">
-       
+        <a href="#" class="new">
+            <span>+</span>
+            Add New
+        </a>
     </div>
     
 </div>

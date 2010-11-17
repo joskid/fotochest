@@ -42,9 +42,10 @@ $route['forgotpassword'] = "users/forgotPassword";
 $route['photo/(:any)/(:any)'] = "photos/view/$1/$2";
 $route['admin/dashboard'] = "admin/photos";
 $route['admin/album/(:any)'] = "admin/albums/viewAlbum/$1";
+$route['admin/upload/(:any)'] = "admin/photos/photoUpload/$1";
 $route['album/(:any)'] = "albums/view/$1";
 $route['album/(:any)/(:any)'] = "albums/view/$1/$2";
-
+$route['slideshow/(:any)'] = "photos/slideshow/$1";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

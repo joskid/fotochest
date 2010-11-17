@@ -7,7 +7,7 @@ $this->load->view('admin/navigation', $data);
     <div class="content right" id="viewSingleAlbum">
         <h2><?php echo $albumFriendlyName; ?></h2>
        <?php if($photos->num_rows() == 0) { ?>
-        <h3>This album has no photos.  Do you want to <?php echo anchor('admin/photoUpload/' . $albumID, 'add some?'); ?></h3>
+        <h3>This album has no photos.  Do you want to <?php echo anchor('admin/upload/' . $albumID, 'add some?'); ?></h3>
         <?php } ?>
        <?php foreach($photos->result() as $row) { ?>
         <div class="photo">

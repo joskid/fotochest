@@ -31,9 +31,9 @@ $this->load->view('admin/navigation', $data);
                 
             </dl>
             <ul class="actions">
-                <li><a href="<?php echo base_url(); ?>admin/photos/editPhoto/<?php echo $row->photoID; ?>/N" class="newButton full" rel="facebox"><span>Edit</span></a></li>
-                <li><a href="<?php echo base_url(); ?>admin/photos/movePhoto/<?php echo $row->photoID; ?>" class="button nextAction" rel="facebox"><span>Move</span></a></li>
-                <li><a href="<?php echo base_url(); ?>admin/photos/deletePhoto/<?php echo $row->photoID; ?>" class="button nextAction" rel="facebox"><span>Delete</span></a></li>
+                <li><a href="<?php echo base_url(); ?>admin/photos/editPhoto/<?php echo $row->photoID; ?>/N" class="newButton" rel="facebox"><span>Edit</span></a></li>
+                <li><a href="<?php echo base_url(); ?>admin/photos/movePhoto/<?php echo $row->photoID; ?>" class="newButton" rel="facebox"><span>Move</span></a></li>
+                <li><a href="<?php echo base_url(); ?>admin/photos/deletePhoto/<?php echo $row->photoID; ?>" class="newButton" rel="facebox"><span>Delete</span></a></li>
             </ul>
         </div>
         <?php

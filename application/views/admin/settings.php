@@ -18,20 +18,24 @@ $this->load->view('admin/navigation', $data);
             <input type="checkbox" name="showPhotoTitle" id="showPhotoTitle" <?php echo isChecked(getSetting('showPhotoTitle')); ?>>
         </div>
         <div class="formItem">
-            <label for="enableSlidedhow">Enable Slideshow:</label>
+            <label for="enableSlideshow">Enable Slideshow:</label>
             <input type="checkbox" name="enableSlideshow" id="enableSlideshow" <?php echo isChecked(getSetting('enableSlideshow')); ?>>
         </div>
-        <!--
+        <div class="formItem">
+            <label for="displayEXIF">Display EXIF Data</label>
+            <input type="checkbox" name="displayEXIF" id="displayEXIF">
+        </div>
+        <div class="formItem">
+            <label for="fileDownloads">Allow File Downloads</label>
+        </div>
+        
         <div class="formItem">
             <label for="enableComments">Enable Comments</label>
-            <input type="checkbox" name="enableComments" id="enableComments" <?php //echo isChecked(getSetting('enableComments')); ?>>
+            <input type="checkbox" name="enableComments" id="enableComments" <?php echo isChecked(getSetting('enableComments')); ?>>
         </div>
-        -->
+        
         <input type="submit" value="Save Changes" class="button">
-        <a href="#" class="new">
-            <span>+</span>
-            Add New
-        </a>
+        <a class="newButton" href="/"><span>Save Settings</span></a>
     </div>
     
 </div>

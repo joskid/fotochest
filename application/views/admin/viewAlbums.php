@@ -13,10 +13,10 @@ $this->load->view('admin/navigation', $data);
               ?>
             
             <div class="album">
-                <a href="<?php echo site_url('admin/albums/viewAlbum/' . $row->albumName); ?>">
+                <a href="<?php echo site_url('admin/album/' . $row->albumName); ?>">
                     <?php echo getAlbumThumbs($row->albumID, 1, TRUE); ?>
                 </a>
-                <h3><?php echo anchor('admin/albums/viewAlbum/' . $row->albumName, $row->albumFriendlyName); ?></h3>
+                <h3><?php echo anchor('admin/album/' . $row->albumName, $row->albumFriendlyName); ?></h3>
                 <p>
                     <?php echo $row->albumDesc; ?>
                 </p>

@@ -52,7 +52,8 @@ a.newButton {
     -moz-border-radius:3px;
     -webkit-border-radius:3px;
     border-radius:3px;
-    padding:5px 15px;
+    padding-left:15px;
+    padding-top:7px;
     margin-left:-1px;
     -moz-box-shadow:0 0 1px #02c7fc inset,;
     -webkit-box-shadow:0 0 1px #02c7fc inset;
@@ -65,7 +66,7 @@ a.newButton {
     font-family: "Helvetica Nueue", Helvetica, Arial, sans-serif;
     text-decoration:none;
     display: block;
-    height: 17px;
+    height: 18px;
     font-size:14px;
     margin-top: 7px;
     margin-bottom: 7px;
@@ -131,3 +132,68 @@ a.button.auto
 {
     width:auto;
 }
+
+
+/* <!-- End Butons --> */
+
+/* Notifications - different colors */
+
+.notification
+{
+	display:block;
+	-moz-border-radius:3px;
+ -webkit-border-radius: 3px;
+	margin-top:10px;
+ margin-bottom:10px;
+}
+
+.notification.show
+{
+  display:block;
+}
+
+.notification.hide
+{
+  display:none;
+}
+
+.notification p
+{
+	color:#333333;
+	line-height:16px;
+	margin-bottom:7px;
+	margin-left:35px;
+	margin-right:25px;
+	margin-top:8px;
+}
+
+.notification.error
+{
+	background:#F5DCDD;
+	border:1px solid #EC9B9B;
+}
+
+.notification.success
+{
+	background:#ddf4ce;
+	border:1px solid #726b67;
+}
+
+.notification.warning
+{
+	background:#f1eebf;
+	border:1px solid #d3c200;
+}
+
+.notification.error p a
+{
+    color:#0f8fb8;
+}
+
+.notification.info
+{
+	background:#dce6f3;
+	border:1px solid #50b0fc;
+}
+
+/* <!-- End Notification Styles --> */

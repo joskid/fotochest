@@ -184,7 +184,7 @@ jQuery(document).ready(function($) {
           $('#load').append("<h3>Processing...</h3>");
           $.ajax({
             type: "POST",
-            url: "/admin/album/do_delete",
+            url: "/admin/albums/do_delete",
             data: dataString,
             success: function(){
               $('#albumContent').load('/admin/albums #albumContent');

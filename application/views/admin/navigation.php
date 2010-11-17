@@ -29,7 +29,7 @@
 
             </ul>
             <span class="logout">
-                Welcome <?php echo getFirstName(); ?>, <?php echo anchor('users/logout', 'Logout'); ?>
+                Welcome <?php echo getFirstName(); ?>, <?php echo anchor('logout', 'Logout'); ?>
             </span>
         </div>
          <?php if(isOverPhotoLimit() == true){ ?>

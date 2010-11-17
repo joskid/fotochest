@@ -32,7 +32,6 @@ class Download extends CI_Controller {
 
     public function downloadAlbum($albumName){
         
-
         $this->load->library('zip');
         ini_set("memory_limit","1600M");
 

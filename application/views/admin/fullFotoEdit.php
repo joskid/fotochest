@@ -15,7 +15,7 @@ $this->load->view('admin/navigation', $this->data);
         </div>
         <div class="editControls">
             <h3>Edit This Photo</h3>
-            <a class="button rotateCounter" href="<?php echo site_url(); ?>admin/photos/rotate/counter/<?php echo $row->photoID; ?>"><span>Rotate Counter Clockwise</span></a>
+            <a class="button rotateCounter" href="<?php echo site_url('admin/photos/rotate/counter/' . $row->photoID); ?>"><span>Rotate Counter Clockwise</span></a>
             <a class="button rotateClock"><span>Rotate Clockwise</span></a>
             <a class="button auto"><span>Crop Mode</span></a>
             <a class="button auto"><span>Delete Photo</span></a>

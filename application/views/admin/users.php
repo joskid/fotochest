@@ -22,8 +22,8 @@ $this->load->view('admin/navigation', $data);
 
                 </dl>
                 <ul class="actions">
-                    <li><a href="<?php echo base_url(); ?>admin/users/editUser/<?php echo $row->userID; ?>" class="button nextAction" rel="facebox"><span>Edit User</span></a></li>
-                    <li><a href="<?php echo base_url(); ?>admin/users/deleteUser/<?php echo $row->userID; ?>" class="button nextAction" rel="facebox"><span>Delete User</span></a></li>
+                    <li><a href="<?php echo site_url('admin/users/editUser/' . $row->userID); ?>" class="newButton nextAction" rel="facebox"><span>Edit User</span></a></li>
+                    <li><a href="<?php echo site_url('admin/users/deleteUser/' . $row->userID); ?>" class="newButton nextAction" rel="facebox"><span>Delete User</span></a></li>
                    
                 </ul>
             </div>

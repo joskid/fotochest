@@ -116,6 +116,11 @@ class Photos extends CI_Controller {
         }
     }
 
+    public function addNoAlbum()
+    {
+        $this->load->view('admin/modals/chooseAlbum', $this->data);
+    }
+
   
 
 }

@@ -23,10 +23,10 @@ $this->load->view('admin/navigation', $data);
                 <dd><?php echo $row->albumFriendlyName; ?></dd>
             </dl>
             <ul class="actions">
-                <li><a href="<?php echo base_url(); ?>admin/photos/editPhoto/<?php echo $row->photoID; ?>/N" class="button" rel="facebox"><span>Quick Edit</span></a></li>
-                <li><a href="<?php echo base_url(); ?>admin/photos/fullEdit/<?php echo $row->photoID; ?>" class="button"><span>Full Edit</span></a></li>
-                <li><a href="<?php echo base_url(); ?>admin/photos/movePhoto/<?php echo $row->photoID; ?>" class="button" rel="facebox"><span>Move</span></a></li>
-                <li><a href="<?php echo base_url(); ?>admin/photos/deletePhoto/<?php echo $row->photoID; ?>" class="button" rel="facebox"><span>Delete</span></a></li>
+                <li><a href="<?php echo site_url('admin/photos/editPhoto/' . $row->photoID) . "/N"; ?>" class="newButton" rel="facebox"><span>Quick Edit</span></a></li>
+                <li><a href="<?php echo site_url('admin/photos/fullEdit/' . $row->photoID); ?>" class="newButton"><span>Full Edit</span></a></li>
+                <li><a href="<?php echo site_url('admin/photos/movePhoto/' . $row->photoID); ?>" class="newButton" rel="facebox"><span>Move</span></a></li>
+                <li><a href="<?php echo site_url('admin/photos/deletePhoto/' . $row->photoID); ?>" class="newButton" rel="facebox"><span>Delete</span></a></li>
             </ul>
         </div>
         <?php } ?>

@@ -11,13 +11,13 @@ $this->load->view('admin/navigation', $data);
 
         <div class="theme <?php if ($newTheme->themeActive == 1) { ?>active <?php } else {} ?>">
             <h3><?php echo $newTheme->themeName; ?><?php if ($newTheme->themeActive == 1) { ?> - Current Theme <?php } ?></h3>
-            <img src="<?php echo site_url(); ?>assets/themes/<?php echo $newTheme->themeName; ?>/screenshot.png" width="300">
+            <img src="<?php echo base_url(); ?>assets/themes/<?php echo $newTheme->themeName; ?>/screenshot.png" width="300">
             <ul>
                 <li>Author: <?php echo $newTheme->themeAuthor; ?></li>
                 <li>
                     <?php if ($newTheme->themeActive != 1) { ?>
                     
-                    <a class="button" href="<?php echo base_url(); ?>admin/themes/activateTheme/<?php echo $newTheme->themeID; ?>"><span>Activate</span></a>
+                    <a class="newButton" href="<?php echo site_url('admin/themes/activateTheme' . $newTheme->themeID); ?>"><span>Activate</span></a>
                     <?php } ?>
                 </li>
             </ul>

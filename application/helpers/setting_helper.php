@@ -121,4 +121,9 @@ function getVersion(){
     return $version;
 }
 
+function isFirstLogin()
+{
+    return TRUE;
+}
+
 ?>

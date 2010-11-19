@@ -116,3 +116,11 @@ a.button:hover
 }
 
 /* End Buttons */
+
+
+img.thumb
+{
+    background: #fff;
+    padding: 5px;
+    margin-right: 3px;
+}

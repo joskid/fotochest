@@ -37,3 +37,9 @@
             <p>You have exceeded your photo limit for this account. Your limit is <?php echo getPhotoLimit(); ?>.  <a href="#">Upgrade Today!</a></p>
         </div>
         <?php } ?>
+        <?php if (isFirstLogin()) { ?>
+        <div class="notification info">
+            <p>Guten Tag!  Welcome to FotoChest.  Begin by uploading your photos!</p><a href="/">Thanks, close me</a>
+        </div>
+        <?php } ?>
+        

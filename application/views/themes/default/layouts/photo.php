@@ -13,8 +13,8 @@
                 <?php
                 foreach($photoInfo->result() as $row){
                   ?>
-                <a class="button previous<?php if(!checkPhoto($row->photoID - 1, $row->albumName)) { ?> disabled <?php } ?>" href="<?php echo site_url(); ?>photos/view/<?php echo $row->albumName; ?>/<?php echo $row->photoID - 1; ?>"><span>Previous</span></a>
-                <a class="button next<?php if(!checkPhoto($row->photoID + 1, $row->albumName)) { ?> disabled <?php } ?>" href="<?php echo site_url(); ?>photos/view/<?php echo $row->albumName; ?>/<?php echo $row->photoID + 1; ?>"><span>Next</span></a>
+                <a class="button previous<?php if(!checkPhoto($row->photoID + 1, $row->albumName)) { ?> disabled <?php } ?>" href="<?php echo site_url(); ?>photos/view/<?php echo $row->albumName; ?>/<?php echo $row->photoID + 1; ?>"><span>Previous</span></a>
+                <a class="button next<?php if(!checkPhoto($row->photoID - 1, $row->albumName)) { ?> disabled <?php } ?>" href="<?php echo site_url(); ?>photos/view/<?php echo $row->albumName; ?>/<?php echo $row->photoID - 1; ?>"><span>Next</span></a>
                 <div class="nav">
                     <a href="<?php echo base_url(); ?>albums/view/<?php echo $albumNameURL; ?>"><?php echo getAlbumThumb($row->albumID); ?><h1><?php echo $row->albumFriendlyName; ?></h1></a>
                       <ol>
@@ -48,6 +48,13 @@
                 {
                 ?>
             <div class="photoInfo">
+                <a class="<?php if(!checkPhoto($row->photoID + 1, $row->albumName)) { ?> disabled <?php } ?>" href="<?php echo site_url(); ?>photos/view/<?php echo $row->albumName; ?>/<?php echo $row->photoID + 1; ?>">
+                    <img src="<?php echo base_url(); ?>img_stor/albums/<? echo $row->albumName; ?>/thumbs/<?php echo getPhotoFileName($row->photoID + 1); ?>" width="90" class="thumb">
+                </a>
+                <a class="<?php if(!checkPhoto($row->photoID - 1, $row->albumName)) { ?> disabled <?php } ?>" href="<?php echo site_url(); ?>photos/view/<?php echo $row->albumName; ?>/<?php echo $row->photoID - 1; ?>">
+                    <img src="<?php echo base_url(); ?>img_stor/albums/<? echo $row->albumName; ?>/thumbs/<?php echo getPhotoFileName($row->photoID - 1); ?>" width="90" class="thumb">
+                </a>
+
                 <h2>Photo Information</h2>
                 <dl>
                     <dt>Album</dt>

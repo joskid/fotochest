@@ -125,8 +125,8 @@
 .photoPage .photoInfo
 {
     float:right;
-    width:270px;
-    margin-left:20px;
+    width:230px;
+    
 }
 
 .photoPage .nav
@@ -202,7 +202,7 @@
 
 /* Fix this later */
 
-a.button.disabled
+.disabled
 {
     display: none;
 }

@@ -116,7 +116,7 @@ class Albums extends CI_Controller {
 
         $this->data['pages'] =  $this->pagination->create_links();
 
-        $this->load->view(getFullThemePath() . 'viewAlbum');
+        $this->load->view(getFullThemePath() . 'viewAlbum', $this->data);
         }
     }
 

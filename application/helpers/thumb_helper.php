@@ -82,4 +82,6 @@ function getAlbumThumbs($albumID, $thumbs = 3, $isAdmin = FALSE)
     return $thumbMarkup;
 
 }
+
+
 ?>

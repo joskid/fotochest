@@ -200,3 +200,9 @@
 }
 
 
+/* Fix this later */
+
+a.button.disabled
+{
+    display: none;
+}

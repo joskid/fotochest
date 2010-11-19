@@ -3,7 +3,7 @@
 // To disable UhOh! simply change IN_PRODUCTION to TRUE.
 if ( ! defined('IN_PRODUCTION'))
 {
-	define('IN_PRODUCTION', FALSE);
+	define('IN_PRODUCTION', TRUE);
 }
 
 /**

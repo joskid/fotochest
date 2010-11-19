@@ -48,5 +48,14 @@ $route['album/(:any)'] = "albums/view/$1";
 $route['album/(:any)/(:any)'] = "albums/view/$1/$2";
 $route['slideshow/(:any)'] = "photos/slideshow/$1";
 
+
+
+if ($this->config->item('enableMultiUser') == TRUE)
+{
+    // Need regex here...
+    $route['(:any)'] = "admin/photos";
+    $route['(:any)/dashboard'] = "";
+}
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

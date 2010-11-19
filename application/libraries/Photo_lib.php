@@ -69,8 +69,8 @@ class Photo_lib {
         $main_size['source_image'] = $photoDirectory;
         $main_size['maintain_ratio'] = TRUE;
         $main_size['new_image'] = './img_stor/albums/' . $albumName . '/thumbs/' . $photoFileName;
-        $main_size['width'] = 700;
-        $main_size['height'] = 700;
+        $main_size['width'] = 640;
+        $main_size['height'] = 640;
         $this->ci->image_lib->initialize($main_size);
         if (!$this->ci->image_lib->resize()){
             log_message('error', 'Photo_mdl::buildMainThumb() - Error with Main Thumb Resize Method ' . $this->ci->image_lib->display_errors());

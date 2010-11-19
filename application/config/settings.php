@@ -21,4 +21,9 @@ $config['commentsTable']= "photoComments";
 $config['themeTable'] = "photoThemes";
 
 
+/* Application Settings */
+
+$config['enableMultiUser'] = FALSE;
+
+
 ?>

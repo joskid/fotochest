@@ -73,7 +73,7 @@ class Photos extends CI_Controller {
 
     public function page($pageNum){
                 // Load the photo data
-        if (!is_numeric($pageNum) || !isset($pageNum)){
+        if (!is_numeric($pageNum) || empty($pageNum)){
             show_404();
         }
 
@@ -93,7 +93,7 @@ class Photos extends CI_Controller {
 
     public function view($albumName,$photoID){
 
-        if (!is_numeric($photoID) || !isset($albumName) || !isset($photoID)){
+        if (!is_numeric($photoID) || empty($albumName) || empty($photoID) || !checkPhoto($photoID, $albumName)){
             show_404();
         } else {
         

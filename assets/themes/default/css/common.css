@@ -23,7 +23,7 @@ body
 {
     text-align:left;
     margin:0 auto;
-    width:960px; /* Used to be 1020px */
+    width:975px; /* Used to be 1020px */
     margin-top:20px;
     position:relative;
 }
@@ -88,24 +88,26 @@ p.pagination
 
 a.button
 {
-    height:32px;
-    display:block;
-	
-    border-radius:5px;
-	
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
+    height:17px;
+    display:inline-block;
+    border-radius:2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
     text-align:center;
     margin-top:10px;
     margin-bottom:10px;
-	cursor:pointer;
+    cursor:pointer;
+    color: #000;
+    background: -moz-linear-gradient(top, #fafafa, #f4f4f4);
+    border-color: #e2e2e2 #e8e8e8 #e4e4e4 #dddddd;
 }
 
 a.button span
 {
     margin-left:10px;
-    font-size:19pt;
-    display:block;  
+    
+    display:block;
+    color:#000;
 }
 
 a.button:hover

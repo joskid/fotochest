@@ -40,38 +40,37 @@
                         <?php
                         }
                         ?>
+                        <a class="prev" href="<?php echo site_url(); ?>photos/view/<?php echo $row->albumName; ?>/<?php echo $row->photoID + 1; ?>">
+                            <img src="<?php echo base_url(); ?>assets/images/Arrow-Left.png" width="24">
+                        </a>
+                        <a class="next" href="<?php echo site_url(); ?>photos/view/<?php echo $row->albumName; ?>/<?php echo $row->photoID - 1; ?>">
+                            <img src="<?php echo base_url(); ?>assets/images/Arrow-Right.png" width="24">
+                        </a>
                     </div>
                
-            <?php if (getSetting('enablePhotoInfo') == 'TRUE')
-                
-                {
-                ?>
+            
             <div class="photoInfo">
+                
+                
+                <h3>More from <?php echo $row->albumName; ?></h3>
                 <a class="<?php if(!checkPhoto($row->photoID + 1, $row->albumName)) { ?> disabled <?php } ?>" href="<?php echo site_url(); ?>photos/view/<?php echo $row->albumName; ?>/<?php echo $row->photoID + 1; ?>">
                     <img src="<?php echo base_url(); ?>img_stor/albums/<? echo $row->albumName; ?>/thumbs/<?php echo getPhotoFileName($row->photoID + 1); ?>" width="90" class="thumb">
                 </a>
                 <a class="<?php if(!checkPhoto($row->photoID - 1, $row->albumName)) { ?> disabled <?php } ?>" href="<?php echo site_url(); ?>photos/view/<?php echo $row->albumName; ?>/<?php echo $row->photoID - 1; ?>">
                     <img src="<?php echo base_url(); ?>img_stor/albums/<? echo $row->albumName; ?>/thumbs/<?php echo getPhotoFileName($row->photoID - 1); ?>" width="90" class="thumb">
                 </a>
+                <?php if (getSetting('enablePhotoInfo') == 'TRUE')
 
+                {
+                ?>
                 <h2>Photo Information</h2>
                 <dl>
-                    <dt>Album</dt>
-                    <dd><?php echo anchor('albums/view/' . $row->albumName, $row->albumFriendlyName); ?></dd>
-                    <dt>Make</dt>
-                    <dd><?php
                     
-                    
-                    //echo $photoEXIF['Make'];
-                    ?>
-                    </dd>
                     <dt>Model</dt>
                     <dd><?php
                     
                     //echo $photoEXIF['Model']; ?></dd>
-                    <dt>View</dt>
-                    <dd><a href="<?php echo base_url(); ?>img_stor/albums/<?php echo $row->albumName; ?>/originals/<?php echo $row->photoFileName; ?>" rel="facebox" class="viewOriginal">View Original</a>
-
+                    
                     </dl>
                     <?php
                     if(getSetting('enableOriginalDownload') == 'TRUE'){

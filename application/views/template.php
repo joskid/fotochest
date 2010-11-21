@@ -1,62 +1,38 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-   <title>Template</title>
-   <?= $_scripts ?>
-   <?= $_styles ?>
-   <style type="text/css">
-      body {
-      background-color: #fff;
-      margin:           40px;
-      font-family:      Lucida Grande, Verdana, Sans-serif;
-      font-size:        12px;
-      color:            #000;
-      }
-      
-      #content  {
-      border:           #999 1px solid;
-      background-color: #fff;
-      padding:       20px 20px 12px 20px;
-      }
-      
-      h1 {
-      font-weight:      normal;
-      font-size:        14px;
-      color:            #990000;
-      margin:        0 0 4px 0;
-      }
-      
-      a {
-         color: #069;
-         text-decoration: underline;
-      }
-      a:hover {
-         color: #900;
-      }
-      
-      p {
-         line-height: 1.55;
-      }
-   </style>
-</head>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <?php echo theme_css('styles'); ?>
+        <!--[if IE]>
+        <?php echo theme_css('ie'); ?>
+        <![endif]-->
+
+        <?php echo css("admin/modal"); ?>
+        <?php echo link_tag('assets/javascript/facebox/facebox.css'); ?>
+        <link href='http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light' rel='stylesheet' type='text/css'>
+        <link rel="shortcut icon" href="<?php echo base_url(); ?>favicon.ico" />
+        <?php echo getJquery(); ?>
+        <?php echo js("lightbox/js/jquery.lightbox-0.5"); ?>
+        <?php echo js("facebox/facebox"); ?>
+        <?php echo js("fotochest"); ?>
+
+        <title><?php echo $title; ?></title>
+
+    </head>
 <body>
-   
-   <div id="content">
-      <h1>Template Library</h1>
-      <p>The Template library, written for the <a href="http://www.codeigniter.com">CodeIgniter PHP
-         framework</a>, is a wrapper for CI's View 
-         implementation. Template is a reaction to the numerous questions from the CI community 
-         regarding how one would display multiple views for one controller, and how to embed "views 
-         within views" in a standardized fashion.</p>
-      <p>In addition, Template provides extra Views loading 
-         capabilities and shortcuts for including CSS, JavaScript, and other common elements in your 
-         final rendered HTML.</p>
-      <p><a href="http://www.williamsconcepts.com/ci/libraries/template/index.html">Read Template 
-         Library Documentation Online</a></p>
-      <?php print $content ?>
-   </div>
-   
-   
+    <div id="wrapper">
+        this is using the template library.
+    <?php if (isLoggedIn() == FALSE) {
+        echo anchor('admin/dashboard', 'Sign In', array('class'=>'signin'));
+    } else {
+        echo anchor('admin/dashboard', 'Administration', array('class'=>'signin'));
+    } ?>
+        
+            <?php echo $navigation; ?>
+
+       
+       <?php echo $content; ?>
+    
 </body>
 </html>

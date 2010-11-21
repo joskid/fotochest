@@ -58,13 +58,13 @@ $template['active_template'] = 'default';
 
 $template['default']['template'] = 'template';
 $template['default']['regions'] = array(
-   'header',
+   'title',
    'content',
-   'footer',
+   'navigation',
 );
 $template['default']['parser'] = 'parser';
 $template['default']['parser_method'] = 'parse';
-$template['default']['parse_template'] = FALSE;
+$template['default']['parse_template'] = TRUE;
 
 /* End of file template.php */
 /* Location: ./system/application/config/template.php */

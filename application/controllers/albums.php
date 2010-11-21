@@ -31,18 +31,17 @@ class Albums extends CI_Controller {
         $this->data['title'] = getSetting('siteName') . "'s Photos";
     }
 
-    public function test()
-    {
-        $this->load->view('admin/userLogin');
-    }
-
     public function index(){
     // View All Albums...
 
     $albumInfo = $this->Album_mdl->getAlbums(0);  // Set to 0 for Root Albums
    
     $this->data['albumInfo'] = $albumInfo;
-    $this->load->view(getFullThemePath() . 'albums', $this->data);
+    //$this->load->view(getFullThemePath() . 'albums', $this->data);
+    $this->template->write('title', 'This written by the template lib');
+    $this->template->write_file('navigation', 'albumNavigation', $this->data);
+    $this->template->write_file('content', 'albums', $this->data);
+    $this->template->render();
     }
 
     public function view($albumName, $photoStart = 0){
@@ -79,14 +78,23 @@ class Albums extends CI_Controller {
             $this->data['pages'] =  $this->pagination->create_links();
             $this->data['title'] = $this->data['albumFriendlyName'];
 
-            $this->load->view(getFullThemePath() . 'viewAlbum', $this->data);
+            //$this->load->view(getFullThemePath() . 'viewAlbum', $this->data);
+            $this->template->write('title', 'built by the template engine');
+            $this->template->write_file('navigation', 'singleAlbumNavigation', $this->data);
+            $this->template->write_file('content', 'viewAlbum', $this->data);
+            $this->template->render();
         } else {
             // Get Children??
 
             $this->data['albumName'] = $albumName;
             $this->data['albumInfo'] = $this->Album_mdl->getAlbums($albumID);
             
-            $this->load->view(getFullThemePath() . 'albums', $this->data);
+            //$this->load->view(getFullThemePath() . 'albums', $this->data);
+
+            $this->template->write('title', 'Built by the template lib');
+            $this->template->write_file('navigation', 'albumNavigation', $this->data);
+            $this->template->write_file('content', 'albums', $this->data);
+            $this->template->render();
 
         }
        }
@@ -116,7 +124,11 @@ class Albums extends CI_Controller {
 
         $this->data['pages'] =  $this->pagination->create_links();
 
-        $this->load->view(getFullThemePath() . 'viewAlbum', $this->data);
+        //$this->load->view(getFullThemePath() . 'viewAlbum', $this->data);
+        $this->template->write('title', 'Built by template engine');
+        $this->template->write_file('navigation', 'singleAlbumNavigation', $this->data);
+        $this->template->write_file('content', 'viewAlbum', $this->data);
+        $this->template->render();
         }
     }
 

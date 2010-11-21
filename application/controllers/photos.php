@@ -55,7 +55,12 @@ class Photos extends CI_Controller {
         $this->data['photoData'] = $this->Photo_mdl->getPublicPhotoStream();
         
         // Build the Theme
-        $this->load->view(getFullThemePath() . 'photoStream', $this->data);
+        //$this->load->view(getFullThemePath() . 'photoStream', $this->data);
+
+        $this->template->write('title', 'This page was built by the template engine');
+        $this->template->write_view('navigation', 'navigation', $this->data);
+        $this->template->write_view('content', 'stream', $this->data);
+        $this->template->render();
     }
 
     public function stream()
@@ -110,7 +115,14 @@ class Photos extends CI_Controller {
         $this->data['pages'] =  $this->pagination->create_links();
         $this->data['totalPhotos'] = $this->db->count_all($this->config->item('photoTable'));
         $this->data['photoData'] = $this->Photo_mdl->getPublicPhotoStream($pageNum);
-        $this->load->view(getFullThemePath() . 'photoStream', $this->data);
+
+
+        //$this->load->view(getFullThemePath() . 'photoStream', $this->data);
+
+        $this->template->write('title', 'Stream built by the template engine.');
+        $this->template->write_view('navigation', 'navigation', $this->data);
+        $this->template->write_view('content', 'stream', $this->data);
+        $this->template->render();
     }
 
     public function view($albumName,$photoID){
@@ -137,7 +149,9 @@ class Photos extends CI_Controller {
         //$this->load->view(getFullThemePath() . 'photo', $this->data);
 
         $this->template->write('title', getPhotoTitle($photoID));
-        
+        $this->template->write_view('navigation', 'photoNavigation', $this->data);
+        $this->template->write_view('content', 'singlePhoto', $this->data);
+        $this->template->render();
 
         }
     }

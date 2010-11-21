@@ -28,12 +28,17 @@ body
     position:relative;
 }
 
+#wrapper .loginControls
+{
+    position: absolute;
+    right:0;
+    top:7px;
+}
+
 #wrapper a.signin
 {
     text-decoration: none;
-    position:absolute;
-    right:0;
-    top:7px;
+    
 
 }
 

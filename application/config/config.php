@@ -360,15 +360,11 @@ function __autoload($class)
             include_once $file;
         }
 
-        else if(file_exists($file = APPPATH . 'libraries/'. $class . '.php'))
-        {
-            include_once $file;
-        }
+//        else if(file_exists($file = APPPATH . 'libraries/'. $class . '.php'))
+//        {
+//            include_once $file;
+//        }
 
-        else if(file_exists($file = APPPATH . 'models/'. $class . '.php'))
-        {
-            include_once $file;
-        }
     }
 }  
 

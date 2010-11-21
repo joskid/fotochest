@@ -22,13 +22,16 @@
     </head>
 <body>
     <div id="wrapper">
-        this is using the template library.
-    <?php if (isLoggedIn() == FALSE) {
-        echo anchor('admin/dashboard', 'Sign In', array('class'=>'signin'));
-    } else {
-        echo anchor('admin/dashboard', 'Administration', array('class'=>'signin'));
-    } ?>
         
+        <div class="loginControls">
+            <?php if (isLoggedIn() == FALSE) {
+                echo anchor('login', 'Sign In', array('class'=>'signin'));
+            } else {
+                echo anchor('admin', 'Administration', array('class'=>'signin'));
+                ?>
+             | <?php echo anchor('logout', 'Logout', array('class'=>'signin'));
+            } ?>
+        </div>
             <?php echo $navigation; ?>
 
        

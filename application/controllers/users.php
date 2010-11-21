@@ -67,7 +67,7 @@ class Users extends CI_Controller {
   public function loginError($errorType){
     $this->data['error'] = TRUE;
     if ($errorType == 1){
-      $this->data['errorMsg'] = "You have logged out.";
+      $this->data['errorMsg'] = "You have logged out. <a href='" . site_url() . "'>view your site.</a>";
     }
     if ($errorType == 2){
       $this->data['errorMsg'] = "Username/Password combination is incorrect.";

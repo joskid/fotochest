@@ -61,14 +61,8 @@ CREATE TABLE `photoSettings` (
 INSERT INTO `photoSettings` (`settingID`,`settingName`,`settingValue`)
 VALUES
 	(1,'siteName','Coolest photo album ever'),
-	(2,'siteTheme','0'),
-	(3,'absoluteFilePath','/home/content/d/s/t/dstegelman/html/code/snapit/'),
+	(3,'absoluteFilePath','/Applications/MAMP/htdocs/'),
 	(4,'enableOriginalDownload','TRUE'),
-	(5,'userTable','photoUsers'),
-	(6,'libraryTable','photoLibrary'),
-	(7,'albumTable','photoAlbums'),
-	(8,'commentTable','photoComments'),
-	(9,'versionNumber','0.1.2'),
 	(10,'enableComments','FALSE'),
 	(11,'enableSlideshow','TRUE'),
 	(12,'debugMode','FALSE'),
@@ -78,10 +72,9 @@ VALUES
 	(16,'enableFullViewPhoto','TRUE'),
 	(17,'enablePhotoFTPImport','FALSE'),
 	(18,'enableUserCreation','TRUE'),
-	(19,'planType','0'),
-        (20, 'useShadowbox', 'TRUE'),
-        (21, 'showPhotoTitle', 'TRUE');
-
+	(19,'planType','5'),
+	(20,'themeName','default'),
+	(21,'firstTimeLogin','TRUE');
 
 CREATE TABLE `photoUsers` (
   `userID` int(11) NOT NULL auto_increment,
@@ -94,7 +87,7 @@ CREATE TABLE `photoUsers` (
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE `dev_photoThemes` (
+CREATE TABLE `photoThemes` (
   `themeID` int(11) NOT NULL auto_increment,
   `themeName` varchar(255) default NULL,
   `themeAuthor` varchar(255) default NULL,

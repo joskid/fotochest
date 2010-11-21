@@ -9,7 +9,7 @@
         </p>
 
         <ul class="actions">
-            <li><a href="<?php echo site_url(); ?>admin/upload/<?php echo $row->albumID; ?>/<?php echo $photoID; ?>" class="button"><span>Choose</span></a></li>
+            <li><a href="<?php echo site_url(); ?>admin/upload/<?php echo $row->albumID; ?>" class="newButton"><span>Choose</span></a></li>
 
         </ul>
 

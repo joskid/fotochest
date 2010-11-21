@@ -11,7 +11,7 @@
          <!--[if IE]>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/ie.css">
         <![endif]-->
-        <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz|Arimo|Cuprum|Neucha' rel='stylesheet' type='text/css'>
         <?php echo getJquery(); ?>
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/javascript/uploadify/swfobject.js"></script>
         <?php echo js('lightbox/js/jquery.lightbox-0.5'); ?>

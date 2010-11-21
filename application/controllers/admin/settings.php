@@ -68,5 +68,11 @@ class Settings extends MY_Controller {
             redirect('admin/settings');
         }
     }
+
+    public function changeSetting($settingName, $settingValue)
+    {
+        setSetting($settingName, $settingValue);
+        redirect('admin');
+    }
 }
 ?>

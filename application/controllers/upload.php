@@ -74,6 +74,7 @@ class Upload extends CI_Controller {
     public function basicUploader($albumID)
     {
         $albumName = getAlbumName($albumID);
+        $this->data['albumID'] = $albumID;
         $config['upload_path'] = './img_stor/albums/' . $albumName . '/originals/';
         $config['allowed_types'] = '*';
         $this->load->helper('string');
@@ -83,7 +84,7 @@ class Upload extends CI_Controller {
         $this->load->library('upload', $config);
         if(!$this->upload->do_upload())
         {
-            $this->load->view('admin/photoUpload');
+            $this->load->view('admin/basicUploader', $this->data);
         }
         else
         {

@@ -37,9 +37,9 @@
             <p>You have exceeded your photo limit for this account. Your limit is <?php echo getPhotoLimit(); ?>.  <a href="#">Upgrade Today!</a></p>
         </div>
         <?php } ?>
-        <?php if (isFirstLogin()) { ?>
+        <?php if (getSetting('firstTimeLogin') == 'TRUE') { ?>
         <div class="notification info">
-            <p>Guten Tag!  Welcome to FotoChest.  Begin by uploading your photos!</p><a href="/">Thanks, close me</a>
+            <p>Guten Tag!  Welcome to FotoChest.  Begin by creating an album and then uploading some photos! <?php echo anchor('admin/settings/changeSetting/firstTimeLogin/FALSE', 'Thanks, close me'); ?></p>
         </div>
         <?php } ?>
         

@@ -185,6 +185,13 @@ class Photos extends MY_Controller {
         }
         
     }
+
+    public function addNoAlbum()
+    {
+        $this->data['albums'] = $this->Album_mdl->getAlbumAdminInfo(0);
+        $this->load->view('admin/modals/chooseAlbum', $this->data);
+    }
+
 }
 
 ?>

@@ -9,7 +9,10 @@ body
     font-size:11pt;
     text-align:center;
     background: #cccccc;
-    font-family:'Yanone Kaffeesatz', Arial;
+    /*font-family:'Yanone Kaffeesatz', Arial;*/
+    /*font-family: Arimo, Arial;*/
+/*    font-family: Cuprum;*/
+    font-family: Neucha;
 }
 
 .content #load

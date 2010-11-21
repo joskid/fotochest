@@ -196,4 +196,8 @@ a.button.auto
 	border:1px solid #50b0fc;
 }
 
+.notification.info p a
+{
+    color: #42bb42;
+}
 /* <!-- End Notification Styles --> */

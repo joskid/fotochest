@@ -11,7 +11,7 @@ $this->load->view('admin/navigation', $data);
 
 <div id="content" class="upload">
     <h2>Add Photos to <?php echo getAlbumFriendlyName($albumID); ?></h2>
-    <h2>Having problems?  Try our <?php echo anchor('upload/basicUploader', 'basic uploader'); ?></h2>
+    <h3>Having problems?  Try our <?php echo anchor('upload/basicUploader/' . $albumID, 'basic uploader'); ?></h3>
 	<form id="form1" action="/upload/multiUpload" method="post" enctype="multipart/form-data">
            
 		

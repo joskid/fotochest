@@ -12,7 +12,7 @@
               } ?>
                <div class="photo left album">
                <?php } ?>
-               <a href="<?php echo site_url(); ?>albums/view/<?php echo $row->albumName; ?>">
+               <a href="<?php echo site_url(); ?>album/<?php echo $row->albumName; ?>">
                    <h2><?php echo $row->albumFriendlyName; ?></h2>
                    <?php echo getAlbumThumbs($row->albumID, 3); ?>
                </a>

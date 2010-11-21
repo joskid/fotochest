@@ -25,7 +25,7 @@
            ?>
 
                <h2><?php echo $row->photoTitle; ?></h2>
-               <a href="<?php echo base_url(); ?>photos/view/<?php echo $albumName; ?>/<?php echo $row->photoID; ?>"><img src="<?php echo base_url(); ?>img_stor/albums/<?php echo $albumName; ?>/thumbs/<?php echo $row->photoFileName; ?>" class="thumb"></a>
+               <a href="<?php echo base_url(); ?>photo/<?php echo $albumName; ?>/<?php echo $row->photoID; ?>"><img src="<?php echo base_url(); ?>img_stor/albums/<?php echo $albumName; ?>/thumbs/<?php echo $row->photoFileName; ?>" class="thumb"></a>
            </div>
 <?php
        }

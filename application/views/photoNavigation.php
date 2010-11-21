@@ -2,7 +2,7 @@
                 foreach($photoInfo->result() as $row){
                   ?>
 <div class="nav">
-                    <a href="<?php echo base_url(); ?>albums/view/<?php echo $albumNameURL; ?>"><?php echo getAlbumThumb($row->albumID); ?><h1><?php echo $row->albumFriendlyName; ?></h1></a>
+                    <a href="<?php echo base_url(); ?>album/<?php echo $albumNameURL; ?>"><?php echo getAlbumThumb($row->albumID); ?><h1><?php echo $row->albumFriendlyName; ?></h1></a>
                       <ol>
                 <li><?php echo anchor('photos', 'Home'); ?></li>
                 <li><?php echo anchor('albums', 'Albums'); ?></li>

@@ -133,9 +133,9 @@ class Photos extends CI_Controller {
 
         }
     }
-
-
-  
-
+    public function throw404()
+    {
+        show_404();
+    }
 }
 ?>

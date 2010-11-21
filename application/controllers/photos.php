@@ -37,7 +37,7 @@ class Photos extends CI_Controller {
         parent::__construct();
         $this->load->model('Photo_mdl');
         $this->load->model('Album_mdl');
-        $this->data['title'] = getSetting('siteName') . "'s Photos";     
+        //$this->data['title'] = getSetting('siteName') . "'s Photos";
     }
 
     public function index(){
@@ -60,28 +60,6 @@ class Photos extends CI_Controller {
         $this->template->write('title', 'This page was built by the template engine');
         $this->template->write_view('navigation', 'navigation', $this->data);
         $this->template->write_view('content', 'stream', $this->data);
-        $this->template->render();
-    }
-
-    public function stream()
-    {
-        // For each loop
-        $this->load->library('pagination');
-
-        $config['base_url'] = base_url() . 'photos/page/';
-        $config['total_rows'] = $this->db->count_all($this->config->item('photoTable'));
-        $config['per_page'] = '21';
-        $this->pagination->initialize($config);
-
-        $this->data['pages'] =  $this->pagination->create_links();
-        $this->data['totalPhotos'] = $this->db->count_all($this->config->item('photoTable'));
-        $this->data['photoData'] = $this->Photo_mdl->getPublicPhotoStream();
-
-        // Build the Theme
-        //$this->load->view(getFullThemePath() . 'photoStream', $this->data);
-        $this->template->write('title', 'This page is built by the template engine');
-        $this->template->write_view('content', 'stream', $this->data);
-        $this->template->write_view('navigation', 'navigation', $this->data);
         $this->template->render();
     }
 

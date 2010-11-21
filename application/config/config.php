@@ -351,13 +351,26 @@ $config['proxy_ips'] = '';
 | for base controllers and some third-party libraries.
 |
 */
-//function __autoload($class)
-//{
-// if(strpos($class, 'CI_') !== 0)
-// {
-//  @include_once( APPPATH . 'core/'. $class . EXT );
-// }
-//}
+function __autoload($class)
+{
+    if(strpos($class, 'CI_') !== 0)
+    {
+        if(file_exists($file = APPPATH . 'core/'. $class . '.php'))
+        {
+            include_once $file;
+        }
+
+        else if(file_exists($file = APPPATH . 'libraries/'. $class . '.php'))
+        {
+            include_once $file;
+        }
+
+        else if(file_exists($file = APPPATH . 'models/'. $class . '.php'))
+        {
+            include_once $file;
+        }
+    }
+}  
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */

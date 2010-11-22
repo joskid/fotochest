@@ -80,16 +80,18 @@ class Albums extends MY_Controller {
     }
 
 
-    public function index(){
+    public function albumsView($pageNum = 0){
+
+        //@todo pagination should point back here?
 
         // Load the Library
         $this->load->library('album_lib');
 
 
-        $this->data['albums'] = $this->Album_mdl->getAlbumAdminInfo(0);
+        $this->data['albums'] = $this->Album_mdl->getAlbumAdminInfo($pageNum);
 	$this->load->library('pagination');
 
-        $config['base_url'] = base_url() . 'admin/albumsPage/';
+        $config['base_url'] = base_url() . 'admin/albums/';
         $config['total_rows'] = $this->album_lib->getTotalAlbumCount();
         $config['per_page'] = '5';
 
@@ -106,20 +108,20 @@ class Albums extends MY_Controller {
     // Refactor so that we don't need two methods for the intial page and then pages after that...
 
 
-    public function albumsPage($pageNum = 0){
-
-        $this->data['albums'] = $this->Album_mdl->getAlbumAdminInfo($pageNum);
-        $this->load->library('pagination');
-
-        $config['base_url'] = base_url() . 'admin/albumsPage/';
-        $config['total_rows'] = getAlbumCount();
-        $config['per_page'] = '5';
-
-        $this->pagination->initialize($config);
-
-        $this->data['pages'] =  $this->pagination->create_links();
-	$this->load->view('admin/viewAlbums', $this->data);
-	}
+//    public function albumsPage($pageNum = 0){
+//
+//        $this->data['albums'] = $this->Album_mdl->getAlbumAdminInfo($pageNum);
+//        $this->load->library('pagination');
+//
+//        $config['base_url'] = base_url() . 'admin/albumsPage/';
+//        $config['total_rows'] = getAlbumCount();
+//        $config['per_page'] = '5';
+//
+//        $this->pagination->initialize($config);
+//
+//        $this->data['pages'] =  $this->pagination->create_links();
+//	$this->load->view('admin/viewAlbums', $this->data);
+//	}
 
     public function viewAlbum($albumName){
         $albumID = getAlbumID($albumName);

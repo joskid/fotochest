@@ -41,6 +41,7 @@ $route['logout'] = "users/logout";
 $route['forgotpassword'] = "users/forgotPassword";
 $route['photo/(:any)/(:any)'] = "photos/view/$1/$2";
 $route['admin/dashboard'] = "admin/photos";
+$route['admin/albums'] = "admin/albums/albumsView";
 $route['admin/album/(:any)'] = "admin/albums/viewAlbum/$1";
 $route['admin/upload/(:any)'] = "admin/photos/photoUpload/$1";
 $route['admin/addPhotos'] = "admin/photos/addNoAlbum";

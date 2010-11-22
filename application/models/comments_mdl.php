@@ -39,8 +39,8 @@ class Comments_mdl extends CI_Model{
       
   }
 
-  
-  public function addComment(){
+
+  public function create(){
     $this->commentDate = date('y/m/d');
     $commentData = array('commentContent'=>$this->commentContent, 'commentDate'=>$this->commentDate,
                          'commentPhotoID'=>$this->commentPhotoID);
@@ -48,10 +48,10 @@ class Comments_mdl extends CI_Model{
     $this->db->query($buildQuery);
   }
   
-  public function getComments($photoID){
-    $getCommentsSQL = "SELECT * FROM $this->commentTable WHERE commentPhotoID = $photoID";
-    $exe = $this->db->query($getCommentsSQL);
-    return $exe;
+  public function readByPhotoID($photoID)
+  {
+    $comments = $this->db->get_where($this->commentTable, array('commentPhotoID'=>$photoID));
+    return $comments;
   }
 }
 

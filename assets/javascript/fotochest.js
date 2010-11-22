@@ -241,5 +241,10 @@ jQuery(document).ready(function($) {
          return false;
 
       });
+
+      $('a.chooseAlbum').click(function(){
+         var albumID = $('select#albumID').val();
+         document.location.href="/admin/upload/" + albumID;
+      });
       
     })

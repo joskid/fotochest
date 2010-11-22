@@ -1,5 +1,10 @@
 #FotoChest
 
+THIS IS THE DEV BRANCH PLEASE GRAB THE MASTER (STABLE) BRANCH TO USE IN PRODUCTION ENVIRONMENTS.
+
+There are a few minor issues in the master (stable) release.  Once dev becomes stable we will migrate over to master to fix those outstanding
+issues.
+
 ##Development Team
 
 * Derek Stegelman - Lead Developer ([http://stegelman.com](http://stegelman.com))
@@ -25,4 +30,3 @@ but as with all software there are still issues.  Paid hosting plans are availab
 * Updates to the Admin Controller to seperate Admin Content.
 * Rewrite the admin controller.
 * Add Comments
-* Multi Lingual

@@ -22,7 +22,7 @@
 * @author		Derek Stegelman
 */
 
-class Photos extends MY_Controller {
+class Photos extends Admin_Controller {
 
     public function  __construct()
     {

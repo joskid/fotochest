@@ -22,8 +22,8 @@
 * @author		Derek Stegelman
 */
 
-class Download extends CI_Controller {
-    //put your code here
+class Download extends Public_Controller {
+    
 
     public function __construct()
     {

@@ -31,7 +31,7 @@
 *
 *
 */
-class Photos extends CI_Controller {
+class Photos extends Public_Controller {
 
     public function __construct() {
         parent::__construct();

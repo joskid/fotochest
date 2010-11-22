@@ -27,13 +27,7 @@ class MY_Controller extends CI_Controller {
 
     public function  __construct() {
         parent::__construct();
-        if(isLoggedIn() == TRUE){
-            $this->load->model('Photo_mdl');
-            $this->load->model('Album_mdl');
-
-        } else {
-            redirect('users/login');
-        }
+        
     }
 }
 ?>

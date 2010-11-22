@@ -22,7 +22,7 @@
 */
 
 
-class Albums extends CI_Controller {
+class Albums extends Public_Controller {
 
     public function __construct(){
         parent::__construct();

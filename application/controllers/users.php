@@ -21,7 +21,7 @@
 * @author		Derek Stegelman
 */
 
-class Users extends CI_Controller {
+class Users extends Public_Controller {
 
     public function __construct()
     {

@@ -23,7 +23,7 @@
 */
 
 
-class Users extends MY_Controller {
+class Users extends Admin_Controller {
 
     public function __construct()
     {

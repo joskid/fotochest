@@ -32,7 +32,7 @@
 | would be loaded.
 */
 
-// Update references to point the the new routes.
+
 
 $route['default_controller'] = "photos";
 $route['admin'] = "admin/photos";
@@ -42,7 +42,6 @@ $route['forgotpassword'] = "users/forgotPassword";
 $route['photo/(:any)/(:any)'] = "photos/view/$1/$2";
 $route['admin/dashboard'] = "admin/photosView";
 $route['admin/albums'] = "admin/albums/albumsView";
-// Numbers only..
 $route['admin/albums/(:num)'] = "admin/albums/albumsView/$1";
 $route['admin/photos'] = "admin/photos/photosView";
 $route['admin/photos/(:num)'] = "admin/photos/photosView/$1";

@@ -21,7 +21,7 @@
 * @author		Derek Stegelman
 */
 
-class Themes extends MY_Controller {
+class Themes extends Admin_Controller {
     
     public function __construct() {
         parent::__construct();

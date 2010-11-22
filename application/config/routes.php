@@ -44,8 +44,8 @@ $route['admin/dashboard'] = "admin/photosView";
 $route['admin/albums'] = "admin/albums/albumsView";
 // Numbers only..
 $route['admin/albums/(:num)'] = "admin/albums/albumsView/$1";
-$route['admin/photos'] = "admin/photosView";
-$route['admin/photos/(:num)'] = "admn/photosView/$1";
+$route['admin/photos'] = "admin/photos/photosView";
+$route['admin/photos/(:num)'] = "admin/photos/photosView/$1";
 $route['admin/album/(:any)'] = "admin/albums/viewAlbum/$1";
 $route['admin/upload/(:any)'] = "admin/photos/photoUpload/$1";
 $route['admin/addPhotos'] = "admin/photos/addNoAlbum";

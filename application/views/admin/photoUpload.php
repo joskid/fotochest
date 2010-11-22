@@ -26,7 +26,7 @@ $this->load->view('admin/navigation', $data);
 			</div>
 
 	</form>
-    <p>Done uploading?  <?php echo anchor('admin/viewAlbum/' . getAlbumName($albumID), 'Edit or view your pictures now.') ?></p>
+    <p>Done uploading?  <?php echo anchor('admin/album/' . getAlbumName($albumID), 'Edit or view your pictures now.') ?></p>
 </div>
 </div>
  <?php $data['showAlbum'] = FALSE; ?>

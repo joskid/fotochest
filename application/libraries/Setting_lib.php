@@ -25,11 +25,12 @@
 class Setting_lib {
 
 
-    var $settingID;
-    var $settingName;
-    var $settingValue;
-    var $settingTable;
+    public $settingID;
+    public $settingName;
+    public $settingValue;
+    public $settingTable;
 
+    // CI master object
     private $ci;
 
     public function __construct(){

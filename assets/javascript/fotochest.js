@@ -241,11 +241,5 @@ jQuery(document).ready(function($) {
          return false;
 
       });
-
-      $('a.albumChooser').click(function(){
-
-          $('#chooseAlbumModal').load('/admin/photos/addNoAlbum/5');
-         
-      });
       
     })

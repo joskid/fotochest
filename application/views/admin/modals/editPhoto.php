@@ -32,7 +32,7 @@
     <input type="hidden" name="photoID" id="photoID" value="<?php echo $photoID; ?>">
     <input type="hidden" name="isFront" id="isFront" value="<?php echo $isFront; ?>">
     <input type="hidden" name="albumName" id="albumName" value="<?php echo $albumName; ?>">
-    <a class="button nextAction savePhotoBtn"><span>Save</span></a>
+    <a class="newButton nextAction savePhotoBtn auto"><span>Save</span></a>
     </div>
 				
 </div>

@@ -18,7 +18,7 @@
         <label>Last Name:</label>
         <input type="text" name="userLastName" id="userLastName" size="50">
       </div>
-      <a class="newButton reg">
+      <a class="newButton auto reg">
         <span>
           Register
         </span>

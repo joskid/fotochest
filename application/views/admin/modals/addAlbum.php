@@ -24,7 +24,7 @@
             
       </div>
     
-      <a class="newButton addAlbumBtn small" style="clear:left;">
+      <a class="newButton addAlbumBtn small auto clear">
         <span>
           Add Album
         </span>

@@ -20,7 +20,7 @@
         <input type="text" name="userLastName" id="userLastName" size="50" value="<?php echo $row->userLastName; ?>">
         <input type="hidden" name="userUserID" id="userUserID" value="<?php echo $row->userID; ?>">
       </div>
-      <a class="button saveUser">
+      <a class="newButton auto saveUser">
         <span>
           Save User
         </span>

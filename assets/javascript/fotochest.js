@@ -243,7 +243,23 @@ jQuery(document).ready(function($) {
       });
 
       $('a.albumChooser').click(function(){
+        
+        $('#chooseAlbumModal').html("<div id='load'></div>");
+        $('#load').html("<img src='/assets/images/admin/ajax-loader.gif'>");
+        $('#load').append("<h3>Processing...</h3>");
 
+        $.ajax({
+          type: "POST",
+          url: "/admin/albums/createAlbum",
+          data: dataString,
+          success: function(){
+            $('#addAlbum').html("<div id='message'></div>");
+            $('#message').html("<div class='notification success'><p>Album Added</p></div>")
+            .hide()
+            document.location.href="/admin/albums";
+          }
+        });
+        return false;
           
       })
       

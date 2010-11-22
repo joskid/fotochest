@@ -45,7 +45,7 @@ $this->load->view('admin/navigation', $data);
             <?php echo $pages; ?>
         </div>
     </div>
-    <?php $data['showAlbum'] = FALSE; ?>
+    <?php $data['showAlbum'] = TRUE; ?>
     <?php $data['showUserButton'] = FALSE; ?>
     <?php $this->load->view('admin/sidebar', $data); ?>
     <?php $this->load->view('admin/footer'); ?>

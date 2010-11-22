@@ -13,13 +13,20 @@
     display:block;
     color:#7A7A7A;
     font-weight:bold;
-    width: 100px;
+    width: 135px;
     float: left;
+    margin-top: 5px;
 }
 
 .form .formItem.check label
 {
     display:inline-block;
+}
+
+.form .formItem div
+{
+    float:left;
+    width: 82%;
 }
 
 .form .formItem input[type='text'],

@@ -11,31 +11,44 @@ $this->load->view('admin/navigation', $data);
         <?php echo validation_errors(); ?>
         <div class="formItem">
             <label for="siteName">Site Name:</label>
-            <input type="text" id="siteName" name="siteName" value="<?php echo getSetting('siteName'); ?>">
+            <div>
+                <input type="text" id="siteName" name="siteName" value="<?php echo getSetting('siteName'); ?>">
+            </div>
         </div>
         <div class="formItem">
             <label for="showPhotoTitle">Show Photo Title</label>
-            <input type="checkbox" name="showPhotoTitle" id="showPhotoTitle" <?php echo isChecked(getSetting('showPhotoTitle')); ?>>
+            <div>
+                <input type="checkbox" name="showPhotoTitle" id="showPhotoTitle" <?php echo isChecked(getSetting('showPhotoTitle')); ?>>
+            </div>
         </div>
         <div class="formItem">
             <label for="enableSlideshow">Enable Slideshow:</label>
-            <input type="checkbox" name="enableSlideshow" id="enableSlideshow" <?php echo isChecked(getSetting('enableSlideshow')); ?>>
+            <div>
+                <input type="checkbox" name="enableSlideshow" id="enableSlideshow" <?php echo isChecked(getSetting('enableSlideshow')); ?>>
+            </div>
         </div>
         <div class="formItem">
             <label for="displayEXIF">Display EXIF Data</label>
-            <input type="checkbox" name="displayEXIF" id="displayEXIF">
+            <div>
+                <input type="checkbox" name="displayEXIF" id="displayEXIF">
+            </div>
         </div>
         <div class="formItem">
             <label for="fileDownloads">Allow File Downloads</label>
+            <div>
+                <input type="checkbox">
+            </div>
         </div>
         
         <div class="formItem">
             <label for="enableComments">Enable Comments</label>
-            <input type="checkbox" name="enableComments" id="enableComments" <?php echo isChecked(getSetting('enableComments')); ?>>
+            <div>
+                <input type="checkbox" name="enableComments" id="enableComments" <?php echo isChecked(getSetting('enableComments')); ?>>
+            </div>
         </div>
         
         <input type="submit" value="Save Changes" class="button">
-        <a class="newButton" href="/"><span>Save Settings</span></a>
+        
     </div>
     
 </div>

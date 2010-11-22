@@ -75,6 +75,7 @@ input.button
 input.button
 {
     float:none;
+    clear: both;
 }
 
 .login input.loginBtn:hover
@@ -110,6 +111,7 @@ body #mainWrapper
     display:block;
     background: url("../../images/admin/FotoChestLogoSmall.png") no-repeat left;
     padding-left:48px;
+    height: 42px;
 }
 
 

@@ -22,7 +22,7 @@
 */
 
 
-function getAlbumDropdownList(){
+function getAlbumDropdownList($showParent = TRUE){
         $ci =& get_instance();
         $ci->load->model('Album_mdl');
         $albums = $ci->Album_mdl->read();
@@ -30,15 +30,14 @@ function getAlbumDropdownList(){
         foreach($albums->result() as $row){
             $options[$row->albumID] = $row->albumName;
         }
-        $options[0] = 'No Parent';
+        if ($showParent == TRUE)
+        {
+            $options[0] = 'No Parent';
+        }
         $id = 'id="albumID"';
         return form_dropdown('albumID', $options, '', $id);
 
     }
-
-function getAlbumDropdownListNoParent(){
-    
-}
 
 function getPreviousURL($photoID, $albumName)
 {

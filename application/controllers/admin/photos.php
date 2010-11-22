@@ -50,23 +50,23 @@ class Photos extends MY_Controller {
         log_message('debug','Photo update complete');
     }
 
-    public function index(){
-
-        $this->data['photos'] = $this->Photo_mdl->getAdminPhotoStream(0);
-
-        // Pagination
-
-        $this->load->library('pagination');
-        $config['base_url'] = base_url() . 'admin/photos/';
-        $config['total_rows'] = $this->db->count_all($this->config->item('photoTable'));
-        $config['per_page'] = '5';
-        $this->pagination->initialize($config);
-        $this->data['pages'] =  $this->pagination->create_links();
-
-        //Load the view.
-
-        $this->load->view('admin/dashboard', $this->data);
-    }
+//    public function index(){
+//
+//        $this->data['photos'] = $this->Photo_mdl->getAdminPhotoStream(0);
+//
+//        // Pagination
+//
+//        $this->load->library('pagination');
+//        $config['base_url'] = base_url() . 'admin/photos/';
+//        $config['total_rows'] = $this->db->count_all($this->config->item('photoTable'));
+//        $config['per_page'] = '5';
+//        $this->pagination->initialize($config);
+//        $this->data['pages'] =  $this->pagination->create_links();
+//
+//        //Load the view.
+//
+//        $this->load->view('admin/dashboard', $this->data);
+//    }
 
     function do_photoDelete(){
 
@@ -76,7 +76,7 @@ class Photos extends MY_Controller {
       $this->Photo_mdl->deletePhoto();
     }
 
-    public function photos($pageNum){
+    public function photosView($pageNum = 0){
 
         $this->data['photos'] = $this->Photo_mdl->getAdminPhotoStream($pageNum);
 

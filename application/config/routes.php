@@ -40,8 +40,12 @@ $route['login'] = "users/login";
 $route['logout'] = "users/logout";
 $route['forgotpassword'] = "users/forgotPassword";
 $route['photo/(:any)/(:any)'] = "photos/view/$1/$2";
-$route['admin/dashboard'] = "admin/photos";
+$route['admin/dashboard'] = "admin/photosView";
 $route['admin/albums'] = "admin/albums/albumsView";
+// Numbers only..
+$route['admin/albums/(:num)'] = "admin/albums/albumsView/$1";
+$route['admin/photos'] = "admin/photosView";
+$route['admin/photos/(:num)'] = "admn/photosView/$1";
 $route['admin/album/(:any)'] = "admin/albums/viewAlbum/$1";
 $route['admin/upload/(:any)'] = "admin/photos/photoUpload/$1";
 $route['admin/addPhotos'] = "admin/photos/addNoAlbum";

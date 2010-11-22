@@ -189,6 +189,16 @@ class Photos extends MY_Controller {
     public function addNoAlbum()
     {
         $this->data['albums'] = $this->Album_mdl->getAlbumAdminInfo(0);
+        $this->load->library('pagination');
+        $this->load->library('album_lib');
+
+        $config['base_url'] = base_url() . 'admin/photos/addNoAlbum';
+        $config['total_rows'] = $this->album_lib->getTotalAlbumCount();
+        $config['per_page'] = '5';
+
+        $this->pagination->initialize($config);
+
+        $this->data['pages'] =  $this->pagination->create_links();
         $this->load->view('admin/modals/chooseAlbum', $this->data);
     }
 

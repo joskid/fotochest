@@ -1,4 +1,5 @@
-<div class="modal">
+<?php echo js('fotochest'); ?>
+<div class="modal" id="chooseAlbumModal">
     <h1>Choose an Album to upload to</h1>
     <?php foreach($albums->result() as $row){ ?>
      <div class="album">
@@ -9,12 +10,14 @@
         </p>
 
         <ul class="actions">
-            <li><a href="<?php echo site_url(); ?>admin/upload/<?php echo $row->albumID; ?>" class="newButton"><span>Choose</span></a></li>
+            <li><a href="<?php echo site_url(); ?>admin/upload/<?php echo $row->albumID; ?>" class="newButton albumChooser"><span>Choose</span></a></li>
 
         </ul>
 
     </div>
     <?php } ?>
-
+    <div class="pagination">
+        <?php echo $pages; ?>
+    </div>
 
 </div>

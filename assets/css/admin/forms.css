@@ -18,6 +18,13 @@
     margin-top: 5px;
 }
 
+.form .formItem label span
+{
+    font-size: 8pt;
+    font-weight:normal;
+    display:block;
+}
+
 .form .formItem.check label
 {
     display:inline-block;

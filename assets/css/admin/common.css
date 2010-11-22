@@ -136,6 +136,8 @@ a.button.auto
 a.newButton.auto
 {
     width: auto;
+    display: inline-block;
+    padding-right: 15px;
 }
 
 /* <!-- End Butons --> */

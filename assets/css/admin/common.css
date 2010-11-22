@@ -133,6 +133,10 @@ a.button.auto
     width:auto;
 }
 
+a.newButton.auto
+{
+    width: auto;
+}
 
 /* <!-- End Butons --> */
 

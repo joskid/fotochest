@@ -44,7 +44,6 @@ class Theme_lib {
         
     }
     
-
     public function getThemes()
     {
 

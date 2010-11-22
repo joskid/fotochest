@@ -21,6 +21,7 @@
 * @author		Derek Stegelman
 */
 
+
 function getTheme()
 {
     $CI =& get_instance();

@@ -37,7 +37,8 @@ class Photos extends Public_Controller {
         parent::__construct();
         $this->load->model('Photo_mdl');
         $this->load->model('Album_mdl');
-        //$this->data['title'] = getSetting('siteName') . "'s Photos";
+        
+        $this->template->write('title', getSetting('siteName') . "'s Photos");
     }
 
     public function index(){
@@ -57,7 +58,7 @@ class Photos extends Public_Controller {
         // Build the Theme
         //$this->load->view(getFullThemePath() . 'photoStream', $this->data);
 
-        $this->template->write('title', 'This page was built by the template engine');
+        
         $this->template->write_view('navigation', 'navigation', $this->data);
         $this->template->write_view('content', 'stream', $this->data);
         $this->template->render();
@@ -97,7 +98,6 @@ class Photos extends Public_Controller {
 
         //$this->load->view(getFullThemePath() . 'photoStream', $this->data);
 
-        $this->template->write('title', 'Stream built by the template engine.');
         $this->template->write_view('navigation', 'navigation', $this->data);
         $this->template->write_view('content', 'stream', $this->data);
         $this->template->render();

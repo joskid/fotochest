@@ -28,7 +28,7 @@ class Albums extends Public_Controller {
         parent::__construct();
         $this->load->model('Album_mdl');
         $this->load->model('Photo_mdl');
-        //$this->data['title'] = getSetting('siteName') . "'s Photos";
+        $this->template->write('title', getSetting('siteName') . "'s Photos");
     }
 
     public function index(){
@@ -38,7 +38,7 @@ class Albums extends Public_Controller {
    
     $this->data['albumInfo'] = $albumInfo;
     //$this->load->view(getFullThemePath() . 'albums', $this->data);
-    $this->template->write('title', 'This written by the template lib');
+    
     $this->template->write_view('navigation', 'albumNavigation', $this->data);
     $this->template->write_view('content', 'albums', $this->data);
     $this->template->render();
@@ -79,7 +79,7 @@ class Albums extends Public_Controller {
             $this->data['title'] = $this->data['albumFriendlyName'];
 
             //$this->load->view(getFullThemePath() . 'viewAlbum', $this->data);
-            $this->template->write('title', 'built by the template engine');
+            
             $this->template->write_view('navigation', 'singleAlbumNavigation', $this->data);
             $this->template->write_view('content', 'viewAlbum', $this->data);
             $this->template->render();
@@ -91,7 +91,7 @@ class Albums extends Public_Controller {
             
             //$this->load->view(getFullThemePath() . 'albums', $this->data);
 
-            $this->template->write('title', 'Built by the template lib');
+            
             $this->template->write_view('navigation', 'albumNavigation', $this->data);
             $this->template->write_view('content', 'albums', $this->data);
             $this->template->render();
@@ -125,7 +125,7 @@ class Albums extends Public_Controller {
         $this->data['pages'] =  $this->pagination->create_links();
 
         //$this->load->view(getFullThemePath() . 'viewAlbum', $this->data);
-        $this->template->write('title', 'Built by template engine');
+        
         $this->template->write_view('navigation', 'singleAlbumNavigation', $this->data);
         $this->template->write_view('content', 'viewAlbum', $this->data);
         $this->template->render();

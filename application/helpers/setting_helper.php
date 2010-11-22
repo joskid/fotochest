@@ -64,7 +64,6 @@ function isOverPhotoLimit(){
                 break;
             }
     }
-    
 }
 
 function getPhotoLimit(){

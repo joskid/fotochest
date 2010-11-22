@@ -1,5 +1,6 @@
 <body>
     <div id="mainWrapper">
+        <a class="help" href="<?php echo site_url(); ?>help" target="_blank">Help</a>
         <a class="logo" href="<?php echo base_url(); ?>admin/dashboard">foto<span>chest</span></a>
         <div class="nav">
             <ul>

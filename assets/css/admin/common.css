@@ -207,3 +207,12 @@ a.newButton.auto
     color: #42bb42;
 }
 /* <!-- End Notification Styles --> */
+/* Help Links */
+
+a.help
+{
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #2098E4;
+}

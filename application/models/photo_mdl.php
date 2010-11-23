@@ -93,9 +93,13 @@ class Photo_mdl extends CI_Model {
     }
 
 
-    public function update($photoID, $updateData)
+    public function update($photoID)
     {
-        
+        $updateData = array(
+            'photoTitle'=>$this->photoTitle,
+            'photoDesc'=>$this->photoDesc,
+            'isProfilePic'=>$this->isProfilePicture);
+
         $this->db->where('photoID', $photoID);
         $this->db->update($this->photoTable, $updateData);
     }

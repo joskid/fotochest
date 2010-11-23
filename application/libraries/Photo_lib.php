@@ -75,7 +75,6 @@ class Photo_lib {
 
         // Load the library
         $this->ci->load->library('image_lib');
-
         $main_size['image_library'] = 'gd2';
         $main_size['source_image'] = $photoDirectory;
         $main_size['maintain_ratio'] = TRUE;

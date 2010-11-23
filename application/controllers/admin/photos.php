@@ -34,8 +34,8 @@ class Photos extends Admin_Controller {
 
         log_message('debug','Save Photo Method hit');
 
-        $this->Photo_mdl->photoID = $this->input->post('photoID');
-        $this->Photo_mdl->photoAlbumID = $this->input->post('albumID');
+        //$this->Photo_mdl->photoID = $this->input->post('photoID');
+        //$this->Photo_mdl->photoAlbumID = $this->input->post('albumID');
         $this->Photo_mdl->photoTitle = $this->input->post('photoTitle');
         $this->Photo_mdl->photoDesc = $this->input->post('photoDesc');
         if ($this->input->post('makeProfile') == 'on'){
@@ -46,7 +46,7 @@ class Photos extends Admin_Controller {
         $this->Photo_mdl->isProfilePicture = $makeProfilePicture;
         log_message('info', 'admin::savePhoto has set isProfilePicture to ' . $this->Photo_mdl->isProfilePicture);
         log_message('debug','photo vars set');
-        $this->Photo_mdl->updatePhoto();
+        $this->Photo_mdl->update($this->input->post('photoID'));
         log_message('debug','Photo update complete');
     }
 

@@ -8,7 +8,7 @@
 	</head>
 	<body>
 		<div id="wrapper">
-		<a class="logo" href="http://fotochest.com">
+		<a class="logo" href="<?php echo site_url(); ?>">
 		foto<span>chest</span>
 		</a>
 

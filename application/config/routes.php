@@ -35,12 +35,12 @@
 
 
 $route['default_controller'] = "photos";
-$route['admin'] = "admin/photos";
+$route['admin'] = "admin/photos/photosView";
 $route['login'] = "users/login";
 $route['logout'] = "users/logout";
 $route['forgotpassword'] = "users/forgotPassword";
 $route['photo/(:any)/(:any)'] = "photos/view/$1/$2";
-$route['admin/dashboard'] = "admin/photosView";
+$route['admin/dashboard'] = "admin/photos/photosView";
 $route['admin/albums'] = "admin/albums/albumsView";
 $route['admin/albums/(:num)'] = "admin/albums/albumsView/$1";
 $route['admin/photos'] = "admin/photos/photosView";

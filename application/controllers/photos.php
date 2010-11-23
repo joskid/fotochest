@@ -59,8 +59,8 @@ class Photos extends Public_Controller {
         //$this->load->view(getFullThemePath() . 'photoStream', $this->data);
 
         
-        $this->template->write_view('navigation', 'navigation', $this->data);
-        $this->template->write_view('content', 'stream', $this->data);
+        //$this->template->write_view('navigation', 'navigation', $this->data);
+        $this->template->write_view('content', 'themes/' . getTheme() . '/stream', $this->data);
         $this->template->render();
     }
 
@@ -111,7 +111,7 @@ class Photos extends Public_Controller {
         
         $this->load->model('Comments_mdl');
         
-        $this->data['comments'] = $this->Comments_mdl->getComments($photoID);
+        $this->data['comments'] = $this->Comments_mdl->readByPhotoID($photoID);
         $this->data['photoInfo'] = $this->Photo_mdl->getPhotoInfo($photoID);
         $this->load->library('album_lib');
         
@@ -127,8 +127,8 @@ class Photos extends Public_Controller {
         //$this->load->view(getFullThemePath() . 'photo', $this->data);
 
         $this->template->write('title', getPhotoTitle($photoID));
-        $this->template->write_view('navigation', 'photoNavigation', $this->data);
-        $this->template->write_view('content', 'singlePhoto', $this->data);
+        //$this->template->write_view('navigation', 'photoNavigation', $this->data);
+        $this->template->write_view('content', 'themes/' . getTheme() . '/' . 'singlePhoto', $this->data);
         $this->template->render();
 
         }

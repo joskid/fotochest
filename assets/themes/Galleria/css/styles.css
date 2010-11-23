@@ -88,17 +88,19 @@ div.nav h1
 {
 	margin: 0 10px 20px 10px;
 	float: left;
+        width: 294px;
 }
 
-#wrapper div.photo img,
-img.profile
+#wrapper div.photo img
 {
-	border: 1px solid rgba(0, 0, 0, 0.12);
-	-moz-box-shadow: 0 0 2px #fff;
-	background: rgba(0, 0, 0, 0.09);
-	-moz-border-radius: 3px;
-	padding: 7px;
-	opacity: 0.9;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    -moz-box-shadow: 0 0 2px #fff;
+    background: rgba(0, 0, 0, 0.09);
+    -moz-border-radius: 3px;
+    padding: 7px;
+    opacity: 0.9;
+    max-width: 274px;
+    max-height: 177px;
 }
 
 #wrapper div.photo:hover img
@@ -117,7 +119,15 @@ div.photo p
 #wrapper div.photo.singlePhoto
 {
 	margin-left: 0;
+        width: auto;
 }
+
+#wrapper div.photo.singlePhoto img
+{
+    max-width: 500px;
+    max-height: 500px;
+}
+
 
 div.photoInfo
 {

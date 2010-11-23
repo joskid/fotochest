@@ -38,9 +38,9 @@ class Albums extends Public_Controller {
    
     $this->data['albumInfo'] = $albumInfo;
     //$this->load->view(getFullThemePath() . 'albums', $this->data);
-    
-    $this->template->write_view('navigation', 'albumNavigation', $this->data);
-    $this->template->write_view('content', 'albums', $this->data);
+    $this->data['pages'] = '';
+    //$this->template->write_view('navigation', 'albumNavigation', $this->data);
+    $this->template->write_view('content', 'themes/' . getTheme() . '/' . 'albums', $this->data);
     $this->template->render();
     }
 

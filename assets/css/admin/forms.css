@@ -50,6 +50,13 @@
     border-radius: 3px;
 }
 
+.form .formItem.twoCol input[type="text"],
+.form .formItem.twoCol input[type="email"],
+.form .formItem.twoCol input[type="password"]
+{
+    width: 46%;
+}
+
 #fullEdit .form .formItem img.photo
 {
     float:left;

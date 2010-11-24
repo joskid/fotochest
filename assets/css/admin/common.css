@@ -1,4 +1,5 @@
 
+/* @todo make old buttons go away. */
 
 
 /* Buttons */
@@ -44,7 +45,9 @@ a.button.small span
 
 /* New Buttons */
 
-a.newButton {
+a.newButton,
+a.button
+{
     background:#105cbe;
     background:-moz-linear-gradient(center top , #2098e4, #105cbe);
     background:-webkit-gradient(linear, left top, left bottom, from(#2098e4), to(#105cbe));
@@ -55,7 +58,7 @@ a.newButton {
     padding-left:15px;
     padding-top:7px;
     margin-left:-1px;
-    -moz-box-shadow:0 0 1px #02c7fc inset,;
+    -moz-box-shadow:0 0 1px #02c7fc inset;
     -webkit-box-shadow:0 0 1px #02c7fc inset;
     box-shadow:0 0 1px #02c7fc inset;
     color:#efefef;
@@ -65,37 +68,45 @@ a.newButton {
     font-weight:bold;
     font-family: "Helvetica Nueue", Helvetica, Arial, sans-serif;
     text-decoration:none;
-    display: block;
+    display: inline-block;
     height: 18px;
     font-size:14px;
     margin-top: 7px;
     margin-bottom: 7px;
+    padding-right: 15px;
 }
 
 
 
 /*a.newButton span {font-size:18px;vertical-align:0;}*/
-a.newButton span
+a.newButton span,
+a.button span
 {
     display:block;
 }
 
-.actions a.newButton span
+.actions a.newButton span,
+.actions a.button span
 {
     text-align:center;
 }
 
-a.newButton:link {
+a.newButton:link,
+a.button:link
+{
     background-color: gray;
 }
-a.newButton:hover {
+a.newButton:hover,
+a.button:hover
+{
     background: #1162ca;
     background: -moz-linear-gradient(center top , #22a1f1, #1162ca);
     background: -webkit-gradient(linear, left top, left bottom, from(#22a1f1), to(#1162ca));
 }
 
 a.newButton:active,
-a.newButton:hover
+a.newButton:hover,
+a.button:hover
 {
     background: #42bb42;
     background: -moz-linear-gradient(center top, #42bb42, #2d782d);
@@ -138,6 +149,11 @@ a.newButton.auto
     width: auto;
     display: inline-block;
     padding-right: 15px;
+}
+
+a.newButton.full
+{
+    display: block;
 }
 
 /* <!-- End Butons --> */
@@ -216,3 +232,19 @@ a.help
     top: 0;
     color: #2098E4;
 }
+
+/* <!-- Pagination --> */
+
+.pagination
+{
+    text-align:center;
+}
+
+.pagination a
+{
+    color:#000;
+    text-decoration:none;
+
+}
+
+/* <!-- End Pagination --> */

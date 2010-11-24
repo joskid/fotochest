@@ -246,5 +246,11 @@ jQuery(document).ready(function($) {
          var albumID = $('select#albumID').val();
          document.location.href="/admin/upload/" + albumID;
       });
+
+      $('a.moveToAlbum').click(function(){
+          var albumID = $('select#albumID').val();
+          var photoID = $('input#photoID').val();
+          document.location.href= "/admin/photos/movePhotoAction/" + photoID + "/" + albumID;
+      })
       
     })

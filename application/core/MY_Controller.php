@@ -29,7 +29,7 @@ class MY_Controller extends CI_Controller {
         parent::__construct();
 
         // Enable profiler in debug mode.
-        $this->output->enable_profiler(TRUE);
+        //$this->output->enable_profiler(TRUE);
         
     }
 }

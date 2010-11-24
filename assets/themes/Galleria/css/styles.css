@@ -91,6 +91,11 @@ div.nav h1
         width: 294px;
 }
 
+#wrapper div.photo.clear
+{
+    clear:left;
+}
+
 #wrapper div.photo img
 {
     border: 1px solid rgba(0, 0, 0, 0.12);

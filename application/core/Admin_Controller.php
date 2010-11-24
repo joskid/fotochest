@@ -32,7 +32,7 @@ class Admin_Controller extends MY_Controller {
             $this->load->model('Album_mdl');
 
         } else {
-            redirect('users/login');
+            redirect('login');
         }
     }
 }

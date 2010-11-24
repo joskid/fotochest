@@ -17,8 +17,8 @@ $this->load->view('admin/navigation', $this->data);
             <h3>Edit This Photo</h3>
             <a class="button rotateCounter" href="<?php echo site_url('admin/photos/rotate/counter/' . $row->photoID); ?>"><span>Rotate Counter Clockwise</span></a>
             <a class="button rotateClock"><span>Rotate Clockwise</span></a>
-            <a class="button auto"><span>Crop Mode</span></a>
-            <a class="button auto"><span>Delete Photo</span></a>
+            <a class="button"><span>Crop Mode</span></a>
+            <a class="button"><span>Delete Photo</span></a>
             <h3>Photo Info</h3>
             <dl>
                 <dt>Date Uploaded:</dt>
@@ -29,11 +29,18 @@ $this->load->view('admin/navigation', $this->data);
         </div>
         <div class="formItem">
             <label for="photoTitle">Photo Title:</label>
-            <input type="text" id="siteName" name="siteName" value="<?php echo $row->photoTitle; ?>">
+
+            <div>
+                <input type="text" id="siteName" name="siteName" value="<?php echo $row->photoTitle; ?>">
+            </div>
         </div>
         <div class="formItem">
             <label for="photoDescription">Photo Description:</label>
-            <textarea rows="8" cols="51"></textarea>
+
+            <div>
+                <textarea rows="8" cols="51"></textarea>
+            </div>
+            
         </div>
         <div class="formItem check">
             <label for="showPhotoTitle">Make this Photo Your Profile Picture</label>
@@ -50,7 +57,7 @@ $this->load->view('admin/navigation', $this->data);
         </div>
         
         <?php } ?>
-        <input type="submit" value="Save Changes" class="button nextAction">
+        <input type="submit" value="Save Changes" class="button">
         <?php echo form_close(); ?>
     </div>
 

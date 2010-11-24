@@ -132,37 +132,6 @@ class Albums extends Public_Controller {
         }
     }
 
-//    public function viewAlbumPage($albumName, $photoStart){
-//
-//        if (!is_numeric($photoStart) || is_numeric($albumName) == TRUE || isset($albumName) == FALSE || isset($photoStart) == FALSE){
-//            show_404();
-//        }
-//
-//        $albumID = $this->Album_mdl->getAlbumID($albumName);
-//        $this->data['albumFriendlyName'] = $this->Album_mdl->getAlbumFriendlyName($albumID);
-//        $getAlbumThumb = $this->Album_mdl->getAlbumThumbFileName($albumName);
-//        $hasChildren = $this->Album_mdl->hasChildren($albumName);
-//
-//        $this->data['photoData'] = $this->Photo_mdl->getAlbumPhotosPage($albumID, $photoStart);
-//        $this->data['albumName'] = $albumName;
-//        $this->data['albumFileName'] = $getAlbumThumb;
-//        $this->load->library('pagination');
-//
-//        $config['base_url'] = base_url() . 'albums/viewAlbumPage/' . $albumName . '/';
-//        $config['total_rows'] = $this->Album_mdl->getAlbumCount($albumID);
-//
-//        $config['per_page'] = '21';
-//        $config['uri_segment'] = 4;
-//
-//        $this->pagination->initialize($config);
-//
-//        $this->data['pages'] =  $this->pagination->create_links();
-//
-//
-//        $this->load->view('viewAlbum', $this->data);
-//
-//    }
 
- 
 }
 ?>

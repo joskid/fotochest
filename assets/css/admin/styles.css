@@ -367,23 +367,6 @@ div.nav span.logout a
     background:#FFFFE0;
 }
 
-
-/* <!-- Pagination --> */
-
-.pagination
-{
-	text-align:center;
-}
-
-.pagination a
-{
-	color:#000;
-	text-decoration:none;
-	
-}
-
-/* <!-- End Pagination --> */
-
 #mainWrapper .sidebar
 {
     width:200px;
@@ -393,6 +376,7 @@ div.nav span.logout a
 .sidebar .profile
 {
     position: relative;
+    margin-bottom: 13px;
 }
 
 .sidebar .profile .profilePic

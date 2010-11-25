@@ -36,12 +36,12 @@
 
 class Theme_lib {
 
+    // Global CI Var.
     private $ci;
 
     public function  __construct()
     {
-        $this->ci =& get_instance();
-        
+        $this->ci =& get_instance(); 
     }
     
     public function getThemes()

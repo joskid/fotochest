@@ -24,11 +24,8 @@ $this->load->view('admin/navigation', $data);
                 <?php echo $row->photoDesc; ?>
             </p>
             <dl>
-                
                 <dt>Album</dt>
                 <dd><?php echo $row->albumFriendlyName; ?></dd>
-                
-                
             </dl>
             <ul class="actions">
                 <li><a href="<?php echo site_url('admin/photos/editPhoto/' . $row->photoID . '/N'); ?>" class="button full" rel="facebox"><span>Edit</span></a></li>

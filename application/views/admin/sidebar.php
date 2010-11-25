@@ -5,7 +5,6 @@
     <ul>
         <li><?php echo getPhotoCount(); ?> Photos</li>
         <li><?php echo getAlbumCount(); ?> Albums</li>
-
     </ul>
     </div>
     <div class="buttons clear">
@@ -16,8 +15,6 @@
                                             <?php } ?>
         <?php if($showUserButton == TRUE) { ?>
         <a class="button full clear" href="<?php echo site_url('admin/users/addUser'); ?>" rel="facebox"><span>Add User</span></a>
-    </div>
     <?php } ?>
-
-
+    </div>
 </div>

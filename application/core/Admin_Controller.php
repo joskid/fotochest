@@ -15,7 +15,7 @@
 // ----------------------------------------------------------------
 
 /**
-* Admin Controller
+* Admin Controller Parent Class
 *
 * @package		FotoChest
 * @category		Controllers

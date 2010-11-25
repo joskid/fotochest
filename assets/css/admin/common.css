@@ -56,7 +56,7 @@ a.button
     -webkit-border-radius:3px;
     border-radius:3px;
     padding-left:15px;
-    padding-top:7px;
+    padding-top:4px;
     margin-left:-1px;
     -moz-box-shadow:0 0 1px #02c7fc inset;
     -webkit-box-shadow:0 0 1px #02c7fc inset;
@@ -69,7 +69,7 @@ a.button
     font-family: "Helvetica Nueue", Helvetica, Arial, sans-serif;
     text-decoration:none;
     display: inline-block;
-    height: 18px;
+    height: 12px;
     font-size:14px;
     margin-top: 7px;
     margin-bottom: 7px;
@@ -151,7 +151,8 @@ a.newButton.auto
     padding-right: 15px;
 }
 
-a.newButton.full
+a.newButton.full,
+a.button.full
 {
     display: block;
 }

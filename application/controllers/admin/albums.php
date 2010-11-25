@@ -32,7 +32,7 @@ class Albums extends Admin_Controller {
 
     public function createAlbum(){
 
-// @todo mov ethis
+
         // Load the Library
         $this->load->library('album_lib');
         $this->album_lib->albumName = $this->input->post('albumName');

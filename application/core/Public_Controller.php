@@ -27,6 +27,7 @@ class Public_Controller  extends MY_Controller{
 
     public function  __construct() {
         parent::__construct();
+        // @todo add logic to detect mobile browsers and set a mobile template.
     }
 }
 ?>

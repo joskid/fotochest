@@ -116,8 +116,7 @@ class Photo_lib {
 
     public function movePhoto(){
 
-        // @todo Actually move the file...
-        // @todo update this function
+        
 
         //Load Photo Model
         $this->ci->load->model('Photo_mdl');
@@ -162,7 +161,7 @@ class Photo_lib {
 
         rename($originalIsPath, $originalGoPath);
 
-        // Query tiem....
+        // Query time....
 
         $updateQuery = array('photoAlbumID'=>$this->photoAlbumID);
 

@@ -66,7 +66,7 @@ class Photos extends Public_Controller {
 
     public function slideshow($albumName){
 
-        if (!isset($albumName) || is_numeric($albumName) == TRUE){
+        if (empty($albumName) || is_numeric($albumName) == TRUE){
             show_404();
         }
 
@@ -78,7 +78,7 @@ class Photos extends Public_Controller {
     }
 
     public function page($pageNum){
-                // Load the photo data
+        // Load the photo data
         if (!is_numeric($pageNum) || empty($pageNum)){
             show_404();
         }

@@ -38,7 +38,13 @@ class Albums extends Public_Controller {
    
     $this->data['albumInfo'] = $albumInfo;
     //$this->load->view(getFullThemePath() . 'albums', $this->data);
-    $this->data['pages'] = '';
+    $this->load->library('pagination');
+
+    $config['base_url'] = base_url() . 'albums/view/' . $albumName . '/';
+    $config['total_rows'] = $this->Album_mdl->getAlbumCount($albumID);
+    $config['per_page'] = '21';
+    $this->pagination->initialize($config);
+    $this->data['pages'] = $this->pagination->create_links();
     //$this->template->write_view('navigation', 'albumNavigation', $this->data);
     $this->template->write_view('content', 'themes/' . getTheme() . '/' . 'albums', $this->data);
     $this->template->render();

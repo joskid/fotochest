@@ -106,7 +106,7 @@ class Albums extends Public_Controller {
        }
        else
         {
-             if (!is_numeric($photoStart) || is_numeric($albumName) == TRUE || isset($albumName) == FALSE || isset($photoStart) == FALSE){
+             if (!is_numeric($photoStart) || is_numeric($albumName) || empty($albumName) || empty($photoStart)){
             show_404();
         }
 

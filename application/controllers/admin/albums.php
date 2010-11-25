@@ -31,8 +31,6 @@ class Albums extends Admin_Controller {
     }
 
     public function createAlbum(){
-
-
         // Load the Library
         $this->load->library('album_lib');
         $this->album_lib->albumName = $this->input->post('albumName');
@@ -41,12 +39,9 @@ class Albums extends Admin_Controller {
         $this->album_lib->createAlbum();
     }
 
-
-
     public function saveAlbum(){
 
         // @todo move this.
-
         $this->Album_mdl->albumFriendlyName = $this->input->post('albumFriendlyName');
         $this->Album_mdl->albumID = $this->input->post('albumID');
         $this->Album_mdl->albumDesc = $this->input->post('albumDesc');
@@ -56,8 +51,6 @@ class Albums extends Admin_Controller {
     public function editAlbum($albumID){
 
         $this->data['albumData'] = $this->Album_mdl->read($albumID);
-
-
         $this->load->view('admin/modals/editAlbum', $this->data);
     }
 
@@ -74,9 +67,7 @@ class Albums extends Admin_Controller {
 
       $path = getSetting('absolutePath');
       $this->Album_mdl->deleteAlbum($albumID, $path);
-
     }
-
 
     public function albumsView($pageNum = 0){
 

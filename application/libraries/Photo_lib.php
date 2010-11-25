@@ -191,7 +191,7 @@ class Photo_lib {
     {
         $config['image_library'] = 'gd2';
         $config['source_image'] = '/path/to/image/mypic.jpg';
-        $config['create_thumb'] = TRUE;
+        $config['create_thumb'] = FALSE;
         $config['maintain_ratio'] = TRUE;
         $config['width'] = 75;
         $config['height'] = 50;

@@ -5,10 +5,9 @@
 				</a>
 			</div>
 			<div class="photoInfo">
-                            <?php if (getSetting('showPhotoTitle') == 'TRUE') { ?>
+                            <?php //if (getSetting('showPhotoTitle') == 'TRUE') { ?>
                             <h2><?php echo $row->photoTitle; ?></h2>
-                            <?php } ?>
-				
+                            <?php //} ?>
 				<p>
 				<?php echo $row->photoDesc; ?>
 				</p>

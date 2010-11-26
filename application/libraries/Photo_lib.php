@@ -42,34 +42,9 @@ class Photo_lib {
         $this->ci =& get_instance();
     }
 
-    /**
-     * getFileName
-     * @param int photoID
-     * @return string File Name of the Photo
-     *
-     *
-     */
+    
 
-    public function getFileName($photoID){
-
-        // Depreciated *** //
-        $selectQuery = "SELECT photoFileName FROM $this->photoTable WHERE photoID = $photoID";
-        log_message('info', 'Photo_mdl::getFileName() is excuting a query ' . $selectQuery);
-        log_message('error', 'Decreciated method getFileName has been used');
-        $exe = $this->db->query($selectQuery);
-        foreach($exe->result() as $row){
-            $photoFileName = $row->photoFileName;
-        }
-        return $photoFileName;
-    }
-
-       /**
-	 * Autoloads the given class.
-	 *
-	 * @access	public
-	 * @param	string	The name of the class
-	 * @return	bool	Whether the class was loaded or not
-	 */
+      
 
     public function buildMainThumb($photoDirectory, $photoFileName, $albumName){
 
@@ -111,9 +86,9 @@ class Photo_lib {
 
     public function deletePhoto(){
 
-        $fileName = $this->getFileName($this->photoID);
-        $this->load->model('Photo_mdl');
-        $this->Photo_mdl->delete($this->photoID);
+        $fileName = getPhotoFileName($this->photoID);
+        $this->ci->load->model('Photo_mdl');
+        $this->ci->Photo_mdl->delete($this->photoID);
         $buildFilePath = "./img_stor/albums/" . $this->photoAlbumName . "/";
         $thumb = $buildFilePath . "thumbs/" . $fileName;
         $orginal = $buildFilePath . "originals/" . $fileName;

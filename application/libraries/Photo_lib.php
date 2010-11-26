@@ -74,7 +74,7 @@ class Photo_lib {
     public function buildMainThumb($photoDirectory, $photoFileName, $albumName){
 
         // Load the library
-        $this->ci->load->library('image_lib');
+        
         $main_size['image_library'] = 'gd2';
         $main_size['source_image'] = $photoDirectory;
         $main_size['maintain_ratio'] = TRUE;
@@ -101,12 +101,19 @@ class Photo_lib {
         return $getPhotos->num_rows();
     }
 
+    /**
+     *
+     * deletePhoto
+     * @photoID
+     * @photoAlbumName
+     *
+     */
+
     public function deletePhoto(){
 
         $fileName = $this->getFileName($this->photoID);
-        $deleteSQL = "delete from $this->photoTable where photoID = $this->photoID";
-        log_message('info', 'Query executed by Photo_mdl::deletePhoto ' . $deleteSQL);
-        $this->db->query($deleteSQL);
+        $this->load->model('Photo_mdl');
+        $this->Photo_mdl->delete($this->photoID);
         $buildFilePath = "./img_stor/albums/" . $this->photoAlbumName . "/";
         $thumb = $buildFilePath . "thumbs/" . $fileName;
         $orginal = $buildFilePath . "originals/" . $fileName;

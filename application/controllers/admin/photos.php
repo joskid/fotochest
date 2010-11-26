@@ -55,8 +55,11 @@ class Photos extends Admin_Controller {
 
         // @todo move this
 
-      $this->Photo_mdl->photoID = $this->input->post('photoID');
-      $this->Photo_mdl->deletePhoto();
+        $this->load->library('photo_lib');
+        $this->photo_lib->photoID = $this->input->post('photoID');
+        $this->photo_lib->photoAlbumName = getPhotoAlbumName($this->input->post('photoID'));
+        $this->photo_lib->deletePhoto();
+        
     }
 
     public function photosView($pageNum = 0){

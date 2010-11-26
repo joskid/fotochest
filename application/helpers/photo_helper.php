@@ -57,4 +57,16 @@ function checkPhoto($photoID, $albumName)
     
 }
 
+function getPhotoAlbumName($photoID)
+{
+    $CI =& get_instance();
+    $CI->load->model('Photo_mdl');
+    $photoInfo = $CI->Photo_mdl->getPhotoInfo($photoID);
+    foreach($photoInfo->result() as $row)
+    {
+        $photoAlbumName = $row->albumName;
+    }
+    return $photoAlbumName;
+}
+
 ?>

@@ -21,14 +21,15 @@
         <div>
             <?php echo getAlbumDropdownList(); ?>
         </div>
-            
       </div>
-    
-      <a class="newButton addAlbumBtn small auto clear">
-        <span>
-          Add Album
-        </span>
-      </a>
+      <div class="formItem">
+          <a class="button addAlbumBtn">
+            <span>
+              Add Album
+            </span>
+          </a>
+      </div>
+      
       
       
      

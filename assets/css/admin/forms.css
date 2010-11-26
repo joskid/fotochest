@@ -38,7 +38,8 @@
 
 .form .formItem input[type='text'],
 .form .formItem input[type='email'],
-.form .formItem input[type='password']
+.form .formItem input[type='password'],
+.form .formItem textarea
 {
     font-size:14pt;
     margin: 5px 0px 5px 0;

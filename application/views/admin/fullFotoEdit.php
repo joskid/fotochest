@@ -3,6 +3,39 @@ $this->load->view('admin/header');
 $this->data['pageNum'] = 2;
 $this->load->view('admin/navigation', $this->data);
 ?>
+<script language="Javascript">
+
+			// Remember to invoke within jQuery(window).load(...)
+			// If you don't, Jcrop may not initialize properly
+			jQuery(window).load(function(){
+
+				jQuery('#cropbox').Jcrop({
+					onChange: showPreview,
+					onSelect: showPreview,
+					aspectRatio: 1
+				});
+
+			});
+
+			// Our simple event handler, called from onChange and onSelect
+			// event handlers, as per the Jcrop invocation above
+			function showPreview(coords)
+			{
+				if (parseInt(coords.w) > 0)
+				{
+					var rx = 100 / coords.w;
+					var ry = 100 / coords.h;
+
+					jQuery('#preview').css({
+						width: Math.round(rx * 500) + 'px',
+						height: Math.round(ry * 370) + 'px',
+						marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+						marginTop: '-' + Math.round(ry * coords.y) + 'px'
+					});
+				}
+			}
+
+		</script>
 
 <div class="content right" id ="fullEdit">
     <h2>Edit Your Foto!</h2>
@@ -11,14 +44,16 @@ $this->load->view('admin/navigation', $this->data);
         <?php //echo validation_errors(); ?>
         <?php foreach($photoData->result() as $row) { ?>
         <div class="formItem">
-            <img src="<?php echo base_url(); ?>img_stor/albums/<?php echo $row->albumName; ?>/thumbs/<?php echo $row->photoFileName; ?>" width="370" alt="<?php echo $row->photoFileName; ?>" class="photo">
+            <img id="cropbox" src="<?php echo base_url(); ?>img_stor/albums/<?php echo $row->albumName; ?>/thumbs/<?php echo $row->photoFileName; ?>" width="370" alt="<?php echo $row->photoFileName; ?>" class="photo">
+            <br/>
+            <img id="preview" src="<?php echo base_url(); ?>img_stor/albums/<?php echo $row->albumName; ?>/thumbs/<?php echo $row->photoFileName; ?>" width="100" alt="<?php echo $row->photoFileName; ?>">
         </div>
         <div class="editControls">
             <h3>Edit This Photo</h3>
             <a class="button rotateCounter" href="<?php echo site_url('admin/photos/rotate/counter/' . $row->photoID); ?>"><span>Rotate Counter Clockwise</span></a>
             <a class="button rotateClock"><span>Rotate Clockwise</span></a>
             <a class="button"><span>Crop Mode</span></a>
-            <a class="button"><span>Delete Photo</span></a>
+            <a href="<?php echo site_url('admin/photos/deletePhoto/' . $row->photoID); ?>" class="button" rel="facebox"><span>Delete</span></a>
             <h3>Photo Info</h3>
             <dl>
                 <dt>Date Uploaded:</dt>

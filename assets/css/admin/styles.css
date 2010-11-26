@@ -223,15 +223,11 @@ div.nav span.logout a
 {
     position:relative;
     margin-top:20px;
-    min-height:100px;
+    min-height:123px;
     padding-bottom:10px;
     border-bottom:1px solid #bbbbbb;
 }
 
-#mainWrapper .content .album
-{
-    min-height:100px;
-}
 
 .content .album img,
 .content .photo img
@@ -314,7 +310,7 @@ div.nav span.logout a
     position:absolute;
     right:0;
     top:0;
-    width:110px;
+    width:113px;
     display:none;
 }
 

@@ -24,6 +24,6 @@ $config['themeTable'] = "photoThemes";
 /* Application Settings */
 
 $config['enableMultiUser'] = FALSE;
-$config['debugMode'] = FALSE;
+$config['debugMode'] = TRUE;
 
 ?>

@@ -24,7 +24,16 @@
 
 
 function getJquery(){
-    $jquery = "<script type='text/javascript' src='http://code.jquery.com/jquery-1.4.2.min.js'></script>";
+    $CI =& get_instance();
+    if ($CI->config->item('debugMode') == TRUE)
+    {
+        $builtURL = base_url() . "assets/javascript/jquery/jquery-1.4.2.js";
+        $jquery = "<script type='text/javascript' src='$builtURL'></script>";
+    }
+    else
+    {
+        $jquery = "<script type='text/javascript' src='http://code.jquery.com/jquery-1.4.2.min.js'></script>";
+    }
     return $jquery;
 }
 

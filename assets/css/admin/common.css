@@ -157,6 +157,11 @@ a.button.full
     display: block;
 }
 
+div.buttons
+{
+    margin-top:13px;
+}
+
 /* <!-- End Butons --> */
 
 /* Notifications - different colors */

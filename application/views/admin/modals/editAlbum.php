@@ -19,7 +19,10 @@
         </div>
         <input type="hidden" name="albumID" id="albumID" value="<?php echo $row->albumID; ?>">
         <?php } ?>
-        <a class="newButton nextAction saveAlbum clear auto"><span>Save</span></a>
+        <div class="formItem">
+            <a class="button saveAlbum clear"><span>Save</span></a>
+        </div>
+        
     </div>
 
 </div>

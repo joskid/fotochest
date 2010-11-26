@@ -113,7 +113,7 @@ jQuery(document).ready(function($) {
         $('#load').append("<h3>Processing...</h3>");
         $.ajax({
           type: "POST",
-          url: "/admin/album/saveAlbum",
+          url: "/admin/albums/saveAlbum",
           data: dataString,
           success: function(){
             

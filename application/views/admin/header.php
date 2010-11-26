@@ -20,7 +20,7 @@
         <?php echo js('swfupload/plugins/swfupload.queue'); ?>
         <?php echo js('swfupload/fileprogress'); ?>
         <?php echo js('swfupload/handlers'); ?>
-        <?php echo js('Jcrop/jquery.jcrop'); ?>
+        <?php echo js('Jcrop/js/jquery.jcrop'); ?>
         <?php echo js('fotochest'); ?>
         <title>Manage Your Photos</title>
         <?php if (isset($albumID) && isset($isUpload)) { ?>

@@ -46,7 +46,9 @@ $this->load->view('admin/navigation', $this->data);
         <div class="formItem">
             <img id="cropbox" src="<?php echo base_url(); ?>img_stor/albums/<?php echo $row->albumName; ?>/thumbs/<?php echo $row->photoFileName; ?>" width="370" alt="<?php echo $row->photoFileName; ?>" class="photo">
             <br/>
-            <img id="preview" src="<?php echo base_url(); ?>img_stor/albums/<?php echo $row->albumName; ?>/thumbs/<?php echo $row->photoFileName; ?>" width="100" alt="<?php echo $row->photoFileName; ?>">
+            <div style="width: 100px; height: 100px; display:inline-block; overflow: hidden; position: absolute; right: 100px;">
+                <img id="preview" src="<?php echo base_url(); ?>img_stor/albums/<?php echo $row->albumName; ?>/thumbs/<?php echo $row->photoFileName; ?>" width="100" alt="<?php echo $row->photoFileName; ?>">
+            </div>
         </div>
         <div class="editControls">
             <h3>Edit This Photo</h3>

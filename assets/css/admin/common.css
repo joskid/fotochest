@@ -121,22 +121,23 @@ a.button.rotateClock,
 a.button.rotateCounter
 {
     background: url("../../images/admin/arrow_rotate_left.png") no-repeat left;
-    width:140px;
+    
     height:19px;
     padding: 4px 4px 5px 15px;
-    background-color:#fff;
+    background-color:#105cbe;
 }
 
 a.button.rotateCounter
 {
     background: url("../../images/admin/arrow_rotate_right.png") no-repeat left;
-    background-color: #fff;
+    background-color: #105cbe;
 }
 
 a.button.rotateClock span,
 a.button.rotateCounter span
 {
-    color:#000;
+    color:#fff;
+    margin-left: 15px;
 }
 
 a.button.auto

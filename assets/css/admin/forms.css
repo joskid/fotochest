@@ -58,16 +58,38 @@
     width: 46%;
 }
 
+#fullEdit h2
+{
+    margin-bottom: 15px;
+}
+
 #fullEdit .form .formItem img.photo
 {
     float:left;
+    margin-top: 0;
+    padding: 0;
+    margin: 0;
+    background: none;
 }
+
+#fullEdit .form .formItem.fullEditPhoto
+{
+    min-height: 370px;
+}
+
+#fullEdit .form .formItem.fullEditPhoto .photo
+{
+    max-height: 370px;
+    max-width: 370px;
+}
+
 
 #fullEdit .form .editControls
 {
-    float:left;
+    position: absolute;
+    right: 193px;
     margin: 30px 0px 0px 30px;
-    width: 200px;
+    width: 217px;
     
 }
 
@@ -77,6 +99,7 @@
     width:42%;
     display:inline-block;
 }
+
 
 /* <!-- End Form Styles --> */
 

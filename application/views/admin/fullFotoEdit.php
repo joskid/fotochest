@@ -43,26 +43,27 @@ $this->load->view('admin/navigation', $this->data);
         <?php echo form_open('admin/photos/fullEdit'); ?>
         <?php //echo validation_errors(); ?>
         <?php foreach($photoData->result() as $row) { ?>
-        <div class="formItem">
-            <img id="cropbox" src="<?php echo base_url(); ?>img_stor/albums/<?php echo $row->albumName; ?>/thumbs/<?php echo $row->photoFileName; ?>" width="370" alt="<?php echo $row->photoFileName; ?>" class="photo">
+        <div class="formItem fullEditPhoto">
+            <img id="cropbox" src="<?php echo base_url(); ?>img_stor/albums/<?php echo $row->albumName; ?>/thumbs/<?php echo $row->photoFileName; ?>" alt="<?php echo $row->photoFileName; ?>" class="photo">
             <br/>
             <div style="width: 100px; height: 100px; display:inline-block; overflow: hidden; position: absolute; right: 100px;">
                 <img id="preview" src="<?php echo base_url(); ?>img_stor/albums/<?php echo $row->albumName; ?>/thumbs/<?php echo $row->photoFileName; ?>" width="100" alt="<?php echo $row->photoFileName; ?>">
             </div>
-        </div>
-        <div class="editControls">
-            <h3>Edit This Photo</h3>
-            <a class="button rotateCounter" href="<?php echo site_url('admin/photos/rotate/counter/' . $row->photoID); ?>"><span>Rotate Counter Clockwise</span></a>
-            <a class="button rotateClock"><span>Rotate Clockwise</span></a>
-            <a class="button"><span>Crop Mode</span></a>
-            <a href="<?php echo site_url('admin/photos/deletePhoto/' . $row->photoID); ?>" class="button" rel="facebox"><span>Delete</span></a>
-            <h3>Photo Info</h3>
-            <dl>
-                <dt>Date Uploaded:</dt>
-                <dd><?php echo $row->photoCreatedDate; ?></dd>
-                <dt>Album:</dt>
-                <dd><?php echo $row->albumName; ?></dd>
-            </dl>
+        
+            <div class="editControls">
+                <h3>Edit This Photo</h3>
+                <a class="button rotateCounter" href="<?php echo site_url('admin/photos/rotate/counter/' . $row->photoID); ?>"><span>Rotate Counter Clockwise</span></a>
+                <a class="button rotateClock"><span>Rotate Clockwise</span></a>
+                <a class="button"><span>Crop Mode</span></a>
+                <a href="<?php echo site_url('admin/photos/deletePhoto/' . $row->photoID); ?>" class="button" rel="facebox"><span>Delete</span></a>
+                <h3>Photo Info</h3>
+                <dl>
+                    <dt>Date Uploaded:</dt>
+                    <dd><?php echo $row->photoCreatedDate; ?></dd>
+                    <dt>Album:</dt>
+                    <dd><?php echo $row->albumName; ?></dd>
+                </dl>
+            </div>
         </div>
         <div class="formItem">
             <label for="photoTitle">Photo Title:</label>

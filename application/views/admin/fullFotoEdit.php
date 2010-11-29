@@ -39,7 +39,7 @@ $this->load->view('admin/navigation', $this->data);
 
 <div class="content right" id ="fullEdit">
     <h2>Edit Your Foto!</h2>
-    <div class="form">
+    <div class="form onTop">
         <?php echo form_open('admin/photos/fullEdit'); ?>
         <?php //echo validation_errors(); ?>
         <?php foreach($photoData->result() as $row) { ?>
@@ -52,8 +52,8 @@ $this->load->view('admin/navigation', $this->data);
         
             <div class="editControls">
                 <h3>Edit This Photo</h3>
-                <a class="button rotateCounter" href="<?php echo site_url('admin/photos/rotate/counter/' . $row->photoID); ?>"><span>Rotate Counter Clockwise</span></a>
-                <a class="button rotateClock"><span>Rotate Clockwise</span></a>
+                <a class="button" href="<?php echo site_url('admin/photos/rotate/counter/' . $row->photoID); ?>"><span>Rotate Counter Clockwise</span></a>
+                <a class="button" href="<?php echo site_url('admin/photos/rotate/clock/' . $row->photoID); ?>"><span>Rotate Clockwise</span></a>
                 <a class="button"><span>Crop Mode</span></a>
                 <a href="<?php echo site_url('admin/photos/deletePhoto/' . $row->photoID); ?>" class="button" rel="facebox"><span>Delete</span></a>
                 <h3>Photo Info</h3>

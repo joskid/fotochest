@@ -112,4 +112,10 @@
 
 /* Edit Photo */
 
+/* On Top Over-ride styles */
 
+.form.onTop .formItem label
+{
+    display:block;
+    width:100%;
+}

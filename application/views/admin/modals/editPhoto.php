@@ -37,7 +37,12 @@
     <?php // @todo - Remove the isfront because we don't have live edit anymroe.  ?>
     <input type="hidden" name="isFront" id="isFront" value="<?php echo $isFront; ?>">
     <input type="hidden" name="albumName" id="albumName" value="<?php echo $albumName; ?>">
-    <a class="button savePhotoBtn"><span>Save</span></a>
+    <div class="formItem">
+        <div>
+            <a class="button savePhotoBtn"><span>Save</span></a>
+        </div>
+    </div>
+    
     </div>
 				
 </div>

@@ -172,6 +172,8 @@ class Photo_lib {
     public function rotateImage($rotation, $photoID)
     {
         // rotation closewise is 1
+        ini_set('memory_limit', '512M');
+        $this->ci->load->model('Photo_mdl');
 
         $photoData = $this->ci->Photo_mdl->getPhotoInfo($photoID);
         foreach($photoData->result() as $row)
@@ -186,30 +188,34 @@ class Photo_lib {
         if($rotation == 1)
         {
             $config['rotation_angle'] = '270';
+            $thumb['rotation_angle'] = '270';
         }
         else
         {
             $config['rotation_angle'] = '90';
+            $thumb['rotation_angle'] = '90';
         }
 
         $config['image_library'] = 'gd2';
+        $thumb['image_library'] = 'gd2';
         $config['source_image'] = $photoLocation;
-
+        $thumb['source_image'] = $thumbLocation;
+        log_message('info', 'Attempting rotation');
 
         $this->ci->image_lib->initialize($config);
+        
         if(!$this->ci->image_lib->rotate())
         {
             log_message('ERROR', 'Issue with image rotation ' . $this->ci->image_lib->display_errors());
         }
+        $this->ci->image_lib->clear();
 
-
-        $config['source_image'] = $thumbLocation;
-
-        $this->ci->image_lib->initialize($config);
+        $this->ci->image_lib->initialize($thumb);
         if(!$this->ci->image_lib->rotate())
         {
             log_message('ERROR', 'Issue with image rotation ' . $this->ci->image_lib->display_errors());
         }
+        $this->ci->image_lib->clear();
 
     }
 

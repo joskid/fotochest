@@ -12,7 +12,7 @@
 				<?php echo $row->photoDesc; ?>
 				</p>
                                 <?php if (getSetting('enableOriginalDownload') == 'TRUE') { ?>
-				<a class="button" href="/"><span>Download Photo</span></a>
+				<a class="button" href="<?php echo site_url('download/downloadFile/' . $row->albumName . '/' . $row->photoID); ?>"><span>Download Photo</span></a>
                                 <?php } ?>
 			</div>
 <?php } ?>

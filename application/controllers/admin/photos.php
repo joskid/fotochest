@@ -160,14 +160,23 @@ class Photos extends Admin_Controller {
 
     public function rotate($direction, $photoID)
     {
-        if ($direction == "clockwise")
+        if(empty($direction) || empty($photoID) || !is_numeric($photoID))
+        {
+            show_404();
+        }
+        
+        $this->load->library('photo_lib');
+        if ($direction == "clock")
         {
             
+            $this->photo_lib->rotateImage(1, $photoID);
         }
         else
         {
-            
+            $this->photo_lib->rotateImage(2, $photoID);
         }
+
+        redirect('admin/photos/fullEdit/' . $photoID);
         
     }
 

@@ -81,7 +81,7 @@ $this->load->view('admin/navigation', $this->data);
             
         </div>
         <div class="formItem check">
-            <label for="showPhotoTitle">Make this Photo Your Profile Picture</label>
+            <label for="showPhotoTitle"></label>
             <input type="checkbox" name="showPhotoTitle" id="showPhotoTitle" <?php
             if ($row->isProfilePic == 1)
             {
@@ -91,7 +91,7 @@ $this->load->view('admin/navigation', $this->data);
             {
                 $checked = 'FALSE';
             }
-            echo isChecked($checked); ?>>
+            echo isChecked($checked); ?>><span>Make this Photo Your Profile Picture</span>
         </div>
         
         <?php } ?>

@@ -171,16 +171,46 @@ class Photo_lib {
 
     public function rotateImage($rotation, $photoID)
     {
+        // rotation closewise is 1
+
+        $photoData = $this->ci->Photo_mdl->getPhotoInfo($photoID);
+        foreach($photoData->result() as $row)
+        {
+            $albumName = $row->albumName;
+            $fileName = $row->photoFileName;
+        }
+
+        $photoLocation = './img_stor/albums/' . $albumName . '/originals/' . $fileName;
+        $thumbLocation = './img_stor/albums/' . $albumName . '/thumbs/' . $fileName;
+
+        if($rotation == 1)
+        {
+            $config['rotation_angle'] = '270';
+        }
+        else
+        {
+            $config['rotation_angle'] = '90';
+        }
+
         $config['image_library'] = 'gd2';
-        $config['source_image'] = '/path/to/image/mypic.jpg';
-        $config['create_thumb'] = FALSE;
-        $config['maintain_ratio'] = TRUE;
-        $config['width'] = 75;
-        $config['height'] = 50;
+        $config['source_image'] = $photoLocation;
 
-        $this->load->library('image_lib', $config);
 
-        $this->image_lib->resize();
+        $this->ci->image_lib->initialize($config);
+        if(!$this->ci->image_lib->rotate())
+        {
+            log_message('ERROR', 'Issue with image rotation ' . $this->ci->image_lib->display_errors());
+        }
+
+
+        $config['source_image'] = $thumbLocation;
+
+        $this->ci->image_lib->initialize($config);
+        if(!$this->ci->image_lib->rotate())
+        {
+            log_message('ERROR', 'Issue with image rotation ' . $this->ci->image_lib->display_errors());
+        }
+
     }
 
     public function exists($photoID, $albumName)

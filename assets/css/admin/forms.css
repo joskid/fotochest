@@ -72,10 +72,6 @@
     background: none;
 }
 
-#fullEdit .form .formItem.fullEditPhoto
-{
-    min-height: 370px;
-}
 
 #fullEdit .form .formItem.fullEditPhoto .photo
 {
@@ -118,4 +114,16 @@
 {
     display:block;
     width:100%;
+}
+
+.form.onTop .formItem.check label
+{
+    width: auto;
+    display: inline-block;
+}
+
+.form .formItem.check span
+{
+    color: #7a7a7a;
+    font-weight: bold;
 }

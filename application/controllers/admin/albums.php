@@ -28,6 +28,9 @@ class Albums extends Admin_Controller {
     public function __construct()
     {
         parent::__construct();
+        $this->data['pageNum'] = 2;
+        $this->data['showUserButton'] = FALSE;
+        $this->template->write_view('navigation', 'admin/partials/nav', $this->data);
     }
 
     public function createAlbum(){
@@ -73,6 +76,10 @@ class Albums extends Admin_Controller {
 
         //@todo pagination should point back here?
 
+
+        $this->data['showAlbum'] = TRUE;
+        
+
         // Load the Library
         $this->load->library('album_lib');
 
@@ -87,7 +94,11 @@ class Albums extends Admin_Controller {
         $this->pagination->initialize($config);
 
         $this->data['pages'] =  $this->pagination->create_links();
-        $this->load->view('admin/viewAlbums', $this->data);
+        $this->template->write('title', 'Albums');
+        
+        $this->template->write_view('sidebar', 'admin/partials/sidebar', $this->data);
+        $this->template->write_view('content', 'admin/partials/albums', $this->data);
+        $this->template->render();
 
     }
     // End Album Functions
@@ -117,6 +128,10 @@ class Albums extends Admin_Controller {
         // Load the library
         $this->load->library('photo_lib');
 
+
+        $this->data['showAlbum'] = FALSE;
+        
+
         // Call the method
         $this->data['photos'] = $this->Photo_mdl->getAlbumPhotos($albumID);
         $this->data['allAlbums'] = $this->Album_mdl->read();
@@ -131,7 +146,11 @@ class Albums extends Admin_Controller {
         $config['uri_segment'] = 4;
         $this->pagination->initialize($config);
         $this->data['pages'] =  $this->pagination->create_links();
-        $this->load->view('admin/viewSingleAlbum', $this->data);
+
+        // Write the view
+        $this->template->write_view('sidebar', 'admin/partials/sidebar', $this->data);
+        $this->template->write_view('content', 'admin/partials/singleAlbum', $this->data);
+        $this->template->render();
     }
 
     // May delete this method later.
@@ -139,6 +158,7 @@ class Albums extends Admin_Controller {
     public function viewAlbumPage($albumName, $albumPage){
 
       $albumID = $this->Photo_mdl->getAlbumID($albumName);
+       $this->data['showAlbum'] = FALSE;
       $this->data['photos'] = $this->Photo_mdl->getAlbumPhotosPage($albumID, $albumPage);
       $this->data['allAlbums'] = $this->Album_mdl->getAllAlbums();
         $this->data['albumName'] = $albumName;
@@ -154,7 +174,9 @@ class Albums extends Admin_Controller {
         $this->pagination->initialize($config);
 
         $this->data['pages'] =  $this->pagination->create_links();
-      $this->load->view('admin/viewSingleAlbum', $this->data);
+      $this->template->write_view('sidebar', 'admin/partials/sidebar', $this->data);
+        $this->template->write_view('content', 'admin/partials/singleAlbum', $this->data);
+        $this->template->render();
     }
 
     public function addAlbum(){

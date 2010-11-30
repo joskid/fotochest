@@ -25,6 +25,13 @@ class Themes extends Admin_Controller {
     
     public function __construct() {
         parent::__construct();
+        $this->data['pageNum'] = 4;
+        $this->data['showUserButton'] = FALSE;
+        $this->data['showAlbum'] = FALSE;
+        $this->template->write('title', 'Theme Admin');
+        $this->template->write_view('navigation', 'admin/partials/nav', $this->data);
+        $this->template->write_view('sidebar', 'admin/partials/sidebar', $this->data);
+
     }
 
     public function index()
@@ -35,7 +42,8 @@ class Themes extends Admin_Controller {
         // Get the Themes that are Installed
         $this->data['themes'] = $this->theme_lib->getThemes();
 
-        $this->load->view('admin/themeAdmin', $this->data);
+        $this->template->write_view('content', 'admin/partials/themes', $this->data);
+        $this->template->render();
     }
 
     public function activateTheme($themeID)

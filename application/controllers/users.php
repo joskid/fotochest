@@ -77,7 +77,15 @@ class Users extends Public_Controller {
     if ($errorType == 2){
       $this->data['errorMsg'] = "Username/Password combination is incorrect.";
     }
-    $this->load->view('admin/userLogin', $this->data);
+
+    $this->template->set_template('admin');
+    $this->template->write('title', 'Login');
+    $this->template->write('navigation', '');
+    $this->template->write('sidebar', '');
+    $this->template->write_view('content', 'admin/userLogin', $this->data);
+    $this->template->render();
+
+    
   }
   
  
@@ -116,12 +124,20 @@ class Users extends Public_Controller {
     public function forgotPassword(){
 
         $this->load->library('form_validation');
+         $this->template->set_template('admin');
+        $this->template->write('title', 'Login');
+        $this->template->write('navigation', '');
+        $this->template->write('sidebar', '');
 
         $this->form_validation->set_rules('userEmail', 'Email Address', 'required|xss_clean');
 
         if (!$this->form_validation->run())
         {
-            $this->load->view('admin/forgotPassword');
+           
+            $this->template->write_view('content', 'admin/forgotPassword');
+            
+
+            
         }
         else
         {
@@ -132,8 +148,10 @@ class Users extends Public_Controller {
             $message = $this->User_mdl->resetPassword($pass);
             // Print $message to debug.
             $this->data['message'] = "Your password has been reset and emailed to your account.";
-            $this->load->view('admin/forgotPassword', $this->data);
+            $this->template->write_view('content', 'admin/forgotPassword', $this->data);
         }
+
+        $this->template->render();
         
 
     }

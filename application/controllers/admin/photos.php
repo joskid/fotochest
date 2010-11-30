@@ -91,6 +91,16 @@ class Photos extends Admin_Controller {
         // @todo photo Upload or MultiUpload which one is it?
 
         $this->data['albumID'] = $albumID;
+        // Load the view
+        $this->template->write('title', 'Upload Photos');
+        $this->data['isUpload'] = 1;
+        $this->data['pageNum'] = 1;
+        $this->data['showAlbum'] = FALSE;
+        $this->data['showUserButton'] = FALSE;
+        $this->template->write_view('navigation', 'admin/partials/nav', $this->data);
+        $this->template->write_view('sidebar', 'admin/partials/sidebar', $this->data);
+        $this->template->write_view('content', 'admin/partials/upload', $this->data);
+        $this->template->render();
         $this->load->view('admin/photoUpload', $this->data);
     }
 
@@ -127,26 +137,7 @@ class Photos extends Admin_Controller {
       $this->Photo_mdl->photoID = $photoID;
       $this->Photo_mdl->movePhoto();
 
-
-        $this->data['photos'] = $this->Photo_mdl->getAlbumPhotos($albumID);
-        $this->data['allAlbums'] = $this->Album_mdl->getAllAlbums();
-        $this->data['albumName'] = $albumName;
-
-        $this->data['albumFriendlyName'] = getAlbumFriendlyName($albumID);
-
-        $this->load->library('pagination');
-
-        $config['base_url'] = base_url() . 'admin/viewAlbumPage/' . $albumName;
-        $config['total_rows'] = $this->album_lib->getTotalAlbumCount();
-        $config['per_page'] = '21';
-
-        $this->pagination->initialize($config);
-
-        $this->data['pages'] =  $this->pagination->create_links();
-        $this->load->view('admin/viewSingleAlbum', $this->data);
-
-
-
+      redirect('admin/album/' . $albumName);
     }
 
 

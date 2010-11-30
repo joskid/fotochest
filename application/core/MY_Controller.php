@@ -18,7 +18,7 @@
 * MY Controller Controller
 *
 * @package		FotoChest
-* @category		Controllers
+* @category		Core Controllers
 * @author		Derek Stegelman
 */
 

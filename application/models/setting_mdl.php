@@ -14,12 +14,13 @@
 // ----------------------------------------------------------------
 
 /**
-* Album Library
+* Settings Model
 *
 * @package		FotoChest
-* @category		Libraries
+* @category		Models
 * @author		Derek Stegelman
 */
+
 class Setting_mdl extends CI_Model {
 
     var $settingID;

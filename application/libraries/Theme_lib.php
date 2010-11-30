@@ -22,17 +22,6 @@
 * @author		Derek Stegelman
 */
 
-/*
-* FotoChest - a web based photo album
-* Copyright (C) 2009-2010 Derek Stegelman http://stegelman.com
-* @package FotoCore
-* @subpackage PhotoMgmt
-* @author Derek Stegelman
-*
-* Modified on Nov 7 2010
-*
-*
-*/
 
 class Theme_lib {
 

@@ -15,24 +15,13 @@
 // ----------------------------------------------------------------
 
 /**
-* Album Library
+* Album Model
 *
 * @package		FotoChest
-* @category		Libraries
+* @category		Model
 * @author		Derek Stegelman
 */
 
-/*
-* FotoChest - a web based photo album
-* Copyright (C) 2009-2010 Derek Stegelman http://stegelman.com
-* @package FotoCore
-* @subpackage PhotoMgmt
-* @author Derek Stegelman
-*
-* Modified on Oct 26 2010
-*
-*
-*/
 
 class Album_mdl extends CI_Model {
 

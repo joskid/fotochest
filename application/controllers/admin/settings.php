@@ -15,7 +15,7 @@
 // ----------------------------------------------------------------
 
 /**
-* Setting Admin Controller
+* Settings Admin Controller
 *
 * @package		FotoChest
 * @category		Admin Controllers

@@ -18,7 +18,7 @@
 * Admin User Controller
 *
 * @package		FotoChest
-* @category		Controllers
+* @category		Admin Controllers
 * @author		Derek Stegelman
 */
 

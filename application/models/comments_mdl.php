@@ -14,10 +14,10 @@
 // ----------------------------------------------------------------
 
 /**
-* Album Library
+* Comments Model
 *
 * @package		FotoChest
-* @category		Libraries
+* @category		Models
 * @author		Derek Stegelman
 */
 

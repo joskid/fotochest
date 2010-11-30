@@ -7,8 +7,8 @@ issues.
 
 ##Development Team
 
-* Derek Stegelman - Lead Developer ([http://stegelman.com](http://stegelman.com))
-
+* Derek Stegelman - Lead Developer ([http://stegelman.com](http://stegelman.com)) and Derek.FotoChest.com
+* Lindy Stegelman - QA/Design Critic ([http://lindyjean.blogspot.com](http://lindyjean.blogspot.com)) and dlstegelman.fotochest.com
 
 ##Installation
 
@@ -22,11 +22,11 @@ but as with all software there are still issues.  Paid hosting plans are availab
 ###Version 2.0 (Release in Spring of 2011)
 
 * Installer
-* Ability to rotate images
-* Cropping Images
-* Stability Increase
-* Upgrade to Latest CI Platform
-* Some type of Themeing - Using WilliamsConcepts Template Library
-* Updates to the Admin Controller to seperate Admin Content.
-* Rewrite the admin controller.
+* Ability to rotate images - Done
+* Cropping Images - Pending
+* Stability Increase - Done
+* Upgrade to Latest CI Platform - Done
+* Some type of Themeing - Using WilliamsConcepts Template Library - Done
+* Updates to the Admin Controller to seperate Admin Content. - Done
+* Rewrite the admin controller. - Done
 * Add Comments

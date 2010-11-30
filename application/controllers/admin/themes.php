@@ -14,10 +14,10 @@
 // ----------------------------------------------------------------
 
 /**
-* Admin Controller
+* Themes Admin Controller
 *
 * @package		FotoChest
-* @category		Controllers
+* @category		Admin Controllers
 * @author		Derek Stegelman
 */
 

@@ -18,7 +18,7 @@
 * Admin Controller Parent Class
 *
 * @package		FotoChest
-* @category		Controllers
+* @category		Core Controllers
 * @author		Derek Stegelman
 */
 

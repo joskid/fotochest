@@ -20,17 +20,7 @@
 * @category		Controllers
 * @author		Derek Stegelman
 */
-/*
-* FotoChest - a web based photo album
-* Copyright (C) 2009-2010 Derek Stegelman http://stegelman.com
-* @package FotoCore
-* @subpackage PhotoMgmt
-* @author Derek Stegelman
-*
-* Modified on Oct 18 2010
-*
-*
-*/
+
 class Photos extends Public_Controller {
 
     public function __construct() {

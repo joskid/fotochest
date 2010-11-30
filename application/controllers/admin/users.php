@@ -32,12 +32,22 @@ class Users extends Admin_Controller {
 
     public function index(){
 
+        $this->template->write('title', 'Users');
+        $this->data['showAlbum'] = FALSE;
+        $this->data['showUserButton'] = TRUE;
+        $This->data['pageNum'] = 5;
+
         // Load the model
         $this->load->model('User_mdl');
 
 
         $this->data['users'] = $this->User_mdl->read();
-        $this->load->view('admin/users', $this->data);
+
+        // Build View
+        $this->template->write_view('navigation', 'admin/partials/nav', $this->data);
+        $this->template->write_view('sidebar', 'admin/partials/sidebar', $this->data);
+        $this->template->write_view('content', 'admin/partials/users', $this->data);
+        $this->template->render();
     }
 
     public function addUser(){

@@ -27,6 +27,12 @@ class Settings extends Admin_Controller {
     public function  __construct()
     {
         parent::__construct();
+        $this->data['pageNum'] = 3;
+        $this->data['showUserButton'] = TRUE;
+        $this->data['showAlbum'] = FALSE;
+        $this->template->write('title', 'Settings');
+        $this->template->write_view('navigation', 'admin/partials/nav', $this->data);
+        $this->template->write_view('sidebar', 'admin/partials/sidebar', $this->data);
     }
 
     public function index(){
@@ -43,7 +49,8 @@ class Settings extends Admin_Controller {
 
         if(!$this->form_validation->run())
         {
-            $this->load->view('admin/settings');
+            $this->template->write_view('content', 'admn/partials/settings', $this->data);
+            $this->template->render();
         }
         else
         {

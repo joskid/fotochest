@@ -9,7 +9,7 @@
 | "default" group).
 |
 */
-$template['active_template'] = 'default';
+$template['active_template'] = 'default';  // Admin is available.
 
 /*
 |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ $template['active_template'] = 'default';
 
 /*
 |--------------------------------------------------------------------------
-| Default Template Configuration (adjust this or create your own)
+| Default Template Configuration 
 |--------------------------------------------------------------------------
 */
 
@@ -64,7 +64,26 @@ $template['default']['regions'] = array(
 );
 $template['default']['parser'] = 'parser';
 $template['default']['parser_method'] = 'parse';
-$template['default']['parse_template'] = TRUE;
+$template['default']['parse_template'] = FALSE;
+
+/*
+|--------------------------------------------------------------------------
+| Admin Template Configuration
+|--------------------------------------------------------------------------
+*/
+
+$template['admin']['template'] = 'admin/template';
+$template['admin']['regions'] = array(
+  'title',
+  'content',
+  'navigation',
+  'sidebar',
+);
+
+$template['admin']['parser'] = 'parser';
+$template['admin']['parser_method'] = 'parse';
+$template['admin']['pasrse_template'] = FALSE;
+
 
 /* End of file template.php */
 /* Location: ./system/application/config/template.php */

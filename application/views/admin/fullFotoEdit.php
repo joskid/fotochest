@@ -46,7 +46,7 @@ $this->load->view('admin/navigation', $this->data);
         <div class="formItem fullEditPhoto">
             <img id="cropbox" src="<?php echo base_url(); ?>img_stor/albums/<?php echo $row->albumName; ?>/thumbs/<?php echo $row->photoFileName; ?>" alt="<?php echo $row->photoFileName; ?>" class="photo">
             <br/>
-            <div style="width: 100px; height: 100px; display:inline-block; overflow: hidden; position: absolute; right: 100px;">
+            <div style="width: 100px; height: 100px; display:none; overflow: hidden; position: absolute; right: 100px;">
                 <img id="preview" src="<?php echo base_url(); ?>img_stor/albums/<?php echo $row->albumName; ?>/thumbs/<?php echo $row->photoFileName; ?>" width="100" alt="<?php echo $row->photoFileName; ?>">
             </div>
         
@@ -54,7 +54,7 @@ $this->load->view('admin/navigation', $this->data);
                 <h3>Edit This Photo</h3>
                 <a class="button" href="<?php echo site_url('admin/photos/rotate/counter/' . $row->photoID); ?>"><span>Rotate Counter Clockwise</span></a>
                 <a class="button" href="<?php echo site_url('admin/photos/rotate/clock/' . $row->photoID); ?>"><span>Rotate Clockwise</span></a>
-                <a class="button"><span>Crop Mode</span></a>
+                <a class="button" style="display: none;"><span>Crop Mode</span></a>
                 <a href="<?php echo site_url('admin/photos/deletePhoto/' . $row->photoID); ?>" class="button" rel="facebox"><span>Delete</span></a>
                 <h3>Photo Info</h3>
                 <dl>
@@ -69,20 +69,20 @@ $this->load->view('admin/navigation', $this->data);
             <label for="photoTitle">Photo Title:</label>
 
             <div>
-                <input type="text" id="siteName" name="siteName" value="<?php echo $row->photoTitle; ?>">
+                <input type="text" id="photoTitle" name="photoTitle" value="<?php echo $row->photoTitle; ?>">
             </div>
         </div>
         <div class="formItem">
             <label for="photoDescription">Photo Description:</label>
 
             <div>
-                <textarea rows="8" cols="51"></textarea>
+                <textarea rows="8" cols="51" name="photoDesc" id="photoDesc"></textarea>
             </div>
             
         </div>
         <div class="formItem check">
             <label for="showPhotoTitle"></label>
-            <input type="checkbox" name="showPhotoTitle" id="showPhotoTitle" <?php
+            <input type="checkbox" name="isProfile" id="isProfile" <?php
             if ($row->isProfilePic == 1)
             {
                 $checked = 'TRUE';
@@ -93,9 +93,10 @@ $this->load->view('admin/navigation', $this->data);
             }
             echo isChecked($checked); ?>><span>Make this Photo Your Profile Picture</span>
         </div>
-        
+        <input type="hidden" value="<?php echo $row->photoID; ?>" name="photoID" id="photoID">
         <?php } ?>
         <input type="submit" value="Save Changes" class="button">
+
         <?php echo form_close(); ?>
     </div>
 

@@ -154,8 +154,27 @@ class Photos extends Admin_Controller {
     public function fullEdit($photoID)
     {
 
-        $this->data['photoData'] = $this->Photo_mdl->getPhotoInfo($photoID);
-        $this->load->view('admin/fullFotoEdit', $this->data);
+        $this->load->library('form_validation');
+
+        if(!$this->form_validation->run())
+        {
+            $this->data['photoData'] = $this->Photo_mdl->getPhotoInfo($photoID);
+            $this->load->view('admin/fullFotoEdit', $this->data);
+        }
+        else
+        {
+            $this->Photo_mdl->photoTitle = $this->input->post('photoTitle');
+            $this->Photo_mdl->photoDesc = $this->input->post('photoDesc');
+            $this->Photo_mdl->photoID = $this->input->post('photoID');
+            if ($this->input->post('isProfile') == 'on'){
+                $this->Photo_mdl->isProfilePicture = 1;
+            } else {
+                $this->Photo_mdl->isProfilePicture = 0;
+            }
+            $this->Photo_mdl->update();
+        }
+
+        
     }
 
     public function rotate($direction, $photoID)

@@ -28,7 +28,7 @@ $this->load->view('admin/navigation', $data);
                 <dd><?php echo $row->albumFriendlyName; ?></dd>
             </dl>
             <ul class="actions">
-                <li><a href="<?php echo site_url('admin/photos/editPhoto/' . $row->photoID . '/N'); ?>" class="button full" rel="facebox"><span>Edit</span></a></li>
+                <li><a href="<?php echo site_url('admin/photos/fullEdit/' . $row->photoID); ?>" class="button full" rel="facebox"><span>Edit</span></a></li>
                 <li><a href="<?php echo site_url('admin/photos/movePhoto/' . $row->photoID); ?>" class="button full" rel="facebox"><span>Move</span></a></li>
                 <li><a href="<?php echo site_url('admin/photos/deletePhoto/' . $row->photoID); ?>" class="button full" rel="facebox"><span>Delete</span></a></li>
             </ul>

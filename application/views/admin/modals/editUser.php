@@ -28,11 +28,16 @@
         </div>
         <input type="hidden" name="userUserID" id="userUserID" value="<?php echo $row->userID; ?>">
       </div>
-      <a class="newButton auto saveUser">
-        <span>
-          Save User
-        </span>
-      </a>
+      <div class="formItem">
+          <div>
+              <a class="button saveUser">
+                <span>
+                  Save User
+                </span>
+              </a>
+          </div>
+      </div>
+      
         <?php } ?>
     </div>
 </div>

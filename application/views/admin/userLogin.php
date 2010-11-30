@@ -1,4 +1,4 @@
-<?php $this->load->view('admin/header'); ?>
+
 
 <body class="loginPage">
     <div class="login">

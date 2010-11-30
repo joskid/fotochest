@@ -49,7 +49,7 @@ class Settings extends Admin_Controller {
 
         if(!$this->form_validation->run())
         {
-            $this->template->write_view('content', 'admn/partials/settings', $this->data);
+            $this->template->write_view('content', 'admin/partials/settings', $this->data);
             $this->template->render();
         }
         else

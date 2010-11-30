@@ -35,7 +35,7 @@ class Users extends Admin_Controller {
         $this->template->write('title', 'Users');
         $this->data['showAlbum'] = FALSE;
         $this->data['showUserButton'] = TRUE;
-        $This->data['pageNum'] = 5;
+        $this->data['pageNum'] = 5;
 
         // Load the model
         $this->load->model('User_mdl');

@@ -63,6 +63,9 @@ class Photos extends Admin_Controller {
     }
 
     public function photosView($pageNum = 0){
+        $this->data['pageNum'] = 1;
+        $this->data['showAlbum'] = TRUE;
+        $this->data['showUserButton'] = FALSE;
 
         $this->data['photos'] = $this->Photo_mdl->getAdminPhotoStream($pageNum);
 
@@ -76,7 +79,11 @@ class Photos extends Admin_Controller {
         $this->pagination->initialize($config);
 
         $this->data['pages'] =  $this->pagination->create_links();
-        $this->load->view('admin/dashboard', $this->data);
+        $this->template->write('title', 'Your FotoChest Dashboard');
+        $this->template->write_view('navigation', 'admin/partials/nav', $this->data);
+        $this->template->write_view('sidebar', 'admin/partials/sidebar', $this->data);
+        $this->template->write_view('content', 'admin/partials/dashboard', $this->data);
+        $this->template->render();
     }
 
     public function photoUpload($albumID){
@@ -158,8 +165,16 @@ class Photos extends Admin_Controller {
 
         if(!$this->form_validation->run())
         {
+            $this->data['pageNum'] = 2;
+            $this->data['showAlbum'] = FALSE;
+            $this->data['showUserButton'] = FALSE;
+
             $this->data['photoData'] = $this->Photo_mdl->getPhotoInfo($photoID);
-            $this->load->view('admin/fullFotoEdit', $this->data);
+            $this->template->write('title', 'Edit');
+            $this->template->write_view('navigation', 'admin/partials/nav', $this->data);
+            $this->template->write_view('sidebar', 'admin/partials/sidebar', $this->data);
+            $this->template->write_view('content', 'admin/partials/editPhoto', $this->data);
+            $this->template->render();
         }
         else
         {

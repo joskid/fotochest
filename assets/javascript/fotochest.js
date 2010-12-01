@@ -251,6 +251,26 @@ jQuery(document).ready(function($) {
           var albumID = $('select#albumID').val();
           var photoID = $('input#photoID').val();
           document.location.href= "/admin/photos/movePhotoAction/" + photoID + "/" + albumID;
-      })
+      });
+
+      $('a.addANewComment').click(function(){
+        
+          
+          var photoID = $('input#photoID').val();
+          var albumName = $('input#albumName').val();
+          var commentContent = $('textarea#commentContent').val();
+          $('#comments').html("<img src='/assets/images/admin/ajax-loader.gif'>");
+          var dataString = "photoID=" + photoID + "&commentContent=" + commentContent;
+
+          $.ajax({
+            type: "POST",
+            url: "/photos/saveComment",
+            data: dataString,
+            success: function(){
+              $('#comments').load('/photo/' + albumName + '/' + photoID + '  #comments');
+           return false;
+          }
+        });
+      });
       
     })

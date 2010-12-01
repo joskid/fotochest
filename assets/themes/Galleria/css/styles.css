@@ -9,6 +9,7 @@ a.button
 	background: #ddd;
 	-moz-border-radius: 3px;
 	-moz-box-shadow: 2px 2px 6px;
+        cursor: pointer;
 }
 
 a.button span
@@ -161,6 +162,26 @@ div.photoInfo p
 div.photoInfo p:last-child
 {
 	border-bottom: 1px solid #ccc;
+}
+
+div.comments
+{
+    clear: both;
+    margin-bottom: 45px;
+    width: 350px;
+}
+
+div.comments textarea
+{
+    width: 350px;
+    height: 120px;
+}
+
+div.comments .comment
+{
+    margin: 7px;
+    padding-bottom:4px;
+    border-bottom: 1px solid #ccc;
 }
 
 

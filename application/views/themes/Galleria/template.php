@@ -3,6 +3,8 @@
 	<head>
 		
                 <?php echo theme_css('styles'); ?>
+                <?php echo getJquery(); ?>
+                <?php echo js('fotochest'); ?>
 		<link href='http://fonts.googleapis.com/css?family=Cuprum&subset=latin' rel='stylesheet' type='text/css'>
 		<title><?php echo $title; ?></title>
 	</head>

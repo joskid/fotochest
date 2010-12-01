@@ -37,7 +37,7 @@
     <h2>Edit Your Foto!</h2>
     <div class="form onTop">
         <?php echo form_open('admin/photos/fullEdit'); ?>
-        <?php //echo validation_errors(); ?>
+        <?php echo validation_errors(); ?>
         <?php foreach($photoData->result() as $row) { ?>
         <div class="formItem fullEditPhoto">
             <img id="cropbox" src="<?php echo base_url(); ?>img_stor/albums/<?php echo $row->albumName; ?>/thumbs/<?php echo $row->photoFileName; ?>" alt="<?php echo $row->photoFileName; ?>" class="photo">
@@ -72,7 +72,7 @@
             <label for="photoDescription">Photo Description:</label>
 
             <div>
-                <textarea rows="8" cols="51" name="photoDesc" id="photoDesc"></textarea>
+                <textarea rows="8" cols="51" name="photoDesc" id="photoDesc"><?php echo $row->photoDesc; ?></textarea>
             </div>
 
         </div>

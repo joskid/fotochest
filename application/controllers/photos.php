@@ -127,5 +127,16 @@ class Photos extends Public_Controller {
     {
         show_404();
     }
+
+    public function saveComment()
+    {
+
+        $this->load->model('Comment_mdl');
+        $this->Comment_mdl->commentContent = $this->input->post('commentContent');
+        $this->Comment_mdl->commentPhotoID = $this->input->post('photoID');
+        $this->Comment_mdl->create();
+        
+
+    }
 }
 ?>

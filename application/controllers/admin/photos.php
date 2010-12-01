@@ -149,10 +149,12 @@ class Photos extends Admin_Controller {
 
     }
 
-    public function fullEdit($photoID)
+    public function fullEdit($photoID = null)
     {
 
         $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('photoID', 'PhotoID', 'required|xss_clean');
 
         if(!$this->form_validation->run())
         {
@@ -177,7 +179,8 @@ class Photos extends Admin_Controller {
             } else {
                 $this->Photo_mdl->isProfilePicture = 0;
             }
-            $this->Photo_mdl->update();
+            $this->Photo_mdl->update($this->input->post('photoID'));
+            redirect('admin/photos/fullEdit/' . $this->input->post('photoID'));
         }
 
         

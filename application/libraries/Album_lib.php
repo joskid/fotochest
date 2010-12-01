@@ -55,7 +55,6 @@ class Album_lib {
         // Once a new photo is uploaded to the album it bcomes the thumbnail....
 
         // Load the Model
-
         $this->ci->load->model('Album_mdl');
 
         // Load up the variables
@@ -66,19 +65,18 @@ class Album_lib {
         // Call the CRUD Method
         $this->ci->Album_mdl->create();
 
+        // Create the album folders
         mkdir("./img_stor/albums/" . $this->albumName);
         mkdir("./img_stor/albums/" . $this->albumName . "/originals");
         mkdir("./img_stor/albums/" . $this->albumName . "/thumbs");
     }
     
-    /**
+    /**********************************************
      *  Delete Album
      * @param AlbumID, and the path of the site.  (Can we grab this here???)
      * 
-     * 
+     * *********************************************
      */
-
-
 
     public function deleteAlbum($albumID, $path){
 
@@ -88,20 +86,17 @@ class Album_lib {
         // Call the delete Method
         $this->ci->Album_mdl->delete($albumID);
         
-
+        // Now we must delete all photos associated with this album
+        // @todo - handle this inside of a model instead of a library. Ver 2.0
         $deletePhotos = "DELETE FROM $this->photoTable WHERE photoAlbumID = $albumID";
         log_message('info', 'album_mdl::deleteAlbum executed a query ' . $deletePhotos);
-        $this->db->query($deletePhotos);
+        $this->ci->db->query($deletePhotos);
 
-        $this->load->helper('file');
-
+        // Deleting files in the album folder.
         delete_files($path . "img_stor/albums/" . $this->albumName);
-        rmdir('./img_stor/albums/' . $this->albumName);
+        rmdir('./img_stor/albums/' . $this->albumName);  // Delete directory
         log_message('info', 'Removing directory for album ' . $this->albumName);
-
     }
-
-
 
     public function findAlbumThumbnails($albumID, $neededPhotos= 3){
 
@@ -111,9 +106,7 @@ class Album_lib {
         $currentAlbum = $albumID;
         $inNeed = $neededPhotos;
         $this->ci->load->model('Album_mdl');
-
         $albumThumbs = $this->ci->Album_mdl->getAlbumCount($albumID);
-
 
         if ($albumThumbs >= $neededPhotos)
         {
@@ -126,7 +119,6 @@ class Album_lib {
         }
         else
         {
-
             // Begin finding other phtoos.
             while($grabbedPhotos < $neededPhotos)
             {
@@ -139,7 +131,6 @@ class Album_lib {
                     $grabbedPhotos = $childPhotos->num_rows();
                     return $childPhotos;
                     break;
-
                 }
                 else
                 {
@@ -166,7 +157,7 @@ class Album_lib {
     /*****************************************************
      *
      *
-     *  addPhotoAlbum - Adds a photo to a specific album.
+     *  addPhotoToAlbum - Adds a photo to a specific album.
      *  Mostly just executes a query to add it to the db.
      *
      *  Params: $photoID (The id of the actual photo),
@@ -209,6 +200,5 @@ class Album_lib {
         return $getAlbums->num_rows();
 
     }
-
 }
 ?>

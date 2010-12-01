@@ -21,6 +21,9 @@
 * @author		Derek Stegelman
 */
 
+//  !!! @todo how did I miss this???  This needs completed...
+
+
 class Setting_mdl extends CI_Model {
 
     var $settingID;
@@ -30,6 +33,19 @@ class Setting_mdl extends CI_Model {
 
     public function  __construct() {
         parent::__construct();
+        $this->settingTable = $this->config->item('settingTable');
+    }
+
+    // Getters
+    public function getID($settingName)
+    {
+        $query = "SELECT * FROM $this->settingTable WHERE settingName = $settingName";
+        $settingData = $this->db->query($query);
+        foreach($settingData->result() as $row)
+        {
+            $settingID = $row->settingID;
+        }
+        return $settingID;
     }
 
     public function create()
@@ -43,28 +59,27 @@ class Setting_mdl extends CI_Model {
         $this->db->insert($this->photoTable, $insertData);
     }
 
-    public function read($photoID = null)
+    public function readName($settingName = null)
     {
-        if ($photoID == null)
+        if($settingName == null)
         {
-            $photoData = $this->db->get($this->photoTable);
+            $settingData = $this->db->get($this->settingTable);
         }
         else
         {
-            $photoData = $this->db->get_where($this->photoTable, array('photoID'=>$photoID));
+            $query = "SELECT * FROM $this->settingTable WHERE settingName = $settingName";
+            $settingData = $this->db->query($query);
         }
-        return $photoData;
+        return $settingData;
     }
 
-    public function update($photoID)
+
+    public function update($settingName, $settingValue)
     {
-        $updateData = array('photoAlbumName'=>$this->photoAlbumName,
-            'photoFileName'=>$this->photoFileName,
-            'photoTitle'=>$this->photoTitle,
-            'photoDesc'=>$this->photoDesc,
-            'isProfilePicture'=>$this->isProfilePicture);
-        $this->db->where('photoID', $photoID);
-        $this->db->update($this->photoTable, $updateData);
+        $updateData = array('settingValue'=>$settingValue);
+        $settingID = $this->getID($settingName);
+        $this->db->where('settingID', $settingID);
+        $this->db->update($this->settingTable, $updateData);
     }
 
     public function delete($photoID)

@@ -35,18 +35,18 @@ class Setting_lib {
 
     public function __construct(){
         $this->ci =& get_instance();
-        $this->settingTable = $this->ci->config->item('settingTable');
+        $this->ci->load->model('Setting_mdl');
     }
 
     public function getSetting($settingName){
 
-        $selectQuery = "SELECT * FROM $this->settingTable WHERE settingName = '$settingName'";
-        $execute = $this->ci->db->query($selectQuery);
-        if($execute->num_rows() == 0){
+        $settingData = $this->ci->Setting_mdl->readName($settingName);
+
+        if($settingData->num_rows() == 0){
             log_message('ERROR', 'Setting ' . $settingName . " not found");
             return false;
         } else {
-            foreach($execute->result() as $row){
+            foreach($settingData->result() as $row){
                 $settingValue = $row->settingValue;
             }
             log_message('debug','Setting fetched: ' . $settingName . " set as " . $settingValue);
@@ -56,17 +56,13 @@ class Setting_lib {
 
     public function setSetting($settingName, $settingValue){
 
-        $data = array('settingValue'=>$settingValue);
-        $where = "settingName = '$settingName'";
-        $buildUpdate = $this->ci->db->update_string($this->settingTable, $data, $where);
-        $this->ci->db->query($buildUpdate);
+        $this->ci->Setting_mdl->update($settingName, $settingValue);
         log_message('debug', 'Setting ' . $settingName . ' has been set to: ' . $settingValue);
-
     }
 
     public function getAllSettings(){
         $this->ci->load->model('Setting_mdl');
-        $execute = $this->ci->Setting_mdl->read();
+        $execute = $this->ci->Setting_mdl->readName();
         $settingsArray = array();
         foreach($execute->result() as $row){
             $settingsArray[$row->settingName] = $row->settingValue;

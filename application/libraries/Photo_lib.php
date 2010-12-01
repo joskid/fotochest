@@ -43,12 +43,7 @@ class Photo_lib {
     }
 
     
-
-      
-
     public function buildMainThumb($photoDirectory, $photoFileName, $albumName){
-
-        // Load the library
         
         $main_size['image_library'] = 'gd2';
         $main_size['source_image'] = $photoDirectory;
@@ -98,8 +93,6 @@ class Photo_lib {
 
     public function movePhoto(){
 
-        
-
         //Load Photo Model
         $this->ci->load->model('Photo_mdl');
 
@@ -125,7 +118,6 @@ class Photo_lib {
 
         //Move the thumb first.
 
-
         log_message('info', 'Moving thumbnail ' . $fileName);
         $thumbIsPath = $this->config->item('absoluteFilePath') . "img_stor/albums/" . $oldAlbumName . "/thumbs/" . $fileName;
 
@@ -146,7 +138,6 @@ class Photo_lib {
         // Query time....
 
         $updateQuery = array('photoAlbumID'=>$this->photoAlbumID);
-
         $this->ci->Photo_mdl->update($this->photoID, $updateQuery);
 
     }
@@ -171,7 +162,7 @@ class Photo_lib {
 
     public function rotateImage($rotation, $photoID)
     {
-        // rotation closewise is 1
+        // Memory limit is set really high on purpose.  Rotation takes a lot of memory.
         ini_set('memory_limit', '512M');
         $this->ci->load->model('Photo_mdl');
 
@@ -257,7 +248,6 @@ class Photo_lib {
         }
 
     }
-
     
 }
 ?>

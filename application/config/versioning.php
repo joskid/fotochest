@@ -1,4 +1,4 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 
-$config['versionNumber'] = "RC 1.5";
+$config['versionNumber'] = "Alpha 1 - 1.5";

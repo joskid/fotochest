@@ -31,7 +31,6 @@ class Admin_Controller extends MY_Controller {
             $this->load->model('Photo_mdl');
             $this->load->model('Album_mdl');
             $this->template->set_template('admin');
-
         } else {
             redirect('login');
         }

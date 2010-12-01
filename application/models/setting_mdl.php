@@ -48,17 +48,6 @@ class Setting_mdl extends CI_Model {
         return $settingID;
     }
 
-    public function create()
-    {
-        $insertData = array('photoAlbumName'=>$this->photoAlbumName,
-            'photoFileName'=>$this->photoFileName,
-            'photoTitle'=>$this->photoTitle,
-            'photoDesc'=>$this->photoDesc,
-            'photoCreatedDate'=>date("m/d/y"),
-            'isProfilePicture'=>0);
-        $this->db->insert($this->photoTable, $insertData);
-    }
-
     public function readName($settingName = null)
     {
         if($settingName == null)

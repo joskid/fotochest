@@ -1,4 +1,4 @@
-<?php
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 /**
 * FotoChest
 *
@@ -61,7 +61,7 @@ class Setting_lib {
     }
 
     public function getAllSettings(){
-        $this->ci->load->model('Setting_mdl');
+
         $execute = $this->ci->Setting_mdl->readName();
         $settingsArray = array();
         foreach($execute->result() as $row){

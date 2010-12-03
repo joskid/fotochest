@@ -1,10 +1,17 @@
 
 <?php foreach ($photoInfo->result() as $row) { ?>
+<div class="photoNavigation">
+    <?php echo previousNav($row->photoID, $row->albumName); ?>
+                       <?php echo nextNav($row->photoID, $row->albumName); ?>
+</div>
 <div class="singlePhoto photo">
 				<a href="viewBigPhoto.html">
                                     <img src="<?php echo base_url(); ?>img_stor/albums/<?php echo $row->albumName; ?>/thumbs/<?php echo $row->photoFileName; ?>" title="<?php echo $row->photoTitle; ?>" alt="<?php echo $row->photoTitle; ?>">
 				</a>
 			</div>
+
+
+
 			<div class="photoInfo">
                             <?php //if (getSetting('showPhotoTitle') == 'TRUE') { ?>
                             <h2><?php echo $row->photoTitle; ?></h2>
@@ -15,6 +22,7 @@
                                 <?php if (getSetting('enableOriginalDownload') == 'TRUE') { ?>
 				<a class="button" href="<?php echo site_url('download/downloadFile/' . $row->albumName . '/' . $row->photoID); ?>"><span>Download Photo</span></a>
                                 <?php } ?>
+                                
 			</div>
 <div class="comments" id="comments">
     

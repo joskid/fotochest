@@ -69,4 +69,33 @@ function getPhotoAlbumName($photoID)
     return $photoAlbumName;
 }
 
+function nextNav($photoID, $albumName)
+{
+
+    $nextPhoto = $photoID - 1;
+    $nextLink = "<a class='prev'";
+    if(!checkPhoto($nextPhoto, $albumName))
+    {
+        $nextLink = $nextLink . " style='display:none;'";
+    }
+    $nextLink = $nextLink . " href='" . site_url() . "photo/" . $albumName . "/" . $nextPhoto . "'>";
+    $nextLink = $nextLink . "<img src='" . base_url() . "assets/images/Arrow-Right.png' width='24'></a>";
+    return $nextLink;
+
+}
+
+function previousNav($photoID, $albumName)
+{
+    $nextPhoto = $photoID + 1;
+
+    $prevLink = "<a class='prev'";
+    if(!checkPhoto($nextPhoto, $albumName))
+    {
+        $prevLink = $prevLink . " style='display:none;'";
+    }
+    $prevLink = $prevLink . " href='" . site_url() . "photo/" . $albumName . "/" . $nextPhoto . "'>";
+    $prevLink = $prevLink . "<img src='" . base_url() . "assets/images/Arrow-Left.png' width='24'></a>";
+    return $prevLink;
+}
+
 ?>

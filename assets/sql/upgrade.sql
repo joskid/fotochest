@@ -20,3 +20,6 @@ delete from `photoSettings` where settingID = 6;
 delete from `photoSettings` where settingID = 7;
 delete from `photoSettings` where settingID = 8;
 delete from `photoSettings` where settingID = 9;
+
+
+-- Remember to add a modify for the comments table.

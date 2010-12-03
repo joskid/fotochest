@@ -15,11 +15,12 @@ CREATE TABLE `photoAlbums` (
 
 
 CREATE TABLE `photoComments` (
-  `commentID` int(11) NOT NULL auto_increment,
+  `commentID` int(11) NOT NULL AUTO_INCREMENT,
   `commentContent` text,
   `commentPhotoID` int(11) NOT NULL,
-  PRIMARY KEY  (`commentID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `commentDate` date DEFAULT NULL,
+  PRIMARY KEY (`commentID`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 
 

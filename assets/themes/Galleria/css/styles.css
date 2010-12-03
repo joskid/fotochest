@@ -184,4 +184,9 @@ div.comments .comment
     border-bottom: 1px solid #ccc;
 }
 
+div.comments .comment .date
+{
+    font-size: 8pt;
+    margin-bottom: 4px;
+}
 

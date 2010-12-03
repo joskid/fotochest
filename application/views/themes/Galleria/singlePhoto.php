@@ -27,6 +27,7 @@
     <?php echo form_close(); ?>
     <?php foreach($comments->result() as $comment) { ?>
     <div class="comment">
+        <p class="date"><?php echo $comment->commentDate; ?></p>
     <?php echo $comment->commentContent; ?>
     </div>
     <?php } ?>

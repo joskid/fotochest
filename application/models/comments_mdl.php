@@ -41,11 +41,12 @@ class Comments_mdl extends CI_Model{
 
 
   public function create(){
+    log_message('info', 'create hit');
     $this->commentDate = date('y/m/d');
     $commentData = array('commentContent'=>$this->commentContent, 'commentDate'=>$this->commentDate,
                          'commentPhotoID'=>$this->commentPhotoID);
-    $buildQuery = $this->db->insert_query($this->commentTable, $commentData);
-    $this->db->query($buildQuery);
+    $this->db->insert($this->commentTable, $commentData);
+    
   }
   
   public function readByPhotoID($photoID)

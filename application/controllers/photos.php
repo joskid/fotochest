@@ -130,13 +130,13 @@ class Photos extends Public_Controller {
 
     public function saveComment()
     {
+        log_message('info', 'Comments Save Comment Hit');
 
-        $this->load->model('Comment_mdl');
-        $this->Comment_mdl->commentContent = $this->input->post('commentContent');
-        $this->Comment_mdl->commentPhotoID = $this->input->post('photoID');
-        $this->Comment_mdl->create();
-        
-
+        $this->load->model('Comments_mdl');
+        $this->Comments_mdl->commentContent = $this->input->post('commentContent');
+        $this->Comments_mdl->commentPhotoID = $this->input->post('photoID');
+        $this->Comments_mdl->create();
+        redirect('photo/' . $this->input->post('albumName') . '/' . $this->input->post('photoID'));
     }
 }
 ?>

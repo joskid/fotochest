@@ -19,10 +19,12 @@
 <div class="comments" id="comments">
     
     <h3>Add a Comment</h3>
+    <?php echo form_open('photos/saveComment', array('id'=>'addCommentForm')); ?>
     <textarea name="commentContent" id="commentContent"></textarea><br/>
     <input type="hidden" value="<?php echo $row->photoID; ?>" id="photoID" name="photoID">
     <input type="hidden" value="<?php echo $row->albumName; ?>" id="albumName" name="albumName">
-    <a class="button addANewComment" href="#"><span>Add Comment</span></a>
+    <a class="button addComment"><span>Add Comment</span></a>
+    <?php echo form_close(); ?>
     <?php foreach($comments->result() as $comment) { ?>
     <div class="comment">
     <?php echo $comment->commentContent; ?>

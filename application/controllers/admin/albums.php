@@ -60,7 +60,7 @@ class Albums extends Admin_Controller {
     public function deleteAlbum($albumID){
 
       $this->data['albumID'] = $albumID;
-        $this->load->view('admin/modals/deleteAlbum', $this->data);
+      $this->load->view('admin/modals/deleteAlbum', $this->data);
     }
 
     public function do_delete(){

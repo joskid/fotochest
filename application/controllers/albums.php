@@ -17,7 +17,7 @@
 * Album Controller
 *
 * @package		FotoChest
-* @category		Libraries
+* @category		Controllers
 * @author		Derek Stegelman
 */
 

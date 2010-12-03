@@ -39,7 +39,7 @@ class Setting_mdl extends CI_Model {
     // Getters
     public function getID($settingName)
     {
-        $query = "SELECT * FROM $this->settingTable WHERE settingName = $settingName";
+        $query = "SELECT * FROM $this->settingTable WHERE settingName = '$settingName'";
         $settingData = $this->db->query($query);
         foreach($settingData->result() as $row)
         {
@@ -56,7 +56,7 @@ class Setting_mdl extends CI_Model {
         }
         else
         {
-            $query = "SELECT * FROM $this->settingTable WHERE settingName = $settingName";
+            $query = "SELECT * FROM $this->settingTable WHERE settingName = '$settingName'";
             $settingData = $this->db->query($query);
         }
         return $settingData;

@@ -244,7 +244,7 @@ jQuery(document).ready(function($) {
 
       $('a.chooseAlbum').click(function(){
          var albumID = $('select#albumID').val();
-         document.location.href="/admin/upload/" + albumID;
+         document.location.href="/upload/" + albumID;
       });
 
       $('a.moveToAlbum').click(function(){

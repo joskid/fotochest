@@ -1,8 +1,3 @@
-<?php
-$this->load->view('admin/header');
-$data['pageNum'] = 2;
-$this->load->view('admin/navigation', $data);
-?>
 
     <div class="content right" id="viewSingleAlbum">
         <h2><?php echo $albumFriendlyName; ?></h2>
@@ -36,7 +31,3 @@ $this->load->view('admin/navigation', $data);
             <?php echo $pages; ?>
         </div>
     </div>
-    <?php $data['showAlbum'] = FALSE; ?>
-<?php $data['showUserButton'] = FALSE; ?>
-    <?php $this->load->view('admin/sidebar', $data); ?>
-    <?php $this->load->view('admin/footer'); ?>

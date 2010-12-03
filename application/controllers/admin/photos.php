@@ -101,7 +101,7 @@ class Photos extends Admin_Controller {
         $this->template->write_view('sidebar', 'admin/partials/sidebar', $this->data);
         $this->template->write_view('content', 'admin/partials/upload', $this->data);
         $this->template->render();
-        $this->load->view('admin/photoUpload', $this->data);
+        
     }
 
     public function editPhoto($photoID, $isFront){

@@ -71,6 +71,24 @@ class Settings extends Admin_Controller {
             } else {
                 setSetting('enableComments', 'FALSE');
             }
+            if ($this->input->post('enablePhotoInfo') == "on")
+            {
+                setSetting('enablePhotoInfo', 'TRUE');
+            }
+            else
+            {
+                setSetting('enablePhotoInfo', 'FALSE');
+            }
+            if ($this->input->post('enableOriginalDownload') == "on")
+            {
+                setSetting('enableOriginalDownload', 'TRUE');
+            }
+            else
+            {
+                setSetting('enableOriginalDownload', 'FALSE');
+            }
+
+
             setSetting('siteName', $this->input->post('siteName'));
             redirect('admin/settings');
         }

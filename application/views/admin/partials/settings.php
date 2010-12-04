@@ -25,13 +25,13 @@
         <div class="formItem">
             <label for="displayEXIF">Display EXIF Data</label>
             <div>
-                <input type="checkbox" name="displayEXIF" id="displayEXIF">
+                <input type="checkbox" name="enablePhotoInfo" id="enablePhotoInfo" <?php echo isChecked(getSetting('enablePhotoInfo')); ?>>
             </div>
         </div>
         <div class="formItem">
             <label for="fileDownloads">Allow File Downloads</label>
             <div>
-                <input type="checkbox">
+                <input type="checkbox" name="enableOriginalDownload" id="enableOriginalDownload" <?php echo isChecked(getSetting('enableOriginalDownload')); ?>>
             </div>
         </div>
 

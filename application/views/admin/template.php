@@ -77,7 +77,7 @@
         <a class="logo" href="<?php echo base_url(); ?>admin/dashboard">foto<span>chest</span></a>
         <?php echo $navigation; ?>
         <?php if(isOverPhotoLimit() == true){ ?>
-        <div class="notification error">
+        <div class="notification error" style="display: none;">
             <p>You have exceeded your photo limit for this account. Your limit is <?php echo getPhotoLimit(); ?>.  <a href="#">Upgrade Today!</a></p>
         </div>
         <?php } ?>

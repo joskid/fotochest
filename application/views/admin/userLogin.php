@@ -2,7 +2,7 @@
 
 <body class="loginPage">
     <div class="login">
-        <?php echo form_open('users/login', array('id', 'loginForm')); ?>
+        <?php echo form_open('users/login', array('id'=>'loginForm')); ?>
         <h1>Login</h1>
         <div class="form">
             <div class="formItem">

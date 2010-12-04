@@ -2,7 +2,7 @@
 <div class="content right" id ="settings">
     <h2>Settings</h2>
     <div class="form">
-        <?php echo form_open('admin/settings', array('id', 'settingsForm')); ?>
+        <?php echo form_open('admin/settings', array('id'=>'settingsForm')); ?>
         <?php echo validation_errors(); ?>
         <div class="formItem">
             <label for="siteName">Site Name:</label>

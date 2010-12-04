@@ -262,5 +262,10 @@ jQuery(document).ready(function($) {
 
          $('#settingsForm').submit();
       });
+
+      // Login Action
+      $('a.loginAction').click(function(){
+         $('#loginForm').submit();
+      });
       
     })

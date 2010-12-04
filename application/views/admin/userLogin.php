@@ -2,7 +2,7 @@
 
 <body class="loginPage">
     <div class="login">
-        <?php echo form_open('users/login'); ?>
+        <?php echo form_open('users/login', array('id', 'loginForm')); ?>
         <h1>Login</h1>
         <div class="form">
             <div class="formItem">
@@ -21,7 +21,9 @@
             <?php
             }
             ?>
-            <input type="submit" class="loginBtn" value="Login">
+            <a class="loginAction button">
+                <span>Login</span>
+            </a>
             <?php echo anchor('forgotpassword', 'Forgot Password?'); ?>
         </div>
         <?php echo form_close(); ?>

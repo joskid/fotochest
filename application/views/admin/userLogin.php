@@ -24,7 +24,7 @@
             <a class="loginAction button">
                 <span>Login</span>
             </a>
-            <?php echo anchor('forgotpassword', 'Forgot Password?'); ?>
+            <?php echo anchor('forgotpassword', 'Forgot Password?', array('class'=>'forgotPassword')); ?>
         </div>
         <?php echo form_close(); ?>
         <div class="clear"></div>

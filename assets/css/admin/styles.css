@@ -84,7 +84,7 @@ input.button
     border-color:#4b87c4;
 }
 
-.login a
+.login a.forgotPassword
 {
     color: #2aaee5;
 }

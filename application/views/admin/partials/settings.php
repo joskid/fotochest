@@ -2,7 +2,7 @@
 <div class="content right" id ="settings">
     <h2>Settings</h2>
     <div class="form">
-        <?php echo form_open('admin/settings'); ?>
+        <?php echo form_open('admin/settings', array('id', 'settingsForm')); ?>
         <?php echo validation_errors(); ?>
         <div class="formItem">
             <label for="siteName">Site Name:</label>
@@ -41,8 +41,13 @@
                 <input type="checkbox" name="enableComments" id="enableComments" <?php echo isChecked(getSetting('enableComments')); ?>>
             </div>
         </div>
-
-        <input type="submit" value="Save Changes" class="button">
+        <div class="formItem">
+            <div>
+                <a class="button saveSettings">
+                    <span>Save Settings</span>
+                </a>
+            </div>
+        </div>
 
     </div>
 

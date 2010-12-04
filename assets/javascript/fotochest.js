@@ -255,8 +255,12 @@ jQuery(document).ready(function($) {
 
       $('a.addComment').click(function(){
         $('#addCommentForm').submit();
-          
-          
+      });
+
+      // Save Settings submit form.
+      $('a.saveSettings').click(function(){
+
+         $('#settingsForm').submit();
       });
       
     })

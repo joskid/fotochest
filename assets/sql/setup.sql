@@ -99,5 +99,4 @@ CREATE TABLE `photoThemes` (
 INSERT INTO `photoThemes` (`themeID`,`themeName`,`themeAuthor`,`themeActive`)
 VALUES
 	(1, 'default', 'Derek Stegelman', 0),
-	(2, 'Flickr-ish', 'Derek Stegelman', 1),
-	(3, 'Europe', 'Derek and Lindy Stegelman', 0);
+        (2, 'Galleria', 'Derek Stegelman', 1);

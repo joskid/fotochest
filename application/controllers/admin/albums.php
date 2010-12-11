@@ -36,7 +36,7 @@ class Albums extends Admin_Controller {
     public function createAlbum(){
         // Load the Library
         $this->load->library('album_lib');
-        $this->album_lib->albumName = $this->input->post('albumName');
+        $this->album_lib->albumName = str_replace(" ", "-", $this->input->post('albumName'));
         $this->album_lib->albumFriendlyName = $this->input->post('albumFriendlyName');
         $this->album_lib->albumParentID = $this->input->post('albumID');
         $this->album_lib->createAlbum();

@@ -82,6 +82,21 @@ class Album_mdl extends CI_Model {
         $this->db->delete($this->albumTable, array('albumID'=>$albumID));
     }
 
+    public function exists($albumName)
+    {
+        $albums = $this->db->where('albumName', $albumName)
+                           ->get($this->albumTable);
+        if($albums->num_rows != 0)
+        {
+            return true;
+
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 
 
 

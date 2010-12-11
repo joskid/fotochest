@@ -62,6 +62,15 @@ class Album_lib {
         $this->ci->Album_mdl->albumParentID = $this->albumParentID;
         $this->ci->Album_mdl->albumFriendlyName = $this->albumFriendlyName;
 
+        // Check for exisitng folder
+
+        if ($this->ci->Album_mdl->exists($this->albumName))
+        {
+            // Probably should randomize the name then right?
+            log_message('ERROR', 'The album ' . $this->albumName . ' already exists.  Manually changing the name now.');
+            $this->ci->Album_mdl->albumName = $this->_saltName($this->albumName);
+        }
+
         // Call the CRUD Method
         $this->ci->Album_mdl->create();
 
@@ -69,6 +78,11 @@ class Album_lib {
         mkdir("./img_stor/albums/" . $this->albumName);
         mkdir("./img_stor/albums/" . $this->albumName . "/originals");
         mkdir("./img_stor/albums/" . $this->albumName . "/thumbs");
+    }
+
+    private function _saltName($albumName)
+    {
+        return $albumName . rand(5, 45);
     }
     
     /**********************************************
@@ -200,5 +214,7 @@ class Album_lib {
         return $getAlbums->num_rows();
 
     }
+
+    
 }
 ?>

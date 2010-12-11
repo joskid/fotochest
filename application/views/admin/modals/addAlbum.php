@@ -5,7 +5,7 @@
       <h3>Add an album</h3>
       
       <div class="formItem">
-        <label for="albumName">Album Name<span>(Must be Unique with no spaces!)</span></label>
+        <label for="albumName">Album Name<span>(Must be Unique!)</span></label>
         <div>
             <input type="text" name="albumName" size="35" id="albumName">
         </div>

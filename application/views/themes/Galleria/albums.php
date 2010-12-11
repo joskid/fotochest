@@ -12,5 +12,5 @@
 <?php } ?>
 
 <div class="pagination">
-    <?php echo $pages; ?>
+    <?php if(isset($pages)) { echo $pages; } ?>
 </div>

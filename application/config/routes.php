@@ -50,6 +50,7 @@ $route['upload/(:any)'] = "admin/photos/photoUpload/$1";
 $route['admin/addPhotos'] = "admin/photos/addNoAlbum";
 $route['album/(:any)'] = "albums/view/$1";
 $route['album/(:any)/(:any)'] = "albums/view/$1/$2";
+$route['albums/(:any)'] = "albums/viewAll/$1";
 $route['slideshow/(:any)'] = "photos/slideshow/$1";
 $route['404'] = "photos/throw404";
 

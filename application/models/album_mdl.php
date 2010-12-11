@@ -98,18 +98,6 @@ class Album_mdl extends CI_Model {
     }
 
 
-
-
-    
-
-    
-   
-
-    
-
-
-    
-
     /*************************************************
      *
      *  getAlbums()
@@ -119,12 +107,15 @@ class Album_mdl extends CI_Model {
      *
      * ************************************************
      */
-    public function getAlbums($parent){
+    public function getAlbums($parent, $pageNum = null, $perPage = null){
 
         
-        $getAlbumInfo = $this->db->get_where($this->albumTable, array('albumParentID'=>$parent));
+        $getAlbumInfo = $this->db->get_where($this->albumTable, array('albumParentID'=>$parent), $perPage, $pageNum);
         return $getAlbumInfo;
     }
+
+
+
 
    
     public function findChildID($albumID){

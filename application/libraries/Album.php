@@ -100,11 +100,8 @@ class Album extends CoreLibrary {
         $this->ci->Album_mdl->delete($albumID);
         
         // Now we must delete all photos associated with this album
-        // @todo - handle this inside of a model instead of a library. Ver 2.0
         $this->load->model('Photo_mdl');  // Must inhert core model before this works.
-        $deletePhotos = "DELETE FROM $this->photoTable WHERE photoAlbumID = $albumID";
-        log_message('info', 'album_mdl::deleteAlbum executed a query ' . $deletePhotos);
-        $this->ci->db->query($deletePhotos);
+        $this->Photo_mdl->deleteWhere('photoAlbumID', $albumID);
 
         // Deleting files in the album folder.
         delete_files($path . "img_stor/albums/" . $this->albumName);
@@ -115,11 +112,9 @@ class Album extends CoreLibrary {
     public function findAlbumThumbnails($albumID, $neededPhotos= 3){
 
         // First check to see if the album has some thumbs allready/needs to have pictures in it to do this.
-
         $grabbedPhotos = 0;
         $currentAlbum = $albumID;
         $inNeed = $neededPhotos;
-        $this->ci->load->model('Album_mdl');
         $albumThumbs = $this->ci->Album_mdl->getAlbumCount($albumID);
 
         if ($albumThumbs >= $neededPhotos)
@@ -163,8 +158,6 @@ class Album extends CoreLibrary {
                 }
             }
         }
-
-
     }
 
 
@@ -186,11 +179,9 @@ class Album extends CoreLibrary {
         // loading data
         $addPhotoData = array('photoAlbumID'=>$albumID);
 
-        // Load Album Model
-        $this->ci->load->model('Album_mdl');
-
-        // Call update Method
-        $this->ci->Album_mdl->update($photoID, $addPhotoData);
+        // Call update Method 
+        $this->ci->load->model('Photo_mdl');
+        $this->ci->Photo_mdl->update($addPhotoData, $photoID);
     }
     
     /**
@@ -203,19 +194,9 @@ class Album extends CoreLibrary {
      */
 
     public function getTotalAlbumCount(){
-
-        // Load the model
-        $this->ci->load->model('Album_mdl');
-
-        // Call the read CRUD Method
-        $getAlbums = $this->ci->Album_mdl->read();
-
-        // Return the count
-        return $getAlbums->num_rows();
-
+    	      
+        return $this->ci->Album_mdl->getCount();
     }
-
-	
 }
 
 ?>

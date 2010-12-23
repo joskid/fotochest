@@ -23,23 +23,22 @@
 */
 
 
-class Album_mdl extends CI_Model {
+class Album_mdl extends CoreModel {
 
     // Establish Variables
 
     var $albumName;
     var $albumCreateDate;
-    var $albumID;
+    var $albumID; // @todo Needs changed to id
     var $albumParentID;
     var $albumDesc;
     var $albumFriendlyName;
-    var $albumTable;
     var $photoTable;
 
     public function __construct(){
         parent::__construct();
         $this->photoTable = $this->config->item('photoTable');
-        $this->albumTable = $this->config->item('albumTable');
+        $this->_table = $this->config->item('albumTable');
     }
 
     /**
@@ -48,54 +47,12 @@ class Album_mdl extends CI_Model {
      *
      *
      */
-
+	// @todo we need to get rid of this but need to find who is calling this first.
     public function create()
     {
         $albumData = array('albumName'=>$this->albumName, 'albumCreateDate'=>date("m/y/d"), 'albumParentID'=>$this->albumParentID,
                            'albumDesc'=>$this->albumDesc, 'albumFriendlyName'=>$this->albumFriendlyName);
         $this->db->insert($this->albumTable, $albumData);
-    }
-
-
-    public function read($albumID = null)
-    {
-        if ($albumID == null)
-        {
-            $readData = $this->db->get($this->albumTable);
-        }
-        else
-        {
-            $readData = $this->db->get_where($this->albumTable, array('albumID'=>$albumID));
-        }
-        log_message('ERROR', $this->db->last_query());
-        return $readData;
-    }
-
-    public function update($albumID, $albumData)
-    {
-        
-        $this->db->where('albumID', $albumID);
-        $this->db->update($this->albumTable, $albumData);
-    }
-
-    public function delete($albumID)
-    {
-        $this->db->delete($this->albumTable, array('albumID'=>$albumID));
-    }
-
-    public function exists($albumName)
-    {
-        $albums = $this->db->where('albumName', $albumName)
-                           ->get($this->albumTable);
-        if($albums->num_rows != 0)
-        {
-            return true;
-
-        }
-        else
-        {
-            return false;
-        }
     }
 
 
@@ -115,10 +72,6 @@ class Album_mdl extends CI_Model {
         return $getAlbumInfo;
     }
 
-
-
-
-   
     public function findChildID($albumID){
         $select = "SELECT * FROM $this->albumTable WHERE albumParentID = $albumID LIMIT 1";
         log_message('info', 'fineChildID:: ' . $select);

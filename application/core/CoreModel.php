@@ -160,8 +160,20 @@ class CoreModel extends CI_Model {
 
     public function update($data, $key)
     {
-        $this->db->where('id', $key);
-        $this->db->update($data);
+        return $this->db->where('id', $key)
+        				->update($data);
+    }
+    
+    /*
+     * updateWhere
+     * 
+     * @author Derek Stegelman
+     */
+    
+    public function updateWhere($data, $key, $value)
+    {
+    	return $this->db->where($key, $value)
+    					->update($data);
     }
 
     /*

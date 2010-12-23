@@ -46,7 +46,7 @@ $route['admin/albums/(:num)'] = "admin/albums/albumsView/$1";
 $route['admin/photos'] = "admin/photos/photosView";
 $route['admin/photos/(:num)'] = "admin/photos/photosView/$1";
 $route['admin/album/(:any)'] = "admin/albums/viewAlbum/$1";
-$route['upload/(:any)'] = "admin/photos/photoUpload/$1";
+$route['upload/(:num)'] = "admin/photos/photoUpload/$1";
 $route['admin/addPhotos'] = "admin/photos/addNoAlbum";
 $route['album/(:any)'] = "albums/view/$1";
 $route['album/(:any)/(:any)'] = "albums/view/$1/$2";
@@ -54,12 +54,7 @@ $route['albums/(:any)'] = "albums/viewAll/$1";
 $route['slideshow/(:any)'] = "photos/slideshow/$1";
 $route['404'] = "photos/throw404";
 
-if ($this->config->item('enableMultiUser') == TRUE)
-{
-    // Need regex here...
-    $route['(:any)'] = "admin/photos";
-    $route['(:any)/dashboard'] = "";
-}
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

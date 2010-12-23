@@ -67,6 +67,7 @@ class Album_mdl extends CI_Model {
         {
             $readData = $this->db->get_where($this->albumTable, array('albumID'=>$albumID));
         }
+        log_message('ERROR', $this->db->last_query());
         return $readData;
     }
 

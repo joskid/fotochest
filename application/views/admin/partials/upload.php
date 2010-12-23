@@ -8,9 +8,6 @@
     <h2>Add Photos to <?php echo getAlbumFriendlyName($albumID); ?></h2>
     <h3>Having problems?  Try our <?php echo anchor('upload/basicUploader/' . $albumID, 'basic uploader'); ?></h3>
 	<form id="form1" action="/upload/multiUpload" method="post" enctype="multipart/form-data">
-
-
-
 			<div class="fieldset flash" id="fsUploadProgress">
 			<span class="legend">Upload Queue</span>
 			</div>

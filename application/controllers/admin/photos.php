@@ -87,16 +87,18 @@ class Photos extends Admin_Controller {
     }
 
     public function photoUpload($albumID){
-
+	log_message('ERROR', 'Getting photo UPload method sending ' .$albumID);
         // @todo photo Upload or MultiUpload which one is it?
 
         $this->data['albumID'] = $albumID;
+        log_message('info', 'photo upload is sending this as albumid ' . $albumID);
         // Load the view
         $this->template->write('title', 'Upload Photos');
         $this->data['isUpload'] = 1;
         $this->data['pageNum'] = 1;
         $this->data['showAlbum'] = FALSE;
         $this->data['showUserButton'] = FALSE;
+        log_message('info', 'Loading view for photo upload');
         $this->template->write_view('navigation', 'admin/partials/nav', $this->data);
         $this->template->write_view('sidebar', 'admin/partials/sidebar', $this->data);
         $this->template->write_view('content', 'admin/partials/upload', $this->data);

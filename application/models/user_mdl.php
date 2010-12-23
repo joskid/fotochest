@@ -21,6 +21,8 @@
 * @author		Derek Stegelman
 */
 
+/* This needs to be refactored */
+
 class User_mdl extends CI_Model {
 
     // User Properties
@@ -74,13 +76,22 @@ class User_mdl extends CI_Model {
         return $readData;
     }
     
-
-    function update($data)
+    function update($data, $id)
     {
-
-       
-        $this->db->where('userID', $this->userID);
+        $this->db->where('userID', $id);
         $this->db->update($this->userTable, $data);
+    }
+    
+    // There is no save users..???
+    
+    function saveUser()
+    {
+    	$this->load->library('encrypt');
+    	$data = array('userEmail'=>$this->userEmail,
+    				  'userPassword'=>$this->encrypt->encode($this->userPassword),
+    				  'userFirstName'=>$this->userFirstName,
+    				  'userLastName'=>$this->userLastName);
+    	$this->update($data, $this->userUserID);
     }
 
     function delete($userID)

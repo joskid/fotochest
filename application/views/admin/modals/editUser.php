@@ -1,6 +1,6 @@
 <?php echo js('fotochest'); ?>
 <div class="modal">
-    <div class="addUser form" id="addUser">
+    <div class="addUser form" id="saveUser">
         <?php foreach($userInfo->result() as $row) { ?>
       <h3>Edit User</h3>
       <div class="formItem">

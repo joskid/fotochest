@@ -64,6 +64,8 @@ class Users extends Admin_Controller {
     }
 
     function do_userSave(){
+    	 // Load the model
+        $this->load->model('User_mdl');
 
         // @todo move this.
         $this->User_mdl->userEmail = $this->input->post('userEmail');

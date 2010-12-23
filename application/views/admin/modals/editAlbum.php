@@ -14,7 +14,7 @@
         <div class="formItem">
             <label for="albumDesc">Album Description:</label>
             <div>
-                <textarea rows="10" cols="45" id="albumDesc" name="albumDesc"><?php echo $row->albumDesc; ?></textarea
+                <textarea rows="10" cols="45" id="albumDesc" name="albumDesc"><?php echo $row->albumDesc; ?></textarea>
             </div>
         </div>
         <input type="hidden" name="albumID" id="albumID" value="<?php echo $row->albumID; ?>">

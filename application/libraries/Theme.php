@@ -21,8 +21,7 @@
 * @author		Derek Stegelman
 */
 
-class Album extends CoreLibrary {
-	
+class Theme extends CoreLibrary {
 	
 }
 

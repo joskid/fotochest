@@ -19,6 +19,7 @@ class CoreModel extends CI_Model {
 
     public $_table;
     public $primaryKey = 'id';
+    
 
 
     public function __construct()
@@ -189,6 +190,12 @@ class CoreModel extends CI_Model {
     {
         return $this->db->where($this->primary_key, $id)
 			->delete($this->_table);
+    }
+    
+    public function deleteWhere($key, $value)
+    {
+    	return $this->db->where($key, $value)
+    					->delete($this->_table);
     }
 
     public function __destruct()

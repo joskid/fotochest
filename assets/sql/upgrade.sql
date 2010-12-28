@@ -9,7 +9,7 @@ CREATE TABLE `photoThemes` (
 
 INSERT INTO `photoThemes` (`themeID`,`themeName`,`themeAuthor`,`themeActive`)
 VALUES
-	(1, 'default', 'Derek Stegelman', 1),
+    (1, 'default', 'Derek Stegelman', 1),
         (2, 'Galleria', 'Derek Stegelman', 0);
 
 
@@ -21,3 +21,10 @@ delete from `photoSettings` where settingID = 9;
 
 
 -- Remember to add a modify for the comments table.
+
+
+--  Following changes are post 1.5
+
+alter table photoAlbums change albumID id int;
+alter table photoPhotos change photoID id int;
+alter table photoComments change commentID id int;

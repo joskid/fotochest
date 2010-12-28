@@ -29,7 +29,7 @@ class Album_mdl extends CoreModel {
 
     var $albumName;
     var $albumCreateDate;
-    var $albumID; // @todo Needs changed to id
+    var $id;
     var $albumParentID;
     var $albumDesc;
     var $albumFriendlyName;

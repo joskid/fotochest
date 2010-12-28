@@ -23,19 +23,20 @@
 
 
 
-class Comments_mdl extends CI_Model{
+class Comments_mdl extends CoreModel {
   
   // Comment Variables
   
-  var $commentID;
-  var $commentContent;
-  var $commentDate;
-  var $commentPhotoID;
-  var $commentTable;
+  public $id;
+  public $commentContent;
+  public $commentDate;
+  public $commentPhotoID;
+  public $commentTable;
 
   public function __construct(){
       parent::__construct();
       $this->commentTable = $this->config->item('commentsTable');
+      $this->_table = $this->config->item('commentsTable');
       
   }
 

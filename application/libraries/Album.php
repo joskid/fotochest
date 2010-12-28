@@ -26,7 +26,7 @@ class Album extends CoreLibrary {
 
     public $albumName;
     public $albumCreateDate;
-    public $albumID;
+    public $id;
     public $albumParentID;
     public $albumDesc;
     public $albumFriendlyName;

@@ -36,10 +36,8 @@ class Comments_mdl extends CoreModel {
   public function __construct(){
       parent::__construct();
       $this->commentTable = $this->config->item('commentsTable');
-      $this->_table = $this->config->item('commentsTable');
-      
+      $this->_table = $this->config->item('commentsTable');      
   }
-
 
   public function create(){
     log_message('info', 'create hit');

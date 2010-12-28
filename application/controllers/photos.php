@@ -99,10 +99,12 @@ class Photos extends Public_Controller {
             show_404();
         } else {
         
-        $this->load->model('Comments_mdl');
+       	// Load dependencies
+        $this->load->library('comment');
+        $this->load->library('photo');
         
-        $this->data['comments'] = $this->Comments_mdl->readByPhotoID($photoID);
-        $this->data['photoInfo'] = $this->Photo_mdl->getPhotoInfo($photoID);
+        $this->data['comments'] = $this->comment->getComments($photoID);
+        $this->data['photoInfo'] = $this->photo->getPhoto($photoID);
         $this->load->library('album_lib');
         
         $this->data['albumNameURL'] = $albumName;

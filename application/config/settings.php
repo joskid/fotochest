@@ -26,4 +26,12 @@ $config['themeTable'] = "photoThemes";
 $config['enableMultiUser'] = FALSE;
 
 
+/*------------------------------------------------------
+ * 
+ * Size of thumbnails
+ * 
+ */
+$config['thumbWidth'] = '700';
+$config['thumbHeight'] = '700';
+
 ?>

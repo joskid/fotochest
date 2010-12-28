@@ -24,74 +24,124 @@
 class Photo extends CoreLibrary {
 	
     // Object properties
-    var $photoAlbumID;  // ID of the Album that the photo belongs to.
-    var $photoAlbumName;
-    var $photoFileName;
-    var $photoTitle;
-    var $photoDesc;
-    var $photoCreatedDate;
-    var $photoID;
-    var $isProfilePicture;
+    public $photoAlbumID;  // ID of the Album that the photo belongs to.
+    public $photoAlbumName;
+    public $photoFileName;
+    public $photoTitle;
+    public $photoDesc;
+    public $photoCreatedDate;
+    public $photoID;
+    public $isProfilePicture;
+    
+    /*
+     * 
+     * constructor
+     * 
+     * @author Derek Stegelman
+     * @access Public
+     * @version 2.0 - Ready for Testing
+     * @param void
+     * @return void
+     */
 
     public function __construct()
     {
         parent::__construct();
     }
     
+    /*
+     * 
+     * getPhoto
+     * 
+     * @author Derek Stegelman
+     * @access Public
+     * @version 2.0 - Ready for Testing
+     * @param int $photoID
+     * @return array of photo Data
+     */
+    
     public function getPhoto($photoID)
     {
     	return $this->Photo_mdl->get($photoID);
     }
-
     
+    /*
+     * buildMainThumb
+     * 
+     * @author Derek Stegelman
+     * @version 1.5 - @todo Clean up and see what you can do to make it faster
+     * @access Public @todo Make this private?
+     * @param string PhotoDirectory, string file name, string album name
+     * @return void
+     */
+
     public function buildMainThumb($photoDirectory, $photoFileName, $albumName){
         
         $main_size['image_library'] = 'gd2';
         $main_size['source_image'] = $photoDirectory;
         $main_size['maintain_ratio'] = TRUE;
         $main_size['new_image'] = './img_stor/albums/' . $albumName . '/thumbs/' . $photoFileName;
-        $main_size['width'] = 700;
-        $main_size['height'] = 700;
-        log_message('info', 'building thumb');
+        $main_size['width'] = $this->config->item('thumbWidth');
+        $main_size['height'] = $this->config->item('thumbHeight');
         $this->ci->image_lib->initialize($main_size);
         if (!$this->ci->image_lib->resize()){
             log_message('error', 'Photo_mdl::buildMainThumb() - Error with Main Thumb Resize Method ' . $this->ci->image_lib->display_errors());
-        } else {
-
-        }
+        } 
         $this->ci->image_lib->clear();
     }
+    
+    /*
+     * getPhotoCount
+     * 
+     * @author Derek Stegelman
+     * @access Public
+     * @version 2.0 - Ready for Testing
+     * @param void
+     * @return int how many photos.
+     */
 
     public function getPhotoCount(){
         return $this->Photo_mdl->getCount();
     }
 
-    /**
+    /*
      *
      * deletePhoto
-     * @photoID
-     * @photoAlbumName
      *
+     * @author Derek Stegelman
+     * @access Public
+     * @version 2.0 - Ready for Testing
+     * @param void
+     * @return void
      */
 
     public function deletePhoto(){
 
         $fileName = getPhotoFileName($this->photoID);
-        $this->ci->load->model('Photo_mdl');
         $this->ci->Photo_mdl->delete($this->photoID);
+        
+        // Find where the photo is at.
         $buildFilePath = "./img_stor/albums/" . $this->photoAlbumName . "/";
         $thumb = $buildFilePath . "thumbs/" . $fileName;
         $orginal = $buildFilePath . "originals/" . $fileName;
-        unlink($filename);
-
+        
+        // Delete files.
+        unlink($thumb);
+        unlink($original);
     }
+    
+    /*
+     * movePhoto
+     * 
+     * @author Derek Stegelman
+     * @access Public
+     * @version 1.5
+     */
 
     public function movePhoto(){
+    	
 
-        //Load Photo Model
-        $this->ci->load->model('Photo_mdl');
-
-        $photoInfo = $this->ci->Photo_mdl->read($this->photoID);
+        $photoInfo = $this->ci->Photo_mdl->get($this->photoID);
         foreach($photoInfo->result() as $row){
             $oldAlbumID = $row->photoAlbumID;
             $fileName = $row->photoFileName;

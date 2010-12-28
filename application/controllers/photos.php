@@ -25,9 +25,6 @@ class Photos extends Public_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('Photo_mdl');
-        $this->load->model('Album_mdl');
-        
         $this->template->write('title', getSetting('siteName') . "'s Photos");
     }
 
@@ -92,8 +89,18 @@ class Photos extends Public_Controller {
         $this->template->write_view('content', 'stream', $this->data);
         $this->template->render();
     }
+    
+    /*
+     * view
+     * 
+     * @author Derek Stegelman
+     * @access Public
+     * @version 2.0 - Ready for Testing
+     * @param string $albumName int $photoID
+     * @return photo view.
+     */
 
-    public function view($albumName,$photoID){
+    public function view($albumName, $photoID){
 
         if (!is_numeric($photoID) || empty($albumName) || empty($photoID) || !checkPhoto($photoID, $albumName)){
             show_404();
@@ -105,39 +112,43 @@ class Photos extends Public_Controller {
         
         $this->data['comments'] = $this->comment->getComments($photoID);
         $this->data['photoInfo'] = $this->photo->getPhoto($photoID);
-        $this->load->library('album_lib');
-        
         $this->data['albumNameURL'] = $albumName;
         $this->data['photoID'] = $photoID;
         // Get the exif data
         $photoURL = ('./img_stor/albums/' . $albumName . '/originals/' . getPhotoFileName($photoID) );
         $exif_data = exif_read_data( $photoURL );
         $this->data['photoEXIF'] = $exif_data;
-        
         $this->data['title'] = getPhotoTitle($photoID);
         
-        //$this->load->view(getFullThemePath() . 'photo', $this->data);
-
+		// Load view.
         $this->template->write('title', getPhotoTitle($photoID));
-        //$this->template->write_view('navigation', 'photoNavigation', $this->data);
         $this->template->write_view('content', 'themes/' . getTheme() . '/' . 'singlePhoto', $this->data);
         $this->template->render();
 
         }
     }
-    public function throw404()
-    {
-        show_404();
-    }
+    
+    /*
+     * saveComment
+     * 
+     * @author Derek Stegelman
+     * @access Public
+     * @version 2.0 - Ready for Testing
+     * @param null
+     * @return refresh of the page.
+     */
 
     public function saveComment()
     {
-        log_message('info', 'Comments Save Comment Hit');
-
-        $this->load->model('Comments_mdl');
-        $this->Comments_mdl->commentContent = $this->input->post('commentContent');
-        $this->Comments_mdl->commentPhotoID = $this->input->post('photoID');
-        $this->Comments_mdl->create();
+		// Load dependencies
+		$this->load->library('comment');
+        
+		// Load up the vars
+		$this->comment->content = $this->input->post('content');
+		$this->comment->photoID = $this->input->post('photoID');
+		$this->comment->add();
+		
+		// Redirect to the same page (Refresh)
         redirect('photo/' . $this->input->post('albumName') . '/' . $this->input->post('photoID'));
     }
 }

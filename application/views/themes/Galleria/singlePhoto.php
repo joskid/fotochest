@@ -28,7 +28,7 @@
     
     <h3>Add a Comment</h3>
     <?php echo form_open('photos/saveComment', array('id'=>'addCommentForm')); ?>
-    <textarea name="commentContent" id="commentContent"></textarea><br/>
+    <textarea name="commentContent" id="content"></textarea><br/>
     <input type="hidden" value="<?php echo $row->photoID; ?>" id="photoID" name="photoID">
     <input type="hidden" value="<?php echo $row->albumName; ?>" id="albumName" name="albumName">
     <a class="button addComment"><span>Add Comment</span></a>

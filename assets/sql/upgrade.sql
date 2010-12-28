@@ -28,3 +28,5 @@ delete from `photoSettings` where settingID = 9;
 alter table photoAlbums change albumID id int;
 alter table photoPhotos change photoID id int;
 alter table photoComments change commentID id int;
+
+--  Change table column names @todo

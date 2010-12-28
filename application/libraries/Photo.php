@@ -140,24 +140,21 @@ class Photo extends CoreLibrary {
 
     public function movePhoto(){
     	
-
         $photoInfo = $this->ci->Photo_mdl->get($this->photoID);
         foreach($photoInfo->result() as $row){
             $oldAlbumID = $row->photoAlbumID;
             $fileName = $row->photoFileName;
         }
-
+        
         // Load Album Model
         $this->ci->load->model('Album_mdl');
-
-        $albumInfo = $this->ci->Album_mdl->read($oldAlbumID);
+        $albumInfo = $this->ci->Album_mdl->get($oldAlbumID);
         foreach($albumInfo->result() as $oldAlbum){
             $oldAlbumName = $oldAlbum->albumName;
         }
 
-        $newAlbumInfo = $this->ci->Album_mdl->read($this->photoAlbumID);
+        $newAlbumInfo = $this->ci->Album_mdl->get($this->photoAlbumID);
         foreach($newAlbumInfo->result() as $newAlbum){
-
             $newAlbumName = $newAlbum->albumName;
         }
 
@@ -183,8 +180,7 @@ class Photo extends CoreLibrary {
         // Query time....
 
         $updateQuery = array('photoAlbumID'=>$this->photoAlbumID);
-        $this->ci->Photo_mdl->update($this->photoID, $updateQuery);
-
+        $this->ci->Photo_mdl->update($updateQuery, $this->photoID);
     }
 
     public function setProfilePicture($photoID){

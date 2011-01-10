@@ -1,5 +1,4 @@
 <?php
-
 /**
 * FotoChest
 *
@@ -39,6 +38,7 @@ class Album_mdl extends CoreModel {
         parent::__construct();
         $this->photoTable = $this->config->item('photoTable');
         $this->_table = $this->config->item('albumTable');
+        $this->albumTable = $this->_table;
     }
 
     /**

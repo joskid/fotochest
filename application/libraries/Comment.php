@@ -8,7 +8,7 @@ class Comment extends CoreLibrary {
 	
 	public function getComments($photoID)
 	{
-		return $this->Comment_mdl->getWhere('commentPhotoID', $photoID);
+		return $this->ci->Comment_mdl->getWhere('commentPhotoID', $photoID);
 	}
 	
 	public function add()

@@ -45,7 +45,7 @@ class Photos extends Admin_Controller {
         }
         $this->Photo_mdl->isProfilePicture = $makeProfilePicture;
         log_message('info', 'admin::savePhoto has set isProfilePicture to ' . $this->Photo_mdl->isProfilePicture);
-        log_message('debug','photo vars set');
+        log_message('debug','photo publics set');
         $this->Photo_mdl->update($this->input->post('photoID'));
         log_message('debug','Photo update complete');
     }

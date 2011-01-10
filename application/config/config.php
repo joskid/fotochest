@@ -20,7 +20,7 @@ $config['base_url']	= "http://localhost/";
 |
 | Typically this will be your index.php file, unless you've renamed it to
 | something else. If you are using mod_rewrite to remove the page set this
-| variable so that it is blank.
+| publiciable so that it is blank.
 |
 */
 $config['index_page'] = "";
@@ -73,7 +73,7 @@ $config['language']	= "english";
 | Default Character Set
 |--------------------------------------------------------------------------
 |
-| This determines which character set is used by default in various methods
+| This determines which character set is used by default in publicious methods
 | that require a character set to be provided.
 |
 */
@@ -85,7 +85,7 @@ $config['charset'] = "UTF-8";
 |--------------------------------------------------------------------------
 |
 | If you would like to use the "hooks" feature you must enable it by
-| setting this variable to TRUE (boolean).  See the user guide for details.
+| setting this publiciable to TRUE (boolean).  See the user guide for details.
 |
 */
 $config['enable_hooks'] = FALSE;
@@ -221,7 +221,7 @@ $config['encryption_key'] = "1k2idjeidoslekfji402984kdiel329d";
 
 /*
 |--------------------------------------------------------------------------
-| Session Variables
+| Session publiciables
 |--------------------------------------------------------------------------
 |
 | 'sess_cookie_name'		= the name you want for the cookie
@@ -249,7 +249,7 @@ $config['sess_time_to_update'] 	= 300;
 
 /*
 |--------------------------------------------------------------------------
-| Cookie Related Variables
+| Cookie Related publiciables
 |--------------------------------------------------------------------------
 |
 | 'cookie_prefix' = Set a prefix if you need to avoid collisions

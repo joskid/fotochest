@@ -1,5 +1,4 @@
 <?php
-
 class Comment_mdl extends CoreModel {
 	
 	public function __construct()
@@ -9,5 +8,3 @@ class Comment_mdl extends CoreModel {
 	}
 	
 }
-
-?>

@@ -29,12 +29,12 @@ class User_lib {
 
     // Object Properties
 
-    var $userEmail;
-    var $userID;
-    var $userPassword;
-    var $userLastName;
-    var $userFirstName;
-    var $userDateCreated;
+    public $userEmail;
+    public $userID;
+    public $userPassword;
+    public $userLastName;
+    public $userFirstName;
+    public $userDateCreated;
 
     public function __construct()
     {
@@ -43,7 +43,7 @@ class User_lib {
 
     public function login()
     {
-        // Variable Check
+        // publiciable Check
         if (!isset($this->userEmail) || !isset($this->userPassword))
         {
             return -1;

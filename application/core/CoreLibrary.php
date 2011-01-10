@@ -23,7 +23,7 @@
 
 class CoreLibrary {
 
-    protected $ci;
+    public $ci;
 
     public function __construct()
     {
@@ -33,12 +33,12 @@ class CoreLibrary {
         log_message('info', get_class($this)."_mdl"." has been loaded");
     }
 
-    protected function __setVar($name, $value)
+    public function __setpublic($name, $value)
     {
         $this->$name = $value;
     }
 
-    protected function __getVar($key)
+    public function __getpublic($key)
     {
         return $this->$key;
     }

@@ -26,10 +26,10 @@
 
 class Setting_mdl extends CoreModel {
 
-    var $settingID;
-    var $settingName;
-    var $settingValue;
-    var $settingTable;
+    public $settingID;
+    public $settingName;
+    public $settingValue;
+    public $settingTable;
 
     public function  __construct() {
         parent::__construct();
@@ -76,4 +76,3 @@ class Setting_mdl extends CoreModel {
         $this->db->delete($this->photoTable, array('photoID'=>$photoID));
     }
 }
-?>

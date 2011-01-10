@@ -32,20 +32,20 @@
  */
 class CI_Template {
    
-   var $CI;
-   var $config;
-   var $template;
-   var $master;
-   var $regions = array(
+   public $CI;
+   public $config;
+   public $template;
+   public $master;
+   public $regions = array(
       '_scripts' => array(),
       '_styles' => array(),
    );
-   var $output;
-   var $js = array();
-   var $css = array();
-   var $parser = 'parser';
-   var $parser_method = 'parse';
-   var $parse_template = FALSE;
+   public $output;
+   public $js = array();
+   public $css = array();
+   public $parser = 'parser';
+   public $parser_method = 'parse';
+   public $parse_template = FALSE;
    
    /**
 	 * Constructor
@@ -344,7 +344,7 @@ class CI_Template {
 	 * @access	public
 	 * @param	string	region to write to
 	 * @param	string	view file to use
-	 * @param	array	variables to pass into view
+	 * @param	array	publiciables to pass into view
 	 * @param	boolean	FALSE to append to region, TRUE to overwrite region
 	 * @return	void
 	 */
@@ -383,7 +383,7 @@ class CI_Template {
     * @access  public
     * @param   string   region to write to
     * @param   string   view file to parse
-    * @param   array variables to pass into view for parsing
+    * @param   array publiciables to pass into view for parsing
     * @param   boolean  FALSE to append to region, TRUE to overwrite region
     * @return  void
     */

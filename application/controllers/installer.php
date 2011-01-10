@@ -54,11 +54,11 @@ class Installer extends CI_Controller {
 //                                                 'auto_increment' => TRUE
 //                                          ),
 //                        'settingName' => array(
-//                                                 'type' => 'VARCHAR',
+//                                                 'type' => 'publicCHAR',
 //                                                 'constraint' => '100',
 //                                          ),
 //                        'settingValue' => array(
-//                                                 'type' =>'VARCHAR',
+//                                                 'type' =>'publicCHAR',
 //                                                 'constraint' => '300',
 //                                                 'null' => TRUE
 //

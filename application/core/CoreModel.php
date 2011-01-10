@@ -28,13 +28,13 @@ class CoreModel extends CI_Model {
         log_message('info', 'Load Core Model');
     }
 
-    // Variable setting
+    // publiciable setting
 
-    public function  __setVar($name, $value) {
+    public function  __setpublic($name, $value) {
         $this->$name = $value;
     }
 
-    public function __getVar($key)
+    public function __getpublic($key)
     {
         return $this->$key;
     }
@@ -65,7 +65,7 @@ class CoreModel extends CI_Model {
      *
      * @author Derek Stegelman
      * @access public
-     * @param var $key, var $value
+     * @param public $key, public $value
      */
 
     public function getWhere($key, $value)
@@ -80,7 +80,7 @@ class CoreModel extends CI_Model {
      *
      * @author Derek Stegelman
      * @access public
-     * @param var $key, var $value, int $limit
+     * @param public $key, public $value, int $limit
      * @return array Dataset
      */
 
@@ -111,7 +111,7 @@ class CoreModel extends CI_Model {
      *
      * @author Derek Stegelman
      * @access public
-     * @param var $key
+     * @param public $key
      * @return array Dataset
      */
 
@@ -126,7 +126,7 @@ class CoreModel extends CI_Model {
      *
      * @author Derek Stegelman
      * @access public
-     * @param var $key
+     * @param public $key
      * @return array dataset
      *
      */

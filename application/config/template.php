@@ -13,7 +13,7 @@ $template['active_template'] = 'default';  // Admin is available.
 
 /*
 |--------------------------------------------------------------------------
-| Explaination of template group variables
+| Explaination of template group publiciables
 |--------------------------------------------------------------------------
 |
 | ['template'] The filename of your master template file in the Views folder.
@@ -22,7 +22,7 @@ $template['active_template'] = 'default';  // Admin is available.
 |   than ".php"
 | ['regions'] Places within the template where your content may land. 
 |   You may also include default markup, wrappers and attributes here 
-|   (though not recommended). Region keys must be translatable into variables 
+|   (though not recommended). Region keys must be translatable into publiciables 
 |   (no spaces or dashes, etc)
 | ['parser'] The parser class/library to use for the parse_view() method
 |   NOTE: See http://codeigniter.com/forums/viewthread/60050/P0/ for a good
@@ -30,7 +30,7 @@ $template['active_template'] = 'default';  // Admin is available.
 | ['parse_template'] FALSE (default) to treat master template as a View. TRUE
 |   to user parser (see above) on the master template
 |
-| Region information can be extended by setting the following variables:
+| Region information can be extended by setting the following publiciables:
 | ['content'] Must be an array! Use to set default region content
 | ['name'] A string to identify the region beyond what it is defined by its key.
 | ['wrapper'] An HTML element to wrap the region contents in. (We 

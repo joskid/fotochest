@@ -32,7 +32,7 @@ class Albums extends Public_Controller {
     }
 
     /*
-     * ViewAll - This method replaces index so we can pass a var to it.
+     * ViewAll - This method replaces index so we can pass a public to it.
      *
      *
      */

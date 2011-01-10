@@ -52,7 +52,7 @@ class Users extends Public_Controller {
         // Load User Authentication Library
         $this->load->library('user_lib');
 
-        // Load Library Vars.
+        // Load Library publics.
         $this->user_lib->userEmail = $this->input->post('userEmail');
         $this->user_lib->userPassword = $this->input->post('userPassword');
 

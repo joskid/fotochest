@@ -50,7 +50,7 @@ class Album extends CoreLibrary {
         log_message('info', 'Executing createAlbum method'); // Log for information purposes.
         // Once a new photo is uploaded to the album it bcomes the thumbnail....
 
-        // Load up the variables
+        // Load up the publiciables
         $this->ci->Album_mdl->albumName = $this->albumName;
         $this->ci->Album_mdl->albumParentID = $this->albumParentID;
         $this->ci->Album_mdl->albumFriendlyName = $this->albumFriendlyName;

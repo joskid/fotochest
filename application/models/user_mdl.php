@@ -27,18 +27,18 @@ class User_mdl extends CoreModel {
 
     // User Properties
 
-    var $userEmail;
-    var $userID;
-    var $userPassword;
-    var $userLastName;
-    var $userFirstName;
-    var $userDateCreated;
-    var $userTable;
+    public $userEmail;
+    public $userID;
+    public $userPassword;
+    public $userLastName;
+    public $userFirstName;
+    public $userDateCreated;
+    public $userTable;
 
     public function __construct(){
         parent::__construct();
         $this->userTable = $this->config->item('userTable');
-        
+        $this->_table = $this->config->item('userTable');
     }
 
     // CRUD.

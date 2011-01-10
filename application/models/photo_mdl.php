@@ -24,16 +24,16 @@
 
 class Photo_mdl extends CoreModel {
 
-    var $photoAlbumID;  // ID of the Album that the photo belongs to.
-    var $photoAlbumName;
-    var $photoFileName;
-    var $photoTitle;
-    var $photoDesc;
-    var $photoCreatedDate;
-    var $photoID;
-    var $photoTable;
-    var $albumTable;
-    var $isProfilePicture;
+    public $photoAlbumID;  // ID of the Album that the photo belongs to.
+    public $photoAlbumName;
+    public $photoFileName;
+    public $photoTitle;
+    public $photoDesc;
+    public $photoCreatedDate;
+    public $photoID;
+    public $photoTable;
+    public $albumTable;
+    public $isProfilePicture;
 
     
     public function __construct() {

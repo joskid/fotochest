@@ -25,15 +25,15 @@
 
 class Album_mdl extends CoreModel {
 
-    // Establish Variables
+    // Establish publiciables
 
-    var $albumName;
-    var $albumCreateDate;
-    var $id;
-    var $albumParentID;
-    var $albumDesc;
-    var $albumFriendlyName;
-    var $photoTable;
+    public $albumName;
+    public $albumCreateDate;
+    public $id;
+    public $albumParentID;
+    public $albumDesc;
+    public $albumFriendlyName;
+    public $photoTable;
 
     public function __construct(){
         parent::__construct();

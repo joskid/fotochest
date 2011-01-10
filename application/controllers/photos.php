@@ -143,7 +143,7 @@ class Photos extends Public_Controller {
 		// Load dependencies
 		$this->load->library('comment');
         
-		// Load up the vars
+		// Load up the publics
 		$this->comment->content = $this->input->post('content');
 		$this->comment->photoID = $this->input->post('photoID');
 		$this->comment->add();

@@ -29,7 +29,7 @@ class Upload extends CI_Controller {
         parent::__construct();
         $this->load->model('Album_mdl');
         $this->load->model('Photo_mdl');
-        $this->load->library('photo_lib');
+        $this->load->library('photo');
     }
 
      public function multiUpload($albumID){
@@ -59,7 +59,7 @@ class Upload extends CI_Controller {
         log_message('debug', 'Trying to place this photo from ' . $photoLocation);
         
 
-        $this->photo_lib->buildMainThumb($photoLocation, $file, $albumName);
+        $this->photo->buildMainThumb($photoLocation, $file, $albumName);
         $this->Photo_mdl->photoAlbumID = $albumID;
         $this->Photo_mdl->photoCreatedDate = date("y/m/d");
         $this->Photo_mdl->photoDesc = null;
@@ -94,7 +94,7 @@ class Upload extends CI_Controller {
         log_message('debug', 'Trying to place this photo from ' . $photoLocation);
 
 
-        $this->photo_lib->buildMainThumb($photoLocation, $file, $albumName);
+        $this->photo->buildMainThumb($photoLocation, $file, $albumName);
         $this->Photo_mdl->photoAlbumID = $albumID;
         $this->Photo_mdl->photoCreatedDate = date("y/m/d");
         $this->Photo_mdl->photoDesc = null;

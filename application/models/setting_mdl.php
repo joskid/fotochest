@@ -24,7 +24,7 @@
 //  !!! @todo how did I miss this???  This needs completed...
 
 
-class Setting_mdl extends CI_Model {
+class Setting_mdl extends CoreModel {
 
     var $settingID;
     var $settingName;

@@ -27,9 +27,9 @@
 function getAlbumThumb($albumID){
     $CI =& get_instance();
     $CI->load->model('Album_mdl');
-    $CI->load->library('album_lib');
+    $CI->load->library('album');
     $albumName = getAlbumName($albumID);
-    $thumbs = $CI->album_lib->findAlbumThumbnails($albumID, 1);
+    $thumbs = $CI->album->findAlbumThumbnails($albumID, 1);
     if (getAlbumPhotoCount($albumID) > 1){
     foreach($thumbs->result() as $row){
         $fileName = $row->photoFileName;
@@ -46,8 +46,8 @@ function getAlbumThumbs($albumID, $thumbs = 3, $isAdmin = FALSE)
 
     $CI =& get_instance();
     $CI->load->model('Album_mdl');
-    $CI->load->library('album_lib');
-    $getThumbs = $CI->album_lib->findAlbumThumbnails($albumID, $thumbs);
+    $CI->load->library('album');
+    $getThumbs = $CI->album->findAlbumThumbnails($albumID, $thumbs);
     log_message('info', 'getThumbs is called ' . $getThumbs->num_rows());
     $thumbMarkup = "";
     $thumbCount = 0;

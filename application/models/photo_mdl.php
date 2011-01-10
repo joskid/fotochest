@@ -22,7 +22,7 @@
 * @author		Derek Stegelman
 */
 
-class Photo_mdl extends CI_Model {
+class Photo_mdl extends CoreModel {
 
     var $photoAlbumID;  // ID of the Album that the photo belongs to.
     var $photoAlbumName;
@@ -39,6 +39,7 @@ class Photo_mdl extends CI_Model {
     public function __construct() {
         parent::__construct();
         $this->photoTable = $this->config->item('photoTable');
+        $this->_table = $this->config->item('photoTable');
         $this->albumTable = $this->config->item('albumTable');    
     }
     /**

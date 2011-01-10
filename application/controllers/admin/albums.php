@@ -35,11 +35,11 @@ class Albums extends Admin_Controller {
 
     public function createAlbum(){
         // Load the Library
-        $this->load->library('album_lib');
-        $this->album_lib->albumName = str_replace(" ", "-", $this->input->post('albumName'));
-        $this->album_lib->albumFriendlyName = $this->input->post('albumFriendlyName');
-        $this->album_lib->albumParentID = $this->input->post('albumID');
-        $this->album_lib->createAlbum();
+        $this->load->library('album');
+        $this->album->albumName = str_replace(" ", "-", $this->input->post('albumName'));
+        $this->album->albumFriendlyName = $this->input->post('albumFriendlyName');
+        $this->album->albumParentID = $this->input->post('albumID');
+        $this->album->createAlbum();
     }
 
     public function saveAlbum(){
@@ -81,14 +81,14 @@ class Albums extends Admin_Controller {
         
 
         // Load the Library
-        $this->load->library('album_lib');
+        $this->load->library('album');
 
 
         $this->data['albums'] = $this->Album_mdl->getAlbumAdminInfo($pageNum);
 	$this->load->library('pagination');
 
         $config['base_url'] = base_url() . 'admin/albums/';
-        $config['total_rows'] = $this->album_lib->getTotalAlbumCount();
+        $config['total_rows'] = $this->album->getTotalAlbumCount();
         $config['per_page'] = '5';
 
         $this->pagination->initialize($config);
@@ -126,7 +126,7 @@ class Albums extends Admin_Controller {
     public function viewAlbum($albumName){
         $albumID = getAlbumID($albumName);
         // Load the library
-        $this->load->library('photo_lib');
+        $this->load->library('photo');
 
 
         $this->data['showAlbum'] = FALSE;

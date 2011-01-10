@@ -55,10 +55,10 @@ class Photos extends Admin_Controller {
 
         // @todo move this
 
-        $this->load->library('photo_lib');
-        $this->photo_lib->photoID = $this->input->post('photoID');
-        $this->photo_lib->photoAlbumName = getPhotoAlbumName($this->input->post('photoID'));
-        $this->photo_lib->deletePhoto();
+        $this->load->library('photo');
+        $this->photo->photoID = $this->input->post('photoID');
+        $this->photo->photoAlbumName = getPhotoAlbumName($this->input->post('photoID'));
+        $this->photo->deletePhoto();
         
     }
 
@@ -73,7 +73,7 @@ class Photos extends Admin_Controller {
         $this->load->library('pagination');
 
         $config['base_url'] = base_url() . 'admin/photos/';
-        $config['total_rows'] = $this->db->count_all($this->config->item('photoTable'));
+        $config['total_rows'] = $this->Photo_mdl->getCount();
         $config['per_page'] = '5';
 
         $this->pagination->initialize($config);
@@ -132,7 +132,7 @@ class Photos extends Admin_Controller {
     public function movePhotoAction($albumID, $photoID){
 
         // Load the library
-        $this->load->library('album_lib');
+        $this->load->library('album');
 
       $albumName = getAlbumName($albumID);
       $this->Photo_mdl->photoAlbumID = $albumID;
@@ -195,15 +195,15 @@ class Photos extends Admin_Controller {
             show_404();
         }
         
-        $this->load->library('photo_lib');
+        $this->load->library('photo');
         if ($direction == "clock")
         {
             
-            $this->photo_lib->rotateImage(1, $photoID);
+            $this->photo->rotateImage(1, $photoID);
         }
         else
         {
-            $this->photo_lib->rotateImage(2, $photoID);
+            $this->photo->rotateImage(2, $photoID);
         }
 
         redirect('admin/photos/fullEdit/' . $photoID);

@@ -62,7 +62,7 @@ class Photo extends CoreLibrary {
     
     public function getPhoto($photoID)
     {
-    	return $this->Photo_mdl->get($photoID);
+    	return $this->ci->Photo_mdl->get($photoID);
     }
     
     /*
@@ -101,7 +101,7 @@ class Photo extends CoreLibrary {
      */
 
     public function getPhotoCount(){
-        return $this->Photo_mdl->getCount();
+        return $this->ci->Photo_mdl->getCount();
     }
 
     /*

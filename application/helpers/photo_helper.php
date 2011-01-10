@@ -51,8 +51,8 @@ function getPhotoFileName($photoID)
 function checkPhoto($photoID, $albumName)
 {
     $CI =& get_instance();
-    $CI->load->library('photo_lib');
-    $exist = $CI->photo_lib->exists($photoID, $albumName);
+    $CI->load->library('photo');
+    $exist = $CI->photo->exists($photoID, $albumName);
     return $exist;
     
 }

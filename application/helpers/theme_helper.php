@@ -26,10 +26,10 @@ function getTheme()
 {
     $CI =& get_instance();
     // Load the library
-    $CI->load->library('theme_lib');
+    $CI->load->library('theme');
 
     // get theme
-    $themeName = $CI->theme_lib->getCurrentTheme();
+    $themeName = $CI->theme->getCurrentTheme();
     return $themeName;
 }
 
@@ -37,10 +37,10 @@ function getFullThemePath()
 {
     $CI =& get_instance();
     // Load the library
-    $CI->load->library('theme_lib');
+    $CI->load->library('theme');
 
     // get theme
-    $themeName = $CI->theme_lib->getCurrentTheme();
+    $themeName = $CI->theme->getCurrentTheme();
     $themePath = "themes/" . $themeName . "/layouts/";
     return $themePath;
 }

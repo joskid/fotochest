@@ -23,7 +23,7 @@
 
 /* This needs to be refactored */
 
-class User_mdl extends CI_Model {
+class User_mdl extends CoreModel {
 
     // User Properties
 

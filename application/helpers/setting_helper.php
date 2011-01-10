@@ -43,10 +43,10 @@ function isOverPhotoLimit(){
     $CI =& get_instance();
 
     // Load the photo library
-    $CI->load->library('photo_lib');
+    $CI->load->library('photo');
 
     // Call the count method
-    $photoNum = $CI->photo_lib->getPhotoCount();
+    $photoNum = $CI->photo->getPhotoCount();
 
     // Load the Setting Library
     $CI->load->library('setting_lib');
@@ -85,10 +85,10 @@ function getPhotoCount(){
     $CI =& get_instance();
 
     // Load the photo library
-    $CI->load->library('photo_lib');
+    $CI->load->library('photo');
 
     // Call the method
-    $count = $CI->photo_lib->getPhotoCount();
+    $count = $CI->photo->getPhotoCount();
     return $count;
 }
 
@@ -96,10 +96,10 @@ function getAlbumCount(){
     $CI =& get_instance();
 
     // Load the library
-    $CI->load->library('album_lib');
+    $CI->load->library('album');
 
     // Call the method
-    $count = $CI->album_lib->getTotalAlbumCount();
+    $count = $CI->album->getTotalAlbumCount();
     return $count;
 }
 

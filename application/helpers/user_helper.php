@@ -32,8 +32,8 @@ function getFirstname(){
 function getProfilePicture(){
     $CI =& get_instance();
    
-    $CI->load->library('photo_lib');
-    $profileData = $CI->photo_lib->getProfilePicture();
+    $CI->load->library('photo');
+    $profileData = $CI->photo->getProfilePicture();
     if ($profileData->num_rows == 0){
 
         $imgString = "<img src='http://dummyimage.com/75X75' alt='No Profile Picture' width='75' height='75' class='profilePic'>";

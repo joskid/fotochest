@@ -19,14 +19,15 @@ but as with all software there are still issues.  Paid hosting plans are availab
 
 ##Road Map
 
-###Version 2.0 (Release in Spring of 2011)
+###Version 2.0 (Release in Spring of 2011) - March 1, 2011
 
 * Installer
 * Ability to rotate images - Done
-* Cropping Images - Pending
+* Cropping Images - (Eventually)
 * Stability Increase - Done
 * Upgrade to Latest CI Platform - Done
 * Some type of Themeing - Using WilliamsConcepts Template Library - Done
 * Updates to the Admin Controller to seperate Admin Content. - Done
 * Rewrite the admin controller. - Done
 * Add Comments
+* Update to Standard Core Libraries

@@ -10,6 +10,10 @@ issues.
 * Derek Stegelman - Lead Developer ([http://stegelman.com](http://stegelman.com)) and Derek.FotoChest.com
 * Lindy Stegelman - QA/Design Critic ([http://lindyjean.blogspot.com](http://lindyjean.blogspot.com)) and dlstegelman.fotochest.com
 
+##Platform
+
+Written on the CodeIgniter framework.
+
 ##Installation
 
 Follow the installation directions in the help guide that is included in the package.
@@ -31,3 +35,16 @@ but as with all software there are still issues.  Paid hosting plans are availab
 * Rewrite the admin controller. - Done
 * Add Comments
 * Update to Standard Core Libraries
+
+##License (For FotoChest only - CodeIgniter has its own license)
+
+###Nuts and Bolts Web Solutions Open Source License - Version 1.0, Janurary 10, 2011
+
+###Copywrite Derek Stegelman 2011
+
+###You have the right to re-destribute this work under the following guidelines
+
+* This work is distributed with no warranty or any implied warranty
+* You may not sell an un-modified version of this work
+* You may not redistribute an un-modified version of this work under a new name
+

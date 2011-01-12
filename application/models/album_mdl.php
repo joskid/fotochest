@@ -47,15 +47,7 @@ class Album_mdl extends CoreModel {
      *
      *
      */
-	// @todo we need to get rid of this but need to find who is calling this first.
-    public function create()
-    {
-        $albumData = array('albumName'=>$this->albumName, 'albumCreateDate'=>date("m/y/d"), 'albumParentID'=>$this->albumParentID,
-                           'albumDesc'=>$this->albumDesc, 'albumFriendlyName'=>$this->albumFriendlyName);
-        $this->db->insert($this->albumTable, $albumData);
-    }
-
-
+	
     /*************************************************
      *
      *  getAlbums()
@@ -89,16 +81,14 @@ class Album_mdl extends CoreModel {
         }
     }
     
-
     public function getAlbumThumbnails($albumID, $numOfThumbs = 3){
         $select = "SELECT * FROM $this->albumTable, $this->photoTable WHERE photoAlbumID = $albumID AND albumID = photoAlbumID group by photoID limit $numOfThumbs";
         log_message('info', 'getAlbumThumnails:: ' . $select);
         $exe = $this->db->query($select);
         return $exe;
     }
-
     
-    
+	// @todo this should be added to core.  Get count by x.
     public function getAlbumCount($albumID){
         $select = "SELECT * FROM $this->photoTable WHERE photoAlbumID = $albumID";
         $exe = $this->db->query($select);
@@ -106,6 +96,7 @@ class Album_mdl extends CoreModel {
         return $count;
     }
     
+    // @todo This should be able to use core. 
     public function updateAlbum(){
         $updateData = array('albumFriendlyName'=>$this->albumFriendlyName, 'albumDesc'=>$this->albumDesc);
         $where = "albumID = $this->albumID";
@@ -115,9 +106,7 @@ class Album_mdl extends CoreModel {
         $this->db->query($updateQuery);
     }
     
-	
-    
-
+	// @todo this can use the core.
     public function getAlbumByName($albumName)
     {
         $selectSQL = "SELECT * FROM $this->albumTable WHERE albumName = '$albumName'";

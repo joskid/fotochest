@@ -1,3 +1,5 @@
+This license applies to CodeIgniter Only!
+
 Copyright (c) 2008 - 2010, EllisLab, Inc.
 All rights reserved.
 

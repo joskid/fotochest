@@ -48,12 +48,12 @@ class Album extends CoreLibrary {
     public function createAlbum(){
 
         log_message('info', 'Executing createAlbum method'); // Log for information purposes.
-        // Once a new photo is uploaded to the album it bcomes the thumbnail....
+        // Once a new photo is uploaded to the album it becomes the thumbnail....
 
-        // Load up the publiciables
-        $this->ci->Album_mdl->albumName = $this->albumName;
-        $this->ci->Album_mdl->albumParentID = $this->albumParentID;
-        $this->ci->Album_mdl->albumFriendlyName = $this->albumFriendlyName;
+        // Load up the variables
+        $albumData = array('albumName'=>$this->albumName, 'albumCreateDate'=>date("m/y/d"), 
+        				   'albumParentID'=>$this->albumParentID,
+                           'albumFriendlyName'=>$this->albumFriendlyName);
 
         // Check for exisitng folder
         if ($this->ci->Album_mdl->exists($this->albumName))
@@ -64,7 +64,7 @@ class Album extends CoreLibrary {
         }
 
         // Call the CRUD Method
-        $this->ci->Album_mdl->create();
+        $this->ci->Album_mdl->create($albumData);
 
         // Create the album folders
         mkdir("./img_stor/albums/" . $this->albumName);

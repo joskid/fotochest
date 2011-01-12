@@ -53,11 +53,34 @@ class CoreModel extends CI_Model {
 
         }
     }
+    
+    /*
+     * getCount
+     * 
+     * @author Derek Stegelman
+     * @access Public
+     * @param null
+     */
 
     public function getCount()
     {
         log_message('info', 'Get count!');
         return $this->db->count_all($this->_table);
+    }
+    
+    /*
+     * getCountWhere
+     * 
+     * @author Derek Stegelman
+     * @access Public
+     * @param key, Value Strings
+     * 
+     */
+    
+    public function getCountWhere($key, $value)
+    {
+    	return $this->db->where($key, $value)
+    					->count_all($this->_table);
     }
 
     /*

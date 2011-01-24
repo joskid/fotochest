@@ -26,7 +26,7 @@ function getPhotoTitle($photoID)
 {
     $CI =& get_instance();
     $CI->load->model('Photo_mdl');
-    $photoInfo = $CI->Photo_mdl->getPhotoInfo($photoID);
+    $photoInfo = $CI->Photo_mdl->get($photoID);
     foreach($photoInfo->result() as $row)
     {
         $photoTitle = $row->photoTitle;
@@ -40,7 +40,7 @@ function getPhotoFileName($photoID)
 {
     $CI =& get_instance();
     $CI->load->model('Photo_mdl');
-    $photoInfo = $CI->Photo_mdl->getPhotoInfo($photoID);
+    $photoInfo = $CI->Photo_mdl->get($photoID);
     foreach($photoInfo->result() as $row)
     {
         $photoFileName = $row->photoFileName;

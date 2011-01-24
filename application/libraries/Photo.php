@@ -62,8 +62,9 @@ class Photo extends CoreLibrary {
     
     public function getPhoto($photoID)
     {
-    	return $this->ci->Photo_mdl->get($photoID);
+    	return $this->ci->Photo_mdl->getPhotoInfo($photoID);
     }
+
     
     /*
      * buildMainThumb
@@ -270,7 +271,7 @@ class Photo extends CoreLibrary {
         $this->ci->load->model('Photo_mdl');
 
         // Grab photo info
-        $photoData = $this->ci->Photo_mdl->read($photoID);
+        $photoData = $this->ci->Photo_mdl->getPhotoInfo($photoID);
         if ($photoData->num_rows() == 0)
         {
             return FALSE;

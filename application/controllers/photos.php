@@ -111,6 +111,7 @@ class Photos extends Public_Controller {
         $this->load->library('photo');
         
         $this->data['comments'] = $this->comment->getComments($photoID);
+        log_message('info', 'here');
         $this->data['photoInfo'] = $this->photo->getPhoto($photoID);
         $this->data['albumNameURL'] = $albumName;
         $this->data['photoID'] = $photoID;
@@ -118,6 +119,7 @@ class Photos extends Public_Controller {
         $photoURL = ('./img_stor/albums/' . $albumName . '/originals/' . getPhotoFileName($photoID) );
         $exif_data = exif_read_data( $photoURL );
         $this->data['photoEXIF'] = $exif_data;
+        log_message('info', 'getting photo title');
         $this->data['title'] = getPhotoTitle($photoID);
         
 		// Load view.

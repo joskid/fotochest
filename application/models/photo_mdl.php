@@ -61,7 +61,7 @@ class Photo_mdl extends CoreModel {
             'isProfilePic'=>0);
         $this->db->insert($this->photoTable, $insertData);
     }
-
+/**
     public function read($photoID = null)
     {
         if ($photoID == null)
@@ -74,7 +74,7 @@ class Photo_mdl extends CoreModel {
         }
         return $photoData;
     }
-
+**/
     public function readProfilePicture()
     {
         $photoData = $this->db->get_where($this->photoTable, array('isProfilePic'=>1));
@@ -104,7 +104,7 @@ class Photo_mdl extends CoreModel {
         if ($pageNum == 0)
         {
             $getPhotoStreamSQL = "SELECT * FROM $this->photoTable, $this->albumTable
-                WHERE photoAlbumID = albumID ORDER BY photoID DESC LIMIT 0, 21";
+                WHERE photoAlbumID = albumID ORDER BY $this->photoTable.id DESC LIMIT 0, 21";
             log_message('debug', 'SQL Executed ' . $getPhotoStreamSQL);
             $executeGetSQL = $this->db->query($getPhotoStreamSQL);
         }
@@ -205,11 +205,22 @@ class Photo_mdl extends CoreModel {
         $this->db->query($updateQuery);
     }
 
+
+/*
     public function getPhotoInfo($photoID){
-        $getPhotoStreamSQL = "SELECT * FROM $this->photoTable, $this->albumTable WHERE photoAlbumID = albumID AND photoID = $photoID";
+        $getPhotoStreamSQL = "SELECT * FROM $this->photoTable, $this->albumTable WHERE photoAlbumID = albumID AND $this->photoTable.ID = $photoID";
         log_message('info', 'Photo_mdl::getPhotoInfo() is executing a query ' . $getPhotoStreamSQL);
         $executeGetSQL = $this->db->query($getPhotoStreamSQL);
         return $executeGetSQL;
+    }
+*/
+    public function getPhotoInfo($photoID)
+    {
+        $this->db->select('*');
+        $this->db->from($this->photoTable);
+        $this->db->join($this->albumTable, 'photoAlbumID = albumID');
+        $this->db->where('id', $photoID);
+        return $this->db->get();
     }
 
 }

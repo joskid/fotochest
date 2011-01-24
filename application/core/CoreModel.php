@@ -93,7 +93,7 @@ class CoreModel extends CI_Model {
 
     public function getWhere($key, $value)
     {
-        log_message('info', 'Performing get where..');
+        log_message('info', 'Performing get where..' . ' where ' . $key . ' equals ' . $value);
         return $this->db->where($key, $value)
                         ->get($this->_table);
     }

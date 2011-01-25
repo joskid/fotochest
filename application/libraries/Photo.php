@@ -260,12 +260,12 @@ class Photo extends CoreLibrary {
         $this->ci->load->model('Album_mdl');
 
         // Get Album Data
-        $albumData = $this->ci->Album_mdl->getAlbumByName($albumName);
+        $albumData = $this->ci->Album_mdl->getWhere('albumName', $albumName);
 
         // Get ID
         foreach($albumData->result() as $album)
         {
-            $albumID = $album->albumID;
+            $albumID = $album->id;
         }
 
         // Load Photo Model

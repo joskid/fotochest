@@ -61,7 +61,7 @@ function getAlbumID($albumName)
 {
     $CI =& get_instance();
     $CI->load->model('Album_mdl');
-    $getAlbumInfo = $CI->Album_mdl->getAlbumByName($albumName);
+    $getAlbumInfo = $CI->Album_mdl->getWhere('albumName', $albumName);
     if ($getAlbumInfo->num_rows() == 0){
 
         return false;

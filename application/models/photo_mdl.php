@@ -138,8 +138,8 @@ class Photo_mdl extends CoreModel {
 //
 //        $executeGetSQL = $this->db->query($getPhotoStreamSQL);
 //        }
-        
-        $this->db->select('*');
+        log_message('info', 'Trying to execute query on public photo stream');
+        $this->db->select('*, ' . $this->photoTable . '.id as photoID');
         $this->db->from($this->photoTable);
         $this->db->join($this->albumTable, 'photoAlbumID = ' . $this->albumTable . '.id');
         $this->db->order_by($this->photoTable . '.id', 'desc');
@@ -150,7 +150,7 @@ class Photo_mdl extends CoreModel {
 
     public function getAdminPhotoStream($pageNum = 0){
         log_message('info', 'executing');
-            $this->db->select('*');
+            $this->db->select('*, ' . $this->photoTable . '.id as photoID');
             $this->db->from($this->photoTable);
             $this->db->join($this->albumTable, $this->photoTable . '.photoAlbumID = ' . $this->albumTable . '.id');
             $this->db->order_by($this->photoTable . '.id', 'desc');
@@ -243,7 +243,7 @@ class Photo_mdl extends CoreModel {
         $this->db->select('*');
         $this->db->from($this->photoTable);
         $this->db->join($this->albumTable, 'photoAlbumID = ' . $this->albumTable . '.id');
-        $this->db->where('id', $photoID);
+        $this->db->where($this->photoTable . '.id', $photoID);
         return $this->db->get();
     }
 

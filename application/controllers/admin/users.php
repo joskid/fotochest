@@ -41,7 +41,7 @@ class Users extends Admin_Controller {
         $this->load->model('User_mdl');
 
 
-        $this->data['users'] = $this->User_mdl->read();
+        $this->data['users'] = $this->User_mdl->get();
 
         // Build View
         $this->template->write_view('navigation', 'admin/partials/nav', $this->data);

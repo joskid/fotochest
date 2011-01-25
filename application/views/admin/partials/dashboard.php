@@ -23,9 +23,9 @@
                 <dd><?php echo $row->albumFriendlyName; ?></dd>
             </dl>
             <ul class="actions">
-                <li><a href="<?php echo site_url('admin/photos/fullEdit/' . $row->id); ?>" class="button full"><span>Edit</span></a></li>
-                <li><a href="<?php echo site_url('admin/photos/movePhoto/' . $row->id); ?>" class="button full" rel="facebox"><span>Move</span></a></li>
-                <li><a href="<?php echo site_url('admin/photos/deletePhoto/' . $row->id); ?>" class="button full" rel="facebox"><span>Delete</span></a></li>
+                <li><a href="<?php echo site_url('admin/photos/fullEdit/' . $row->photoID); ?>" class="button full"><span>Edit</span></a></li>
+                <li><a href="<?php echo site_url('admin/photos/movePhoto/' . $row->photoID); ?>" class="button full" rel="facebox"><span>Move</span></a></li>
+                <li><a href="<?php echo site_url('admin/photos/deletePhoto/' . $row->photoID); ?>" class="button full" rel="facebox"><span>Delete</span></a></li>
             </ul>
         </div>
         <?php

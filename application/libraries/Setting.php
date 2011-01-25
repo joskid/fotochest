@@ -30,17 +30,16 @@ class Setting extends CoreLibrary {
     public $settingValue;
     public $settingTable;
 
-    // CI master object
-    private $ci;
 
-    public function __construct(){
-        $this->ci =& get_instance();
+    public function __construct()
+    {
+        parent::__construct();
 
     }
 
     public function getSetting($settingName)
     {
-        $setting = $this->ci->Setting_mdl->getWhere('settingName', $settingName);
+        $settingData = $this->ci->Setting_mdl->getWhere('settingName', $settingName);
 
         if($settingData->num_rows() == 0){
             log_message('ERROR', 'Setting ' . $settingName . " not found");
@@ -86,5 +85,3 @@ class Setting extends CoreLibrary {
         return $settingsArray;
     }
 }
-?>
-

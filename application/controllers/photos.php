@@ -25,14 +25,16 @@ class Photos extends Public_Controller {
 
     public function __construct() {
         parent::__construct();
+        log_message('info', 'loaded photos controller');
         $this->template->write('title', getSetting('siteName') . "'s Photos");
+        log_message('info', 'settings loaded');
     }
 
     public function index(){
 
         // For each loop
         $this->load->library('pagination');
-
+        log_message('info', 'Loaded pagination');
         $config['base_url'] = base_url() . 'photos/page/';
         $config['total_rows'] = $this->Photo_mdl->getCount();
         $config['per_page'] = '21';
@@ -41,7 +43,7 @@ class Photos extends Public_Controller {
         $this->data['pages'] =  $this->pagination->create_links();
         $this->data['totalPhotos'] = $this->Photo_mdl->getCount();
         $this->data['photoData'] = $this->Photo_mdl->getPublicPhotoStream();
-        
+        log_message('info', 'last query ' . $this->db->last_query());
         // Build the Theme
         //$this->load->view(getFullThemePath() . 'photoStream', $this->data);
 

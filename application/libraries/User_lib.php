@@ -50,7 +50,7 @@ class User_lib {
         }
 
         $this->ci->load->model('User_mdl');
-        $userData = $this->ci->User_mdl->readEmail($this->userEmail);
+        $userData = $this->ci->User_mdl->getWhere('userEmail', $this->userEmail);
         
         // Check to make sure there is at least one record.
         if ($userData->num_rows() == 0)

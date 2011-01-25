@@ -38,12 +38,14 @@ function getJquery(){
 }
 
 function js($url){
+    $CI =& get_instance();
     $builtURL = base_url() . "/" . $CI->config->item('asset_dir') . "/" . $CI->config->item('javascript_dir') . "/" . $url . ".js";
     $javascript = "<script type='text/javascript' src='$builtURL'></script>";
     return $javascript;
 }
 
 function css($fileName){
+    $CI =& get_instance();
     $builtURL = base_url() . "/" . $CI->config->item('asset_dir') . "/" . $CI->config->item('css_dir') . "/"  . $fileName . ".css";
     $outputCSS = "<link href='$builtURL' type='text/css' rel='stylesheet'>";
     return $outputCSS;

@@ -127,6 +127,7 @@ class Album_mdl extends CoreModel {
 //        $albumInfo = $this->db->query($selectSQL);
 //        return $albumInfo;
         log_message('info', 'album_mdl:: getAlbumByName should be using getWhere');
+        show_error('album_mdl:: getAlbumByName should be using getWhere');
     }
 
 

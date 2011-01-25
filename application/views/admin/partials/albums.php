@@ -10,7 +10,7 @@
 
             <div class="album">
                 <a href="<?php echo site_url('admin/album/' . $row->albumName); ?>">
-                    <?php echo getAlbumThumbs($row->albumID, 1, TRUE); ?>
+                    <?php echo getAlbumThumbs($row->id, 1, TRUE); ?>
                 </a>
                 <h3><?php echo anchor('admin/album/' . $row->albumName, $row->albumFriendlyName); ?></h3>
                 <p>

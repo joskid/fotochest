@@ -81,13 +81,21 @@ class Album_mdl extends CoreModel {
         }
     }
     
-    public function getAlbumThumbnails($albumID, $numOfThumbs = 3){
-        $select = "SELECT * FROM $this->albumTable, $this->photoTable WHERE photoAlbumID = $albumID AND albumID = photoAlbumID group by photoID limit $numOfThumbs";
-        log_message('info', 'getAlbumThumnails:: ' . $select);
-        $exe = $this->db->query($select);
-        return $exe;
+    public function getAlbumThumbnails($albumID, $numOfThumbs = 3)
+    {
+        $this->db->select('*');
+        $this->db->from($this->albumTable);
+        $this->db->join($this->photoTable, $this->photoTable . '.photoAlbumID = ' . $this->photoAlbum . '.id');
+        $this->db->where($this->photoTable . '.photoAlbumID', $albumID);
+        $this->db->group_by($this->photoTable . '.id');
+        $this->db->limit($numOfThumbs);
+        return $this->db->get();
+//        $select = "SELECT * FROM $this->albumTable, $this->photoTable WHERE photoAlbumID = $albumID AND albumID = photoAlbumID group by photoID limit $numOfThumbs";
+//        log_message('info', 'getAlbumThumnails:: ' . $select);
+//        $exe = $this->db->query($select);
+//        return $exe;
     }
-    
+    /*
 	// @todo this should be added to core.  Get count by x.
     public function getAlbumCount($albumID){
         $select = "SELECT * FROM $this->photoTable WHERE photoAlbumID = $albumID";
@@ -95,7 +103,7 @@ class Album_mdl extends CoreModel {
         $count = $exe->num_rows();
         return $count;
     }
-    
+    */
     // @todo This should be able to use core. 
     public function updateAlbum(){
         $updateData = array('albumFriendlyName'=>$this->albumFriendlyName, 'albumDesc'=>$this->albumDesc);
@@ -114,8 +122,27 @@ class Album_mdl extends CoreModel {
         return $albumInfo;
     }
 
-    
-    public function getAlbumAdminInfo($pageNum){
+
+    /**
+     * getAlbumAdminInfo
+     *
+     * @access Public
+     * @author Derek Stegelman
+     * @param int $pageNum
+     * @return array of data
+     */
+
+    public function getAlbumAdminInfo($pageNum = 0)
+    {
+        $this->db->select('*');
+        $this->db->from($this->albumTable);
+        $this->db->limit(5, $pageNum);
+        return $this->db->get();
+
+    }
+
+    /**
+    public function getAlbumAdminInfo($pageNum = 0){
         if ($pageNum == 0){
         $selectSQL = "SELECT albumID, albumFriendlyName, albumDesc, albumName, albumParentID
         FROM $this->albumTable
@@ -130,7 +157,7 @@ class Album_mdl extends CoreModel {
         return $getInfo;   
     }
   
-
+DEPRECIATED **/
     /**
      *
      * @param string $albumName

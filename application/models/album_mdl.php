@@ -85,10 +85,11 @@ class Album_mdl extends CoreModel {
     {
         $this->db->select('*');
         $this->db->from($this->albumTable);
-        $this->db->join($this->photoTable, $this->photoTable . '.photoAlbumID = ' . $this->albumTable . '.id');
-        $this->db->where($this->photoTable . '.photoAlbumID', $albumID);
-        $this->db->group_by($this->photoTable . '.id');
-        $this->db->limit($numOfThumbs);
+        //$this->db->join($this->photoTable, $this->photoTable . '.photoAlbumID = ' . $this->albumTable . '.id');
+        $this->db->join($this->photoTable, 'photoLibrary.photoAlbumID = photoAlbums.id');
+        //$this->db->where($this->photoTable . '.photoAlbumID', $albumID);
+        //$this->db->group_by($this->photoTable . '.id');
+        //$this->db->limit($numOfThumbs);
         return $this->db->get();
 //        $select = "SELECT * FROM $this->albumTable, $this->photoTable WHERE photoAlbumID = $albumID AND albumID = photoAlbumID group by photoID limit $numOfThumbs";
 //        log_message('info', 'getAlbumThumnails:: ' . $select);

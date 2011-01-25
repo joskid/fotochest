@@ -115,7 +115,7 @@ class Album extends CoreLibrary {
         $grabbedPhotos = 0;
         $currentAlbum = $albumID;
         $inNeed = $neededPhotos;
-        $albumThumbs = $this->ci->Album_mdl->getWhere('id', $albumID);
+        $albumThumbs = $this->ci->Album_mdl->getCountWhere('id', $albumID);
 
         if ($albumThumbs >= $neededPhotos)
         {

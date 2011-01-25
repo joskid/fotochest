@@ -18,17 +18,17 @@
                 </p>
                 <dl>
                     <dt>Photos</dt>
-                    <dd><?php echo getAlbumPhotoCount($row->albumID); ?></dd>
+                    <dd><?php echo getAlbumPhotoCount($row->id); ?></dd>
 
                 </dl>
                 <ul class="actions">
-                    <li><a href="<?php echo site_url('admin/albums/editAlbum/' . $row->albumID); ?>" class="button full" rel="facebox"><span>Edit</span></a></li>
-                    <li><a href="<?php echo site_url('upload/' . $row->albumID); ?>" class="button full"><span>Add Photos</span></a></li>
+                    <li><a href="<?php echo site_url('admin/albums/editAlbum/' . $row->id); ?>" class="button full" rel="facebox"><span>Edit</span></a></li>
+                    <li><a href="<?php echo site_url('upload/' . $row->id); ?>" class="button full"><span>Add Photos</span></a></li>
                     <li><a href="<?php echo site_url('admin/album/' . $row->albumName); ?>" class="button full"><span>View Album</span></a></li>
-                    <?php if(getAlbumPhotoCount($row->albumID) < 150 && $row->albumID > 0) { ?>
+                    <?php if(getAlbumPhotoCount($row->albumID) < 150 && $row->id > 0) { ?>
                     <li><a href="<?php echo site_url('download/downloadAlbum/' . $row->albumName); ?>" class="button full" style="display:none;"><span>Download Album</span></a></li>
                     <?php } ?>
-                    <li><a href="<?php echo site_url('admin/albums/deleteAlbum/' . $row->albumID); ?>" class="button full " rel="facebox"><span>Delete</span></a></li>
+                    <li><a href="<?php echo site_url('admin/albums/deleteAlbum/' . $row->id); ?>" class="button full " rel="facebox"><span>Delete</span></a></li>
 
                 </ul>
             </div>

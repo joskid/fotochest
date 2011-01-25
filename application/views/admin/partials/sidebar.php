@@ -1,7 +1,7 @@
 <div class="sidebar">
     <div class="profile">
     <?php echo getProfilePicture(); ?>
-
+    <?php log_message('info', 'got profile pic'); ?>
     <ul>
         <li><?php echo getPhotoCount(); ?> Photos</li>
         <li><?php echo getAlbumCount(); ?> Albums</li>

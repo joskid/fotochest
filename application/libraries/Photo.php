@@ -194,11 +194,12 @@ class Photo extends CoreLibrary {
 
     public function getProfilePicture(){
         // Load the model
-        $this->ci->load->model('Photo_mdl');
+        //$this->ci->load->model('Photo_mdl');
 
         // Call the method
-        $photoData = $this->ci->Photo_mdl->readProfilePicture();
-
+        
+        $photoData = $this->ci->Photo_mdl->getWhere('isProfilePic', '1');
+        log_message('info', 'success at photo lib');
         return $photoData;
     }
 

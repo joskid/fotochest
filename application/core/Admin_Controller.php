@@ -29,7 +29,9 @@ class Admin_Controller extends MY_Controller {
         parent::__construct();
         if(isLoggedIn() == TRUE){
             $this->load->model('Photo_mdl');
+            log_message('info', 'loading album mdl');
             $this->load->model('Album_mdl');
+            log_message('info', 'album loaded');
             $this->template->set_template('admin');
         } else {
             redirect('login');

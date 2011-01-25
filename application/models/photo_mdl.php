@@ -40,7 +40,8 @@ class Photo_mdl extends CoreModel {
         parent::__construct();
         $this->photoTable = $this->config->item('photoTable');
         $this->_table = $this->config->item('photoTable');
-        $this->albumTable = $this->config->item('albumTable');    
+        $this->albumTable = $this->config->item('albumTable');
+        log_message('info', 'loaded photo model');
     }
     /**
      * CRUD
@@ -75,12 +76,14 @@ class Photo_mdl extends CoreModel {
         return $photoData;
     }
 **/
+    /**
     public function readProfilePicture()
     {
+        log_message('info', 'trying to get profile');
         $photoData = $this->db->get_where($this->photoTable, array('isProfilePic'=>1));
         return $photoData;
     }
-
+**/
 
     public function update($photoID)
     {
@@ -128,19 +131,16 @@ class Photo_mdl extends CoreModel {
     }
 
     
-    public function getAdminPhotoStream($pageNum){
-        if ($pageNum == 0){
-            $select = "SELECT * FROM $this->photoTable, $this->albumTable
-            WHERE photoAlbumID = albumID ORDER BY photoID DESC LIMIT 0, 10";
-            
-        } else {
-            $select = "SELECT * FROM $this->photoTable, $this->albumTable
-            WHERE photoAlbumID = albumID ORDER BY photoID DESC LIMIT $pageNum, 10";
-        }
-        
-        $executeSql = $this->db->query($select);
-            return $executeSql;
-        
+    public function getAdminPhotoStream($pageNum = 0){
+        log_message('info', 'executing');
+            $this->db->select('*');
+            $this->db->from($this->photoTable);
+            $this->db->join($this->albumTable, 'photoAlbumID =' . $this->albumTable . '.id');
+            $this->db->order_by($this->photoTable . '.id', 'desc');
+            $this->db->limit($pageNum, 10);
+
+            return $this->db->get();
+
     }
 
     public function getAlbumPhotos($albumID){
@@ -206,14 +206,7 @@ class Photo_mdl extends CoreModel {
     }
 
 
-/*
-    public function getPhotoInfo($photoID){
-        $getPhotoStreamSQL = "SELECT * FROM $this->photoTable, $this->albumTable WHERE photoAlbumID = albumID AND $this->photoTable.ID = $photoID";
-        log_message('info', 'Photo_mdl::getPhotoInfo() is executing a query ' . $getPhotoStreamSQL);
-        $executeGetSQL = $this->db->query($getPhotoStreamSQL);
-        return $executeGetSQL;
-    }
-*/
+
     public function getPhotoInfo($photoID)
     {
         $this->db->select('*');

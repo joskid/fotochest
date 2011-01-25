@@ -44,6 +44,7 @@ function getProfilePicture(){
         $albumID = $row->photoAlbumID;
         $photoName = $row->photoTitle;
     }
+    log_message('info', 'abou tto load the model');
     $CI->load->model('Album_mdl');
     $albumName = getAlbumName($albumID);
     $imgString = "<img src='" . base_url() . "img_stor/albums/" . $albumName . "/thumbs/" . $photoFileName . "' alt='" . $photoName . "' width='75' height='75' class='profilePic'>";

@@ -63,12 +63,13 @@ class Photos extends Admin_Controller {
     }
 
     public function photosView($pageNum = 0){
+        log_message('info', 'hitting phot view');
         $this->data['pageNum'] = 1;
         $this->data['showAlbum'] = TRUE;
         $this->data['showUserButton'] = FALSE;
-
+        log_message('info', 'Getting photo admin stream');
         $this->data['photos'] = $this->Photo_mdl->getAdminPhotoStream($pageNum);
-
+        
 
         $this->load->library('pagination');
 
@@ -77,11 +78,12 @@ class Photos extends Admin_Controller {
         $config['per_page'] = '5';
 
         $this->pagination->initialize($config);
-
+        log_message('info', 'create links');
         $this->data['pages'] =  $this->pagination->create_links();
         $this->template->write('title', 'Your FotoChest Dashboard');
         $this->template->write_view('navigation', 'admin/partials/nav', $this->data);
         $this->template->write_view('sidebar', 'admin/partials/sidebar', $this->data);
+        log_message('info', 'sidebar is loaded');
         $this->template->write_view('content', 'admin/partials/dashboard', $this->data);
         $this->template->render();
     }

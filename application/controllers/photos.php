@@ -34,12 +34,12 @@ class Photos extends Public_Controller {
         $this->load->library('pagination');
 
         $config['base_url'] = base_url() . 'photos/page/';
-        $config['total_rows'] = $this->db->count_all($this->config->item('photoTable'));
+        $config['total_rows'] = $this->Photo_mdl->getCount();
         $config['per_page'] = '21';
         $this->pagination->initialize($config);
 
         $this->data['pages'] =  $this->pagination->create_links();
-        $this->data['totalPhotos'] = $this->db->count_all($this->config->item('photoTable'));
+        $this->data['totalPhotos'] = $this->Photo_mdl->getCount();
         $this->data['photoData'] = $this->Photo_mdl->getPublicPhotoStream();
         
         // Build the Theme

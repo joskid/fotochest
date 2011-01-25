@@ -150,9 +150,13 @@ class Photo_mdl extends CoreModel {
     }
     
     public function getAllAlbumPhotos($albumID){
-        $albumPhotosSQL = "SELECT * FROM $this->photoTable WHERE photoAlbumID = $albumID ORDER BY photoID DESC";
-        $photoResults = $this->db->query($albumPhotosSQL);
-        return $photoResults;
+        $this->db->select('*');
+        $this->db->where('photoAlbumID', $albumID);
+        $this->db->order_by('id', 'desc');
+        return $this->db->get($this->photoTable);
+//        $albumPhotosSQL = "SELECT * FROM $this->photoTable WHERE photoAlbumID = $albumID ORDER BY photoID DESC";
+//        $photoResults = $this->db->query($albumPhotosSQL);
+//        return $photoResults;
     }
 
     public function getAlbumPhotosPage($albumID, $photoStart){

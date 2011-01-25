@@ -135,12 +135,11 @@ class Photo_mdl extends CoreModel {
         log_message('info', 'executing');
             $this->db->select('*');
             $this->db->from($this->photoTable);
-            $this->db->join($this->albumTable, 'photoAlbumID =' . $this->albumTable . '.id');
+            $this->db->join($this->albumTable, $this->photoTable . '.photoAlbumID = ' . $this->albumTable . '.id');
             $this->db->order_by($this->photoTable . '.id', 'desc');
-            $this->db->limit($pageNum, 10);
-
+            $this->db->limit(10, $pageNum);
             return $this->db->get();
-
+            
     }
 
     public function getAlbumPhotos($albumID){

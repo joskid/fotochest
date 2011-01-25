@@ -69,7 +69,7 @@ class Photos extends Admin_Controller {
         $this->data['showUserButton'] = FALSE;
         log_message('info', 'Getting photo admin stream');
         $this->data['photos'] = $this->Photo_mdl->getAdminPhotoStream($pageNum);
-        
+        log_message('info', 'sql - ' . $this->db->last_query());
 
         $this->load->library('pagination');
 

@@ -16,8 +16,8 @@
 
                 </dl>
                 <ul class="actions">
-                    <li><a href="<?php echo site_url('admin/users/editUser/' . $row->userID); ?>" class="button full" rel="facebox"><span>Edit User</span></a></li>
-                    <li><a href="<?php echo site_url('admin/users/deleteUser/' . $row->userID); ?>" class="button full" rel="facebox"><span>Delete User</span></a></li>
+                    <li><a href="<?php echo site_url('admin/users/editUser/' . $row->id); ?>" class="button full" rel="facebox"><span>Edit User</span></a></li>
+                    <li><a href="<?php echo site_url('admin/users/deleteUser/' . $row->id); ?>" class="button full" rel="facebox"><span>Delete User</span></a></li>
 
                 </ul>
             </div>

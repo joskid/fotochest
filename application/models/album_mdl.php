@@ -85,7 +85,7 @@ class Album_mdl extends CoreModel {
     {
         $this->db->select('*');
         $this->db->from($this->albumTable);
-        $this->db->join($this->photoTable, $this->photoTable . '.photoAlbumID = ' . $this->photoAlbum . '.id');
+        $this->db->join($this->photoTable, $this->photoTable . '.photoAlbumID = ' . $this->albumTable . '.id');
         $this->db->where($this->photoTable . '.photoAlbumID', $albumID);
         $this->db->group_by($this->photoTable . '.id');
         $this->db->limit($numOfThumbs);

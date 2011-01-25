@@ -33,46 +33,55 @@ class Setting_mdl extends CoreModel {
 
     public function  __construct() {
         parent::__construct();
-        $this->settingTable = $this->config->item('settingTable');
+        //$this->settingTable = $this->config->item('settingTable');
+        $this->_table = $this->config->item('settingTable');
     }
 
     // Getters
     public function getID($settingName)
     {
-        $query = "SELECT * FROM $this->settingTable WHERE settingName = '$settingName'";
-        $settingData = $this->db->query($query);
-        foreach($settingData->result() as $row)
-        {
-            $settingID = $row->settingID;
-        }
-        return $settingID;
+        show_error('getID from settings model is depreciated, use core instead.');
+        log_message('ERROR', 'getID from settings model is depreciated, use core instead.');
+//        $query = "SELECT * FROM $this->settingTable WHERE settingName = '$settingName'";
+//        $settingData = $this->db->query($query);
+//        foreach($settingData->result() as $row)
+//        {
+//            $settingID = $row->settingID;
+//        }
+//        return $settingID;
     }
 
     public function readName($settingName = null)
     {
-        if($settingName == null)
-        {
-            $settingData = $this->db->get($this->settingTable);
-        }
-        else
-        {
-            $query = "SELECT * FROM $this->settingTable WHERE settingName = '$settingName'";
-            $settingData = $this->db->query($query);
-        }
-        return $settingData;
+        show_error('readname from settings model is depreciated, use core instead.');
+        log_message('ERROR', 'readname from settings model is depreciated, use core instead.');
+//        if($settingName == null)
+//        {
+//            $settingData = $this->db->get($this->settingTable);
+//        }
+//        else
+//        {
+//            $query = "SELECT * FROM $this->settingTable WHERE settingName = '$settingName'";
+//            $settingData = $this->db->query($query);
+//        }
+//        return $settingData;
     }
 
 
     public function update($settingName, $settingValue)
     {
-        $updateData = array('settingValue'=>$settingValue);
-        $settingID = $this->getID($settingName);
-        $this->db->where('settingID', $settingID);
-        $this->db->update($this->settingTable, $updateData);
+        show_error('update from settings model is depreciated, use core instead.');
+        log_message('ERROR', 'update from settings model is depreciated, use core instead.');
+//        $updateData = array('settingValue'=>$settingValue);
+//        $settingID = $this->getID($settingName);
+//        $this->db->where('settingID', $settingID);
+//        $this->db->update($this->settingTable, $updateData);
     }
 
     public function delete($photoID)
     {
-        $this->db->delete($this->photoTable, array('photoID'=>$photoID));
+        show_error('delete from settings model is depreciated, use core instead.');
+        log_message('ERROR', 'delete from settings model is depreciated, use core instead.');
+        //$this->db->delete($this->photoTable, array('photoID'=>$photoID));
     }
 }

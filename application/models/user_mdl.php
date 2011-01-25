@@ -21,7 +21,6 @@
 * @author		Derek Stegelman
 */
 
-/* This needs to be refactored */
 
 class User_mdl extends CoreModel {
 
@@ -45,81 +44,99 @@ class User_mdl extends CoreModel {
 
     function create()
     {
-        $this->dateCreated = date('m/y/d');
-        $userData = array('userEmail'=>$this->userEmail,
-                          'userFirstName'=>$this->userFirstName,
-                          'userLastName'=>$this->userLastName,
-                          'userDateCreated'=>$this->dateCreated,
-                          'userPassword'=>$this->userPassword);
-
-        $this->db->insert($this->userTable, $userData);
+        show_error('create from user model is depreciated, use core instead.');
+        log_message('ERROR', 'create from user model is depreciated, use core instead.');
+//        $this->dateCreated = date('m/y/d');
+//        $userData = array('userEmail'=>$this->userEmail,
+//                          'userFirstName'=>$this->userFirstName,
+//                          'userLastName'=>$this->userLastName,
+//                          'userDateCreated'=>$this->dateCreated,
+//                          'userPassword'=>$this->userPassword);
+//
+//        $this->db->insert($this->userTable, $userData);
 
     }
 
     function read($userID = NULL)
     {
-        if($userID == NULL)
-        {
-            $readData = $this->db->get($this->userTable);
-        }
-        else
-        {
-            $readData = $this->db->get_where($this->userTable, array('userID'=>$userID));
-        }
-        return $readData;
+        show_error('read from user model is depreciated, use core instead.');
+        log_message('ERROR', 'read from user model is depreciated, use core instead.');
+//        if($userID == NULL)
+//        {
+//            $readData = $this->db->get($this->userTable);
+//        }
+//        else
+//        {
+//            $readData = $this->db->get_where($this->userTable, array('userID'=>$userID));
+//        }
+//        return $readData;
     }
 
     public function readEmail($userEmail)
     {
-        $select = "SELECT * FROM $this->userTable WHERE userEmail = '$userEmail'";
-        $readData = $this->db->query($select);
-        return $readData;
+        show_error('readEmail from user model is depreciated, use core instead.');
+        log_message('ERROR', 'readEmail from user model is depreciated, use core instead.');
+//        $select = "SELECT * FROM $this->userTable WHERE userEmail = '$userEmail'";
+//        $readData = $this->db->query($select);
+//        return $readData;
     }
     
     function update($data, $id)
     {
-        $this->db->where('userID', $id);
-        $this->db->update($this->userTable, $data);
+        show_error('update from user model is depreciated, use core instead.');
+        log_message('ERROR', 'udpate from user model is depreciated, use core instead.');
+        //$this->db->where('userID', $id);
+        //$this->db->update($this->userTable, $data);
     }
     
     // There is no save users..???
     
     function saveUser()
     {
-    	$this->load->library('encrypt');
-    	$data = array('userEmail'=>$this->userEmail,
-    				  'userPassword'=>$this->encrypt->encode($this->userPassword),
-    				  'userFirstName'=>$this->userFirstName,
-    				  'userLastName'=>$this->userLastName);
-    	$this->update($data, $this->userUserID);
+        show_error('saveUser from user model is depreciated, use core instead.');
+        log_message('ERROR', 'saveUser from user model is depreciated, use core instead.');
+//    	$this->load->library('encrypt');
+//    	$data = array('userEmail'=>$this->userEmail,
+//    				  'userPassword'=>$this->encrypt->encode($this->userPassword),
+//    				  'userFirstName'=>$this->userFirstName,
+//    				  'userLastName'=>$this->userLastName);
+//    	$this->update($data, $this->userUserID);
     }
 
     function delete($userID)
     {
-        $this->db->delete($this->userTable, array('userID'=>$userID));
+        show_error('delete from user model is depreciated, use core instead.');
+        log_message('ERROR', 'delete from user model is depreciated, use core instead.');
+
+        //$this->db->delete($this->userTable, array('userID'=>$userID));
     }
 
 
     public function getUserIDFromEmail($email){
-        $select = "SELECT userID FROM $this->userTable WHERE userEmail = '$email'";
-        log_message('info', 'User_mdl::getUserIDUsername() is executing a query ' . $select);
-        $dump = $this->db->query($select);
-        foreach($dump->result() as $row){
-            $userID = $row->userID;
-            log_message('debug', 'User_mdl::getUserIDUsername() has fetched the userid ' . $userID);
-        }
-        return $userID;
+        show_error('getUserIDFromEmail from user model is depreciated, use core instead.');
+        log_message('ERROR', 'getUserIDFromEmail from user model is depreciated, use core instead.');
+//        $select = "SELECT userID FROM $this->userTable WHERE userEmail = '$email'";
+//        log_message('info', 'User_mdl::getUserIDUsername() is executing a query ' . $select);
+//        $dump = $this->db->query($select);
+//        foreach($dump->result() as $row){
+//            $userID = $row->userID;
+//            log_message('debug', 'User_mdl::getUserIDUsername() has fetched the userid ' . $userID);
+//        }
+//        return $userID;
     }
 
     function getFirstName(){
         $this->userUserID = $this->session->userdata('userid');
         
-        $getName = "SELECT userFirstName
-        FROM $this->userTable
-        WHERE userID = $this->userUserID LIMIT 1";
+//        $getName = "SELECT userFirstName
+//        FROM $this->userTable
+//        WHERE userID = $this->userUserID LIMIT 1";
 
-        
-        $excQuery = $this->db->query($getName);
+        $this->db->select('*');
+        $this->db->from($this->userTable);
+        $this->db->where('id', $this->userUserID);
+        $this->db->limit(1);
+        $excQuery = $this->db->get();
         foreach ($excQuery->result() as $row){
             $firstName = $row->userFirstName;
             

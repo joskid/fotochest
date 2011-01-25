@@ -25,7 +25,7 @@
 
 function getAlbumFriendlyName($albumID)
 {
-	log_message('info', $albumID);
+    log_message('info', $albumID);
     $CI =& get_instance();
     $CI->load->model('Album_mdl');
     $exe = $CI->Album_mdl->read($albumID);

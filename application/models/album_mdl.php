@@ -65,9 +65,13 @@ class Album_mdl extends CoreModel {
     }
 
     public function findChildID($albumID){
-        $select = "SELECT * FROM $this->albumTable WHERE albumParentID = $albumID LIMIT 1";
+        //$select = "SELECT * FROM $this->albumTable WHERE albumParentID = $albumID LIMIT 1";
+        $this->db->select('*');
+        $this->db->from($this->albumTable);
+        $this->db->where('albumParentID', $albumID);
+        $this->db->limit(1);
         log_message('info', 'fineChildID:: ' . $select);
-        $exe = $this->db->query($select);
+        $exe = $this->db->get();
         if($exe->num_rows() == 0)
         {
             return 0;
@@ -116,11 +120,13 @@ class Album_mdl extends CoreModel {
     }
     
 	// @todo this can use the core.
+  
     public function getAlbumByName($albumName)
     {
-        $selectSQL = "SELECT * FROM $this->albumTable WHERE albumName = '$albumName'";
-        $albumInfo = $this->db->query($selectSQL);
-        return $albumInfo;
+//        $selectSQL = "SELECT * FROM $this->albumTable WHERE albumName = '$albumName'";
+//        $albumInfo = $this->db->query($selectSQL);
+//        return $albumInfo;
+        log_message('info', 'album_mdl:: getAlbumByName should be using getWhere');
     }
 
 
@@ -139,7 +145,6 @@ class Album_mdl extends CoreModel {
         $this->db->from($this->albumTable);
         $this->db->limit(5, $pageNum);
         return $this->db->get();
-
     }
 
     /**
@@ -170,9 +175,10 @@ DEPRECIATED **/
     public function hasChildren($albumName){
         $albumID = getAlbumID($albumName);
 
-        $albums = "SELECT * FROM $this->albumTable where albumParentID = $albumID";
+        //$albums = "SELECT * FROM $this->albumTable where albumParentID = $albumID";
+        $this->db->where('albumParentID', $albumID);
 
-        $childAlbums  = $this->db->query($albums);
+        $childAlbums  = $this->db->get($this->albumTable);
         if ($childAlbums->num_rows == 0){
             return false;
         } else

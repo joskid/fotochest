@@ -66,7 +66,7 @@ $autoload['helper'] = array('html', 'url', 'form', 'file', 'thumb', 'user', 'set
 |
 */
 
-$autoload['config'] = array('settings', 'versioning');
+$autoload['config'] = array('settings', 'versioning', 'assets');
 
 
 /*

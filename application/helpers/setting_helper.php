@@ -25,8 +25,8 @@
 function getSetting($settingName){
     $CI =& get_instance();
     // Load Setting library
-    $CI->load->library('setting_lib');
-    $settingValue = $CI->setting_lib->getSetting($settingName);
+    $CI->load->library('setting');
+    $settingValue = $CI->setting->getSetting($settingName);
     return $settingValue;
 }
 
@@ -34,8 +34,8 @@ function setSetting($settingName, $settingValue){
     $CI =& get_instance();
 
     // Load the setting library
-    $CI->load->library('setting_lib');
-    $CI->setting_lib->setSetting($settingName, $settingValue);
+    $CI->load->library('setting');
+    $CI->setting->setSetting($settingName, $settingValue);
     return true;
 }
 
@@ -49,9 +49,9 @@ function isOverPhotoLimit(){
     $photoNum = $CI->photo->getPhotoCount();
 
     // Load the Setting Library
-    $CI->load->library('setting_lib');
+    $CI->load->library('setting');
     
-    $planType = $CI->setting_lib->getSetting('planType');
+    $planType = $CI->setting->getSetting('planType');
     switch ($planType){
         case 0:
             if($photoNum > 350){
@@ -68,8 +68,9 @@ function isOverPhotoLimit(){
 
 function getPhotoLimit(){
     $CI =& get_instance();
-    
-    $planType = $CI->setting_lib->getSetting('planType');
+
+    $CI->load->library('setting');
+    $planType = $CI->setting->getSetting('planType');
     switch ($planType){
         case 0:
             return 350;

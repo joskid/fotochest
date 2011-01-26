@@ -79,8 +79,10 @@ class CoreModel extends CI_Model {
     
     public function getCountWhere($key, $value)
     {
-    	return $this->db->where($key, $value)
-                        ->count_all($this->_table);
+//    	return $this->db->where($key, $value)
+//                        ->count_all($this->_table);
+        $counts = $this->db->where($key, $value)->get($this->_table);
+        return $counts->num_rows();
     }
 
     /*

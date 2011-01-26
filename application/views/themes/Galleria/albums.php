@@ -5,7 +5,7 @@
 
 <div class="photo <?php if($count == 1) { ?> clear <?php } ?>">
      <a href="<?php echo site_url(); ?>album/<?php echo $row->albumName; ?>">
-        <?php echo getAlbumThumbs($row->albumID, 1); ?>
+        <?php echo getAlbumThumbs($row->id, 1); ?>
     </a>
     <p><?php echo $row->albumFriendlyName; ?></p>
 </div>

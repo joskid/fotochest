@@ -120,10 +120,9 @@ class Album extends CoreLibrary {
         if ($albumThumbs >= $neededPhotos)
         {
             // Good..
-
+            log_message('info', 'Falls under first if');
             $imgs = $this->ci->Album_mdl->getAlbumThumbnails($albumID, $neededPhotos);
-
-
+            log_message('info', 'got thumbs');
             return $imgs;
         }
         else

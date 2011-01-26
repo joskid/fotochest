@@ -25,10 +25,10 @@
 
 function getAlbumFriendlyName($albumID)
 {
-    log_message('info', $albumID);
+    log_message('info', 'getalbumfriendlyname ' . $albumID);
     $CI =& get_instance();
     $CI->load->model('Album_mdl');
-    $exe = $CI->Album_mdl->read($albumID);
+    $exe = $CI->Album_mdl->get($albumID);
     foreach($exe->result() as $row){
         $albumFriendly = $row->albumFriendlyName;
     }
@@ -37,7 +37,7 @@ function getAlbumFriendlyName($albumID)
 
 function getAlbumName($albumID)
 {
-    log_message('info', $albumID);
+    log_message('info', 'getalbumname ' . $albumID);
     $CI =& get_instance();
     $CI->load->model('Album_mdl');
     $exe = $CI->Album_mdl->get($albumID);
@@ -62,12 +62,13 @@ function getAlbumID($albumName)
     $CI =& get_instance();
     $CI->load->model('Album_mdl');
     $getAlbumInfo = $CI->Album_mdl->getWhere('albumName', $albumName);
+    log_message('info', 'getAlbumID');
     if ($getAlbumInfo->num_rows() == 0){
 
         return false;
     } else {
         foreach($getAlbumInfo->result() as $row){
-            $albumID = $row->albumID;
+            $albumID = $row->id;
         }
     }
     return $albumID;

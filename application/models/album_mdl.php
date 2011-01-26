@@ -87,20 +87,35 @@ class Album_mdl extends CoreModel {
     
     public function getAlbumThumbnails($albumID, $numOfThumbs = 3)
     {
+        log_message('info', 'album thumbnails called');
+        
         $this->db->select('*');
         $this->db->from($this->albumTable);
-        //$this->db->join($this->photoTable, $this->photoTable . '.photoAlbumID = ' . $this->albumTable . '.id');
-        $this->db->join($this->photoTable, 'photoLibrary.photoAlbumID = photoAlbums.id');
-        //$this->db->where($this->photoTable . '.photoAlbumID', $albumID);
+        $this->db->join($this->photoTable, $this->albumTable . '.id = ' . $this->photoTable . '.photoAlbumID');
+        $this->db->where($this->photoTable . '.photoAlbumID', $albumID);
+        $this->db->limit($numOfThumbs);
+        log_message('info', $this->db->_compile_select());
+        return $this->db->get();
+        
+        //$resul = $this->db->get();
+//
+//        show_error($this->db->last_query());
+        //$select = "SELECT * FROM $this->albumTable, $this->photoTable WHERE photoAlbumID = $albumID AND albumID = photoAlbumID group by photoID limit $numOfThumbs";
+        //return $this->db->query($select);
+        
+    }
+
+    //$this->db->where($this->photoTable . '.photoAlbumID', $albumID);
         //$this->db->group_by($this->photoTable . '.id');
         //$this->db->limit($numOfThumbs);
-        return $this->db->get();
+
 //        $select = "SELECT * FROM $this->albumTable, $this->photoTable WHERE photoAlbumID = $albumID AND albumID = photoAlbumID group by photoID limit $numOfThumbs";
 //        log_message('info', 'getAlbumThumnails:: ' . $select);
 //        $exe = $this->db->query($select);
 //        return $exe;
-    }
-    /*
+
+
+    
 	// @todo this should be added to core.  Get count by x.
     public function getAlbumCount($albumID){
         $select = "SELECT * FROM $this->photoTable WHERE photoAlbumID = $albumID";
@@ -108,7 +123,7 @@ class Album_mdl extends CoreModel {
         $count = $exe->num_rows();
         return $count;
     }
-    */
+    
     // @todo This should be able to use core. 
     public function updateAlbum(){
         $updateData = array('albumFriendlyName'=>$this->albumFriendlyName, 'albumDesc'=>$this->albumDesc);
@@ -175,6 +190,7 @@ DEPRECIATED **/
      */
     public function hasChildren($albumName){
         $albumID = getAlbumID($albumName);
+        log_message('info', 'haschildren');
 
         //$albums = "SELECT * FROM $this->albumTable where albumParentID = $albumID";
         $this->db->where('albumParentID', $albumID);

@@ -113,9 +113,10 @@ class Albums extends Public_Controller {
             $this->data['title'] = $this->data['albumFriendlyName'];
 
             //$this->load->view(getFullThemePath() . 'viewAlbum', $this->data);
-            
+            log_message('info', 'writing view album');
             $this->template->write_view('navigation', 'singleAlbumNavigation', $this->data);
             $this->template->write_view('content', 'viewAlbum', $this->data);
+            log_message('info', 'new veiw albums');
             $this->template->render();
         } else {
             // Get Children??
@@ -139,6 +140,7 @@ class Albums extends Public_Controller {
         }
 
         $albumID = getAlbumID($albumName);
+        log_message('info', 'no children..');
         $this->data['albumFriendlyName'] = getAlbumFriendlyName($albumID);
         
         $hasChildren = $this->Album_mdl->hasChildren($albumName);

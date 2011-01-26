@@ -63,7 +63,7 @@ class User_lib {
             foreach($userData->result() as $user)
             {
                 $storedPassword = $user->userPassword;
-                $storedUserID = $user->userID;
+                $storedUserID = $user->id;
                 $storedEmail = $user->userEmail;
             }
 

@@ -30,7 +30,7 @@ class Photo extends CoreLibrary {
     public $photoTitle;
     public $photoDesc;
     public $photoCreatedDate;
-    public $photoID;
+    public $id;
     public $isProfilePicture;
     
     /*
@@ -129,6 +129,27 @@ class Photo extends CoreLibrary {
         // Delete files.
         unlink($thumb);
         unlink($original);
+    }
+
+    /*
+     *
+     *
+     * add()
+     *
+     * @author Derek Stegelman
+     * @access Public
+     * @version 2.0
+     * @param void - uses photo object
+     * @return void
+     *
+     *
+     */
+
+    public function add()
+    {
+        $photoData = array('photoAlbumID'=>$this->photoAlbumID, 'photoCreatedDate'=>$this->photoCreatedDate,
+                           'photoDesc'=>$this->photoDesc, 'photoFileName'=>$this->photoFileName, 'photoTitle'=>$this->photoTitle);
+        $this->Photo_mdl->create($photoData);
     }
     
     /*

@@ -58,7 +58,7 @@ class Users extends Admin_Controller {
 
         // Load the model
         $this->load->model('User_mdl');
-        $this->data['userInfo'] = $this->User_mdl->read($userID);
+        $this->data['userInfo'] = $this->User_mdl->get($userID);
 
         $this->load->view('admin/modals/editUser', $this->data);
     }

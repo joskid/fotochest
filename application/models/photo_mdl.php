@@ -240,7 +240,7 @@ class Photo_mdl extends CoreModel {
 
     public function getPhotoInfo($photoID)
     {
-        $this->db->select('*');
+        $this->db->select('*, ' . $this->photoTable . '.id as photoID');
         $this->db->from($this->photoTable);
         $this->db->join($this->albumTable, 'photoAlbumID = ' . $this->albumTable . '.id');
         $this->db->where($this->photoTable . '.id', $photoID);

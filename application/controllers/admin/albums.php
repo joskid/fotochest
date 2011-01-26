@@ -66,7 +66,7 @@ class Albums extends Admin_Controller {
     public function do_delete(){
 
         // @todo remoe this.
-        $albumID = $this->input->post('albumID');
+      $albumID = $this->input->post('albumID');
 
       $path = getSetting('absolutePath');
       $this->Album_mdl->deleteAlbum($albumID, $path);

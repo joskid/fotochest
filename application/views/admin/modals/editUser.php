@@ -26,7 +26,7 @@
         <div>
             <input type="text" name="userLastName" id="userLastName" size="50" value="<?php echo $row->userLastName; ?>">
         </div>
-        <input type="hidden" name="userUserID" id="userUserID" value="<?php echo $row->userID; ?>">
+        <input type="hidden" name="userUserID" id="userUserID" value="<?php echo $row->id; ?>">
       </div>
       <div class="formItem">
           <div>

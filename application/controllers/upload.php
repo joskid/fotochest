@@ -28,7 +28,6 @@ class Upload extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('Album_mdl');
-        $this->load->model('Photo_mdl');
         $this->load->library('photo');
     }
 
@@ -60,12 +59,18 @@ class Upload extends CI_Controller {
         
 
         $this->photo->buildMainThumb($photoLocation, $file, $albumName);
-        $this->Photo_mdl->photoAlbumID = $albumID;
-        $this->Photo_mdl->photoCreatedDate = date("y/m/d");
-        $this->Photo_mdl->photoDesc = null;
-        $this->Photo_mdl->photoFileName = $file;
-        $this->Photo_mdl->photoTitle = '';
-        $this->Photo_mdl->create();
+        $this->photo->photoAlbumID = $albumID;
+        $this->photo->photoCreatedDate = date("y/m/d");
+        $this->photo->photoDesc = null;
+        $this->photo->photoFileName = $file;
+        $this->photo->photoTitle = '';
+        $this->photo->add();
+//        $this->Photo_mdl->photoAlbumID = $albumID;
+//        $this->Photo_mdl->photoCreatedDate = date("y/m/d");
+//        $this->Photo_mdl->photoDesc = null;
+//        $this->Photo_mdl->photoFileName = $file;
+//        $this->Photo_mdl->photoTitle = '';
+//        $this->Photo_mdl->create();
         log_message('info', 'Adding a phoot single upload complete');
         return true;
 

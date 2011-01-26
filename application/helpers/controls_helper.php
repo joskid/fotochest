@@ -25,10 +25,10 @@
 function getAlbumDropdownList($showParent = TRUE){
         $ci =& get_instance();
         $ci->load->model('Album_mdl');
-        $albums = $ci->Album_mdl->read();
+        $albums = $ci->Album_mdl->get();
         $options = array();
         foreach($albums->result() as $row){
-            $options[$row->albumID] = $row->albumName;
+            $options[$row->id] = $row->albumName;
         }
         if ($showParent == TRUE)
         {

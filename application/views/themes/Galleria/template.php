@@ -15,6 +15,7 @@
 		<a class="logo" href="<?php echo site_url(); ?>">
 		foto<span>chest</span>
 		</a>
+                    <a class="button" href="<?php echo site_url('albums'); ?>"><span>Albums</span></a>
 
                 <?php echo $content; ?>
 

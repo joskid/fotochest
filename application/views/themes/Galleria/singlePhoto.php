@@ -5,7 +5,7 @@
                        <?php echo nextNav($row->id, $row->albumName); ?>
 </div>
 <div class="singlePhoto photo">
-				<a href="viewBigPhoto.html">
+				<a href="#">
                                     <img src="<?php echo base_url(); ?>img_stor/albums/<?php echo $row->albumName; ?>/thumbs/<?php echo $row->photoFileName; ?>" title="<?php echo $row->photoTitle; ?>" alt="<?php echo $row->photoTitle; ?>">
 				</a>
 			</div>

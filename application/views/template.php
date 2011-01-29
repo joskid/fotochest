@@ -7,7 +7,6 @@
         <!--[if IE]>
         <?php echo theme_css('ie'); ?>
         <![endif]-->
-
         <?php echo css("admin/modal"); ?>
         <?php echo link_tag('assets/javascript/facebox/facebox.css'); ?>
         <link href='http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light' rel='stylesheet' type='text/css'>
@@ -16,9 +15,7 @@
         <?php echo js("lightbox/js/jquery.lightbox-0.5"); ?>
         <?php echo js("facebox/facebox"); ?>
         <?php echo js("fotochest"); ?>
-
         <title><?php echo $title; ?></title>
-
     </head>
 <body>
     <div id="wrapper">

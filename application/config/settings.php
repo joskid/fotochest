@@ -34,4 +34,6 @@ $config['enableMultiUser'] = FALSE;
 $config['thumbWidth'] = '700';
 $config['thumbHeight'] = '700';
 
+$config['environment'] = 'dev'; // Options are 'dev', 'staging', 'production'
+
 ?>

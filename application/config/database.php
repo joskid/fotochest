@@ -58,10 +58,10 @@ $db['production']['autoinit'] = TRUE;
 $db['production']['stricton'] = FALSE;
 
 
-$db['dev']['hostname'] = 'localhost';
-$db['dev']['username'] = 'root';
-$db['dev']['password'] = 'root';
-$db['dev']['database'] = 'fotochest';
+$db['dev']['hostname'] = 'stagingfotochest.db.3913146.hostedresource.com';
+$db['dev']['username'] = 'stagingfotochest';
+$db['dev']['password'] = 'dc1986LINDY';
+$db['dev']['database'] = 'stagingfotochest';
 $db['dev']['dbdriver'] = 'mysql';
 $db['dev']['dbprefix'] = '';
 $db['dev']['pconnect'] = TRUE;

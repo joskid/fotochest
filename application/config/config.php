@@ -11,7 +11,7 @@
 |	http://example.com/
 |
 */
-$config['base_url']	= "http://localhost/";
+$config['base_url']	= "http://staging.fotochest.com/";
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +24,7 @@ $config['base_url']	= "http://localhost/";
 |	exampleApp
 |
 */
-$config['applicationName'] = "exampleApp";
+$config['applicationName'] = "FotoChest";
 
 
 /*

@@ -119,14 +119,17 @@ class User_lib {
         // Load the User Model
         $this->ci->load->model('User_mdl');
 
-        // Set the properties to add a user
-        $this->ci->User_mdl->userPassword = $encryptedPassword;
-        $this->ci->User_mdl->userEmail = $this->userEmail;
-        $this->ci->User_mdl->userFirstName = $this->userFirstName;
-        $this->ci->User_mdl->userLastName = $this->userLastName;
+        // Set the properties to add a user      
+        $userData = array('userEmail'=>$this->userEmail,
+                          'userFirstName'=>$this->userFirstName,
+                          'userLastName'=>$this->userLastName,
+                          'userDateCreated'=>date('m/y/d'),
+                          'userPassword'=>$encryptedPassword);
+
+
 
         // Fire off the create
-        $this->ci->User_mdl->create();
+        $this->ci->User_mdl->create($userData);
         
     }
 

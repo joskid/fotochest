@@ -126,8 +126,6 @@ class User_lib {
                           'userDateCreated'=>date('m/y/d'),
                           'userPassword'=>$encryptedPassword);
 
-
-
         // Fire off the create
         $this->ci->User_mdl->create($userData);
         

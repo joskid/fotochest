@@ -40,6 +40,7 @@ class Users extends Public_Controller {
     if(!$this->form_validation->run())
     {
         $this->data['error'] = FALSE;
+        log_message('error', 'validation failed for user');
         $this->template->set_template('admin');
         $this->template->write('title', 'Login');
         $this->template->write('navigation', '');
@@ -57,6 +58,7 @@ class Users extends Public_Controller {
         $this->user_lib->userPassword = $this->input->post('userPassword');
 
         // Call Login Method
+        log_message('info', 'Login attempt made by user controller');
         $userID = $this->user_lib->login();
         if ($userID != -1)
         {

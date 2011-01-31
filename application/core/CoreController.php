@@ -14,10 +14,11 @@ class CoreController extends CI_Controller {
 
         public function  __destruct()
         {
-            log_message('info', 'last query ' . $this->db->last_query());
+            if ($this->config->item('environment') == 'dev' OR $this->config->item('environment') == 'staging')
+            {
+                log_message('info', 'last query ' . $this->db->last_query());
+            }
         }
-	
-	
 }
 
 ?>

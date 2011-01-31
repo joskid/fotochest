@@ -37,7 +37,7 @@ $config['applicationName'] = "exampleApp";
 | publiciable so that it is blank.
 |
 */
-$config['index_page'] = "";
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -55,7 +55,7 @@ $config['index_page'] = "";
 | 'ORIG_PATH_INFO'	Uses the ORIG_PATH_INFO
 |
 */
-$config['uri_protocol']	= "AUTO";
+$config['uri_protocol']	= 'REQUEST_URI';
 
 /*
 |--------------------------------------------------------------------------

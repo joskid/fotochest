@@ -21,11 +21,21 @@
 * @author		Derek Stegelman
 */
 
-class Users extends Public_Controller {
+class Users extends CI_Controller {
 
     public function __construct()
     {
         parent::__construct();
+    }
+
+    public function test()
+    {
+        $this->template->set_template('admin');
+        $this->template->write('title', 'Login');
+        $this->template->write('navigation', '');
+        $this->template->write('sidebar', '');
+        $this->template->write_view('content', 'admin/userLogin', $this->data);
+        $this->template->render();
     }
   
   public function login(){

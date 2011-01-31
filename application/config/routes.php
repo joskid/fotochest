@@ -38,9 +38,8 @@
 |
 */
 
-
-$route['404_override'] = '';
 $route['default_controller'] = "photos";
+$route['404_override'] = '';
 $route['admin'] = "admin/photos/photosView";
 $route['login'] = "users/login";
 $route['logout'] = "users/logout";

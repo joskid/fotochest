@@ -11,6 +11,11 @@ class CoreController extends CI_Controller {
                 $this->output->enable_profiler(TRUE);
             }
 	}
+
+        public function  __destruct()
+        {
+            log_message('info', 'last query ' . $this->db->last_query());
+        }
 	
 	
 }

@@ -34,7 +34,7 @@ $config['applicationName'] = "FotoChest";
 |
 | Typically this will be your index.php file, unless you've renamed it to
 | something else. If you are using mod_rewrite to remove the page set this
-| publiciable so that it is blank.
+| variable so that it is blank.
 |
 */
 $config['index_page'] = '';
@@ -55,7 +55,7 @@ $config['index_page'] = '';
 | 'ORIG_PATH_INFO'	Uses the ORIG_PATH_INFO
 |
 */
-$config['uri_protocol']	= 'REQUEST_URI';
+$config['uri_protocol']	= "AUTO";
 
 /*
 |--------------------------------------------------------------------------
@@ -99,7 +99,7 @@ $config['charset'] = "UTF-8";
 |--------------------------------------------------------------------------
 |
 | If you would like to use the "hooks" feature you must enable it by
-| setting this publiciable to TRUE (boolean).  See the user guide for details.
+| setting this variable to TRUE (boolean).  See the user guide for details.
 |
 */
 $config['enable_hooks'] = FALSE;
@@ -147,9 +147,6 @@ $config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-';
 |
 | By default CodeIgniter uses search-engine friendly segment based URLs:
 | example.com/who/what/where/
-|
-| By default CodeIgniter enables access to the $_GET array.  If for some
-| reason you would like to disable it, set 'allow_get_array' to FALSE.
 |
 | You can optionally enable standard query string based URLs:
 | example.com?who=me&what=something&where=here
@@ -267,7 +264,7 @@ $config['sess_time_to_update'] 	= 300;
 
 /*
 |--------------------------------------------------------------------------
-| Cookie Related publiciables
+| Cookie Related Variables
 |--------------------------------------------------------------------------
 |
 | 'cookie_prefix' = Set a prefix if you need to avoid collisions

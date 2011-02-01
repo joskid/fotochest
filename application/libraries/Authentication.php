@@ -15,9 +15,9 @@
 // ----------------------------------------------------------------
 
 /**
-* Photo Library
+* Authentication Library
 *
-* @package		FotoChest
+* @package		CodeIgniter Base
 * @category		Libraries
 * @author		Derek Stegelman
 */

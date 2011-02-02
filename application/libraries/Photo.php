@@ -82,8 +82,8 @@ class Photo extends CoreLibrary {
         $main_size['source_image'] = $photoDirectory;
         $main_size['maintain_ratio'] = TRUE;
         $main_size['new_image'] = './img_stor/albums/' . $albumName . '/thumbs/' . $photoFileName;
-        $main_size['width'] = $this->config->item('thumbWidth');
-        $main_size['height'] = $this->config->item('thumbHeight');
+        $main_size['width'] = $this->ci->config->item('thumbWidth');
+        $main_size['height'] = $this->ci->config->item('thumbHeight');
         $this->ci->image_lib->initialize($main_size);
         if (!$this->ci->image_lib->resize()){
             log_message('error', 'Photo_mdl::buildMainThumb() - Error with Main Thumb Resize Method ' . $this->ci->image_lib->display_errors());
@@ -149,7 +149,7 @@ class Photo extends CoreLibrary {
     {
         $photoData = array('photoAlbumID'=>$this->photoAlbumID, 'photoCreatedDate'=>$this->photoCreatedDate,
                            'photoDesc'=>$this->photoDesc, 'photoFileName'=>$this->photoFileName, 'photoTitle'=>$this->photoTitle);
-        $this->Photo_mdl->create($photoData);
+        $this->ci->Photo_mdl->create($photoData);
     }
     
     /*

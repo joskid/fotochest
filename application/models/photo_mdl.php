@@ -51,19 +51,19 @@ class Photo_mdl extends CoreModel {
      *
      */
 
-    public function create()
-    {
-//        $insertData = array(
-//            'photoFileName'=>$this->photoFileName,
-//            'photoTitle'=>$this->photoTitle,
-//            'photoDesc'=>$this->photoDesc,
-//            'photoCreatedDate'=>date("m/d/y"),
-//            'photoAlbumID' =>$this->photoAlbumID,
-//            'isProfilePic'=>0);
-//        $this->db->insert($this->photoTable, $insertData);
-        log_message('info', 'create on photo model is depreciated');
-        show_error('create photo is depreciated, use core instead');
-    }
+//    public function create()
+//    {
+////        $insertData = array(
+////            'photoFileName'=>$this->photoFileName,
+////            'photoTitle'=>$this->photoTitle,
+////            'photoDesc'=>$this->photoDesc,
+////            'photoCreatedDate'=>date("m/d/y"),
+////            'photoAlbumID' =>$this->photoAlbumID,
+////            'isProfilePic'=>0);
+////        $this->db->insert($this->photoTable, $insertData);
+//        //log_message('info', 'create on photo model is depreciated');
+//        //show_error('create photo is depreciated, use core instead');
+//    }
 /**
     public function read($photoID = null)
     {

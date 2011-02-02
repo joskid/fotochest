@@ -45,25 +45,27 @@ class Album extends CoreLibrary {
      * ********************************************
      */
 
-    public function createAlbum(){
+    public function createAlbum()
+    {
 
         log_message('info', 'Executing createAlbum method'); // Log for information purposes.
         // Once a new photo is uploaded to the album it becomes the thumbnail....
 
-        // Load up the variables
-        $albumData = array('albumName'=>$this->albumName, 'albumCreateDate'=>date("m/y/d"), 
-        				   'albumParentID'=>$this->albumParentID,
-                           'albumFriendlyName'=>$this->albumFriendlyName);
-
         // Check for exisitng folder
-        if ($this->ci->Album_mdl->exists($this->albumName))
+        if ($this->ci->Album_mdl->exist('albumName', $this->albumName))
         {
             // Probably should randomize the name then right?
             log_message('ERROR', 'The album ' . $this->albumName . ' already exists.  Manually changing the name now.');
-            $this->ci->Album_mdl->albumName = $this->_saltName($this->albumName);
+            $this->albumName = $this->_saltName($this->albumName);
         }
+        log_message('info', 'Loading variables');
+        // Load up the variables
+        $albumData = array('albumName'=>$this->albumName, 'albumCreateDate'=>date("m/y/d"),
+                            'albumParentID'=>$this->albumParentID,
+                           'albumFriendlyName'=>$this->albumFriendlyName);
 
         // Call the CRUD Method
+        log_message('info', 'Executing Core Create method for create album');
         $this->ci->Album_mdl->create($albumData);
 
         // Create the album folders

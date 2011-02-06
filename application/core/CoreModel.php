@@ -186,19 +186,22 @@ class CoreModel extends CI_Model {
     public function update($data, $key)
     {
         return $this->db->where('id', $key)
-        				->update($data);
+        		->update($this->_table, $data);
     }
     
     /*
      * updateWhere
      * 
      * @author Derek Stegelman
+     *  - Provides method for updating single column
+     *
      */
     
     public function updateWhere($data, $key, $value)
     {
+        
     	return $this->db->where($key, $value)
-    					->update($data);
+                        ->update($this->_table, $data);
     }
 
     /*

@@ -56,7 +56,7 @@ class Setting extends CoreLibrary {
     public function setSetting($settingName, $settingValue){
 
         $data = array('settingValue'=>$settingValue);
-        $this->ci->Setting_mdl->updateWhere($data, $settingName, $settingValue); //data key value
+        $this->ci->Setting_mdl->updateWhere($data, 'settingName', $settingName); //data key value
         log_message('debug', 'Setting ' . $settingName . ' has been set to: ' . $settingValue);
     }
 

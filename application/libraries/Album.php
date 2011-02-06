@@ -101,8 +101,6 @@ class Album extends CoreLibrary {
         // Call the delete Method
         $this->ci->Album_mdl->delete($albumID);
         
-        // Now we must delete all photos associated with this album
-        $this->load->model('Photo_mdl');  // Must inhert core model before this works.
         $this->Photo_mdl->deleteWhere('photoAlbumID', $albumID);
 
         // Deleting files in the album folder.

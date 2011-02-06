@@ -23,14 +23,16 @@
 
 class Photos extends Public_Controller {
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         log_message('info', 'loaded photos controller');
         $this->template->write('title', getSetting('siteName') . "'s Photos");
         log_message('info', 'settings loaded');
     }
 
-    public function index(){
+    public function index()
+    {
 
         // For each loop
         $this->load->library('pagination');
@@ -53,7 +55,8 @@ class Photos extends Public_Controller {
         $this->template->render();
     }
 
-    public function slideshow($albumName){
+    public function slideshow($albumName)
+    {
 
         if (empty($albumName) || is_numeric($albumName) == TRUE){
             show_404();
@@ -66,7 +69,8 @@ class Photos extends Public_Controller {
         $this->load->view(getFullThemePath() . 'slideshow', $this->data);
     }
 
-    public function page($pageNum){
+    public function page($pageNum)
+    {
         // Load the photo data
         if (!is_numeric($pageNum) || empty($pageNum)){
             show_404();
@@ -102,7 +106,8 @@ class Photos extends Public_Controller {
      * @return photo view.
      */
 
-    public function view($albumName, $photoID){
+    public function view($albumName, $photoID)
+    {
 
         if (!is_numeric($photoID) || empty($albumName) || empty($photoID) || !checkPhoto($photoID, $albumName)){
             show_404();
@@ -110,7 +115,6 @@ class Photos extends Public_Controller {
         
        	// Load dependencies
         $this->load->library('comment');
-        $this->load->library('photo');
         
         $this->data['comments'] = $this->comment->getComments($photoID);
         log_message('info', 'here');
@@ -156,4 +160,3 @@ class Photos extends Public_Controller {
         redirect('photo/' . $this->input->post('albumName') . '/' . $this->input->post('photoID'));
     }
 }
-?>

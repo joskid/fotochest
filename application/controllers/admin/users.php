@@ -22,12 +22,12 @@
 * @author		Derek Stegelman
 */
 
-
 class Users extends Admin_Controller {
 
     public function __construct()
     {
         parent::__construct();
+        $this->load->library('user');
     }
 
     public function index(){
@@ -50,34 +50,28 @@ class Users extends Admin_Controller {
         $this->template->render();
     }
 
-    public function addUser(){
+    public function addUser()
+    {
         $this->load->view('admin/modals/addUser');
     }
 
-    public function editUser($userID){
-
-        // Load the model
-        $this->load->model('User_mdl');
+    public function editUser($userID)
+    {
         $this->data['userInfo'] = $this->User_mdl->get($userID);
 
         $this->load->view('admin/modals/editUser', $this->data);
     }
 
-    function do_userSave(){
-    	 // Load the model
-        $this->load->model('User_mdl');
+    function do_userSave()
+    {
+        $this->user->id = $this->input->post('userUserID');
 
-        // @todo move this.
-        $this->User_mdl->userEmail = $this->input->post('userEmail');
-        $this->User_mdl->userPassword = $this->input->post('userPassword');
-        $this->User_mdl->userFirstName = $this->input->post('userFirstName');
-        $this->User_mdl->userLastName = $this->input->post('userLastName');
-        $this->User_mdl->userUserID = $this->input->post('userUserID');
-        $this->User_mdl->saveUser();
-
-
+        // Call Save User
+        $this->user->saveUser();
     }
-    public function do_register(){
+
+    public function do_register()
+    {
         log_message('debug', 'Attempt made to register');
 
         $this->load->library('user_lib');
@@ -90,24 +84,15 @@ class Users extends Admin_Controller {
 
     }
 
-    function do_userDelete(){
-
-        // @todo move this.
-        $this->load->model('User_mdl');
-        $userID = $this->input->post('userUserID');
-        $this->User_mdl->delete($userID);
+    function do_userDelete()
+    {
+        $this->User_mdl->delete($this->input->post('id'));
     }
     
+    function deleteUser($id)
+    {
 
-
-
-    function deleteUser($userID){
-
-        $this->data['userID'] = $userID;
+        $this->data['id'] = $id;
         $this->load->view('admin/modals/deleteUser', $this->data);
     }
-
-   
-
 }
-?>

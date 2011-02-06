@@ -139,20 +139,14 @@ class User_lib {
         // Encrypt the password
         $encryptPassword = $this->ci->encrypt->encode($this->userPassword);
         
-        // Load the User Model
-        $this->ci->load->model('User_mdl');
         
-        // Set properties for the update
-       
-        $this->ci->User_mdl->userID = $this->userID;
-
         $data = array('userPassword'=>$this->userPassword,
                       'userFirstName'=>$this->userFirstName,
                       'userLastName'=>$this->userLastName,
                       'userEmail'=>$this->userEmail);
 
         // Fire off the update
-        $this->ci->User_mdl->update($data);
+        $this->ci->User_mdl->update($data, $this->userID);
     }
 
     function resetPassword($password)

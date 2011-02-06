@@ -27,11 +27,10 @@ class Upload extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Album_mdl');
-        $this->load->library('photo');
     }
 
-     public function multiUpload($albumID){
+     public function multiUpload($albumID)
+     {
 
         // Remove later
 
@@ -65,12 +64,6 @@ class Upload extends CI_Controller {
         $this->photo->photoFileName = $file;
         $this->photo->photoTitle = '';
         $this->photo->add();
-//        $this->Photo_mdl->photoAlbumID = $albumID;
-//        $this->Photo_mdl->photoCreatedDate = date("y/m/d");
-//        $this->Photo_mdl->photoDesc = null;
-//        $this->Photo_mdl->photoFileName = $file;
-//        $this->Photo_mdl->photoTitle = '';
-//        $this->Photo_mdl->create();
         log_message('info', 'Adding a phoot single upload complete');
         return true;
 
@@ -111,4 +104,3 @@ class Upload extends CI_Controller {
     }
 
 }
-?>

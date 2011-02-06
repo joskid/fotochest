@@ -27,7 +27,7 @@ class User_mdl extends CoreModel {
     // User Properties
 
     public $userEmail;
-    public $userID;
+    public $id;
     public $userPassword;
     public $userLastName;
     public $userFirstName;

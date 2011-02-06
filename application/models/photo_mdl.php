@@ -166,7 +166,8 @@ class Photo_mdl extends CoreModel {
         $this->db->from($this->photoTable);
         $this->db->join($this->albumTable, $this->albumTable . '.id = photoAlbumID');
         $this->db->where('photoAlbumID', $albumID);
-        $this->db->group_by($this->photoTable . '.id', 'desc');
+        $this->db->group_by($this->photoTable . '.id');
+        $this->db->order_by($this->photoTable . '.id', 'desc');
         $this->db->limit(21);
         return $this->db->get();
         //$photoResults = $this->db->query($albumPhotosSQL);

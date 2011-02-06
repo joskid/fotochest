@@ -55,7 +55,6 @@ class Photos extends Admin_Controller {
 
         // @todo move this
 
-        $this->load->library('photo');
         $this->photo->photoID = $this->input->post('photoID');
         $this->photo->photoAlbumName = getPhotoAlbumName($this->input->post('photoID'));
         $this->photo->deletePhoto();
@@ -137,9 +136,10 @@ class Photos extends Admin_Controller {
         $this->load->library('album');
 
       $albumName = getAlbumName($albumID);
-      $this->Photo_mdl->photoAlbumID = $albumID;
-      $this->Photo_mdl->photoID = $photoID;
-      $this->Photo_mdl->movePhoto();
+
+      $this->photo->photoAlbumID = $albumID;
+      $this->photo->photoID = $photoID;
+      $this->photo->movePhoto();
 
       redirect('admin/album/' . $albumName);
     }
@@ -197,7 +197,6 @@ class Photos extends Admin_Controller {
             show_404();
         }
         
-        $this->load->library('photo');
         if ($direction == "clock")
         {
             

@@ -28,7 +28,6 @@ class Upload extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('Album_mdl');
-        $this->load->library('photo');
     }
 
      public function multiUpload($albumID){

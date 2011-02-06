@@ -154,9 +154,9 @@ jQuery(document).ready(function($) {
 
       $("a.deleteUser").click(function(){
 
-          var userID = $('input#userID').val();
+          var userID = $('input#id').val();
 
-          var dataString = 'userUserID=' + userID;
+          var dataString = 'id=' + userID;
           $('#deleteUser').html("<div id='load'></div>");
           $('#load').html("<img src='/assets/images/admin/ajax-loader.gif'>");
           $('#load').append("<h3>Processing...</h3>");

@@ -12,7 +12,7 @@
       <div class="formItem">
         <label>Password:</label>
         <div>
-            <input type="password" name="userPassword" id="userPassword" size="50" value="<?php echo getPassword($row->userID); ?>">
+            <input type="password" name="userPassword" id="userPassword" size="50" value="<?php echo getPassword($row->id); ?>">
         </div>
       </div>
       <div class="formItem">

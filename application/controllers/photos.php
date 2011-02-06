@@ -110,7 +110,6 @@ class Photos extends Public_Controller {
         
        	// Load dependencies
         $this->load->library('comment');
-        $this->load->library('photo');
         
         $this->data['comments'] = $this->comment->getComments($photoID);
         log_message('info', 'here');

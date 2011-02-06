@@ -64,7 +64,7 @@ function isLoggedIn(){
 function getPassword($userID){
     $CI =& get_instance();
     $CI->load->model('User_mdl');
-    $userData = $CI->User_mdl->read($userID);
+    $userData = $CI->User_mdl->get($userID);
     foreach($userData->result() as $user)
     {
         $password = $user->userPassword;

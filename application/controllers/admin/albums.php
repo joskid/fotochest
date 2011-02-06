@@ -126,8 +126,6 @@ class Albums extends Admin_Controller {
     public function viewAlbum($albumName){
         $albumID = getAlbumID($albumName);
         log_message('info', 'got album id ' . $albumID);
-        // Load the library
-        $this->load->library('photo');
 
 
         $this->data['showAlbum'] = FALSE;

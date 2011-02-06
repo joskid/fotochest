@@ -26,16 +26,8 @@ class Albums extends Public_Controller {
 
     public function __construct(){
         parent::__construct();
-        $this->load->model('Album_mdl');
-        $this->load->model('Photo_mdl');
         $this->template->write('title', getSetting('siteName') . "'s Photos");
     }
-
-    /*
-     * ViewAll - This method replaces index so we can pass a public to it.
-     *
-     *
-     */
 
     public function viewAll($pageNum = null)
     {
@@ -52,30 +44,6 @@ class Albums extends Public_Controller {
         //$this->template->write_view('navigation', 'albumNavigation', $this->data);
         $this->template->write_view('content', 'themes/' . getTheme() . '/' . 'albums', $this->data);
         $this->template->render();
-        
-
-    }
-
-    
-
-
-    public function index(){
-    // View All Albums... YOu can't do this, you have to use a different method and call it witih routing.
-
-    $albumInfo = $this->Album_mdl->getAlbums(0);  // Set to 0 for Root Albums
-   
-    $this->data['albumInfo'] = $albumInfo;
-    //$this->load->view(getFullThemePath() . 'albums', $this->data);
-    $this->load->library('pagination');
-
-    //$config['base_url'] = base_url() . 'albums/view/' . $albumName . '/';
-    //$config['total_rows'] = $this->Album_mdl->getAlbumCount($albumID);
-    //$config['per_page'] = '21';
-    //$this->pagination->initialize($config);
-    //$this->data['pages'] = $this->pagination->create_links();
-    //$this->template->write_view('navigation', 'albumNavigation', $this->data);
-    $this->template->write_view('content', 'themes/' . getTheme() . '/' . 'albums', $this->data);
-    $this->template->render();
     }
 
     public function view($albumName, $photoStart = 0){
@@ -125,8 +93,6 @@ class Albums extends Public_Controller {
             $this->data['albumInfo'] = $this->Album_mdl->getAlbums($albumID);
             
             //$this->load->view(getFullThemePath() . 'albums', $this->data);
-
-            
             $this->template->write_view('navigation', 'albumNavigation', $this->data);
             $this->template->write_view('content', 'albums', $this->data);
             $this->template->render();
@@ -167,7 +133,4 @@ class Albums extends Public_Controller {
         $this->template->render();
         }
     }
-
-
 }
-?>

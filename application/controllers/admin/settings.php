@@ -34,14 +34,8 @@ class Settings extends Admin_Controller {
         $this->template->write_view('sidebar', 'admin/partials/sidebar', $this->data);
     }
 
-    public function index(){
-
-        /*
-         *
-         * Change to just settings and remove settings method
-         *
-         */
-
+    public function index()
+    {
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('siteName', 'FotoChest Site Name', 'required|xss_clean');
@@ -99,4 +93,3 @@ class Settings extends Admin_Controller {
         redirect('admin');
     }
 }
-?>

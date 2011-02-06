@@ -22,7 +22,6 @@
 * @author		Derek Stegelman
 */
 
-
 class Users extends Admin_Controller {
 
     public function __construct()
@@ -51,30 +50,28 @@ class Users extends Admin_Controller {
         $this->template->render();
     }
 
-    public function addUser(){
+    public function addUser()
+    {
         $this->load->view('admin/modals/addUser');
     }
 
-    public function editUser($userID){
-
-        // Load the model
-        $this->load->model('User_mdl');
+    public function editUser($userID)
+    {
         $this->data['userInfo'] = $this->User_mdl->get($userID);
 
         $this->load->view('admin/modals/editUser', $this->data);
     }
 
-    function do_userSave(){
-
+    function do_userSave()
+    {
         $this->user->id = $this->input->post('userUserID');
 
         // Call Save User
         $this->user->saveUser();
-
-
-
     }
-    public function do_register(){
+
+    public function do_register()
+    {
         log_message('debug', 'Attempt made to register');
 
         $this->load->library('user_lib');
@@ -98,8 +95,4 @@ class Users extends Admin_Controller {
         $this->data['id'] = $id;
         $this->load->view('admin/modals/deleteUser', $this->data);
     }
-
-   
-
 }
-?>

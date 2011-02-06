@@ -29,13 +29,10 @@ class Photos extends Admin_Controller {
         parent::__construct();
     }
 
-    public function savePhoto(){
+    public function savePhoto()
+    {
       // @todo Move this...
-
         log_message('debug','Save Photo Method hit');
-
-        //$this->Photo_mdl->photoID = $this->input->post('photoID');
-        //$this->Photo_mdl->photoAlbumID = $this->input->post('albumID');
         $this->Photo_mdl->photoTitle = $this->input->post('photoTitle');
         $this->Photo_mdl->photoDesc = $this->input->post('photoDesc');
         if ($this->input->post('makeProfile') == 'on'){
@@ -51,17 +48,18 @@ class Photos extends Admin_Controller {
     }
 
 
-    function do_photoDelete(){
+    function do_photoDelete()
+    {
 
         // @todo move this
-
         $this->photo->photoID = $this->input->post('photoID');
         $this->photo->photoAlbumName = getPhotoAlbumName($this->input->post('photoID'));
         $this->photo->deletePhoto();
         
     }
 
-    public function photosView($pageNum = 0){
+    public function photosView($pageNum = 0)
+    {
         log_message('info', 'hitting phot view');
         $this->data['pageNum'] = 1;
         $this->data['showAlbum'] = TRUE;
@@ -87,7 +85,8 @@ class Photos extends Admin_Controller {
         $this->template->render();
     }
 
-    public function photoUpload($albumID){
+    public function photoUpload($albumID)
+    {
 	log_message('ERROR', 'Getting photo UPload method sending ' .$albumID);
         // @todo photo Upload or MultiUpload which one is it?
 
@@ -107,7 +106,8 @@ class Photos extends Admin_Controller {
         
     }
 
-    public function editPhoto($photoID, $isFront){
+    public function editPhoto($photoID, $isFront)
+    {
 
         $this->data['isFront'] = $isFront;
         $photoData = $this->Photo_mdl->getPhotoInfo($photoID);
@@ -123,17 +123,14 @@ class Photos extends Admin_Controller {
         $this->load->view('admin/modals/editPhoto', $this->data);
     }
 
-    public function movePhoto($photoID){
-
-        $this->data['photoID'] = $photoID;
-        
+    public function movePhoto($photoID)
+    {
+        $this->data['photoID'] = $photoID;   
         $this->load->view('admin/modals/movePhotoModal', $this->data);
     }
 
-    public function movePhotoAction($albumID, $photoID){
-
-        // Load the library
-        $this->load->library('album');
+    public function movePhotoAction($albumID, $photoID)
+    {
 
       $albumName = getAlbumName($albumID);
 
@@ -144,18 +141,15 @@ class Photos extends Admin_Controller {
       redirect('admin/album/' . $albumName);
     }
 
-
-
-    public function deletePhoto($photoID){
+    public function deletePhoto($photoID)
+    {
 
         $this->data['photoID'] = $photoID;
         $this->load->view('admin/modals/deletePhotoModal', $this->data);
-
     }
 
     public function fullEdit($photoID = null)
     {
-
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('photoID', 'PhotoID', 'required|xss_clean');
@@ -186,8 +180,6 @@ class Photos extends Admin_Controller {
             $this->Photo_mdl->update($this->input->post('photoID'));
             redirect('admin/photos/fullEdit/' . $this->input->post('photoID'));
         }
-
-        
     }
 
     public function rotate($direction, $photoID)
@@ -213,10 +205,7 @@ class Photos extends Admin_Controller {
 
     public function addNoAlbum()
     {
-        
         $this->load->view('admin/modals/chooseAlbum');
     }
 
 }
-
-?>

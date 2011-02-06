@@ -52,6 +52,4 @@ class Themes extends Admin_Controller {
         // Redirect to the theme page.
         redirect('admin/themes');
     }
-
 }
-?>

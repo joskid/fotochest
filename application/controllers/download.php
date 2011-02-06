@@ -30,7 +30,8 @@ class Download extends Public_Controller {
         parent::__construct();
     }
 
-    public function downloadAlbum($albumName){
+    public function downloadAlbum($albumName)
+    {
         
         $this->load->library('zip');
         ini_set("memory_limit","1600M");
@@ -40,10 +41,10 @@ class Download extends Public_Controller {
         $this->zip->download($albumName . '.zip');
     }
 
-    public function downloadFile($albumName, $fileName){
+    public function downloadFile($albumName, $fileName)
+    {
         $this->load->helper('download');
         $data = file_get_contents(getSetting('absoluteFilePath') . "img_stor/albums/" . $albumName . "/originals/" . $fileName); // Read the file's contents
         force_download($fileName, $data);    
     }
 }
-?>

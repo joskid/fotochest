@@ -53,25 +53,10 @@ class Setting extends CoreLibrary {
         }
     }
 
-//    public function getSetting($settingName){
-//
-//        $settingData = $this->ci->Setting_mdl->readName($settingName);
-//
-//        if($settingData->num_rows() == 0){
-//            log_message('ERROR', 'Setting ' . $settingName . " not found");
-//            return false;
-//        } else {
-//            foreach($settingData->result() as $row){
-//                $settingValue = $row->settingValue;
-//            }
-//            log_message('debug','Setting fetched: ' . $settingName . " set as " . $settingValue);
-//            return $settingValue;
-//        }
-//    }
-
     public function setSetting($settingName, $settingValue){
 
-        //$this->ci->Setting_mdl->update($settingName, $settingValue);
+        $data = array('settingValue'=>$settingValue);
+        $this->ci->Setting_mdl->updateWhere($data, $settingName, $settingValue); //data key value
         log_message('debug', 'Setting ' . $settingName . ' has been set to: ' . $settingValue);
     }
 

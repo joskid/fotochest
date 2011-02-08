@@ -39,7 +39,7 @@
 */
 
 $route['default_controller'] = "photos";
-$route['404_override'] = '';
+$route['404_override'] = 'photos/throw404';
 $route['admin'] = "admin/photos/photosView";
 $route['login'] = "users/login";
 $route['logout'] = "users/logout";
@@ -58,8 +58,6 @@ $route['album/(:any)/(:any)'] = "albums/view/$1/$2";
 $route['albums/(:any)'] = "albums/viewAll/$1";
 $route['slideshow/(:any)'] = "photos/slideshow/$1";
 $route['404'] = "photos/throw404";
-
-
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

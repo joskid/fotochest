@@ -40,23 +40,6 @@ class User_mdl extends CoreModel {
         $this->_table = $this->config->item('userTable');
     }
 
-    // CRUD.
-
-//    function create()
-//    {
-//        show_error('create from user model is depreciated, use core instead.');
-//        log_message('ERROR', 'create from user model is depreciated, use core instead.');
-////        $this->dateCreated = date('m/y/d');
-////        $userData = array('userEmail'=>$this->userEmail,
-////                          'userFirstName'=>$this->userFirstName,
-////                          'userLastName'=>$this->userLastName,
-////                          'userDateCreated'=>$this->dateCreated,
-////                          'userPassword'=>$this->userPassword);
-////
-////        $this->db->insert($this->userTable, $userData);
-//
-//    }
-
     function read($userID = NULL)
     {
         show_error('read from user model is depreciated, use core instead.');
@@ -143,8 +126,4 @@ class User_mdl extends CoreModel {
         }
         return $firstName;
     }
-
-    
-   
 }
-?>

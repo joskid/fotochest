@@ -34,7 +34,8 @@ class Album_mdl extends CoreModel {
     public $albumFriendlyName;
     public $photoTable;
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->photoTable = $this->config->item('photoTable');
         $this->_table = $this->config->item('albumTable');
@@ -57,14 +58,14 @@ class Album_mdl extends CoreModel {
      *
      * ************************************************
      */
-    public function getAlbums($parent, $pageNum = null, $perPage = null){
-
-        
+    public function getAlbums($parent, $pageNum = null, $perPage = null)
+    {
         $getAlbumInfo = $this->db->get_where($this->albumTable, array('albumParentID'=>$parent), $perPage, $pageNum);
         return $getAlbumInfo;
     }
 
-    public function findChildID($albumID){
+    public function findChildID($albumID)
+    {
         //$select = "SELECT * FROM $this->albumTable WHERE albumParentID = $albumID LIMIT 1";
         $this->db->select('*');
         $this->db->from($this->albumTable);
@@ -97,26 +98,8 @@ class Album_mdl extends CoreModel {
         log_message('info', $this->db->_compile_select());
         return $this->db->get();
         
-        //$resul = $this->db->get();
-//
-//        show_error($this->db->last_query());
-        //$select = "SELECT * FROM $this->albumTable, $this->photoTable WHERE photoAlbumID = $albumID AND albumID = photoAlbumID group by photoID limit $numOfThumbs";
-        //return $this->db->query($select);
-        
     }
 
-    //$this->db->where($this->photoTable . '.photoAlbumID', $albumID);
-        //$this->db->group_by($this->photoTable . '.id');
-        //$this->db->limit($numOfThumbs);
-
-//        $select = "SELECT * FROM $this->albumTable, $this->photoTable WHERE photoAlbumID = $albumID AND albumID = photoAlbumID group by photoID limit $numOfThumbs";
-//        log_message('info', 'getAlbumThumnails:: ' . $select);
-//        $exe = $this->db->query($select);
-//        return $exe;
-
-
-    
-	// @todo this should be added to core.  Get count by x.
     public function getAlbumCount($albumID){
         $select = "SELECT * FROM $this->photoTable WHERE photoAlbumID = $albumID";
         $exe = $this->db->query($select);
@@ -164,23 +147,6 @@ class Album_mdl extends CoreModel {
     }
 
     /**
-    public function getAlbumAdminInfo($pageNum = 0){
-        if ($pageNum == 0){
-        $selectSQL = "SELECT albumID, albumFriendlyName, albumDesc, albumName, albumParentID
-        FROM $this->albumTable
-         LIMIT 5";
-	} else {
-
-            $selectSQL = "SELECT albumID, albumFriendlyName, albumDesc, albumName, albumParentID
-        FROM $this->albumTable
-         LIMIT $pageNum, 5";
-	}
-        $getInfo = $this->db->query($selectSQL);
-        return $getInfo;   
-    }
-  
-DEPRECIATED **/
-    /**
      *
      * @param string $albumName
      * @return boolean
@@ -203,6 +169,4 @@ DEPRECIATED **/
             return true;
         }
     }
-    
 }
-?>

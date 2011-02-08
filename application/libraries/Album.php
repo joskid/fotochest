@@ -23,7 +23,6 @@
 
 class Album extends CoreLibrary {
 	
-
     public $albumName;
     public $albumCreateDate;
     public $id;
@@ -197,5 +196,3 @@ class Album extends CoreLibrary {
         return $this->ci->Album_mdl->getCount();
     }
 }
-
-?>

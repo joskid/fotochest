@@ -23,12 +23,12 @@
 
 class Theme extends CoreLibrary {
 	
-	public function __construct()
-	{
-		parent::__construct();
-	}
-	
-	public function getThemes()
+    public function __construct()
+    {
+            parent::__construct();
+    }
+
+    public function getThemes()
     {
         // Get Data
         $themes = $this->ci->Theme_mdl->get();

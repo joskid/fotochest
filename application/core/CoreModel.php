@@ -20,8 +20,6 @@ class CoreModel extends CI_Model {
     public $_table;
     public $primaryKey = 'id';
     
-
-
     public function __construct()
     {
         parent::__construct();

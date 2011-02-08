@@ -65,7 +65,6 @@ class Photo extends CoreLibrary {
     	return $this->ci->Photo_mdl->getPhotoInfo($photoID);
     }
 
-    
     /*
      * buildMainThumb
      * 
@@ -76,7 +75,8 @@ class Photo extends CoreLibrary {
      * @return void
      */
 
-    public function buildMainThumb($photoDirectory, $photoFileName, $albumName){
+    public function buildMainThumb($photoDirectory, $photoFileName, $albumName)
+    {
         
         $main_size['image_library'] = 'gd2';
         $main_size['source_image'] = $photoDirectory;
@@ -101,7 +101,8 @@ class Photo extends CoreLibrary {
      * @return int how many photos.
      */
 
-    public function getPhotoCount(){
+    public function getPhotoCount()
+    {
         return $this->ci->Photo_mdl->getCount();
     }
 
@@ -116,7 +117,8 @@ class Photo extends CoreLibrary {
      * @return void
      */
 
-    public function deletePhoto(){
+    public function deletePhoto()
+    {
 
         $fileName = getPhotoFileName($this->id);
         $this->ci->Photo_mdl->delete($this->id);
@@ -205,7 +207,8 @@ class Photo extends CoreLibrary {
         $this->ci->Photo_mdl->update($updateQuery, $this->id);
     }
 
-    public function setProfilePicture($photoID){
+    public function setProfilePicture($photoID)
+    {
         $updateData = array('isProfilePic'=>1);
         $where = "photoID = $photoID";
         $updateQuery = $this->db->update_string($this->photoTable, $updateData, $where);
@@ -213,7 +216,8 @@ class Photo extends CoreLibrary {
         $this->db->query($updateQuery);
     }
 
-    public function getProfilePicture(){
+    public function getProfilePicture()
+    {
         // Load the model
         //$this->ci->load->model('Photo_mdl');
 
@@ -314,5 +318,3 @@ class Photo extends CoreLibrary {
     }
 	
 }
-
-?>

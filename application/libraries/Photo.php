@@ -118,8 +118,8 @@ class Photo extends CoreLibrary {
 
     public function deletePhoto(){
 
-        $fileName = getPhotoFileName($this->photoID);
-        $this->ci->Photo_mdl->delete($this->photoID);
+        $fileName = getPhotoFileName($this->id);
+        $this->ci->Photo_mdl->delete($this->id);
         
         // Find where the photo is at.
         $buildFilePath = "./img_stor/albums/" . $this->photoAlbumName . "/";
@@ -162,7 +162,7 @@ class Photo extends CoreLibrary {
 
     public function movePhoto(){
     	
-        $photoInfo = $this->ci->Photo_mdl->get($this->photoID);
+        $photoInfo = $this->ci->Photo_mdl->get($this->id);
         foreach($photoInfo->result() as $row){
             $oldAlbumID = $row->photoAlbumID;
             $fileName = $row->photoFileName;
@@ -202,7 +202,7 @@ class Photo extends CoreLibrary {
         // Query time....
 
         $updateQuery = array('photoAlbumID'=>$this->photoAlbumID);
-        $this->ci->Photo_mdl->update($updateQuery, $this->photoID);
+        $this->ci->Photo_mdl->update($updateQuery, $this->id);
     }
 
     public function setProfilePicture($photoID){

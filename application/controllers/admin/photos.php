@@ -31,19 +31,20 @@ class Photos extends Admin_Controller {
 
     public function savePhoto()
     {
-      // @todo Move this...
         log_message('debug','Save Photo Method hit');
-        $this->Photo_mdl->photoTitle = $this->input->post('photoTitle');
-        $this->Photo_mdl->photoDesc = $this->input->post('photoDesc');
         if ($this->input->post('makeProfile') == 'on'){
             $makeProfilePicture = 1;
         } else {
             $makeProfilePicture = 0;
         }
-        $this->Photo_mdl->isProfilePicture = $makeProfilePicture;
+        
         log_message('info', 'admin::savePhoto has set isProfilePicture to ' . $this->Photo_mdl->isProfilePicture);
         log_message('debug','photo publics set');
-        $this->Photo_mdl->update($this->input->post('photoID'));
+        $updateData = array(
+            'photoTitle'=>$this->input->post('photoTitle'),
+            'photoDesc'=>$this->input->post('photoDesc'),
+            'isProfilePic'=>$makeProfilePicture);
+        $this->Photo_mdl->update($updateData, $this->input->post('photoID'));
         log_message('debug','Photo update complete');
     }
 
@@ -52,7 +53,7 @@ class Photos extends Admin_Controller {
     {
 
         // @todo move this
-        $this->photo->photoID = $this->input->post('photoID');
+        $this->photo->id = $this->input->post('photoID');
         $this->photo->photoAlbumName = getPhotoAlbumName($this->input->post('photoID'));
         $this->photo->deletePhoto();
         
@@ -169,15 +170,16 @@ class Photos extends Admin_Controller {
         }
         else
         {
-            $this->Photo_mdl->photoTitle = $this->input->post('photoTitle');
-            $this->Photo_mdl->photoDesc = $this->input->post('photoDesc');
-            $this->Photo_mdl->photoID = $this->input->post('photoID');
             if ($this->input->post('isProfile') == 'on'){
-                $this->Photo_mdl->isProfilePicture = 1;
+                $makeProfilePicture = 1;
             } else {
-                $this->Photo_mdl->isProfilePicture = 0;
+                $makeProfilePicture = 0;
             }
-            $this->Photo_mdl->update($this->input->post('photoID'));
+            $updateData = array(
+            'photoTitle'=>$this->input->post('photoTitle'),
+            'photoDesc'=>$this->input->post('photoDesc'),
+            'isProfilePic'=>$makeProfilePicture);
+            $this->Photo_mdl->update($updateData, $this->input->post('photoID'));
             redirect('admin/photos/fullEdit/' . $this->input->post('photoID'));
         }
     }

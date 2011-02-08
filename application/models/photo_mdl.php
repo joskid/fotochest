@@ -87,25 +87,25 @@ class Photo_mdl extends CoreModel {
     }
 **/
 
-    public function update($photoID)
-    {
-//        $updateData = array(
-//            'photoTitle'=>$this->photoTitle,
-//            'photoDesc'=>$this->photoDesc,
-//            'isProfilePic'=>$this->isProfilePicture);
-//
-//        $this->db->where('photoID', $photoID);
-//        $this->db->update($this->photoTable, $updateData);
-        log_message('info', 'update on photo model is depreciated');
-        show_error('update photo is depreciated, use core instead');
-    }
+//    public function update($photoID)
+//    {
+////        $updateData = array(
+////            'photoTitle'=>$this->photoTitle,
+////            'photoDesc'=>$this->photoDesc,
+////            'isProfilePic'=>$this->isProfilePicture);
+////
+////        $this->db->where('photoID', $photoID);
+////        $this->db->update($this->photoTable, $updateData);
+//        log_message('info', 'update on photo model is depreciated');
+//        show_error('update photo is depreciated, use core instead');
+//    }
 
-    public function delete($photoID)
-    {
-        //$this->db->delete($this->photoTable, array('photoID'=>$photoID));
-        log_message('info', 'delete is derecieated.');
-        show_error('delete photo is depreciated, use core instead');
-    }
+//    public function delete($photoID)
+//    {
+//        //$this->db->delete($this->photoTable, array('photoID'=>$photoID));
+//        log_message('info', 'delete is derecieated.');
+//        show_error('delete photo is depreciated, use core instead');
+//    }
 
 
     
@@ -162,7 +162,7 @@ class Photo_mdl extends CoreModel {
     public function getAlbumPhotos($albumID){
         //$albumPhotosSQL = "SELECT * FROM $this->photoTable, $this->albumTable WHERE photoAlbumID = $albumID AND albumID = photoAlbumID GROUP BY photoID DESC LIMIT 21";
         log_message('info', 'Photo_mdl::getAlbumPhotos is executing a query ');
-        $this->db->select('*');
+        $this->db->select('*, '.$this->photoTable.'.id as photoID');
         $this->db->from($this->photoTable);
         $this->db->join($this->albumTable, $this->albumTable . '.id = photoAlbumID');
         $this->db->where('photoAlbumID', $albumID);

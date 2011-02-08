@@ -6,7 +6,7 @@ class CoreController extends CI_Controller {
 	{
             parent::__construct();
             // Enable profiler in debug mode.
-            if($this->config->item('environment') == 'dev' OR $this->config->item('environment') == 'staging')
+            if($this->config->item('environment') == 'dev')
             {
                 $this->output->enable_profiler(TRUE);
             }

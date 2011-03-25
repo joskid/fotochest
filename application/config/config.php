@@ -11,21 +11,7 @@
 |	http://example.com/
 |
 */
-$config['base_url']	= "http://localhost/";
-
-/*
-|--------------------------------------------------------------------------
-| Application Name
-|--------------------------------------------------------------------------
-|
-|
-| App Name is used to denote in the logs which App the errors came from.
-|
-|	exampleApp
-|
-*/
-$config['applicationName'] = "exampleApp";
-
+$config['base_url']	= "http://localhost/fotochest/";
 
 /*
 |--------------------------------------------------------------------------

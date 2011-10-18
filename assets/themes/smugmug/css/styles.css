@@ -1,0 +1,195 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/* Global Styles */
+
+body
+{
+    background: #2D2D2D;
+    color: #fff;
+    font-family: Neucha;
+    text-align: center;
+}
+
+div#wrapper
+{
+    text-align: left;
+    margin: 0 auto;
+    width: 90%;
+}
+
+h1.logo,
+a.logo
+{
+    color:#fff;
+    font-size:26pt;
+    margin-top:25px;
+    text-decoration:none;
+    display:block;
+    background: url("http://static.stegelman.com/prod/fotochest/assets/images/admin/FotoChestLogoSmall.png") no-repeat left;
+    padding-left:48px;
+    height: 42px;
+}
+
+
+h1.logo span,
+a.logo span
+{
+    color:#0f8fb8;
+    margin-top:90px;
+    font-size:26pt;
+}
+
+a
+{
+    color: #fff;
+}
+
+div#nav
+{
+    margin-bottom: 15px;
+}
+
+#nav #global-nav
+{
+    min-height: 70px;
+    margin-top: 10px;
+    position: relative;
+}
+
+#global-nav h3
+{
+    font-size: 22px;
+    left: 64px;
+    top: 6px;
+    position: absolute;
+}
+
+#nav #global-nav ul
+{
+    top: 36px;
+    left: 63px;
+    position: absolute;
+    
+}
+
+
+div#nav #global-nav img
+{
+    float: left;
+    margin: 7px;
+}
+
+div#nav #global-nav ul li
+{
+    display: inline-block;
+}
+
+div#photo-nav
+{
+    float: left;
+    width: 35%;
+    clear: left;
+}
+
+div#photo-nav img
+{
+    background: #fff;
+    padding: 4px;
+    margin: 4px;
+}
+
+div#photo-nav img:hover
+{
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    cursor: pointer;
+}
+
+#photo-nav div#small-pagination
+{
+    text-align: center;
+}
+
+
+div#photo-display
+{
+    float: right;
+    width: 60%;
+    text-align: center;
+}
+
+div#photo-display img
+{
+    background: #fff;
+    padding:1px;
+}
+
+/* Stream */
+
+div#foto-stream .foto
+{
+    float: left;
+    margin-left: 90px;
+    margin-bottom: 25px;
+}
+
+.foto img
+{
+    background: #fff;
+    padding: 1px;
+}
+
+.foto h3
+{
+    margin-top: 7px;
+}
+
+

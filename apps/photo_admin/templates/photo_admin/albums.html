@@ -1,0 +1,45 @@
+{% extends "photo_admin/base.html" %}
+{% block main_content %}
+<div class="content right" id="albumContent">
+<h2>Albums</h2>
+<h3>You need to add to your albums. Go ahead, its easy!</h3>
+
+{% for album in albums %}
+
+    <div class="album">
+        <a href="{% url photo_admin.views.view_album album_slug=album.slug %}">
+         {% if album.get_album_cover == "" %}
+         <img src="http://dummyimage.com/75x75">
+        {% else %}
+        {% load thumbnail %}
+        {% thumbnail album.get_album_cover.image "75x75" crop="center" as im %}
+        <img src="{{ im.url }}">
+            {% endthumbnail %}
+            {% endif %}
+        </a>
+<h3><a href="{% url photo_admin.views.view_album album_slug=album.slug %}">{{ album.title }}</a></h3>
+<p>
+{{ album.description }}
+</p>
+<dl>
+<dt>Photos</dt>
+<dd>photo count</dd>
+
+</dl>
+<ul class="actions">
+<li><a href="#" class="button full" rel="facebox"><span>Edit</span></a></li>
+<li><a href="#" class="button full"><span>Add Photos</span></a></li>
+<li><a href="{% url photo_admin.views.view_album album_slug=album.slug %}" class="button full"><span>View Album</span></a></li>
+
+<li><a href="#" class="button full" style="display:none;"><span>Download Album</span></a></li>
+
+<li><a href="#" class="button full " rel="facebox"><span>Delete</span></a></li>
+
+</ul>
+</div>
+{% endfor %}
+<div class="pagination">
+Pagination
+</div>
+</div>
+{% endblock %}

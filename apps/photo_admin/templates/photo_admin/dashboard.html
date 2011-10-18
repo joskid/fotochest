@@ -1,0 +1,40 @@
+{% extends "photo_admin/base.html" %}
+{% block main_content %}
+<div class="content right" id="dashContent">
+<h2>Your Photostream</h2>
+<div class="notification success hide">
+<p>Photos Added</p>
+</div>
+
+<h3>You need to <a href="#">Add an album</a> to start uploading photos!</h3>
+
+{% for photo in photos %}
+<div class="photo">
+<a href="#viewphoto" rel="lightbox" class="preview" title="<?php echo $row->photoDesc; ?>">
+{% load thumbnail %}
+{% thumbnail photo.image "75x75" crop="center" as im %}
+<img src="{{ im.url }}" width="75">
+{% endthumbnail %}
+</a>
+<h3>{{ photo.title }}</h3>
+<p>
+{{ photo.description }}
+</p>
+<dl>
+<dt>Album</dt>
+<dd>{{ photo.album.title }}</dd>
+</dl>
+<ul class="actions">
+<li><a href="#edit" class="button full"><span>Edit</span></a></li>
+<li><a href="#movetodiffalbum" class="button full" rel="facebox"><span>Move</span></a></li>
+<li><a href="#delete" class="button full" rel="facebox"><span>Delete</span></a></li>
+</ul>
+</div>
+{% endfor %}
+
+
+<div class="pagination">
+
+</div>
+</div>
+{% endblock %}

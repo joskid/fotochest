@@ -1,0 +1,31 @@
+{% extends "smugmug/base.html" %}
+
+{% block title %}{{ author.username }}'s Fotos{% endblock %}
+{% block main_content %}
+
+<div id="foto-stream">
+    {% for photo in photos.object_list %}
+                <article class="foto"><a href="{{ photo.get_absolute_url }}?page={{ photos.number }}">
+                    {% load thumbnail %}
+                    {% thumbnail photo.image "240x161" as im %}
+                <img src="{{ im.url }}">
+                    {% endthumbnail %}
+                <h3>{{ photo.title }}</h3>
+                </a>
+                </article>
+    {% endfor %}
+            
+            </div>
+<div class="pagination">
+            {% if photos.has_previous %}
+            <a href="?page={{ photos.previous_page_number }}">{{ photos.previous_page_number }}</a>
+            {% endif %}
+            {% if photos.number %}
+            <span class="current">{{ photos.number }}</span>
+            {% endif %}
+            {% if photos.has_next %}
+            <a href="?page={{ photos.next_page_number }}" class="inactive">{{ photos.next_page_number }}</a>
+            {% endif %}
+       </div>
+            
+{% endblock %}

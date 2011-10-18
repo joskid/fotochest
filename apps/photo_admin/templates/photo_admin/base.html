@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/admin/styles.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/admin/modal.css">
+<link rel="shortcut icon" href="{{ STATIC_URL }}favicon.ico" />
+<!--[if IE]>
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/ie.css">
+<![endif]-->
+<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz|Arimo|Cuprum|Neucha' rel='stylesheet' type='text/css'>
+
+
+<?php echo js('lightbox/js/jquery.lightbox-0.5'); ?>
+
+
+
+<title>FotoChest Admin</title>
+
+{% block extra_head %}{% endblock %}
+</head>
+<body>
+<div id="mainWrapper">
+
+<a class="logo" href="{% url photo_admin.views.dashboard %}">foto<span>chest</span></a>
+
+<div class="nav">
+<ul>
+<li class="active"><a href="{% url photo_admin.views.dashboard %}">Home</a><li>
+<li><a href="{% url photo_admin.views.albums %}">Albums</a><li>
+
+<li><a href="#">Settings</a><li>
+
+<li><a href="/" target="_blank">View Site</a><li>
+
+
+</ul>
+<span class="logout">
+Welcome Derek, <a href="#">Logout</a>
+</span>
+
+</div>
+
+{% block main_content %}{% endblock %}
+
+<div class="sidebar">
+
+<div class="buttons clear">
+{% block extra_button_sidebar %}{% endblock %}
+
+<a class="button full clear" href="{% url photo_admin.views.create_album %}" rel="facebox"><span>Add Album</span></a>
+</div>
+</div>
+
+
+
+<div class="footer clear">
+<p class="version">&copy; 2011 <a href="http://fotochest.com" target="_blank">FotoChest</a> Version 2.0</p>
+</div>
+
+</div>
+</body>

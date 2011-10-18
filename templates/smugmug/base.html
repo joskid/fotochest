@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="{{ STATIC_URL }}themes/smugmug/css/styles.css" type="text/css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+         <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz|Arimo|Cuprum|Neucha' rel='stylesheet' type='text/css'>
+        <title>FotoChest | {% block title %}{% endblock %}</title>
+        {% block extra_head %}{% endblock %}
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="nav">
+                <h1><a class="logo" href="{% url photo_manager.views.homepage %}">foto<span>chest</span></a></h1>
+                <div id="global-nav">
+                    {% load travel_tags %}
+                <img src="{% get_gravatar author.email 48 %}">
+                <h3><a href="{% url photo_manager.views.user_stream user_name=author.username %}">{{ author.first_name }} {{ author.last_name }}'s Foto Stream</a></h3>
+                <ul>
+                    <li><a href="{% url photo_manager.views.albums user_name=author.username %}">Albums</a></li>
+                    <li><a href="#">Tags</a></li>
+                    <li><a href="#">People</a></li>
+                    <li><a href="#">Map</a></li>
+                    <li><a href="#">Explore</a></li>
+                </ul>
+                </div>
+            </div>
+            {% block main_content %}{% endblock %}
+        </div>
+    </body>
+</html>

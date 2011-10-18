@@ -1,0 +1,46 @@
+{% extends "galleria/template.html" %}
+{% block main_content %}
+
+<div class="photoNavigation">
+    
+</div>
+<div class="singlePhoto photo">
+                    
+				<a href="viewBigPhoto.html">
+                                    {% load thumbnail %}
+                                    {% thumbnail photo.image "640x429" as im %}
+                                    <img src="{{ im.url }}" title="{{ photo.title }}" alt="{{ photo.title }}">
+                                    {% endthumbnail %}
+				</a>
+			</div>
+
+
+
+			<div class="photoInfo">
+                            
+                            <h2>{{ photo.title }}</h2>
+                            
+				<p>
+				{{ photo.description }}
+				</p>
+                                
+				<a class="button" href="#"><span>Download Photo</span></a>
+                                
+                                
+			</div>
+<div class="comments" id="comments">
+    
+    <h3>Add a Comment</h3>
+    
+    <textarea name="commentContent" id="commentContent"></textarea><br/>
+    
+    <a class="button addComment"><span>Add Comment</span></a>
+    
+    <div class="comment">
+        <p class="date">Sept 25</p>
+    my comment
+    </div>
+   
+</div>
+
+{% endblock %}

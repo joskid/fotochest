@@ -1,0 +1,85 @@
+{% extends "smugmug/base.html" %}
+{% block extra_head %}
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('.img-big').hide()
+        {% if photo_id %}
+        $("#big-{{ photo_id }}").show()
+        {% else %}
+        def_value = $('#default-image').val()
+        $("#big-"+ def_value).show()
+        {% endif %}
+        $(document).keypress(function(event){
+            if ( event.keyCode == 39 ) {
+            event.preventDefault();
+            $('.img-big').hide()
+            id = $("#photo-nav").find('.active').attr("id")
+            $("#" + id).removeClass('active')
+            // Right
+            new_id = parseInt(id) - 1;
+            $("#photo-display").find('#big-' + new_id).show()
+            $("#photo-nav").find('#' + new_id).addClass('active')
+            
+            }
+            if (event.keyCode == 37) {
+                // Left
+                event.preventDefault();
+                $('.img-big').hide()
+                id = $('#photo-nav').find('.active').attr('id')
+                $('#' + id).removeClass('active')
+                new_id = parseInt(id) + 1;
+                $('#photo-display').find('#big-' + new_id).show()
+                $('#photo-nav').find('#' + new_id).addClass('active')
+                
+            }
+        });
+    
+        $(".img-nav").click(function(){
+            $('.img-big').hide()
+            id = $(this).attr("id")
+            $(this).addClass('active')
+            $("#photo-display").find('#big-' + id).show()
+        })
+        
+        
+    });
+    </script>
+    
+{% endblock %}
+{% block title %}{{ author.username }}'s Fotos{% endblock %}
+{% block main_content %}
+
+            <div id="photo-nav">
+                {% for photo in nav_photos.object_list %}
+                    {% if forloop.counter == 1 %}
+                        <input id="default-image" value="{{ photo.id }}" style="display: none;">
+                    {% endif %}
+                    {% load thumbnail %}
+                    {% thumbnail photo.image "150x150" crop="center" as im %}
+                
+                <img src="{{ im.url }}" id="{{ photo.id }}" class="img-nav">
+                    {% endthumbnail %}
+                
+                {% endfor %}
+                <div class="pagination">
+            {% if nav_photos.has_previous %}
+            <a href="?page={{ nav_photos.previous_page_number }}">{{ nav_photos.previous_page_number }}</a>
+            {% endif %}
+            {% if nav_photos.number %}
+            <span class="current">{{ nav_photos.number }}</span>
+            {% endif %}
+            {% if nav_photos.has_next %}
+            <a href="?page={{ nav_photos.next_page_number }}" class="inactive">{{ nav_photos.next_page_number }}</a>
+            {% endif %}
+       </div>
+            </div>
+            <div id="photo-display">
+                {% for photo in nav_photos.object_list %}
+                    {% load thumbnail %}
+                    {% thumbnail photo.image "900x700" as im %}
+                <img src="{{ im.url }}" class="img-big" id="big-{{ photo.id }}">
+                    {% endthumbnail %}
+                {% endfor %}
+            </div>
+            
+{% endblock %}

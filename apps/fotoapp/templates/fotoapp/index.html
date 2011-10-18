@@ -1,0 +1,35 @@
+{% extends "fotoapp/base.html" %}
+
+{% block main_content %}
+
+
+{% for photo in photos %}
+<div class="photo {% if forloop.counter|divisibleby:2 %}clear{% else %}{% endif %}">
+
+    <a href="{{ photo.get_absolute_url }}">
+        {% load thumbnail %}
+        {% thumbnail photo.image "700x525" crop="center" as im %}
+        <img src="{{ im.url }}" title="{{ photo.title }}" alt="">
+        {% endthumbnail %}
+    </a>
+    <p></p>
+</div>
+{% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if photos.has_previous %}
+            <a href="?page={{ photos.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ photos.number }} of {{ photos.paginator.num_pages }}.
+        </span>
+
+        {% if photos.has_next %}
+            <a href="?page={{ photos.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock %}

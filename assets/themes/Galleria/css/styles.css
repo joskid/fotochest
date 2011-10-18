@@ -64,7 +64,7 @@ body.slideShow
 
 #wrapper
 {
-	width:970px;
+	width:1068px;
 	text-align: left;
 	margin: 0 auto;
 	margin-top: 40px;
@@ -132,15 +132,15 @@ div.photo p
 
 #wrapper div.photo.singlePhoto img
 {
-    max-width: 500px;
-    max-height: 500px;
+    max-width: none;
+    max-height: none;
 }
 
 
 div.photoInfo
 {
 	float:left;
-	width: 400px;
+	width: 370px;
 	margin-left: 25px;
 }
 

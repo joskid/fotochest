@@ -4,7 +4,7 @@ from photo_manager.models import *
 
 def theme_files(request):
     context = {}
-    context['THEME_URL'] = "http://static.dev-2/photo_manager/themes/default/"
+    context['THEME_URL'] = "http://localhost:8000/static/photo_manager/themes/default/"
     
     return context
 

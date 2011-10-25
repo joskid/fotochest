@@ -62,42 +62,29 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.Loader',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.core.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.request",
+    "django.contrib.messages.context_processors.messages",
+    "photo_manager.context_processors.theme_files",
+    "photo_manager.context_processors.locations_albums",
+) 
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'sentry.client.middleware.Sentry404CatchMiddleware',
+    #'sentry.client.middleware.Sentry404CatchMiddleware',
 )
 
-TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-    "./templates",
-    
-    # We have added a "Master" template directory here, and below if you choose, add directories for each specific app.
-    #"./newapp/templates"
-)
 
-INSTALLED_APPS = (
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.sites',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'django.contrib.admin',
-    
-    'photo_manager',
-    # Everyone should be using south.  Seriously.
-    'south',
-    'sorl.thumbnail',
-    'photo_admin',
-    #'tagging',
 
-)
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

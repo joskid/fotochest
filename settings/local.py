@@ -40,7 +40,35 @@ ADMIN_MEDIA_PREFIX = 'http://localhost:8000/static_admin/'
 
 PHOTO_DIRECTORY = "/Users/Derek/Documents/code/personal/fotochest/upload"
 
+
+TEMPLATE_DIRS = (
+    "/Users/Derek/Documents/code/personal/apps/fotochest/static/photo_manager/themes/default/templates"
+)
+
 DOMAIN_STATIC = 'http://localhost:8000/static/'
 
+PHOTO_DIRECTORY = "/srv/www/static/uploads/images"
+
+ENABLE_MULTI_USER = False
 
 ROOT_URLCONF = 'urls.local'
+
+INSTALLED_APPS = (
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'django.contrib.admin',
+    
+    'photo_manager',
+    # Everyone should be using south.  Seriously.
+    'south',
+    'sorl.thumbnail',
+    'photo_admin',
+    'locations',
+    'profiles',
+    #'tagging',
+
+)

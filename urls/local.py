@@ -14,5 +14,5 @@ urlpatterns = patterns('',
     url(r'^static_admin/(?P<path>.*)$', 'django.views.static.serve',
         {'document_root': './admin_media'}),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve',
-        {'document_root': './upload'}),
+        {'document_root': './uploads'}),
 )

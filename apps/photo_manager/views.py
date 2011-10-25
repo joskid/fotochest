@@ -16,7 +16,7 @@ from photo_manager.forms import *
 # please work on album(s) [CHILD ALBUMS{ page.
 
 def choose(request):
-    return redirect('file_uploader', location_slug=request.GET.get('location'), album_slug=request.GET.get("album"))
+    return redirect('file_uploader', username=request.user.username, location_slug=request.GET.get('location'), album_slug=request.GET.get("album"))
 
 #--------------------------------------------#
 #
@@ -26,7 +26,7 @@ def choose(request):
 #
 #--------------------------------------------#
 @csrf_exempt
-def photo_upload(request, location_slug, album_slug):
+def photo_upload(request, username, location_slug, album_slug):
     context = {}
     if request.method == 'POST':
         #"240x165"
@@ -45,11 +45,12 @@ def photo_upload(request, location_slug, album_slug):
             photo_new = Photo(title=filename, album=album_used)
             photo_new.file_name = filename
             # The line below needs to be changed.
-            photo_new.image = "images/" + filename
+            photo_new.image = 'images/' + filename
             # Set location to default location
             photo_location = get_object_or_404(Location, slug=location_slug)
             photo_new.location = photo_location
             photo_new.description = "YO"
+            # The script isn't sending a user object back in teh request...
             this_user = User.objects.get(username="dstegelman")
             photo_new.user = this_user
             photo_new.save()
@@ -58,9 +59,9 @@ def photo_upload(request, location_slug, album_slug):
             for chunk in uploaded_file.chunks():
                 destination.write(chunk)
             destination.close()
-            im = get_thumbnail(photo_new.image, '150x150', crop="center")
-            im2 = get_thumbnail(photo_new.image, '1024x768')
-            im3 = get_thumbnail(photo_new.image, '240x165')
+            #im = get_thumbnail(photo_new.image, '150x150', crop="center")
+            #im2 = get_thumbnail(photo_new.image, '1024x768')
+            #im3 = get_thumbnail(photo_new.image, '240x165')
             
         # indicate that everything is OK for SWFUpload
         

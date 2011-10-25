@@ -9,7 +9,7 @@ urlpatterns = patterns('',
     #url('^upload$', myFileHandler, name="file_uploader"),
     url(r'^choose/', choose, name="choose"),
     #url('^upload$', photo_upload),
-    url(r'^upload_photo/(?P<location_slug>[-\w]+)/(?P<album_slug>[-\w]+)', photo_upload, name="file_uploader"),
+    url(r'^upload_photo/(?P<username>[-\w]+)/(?P<location_slug>[-\w]+)/(?P<album_slug>[-\w]+)', photo_upload, name="file_uploader"),
     url(r'^slideshow/location/(?P<location_slug>[-\w]+)/$', slideshow, name="location_slideshow"),
     url(r'^slideshow/album/(?P<album_slug>[-\w]+)/$', slideshow, name="album_slideshow"),
     

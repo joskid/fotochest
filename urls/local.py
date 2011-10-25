@@ -6,11 +6,11 @@ urlpatterns = patterns('',
     
     
     url(r'^fotochest/', include('photo_manager.urls')),
-    url(r'^django_admin/', include(admin.site.urls)),
-    url(r'^admin/', include('photo_admin.urls')),
+    url(r'^admin/', include(admin.site.urls)),
     url(r'^static/(?P<path>.*)$', 'django.views.static.serve',
         {'document_root': './static'}),
-    
+    url(r'^locations/', include('locations.urls')),
+    url(r'^api/photos/', include('photo_manager.api.urls')),
     url(r'^static_admin/(?P<path>.*)$', 'django.views.static.serve',
         {'document_root': './admin_media'}),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve',

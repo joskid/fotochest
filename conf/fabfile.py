@@ -24,8 +24,11 @@ def virtualenv(command):
     with cd(env.directory):
         run(env.activate + '&&' + command)
 
-def pip_install_req():
-    virtualenv('pip install -r conf/requirements.txt') 
+def pip_install_req(env):
+    if env == 'local':
+        local("pip install -r conf/requirements.txt")
+    else:
+        virtualenv('pip install -r conf/requirements.txt') 
 
 def get_code():
     with cd(env.directory):
@@ -43,12 +46,12 @@ def sync_db(env):
     
 def migrate(env):
     if env == "local":
-        local("python manage.py syncdb --settings=settings.local")
+        local("python manage.py migrate --settings=settings.local")
     else:
         virtualenv('python manage.py migrate --settings=settings.production')
 
 def build_migration(app):
-    local("python manage.py schemamigration %s --settings=settings.local" % app)
+    local("python manage.py schemamigration %s --auto --settings=settings.local" % app)
         
 def quick_fix(msg):
     local("git add .&&git commit -m '%s'&&git checkout production&&git merge develop&&git push origin production develop&&git checkout develop" % msg)
@@ -102,6 +105,11 @@ def deploy():
     kick_apache()
     print("Deployment completed.")
 
+def run_local_server():
+    pip_install_req('local')
+    sync_db('local')
+    migrate('local')
+    run_local()
 
        
     

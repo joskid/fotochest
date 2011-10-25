@@ -8,41 +8,14 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         
-        # Adding model 'Album'
-        db.create_table('photo_manager_album', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=250)),
-            ('slug', self.gf('django.db.models.fields.SlugField')(db_index=True, max_length=50, blank=True)),
-            ('description', self.gf('django.db.models.fields.TextField')()),
-            ('date_created', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, auto_now_add=True, blank=True)),
-            ('parent_album', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['photo_manager.Album'], null=True, blank=True)),
-            ('album_cover', self.gf('django.db.models.fields.files.ImageField')(max_length=400, null=True, blank=True)),
-            ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
-        ))
-        db.send_create_signal('photo_manager', ['Album'])
-
-        # Adding model 'Photo'
-        db.create_table('photo_manager_photo', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=250)),
-            ('slug', self.gf('django.db.models.fields.SlugField')(db_index=True, max_length=50, blank=True)),
-            ('file_name', self.gf('django.db.models.fields.CharField')(max_length=400)),
-            ('image', self.gf('django.db.models.fields.files.ImageField')(max_length=400)),
-            ('description', self.gf('django.db.models.fields.TextField')()),
-            ('date_uploaded', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, auto_now_add=True, blank=True)),
-            ('album', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['photo_manager.Album'])),
-            ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
-        ))
-        db.send_create_signal('photo_manager', ['Photo'])
+        # Adding field 'Photo.location'
+        db.add_column('photo_manager_photo', 'location', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['locations.Location'], null=True, blank=True), keep_default=False)
 
 
     def backwards(self, orm):
         
-        # Deleting model 'Album'
-        db.delete_table('photo_manager_album')
-
-        # Deleting model 'Photo'
-        db.delete_table('photo_manager_photo')
+        # Deleting field 'Photo.location'
+        db.delete_column('photo_manager_photo', 'location_id')
 
 
     models = {
@@ -82,6 +55,15 @@ class Migration(SchemaMigration):
             'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
+        'locations.location': {
+            'Meta': {'object_name': 'Location'},
+            'city': ('django.db.models.fields.CharField', [], {'max_length': '250'}),
+            'country': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'latitude': ('django.db.models.fields.CharField', [], {'max_length': '250', 'blank': 'True'}),
+            'longitude': ('django.db.models.fields.CharField', [], {'max_length': '250', 'blank': 'True'}),
+            'state': ('django.db.models.fields.CharField', [], {'max_length': '250', 'blank': 'True'})
+        },
         'photo_manager.album': {
             'Meta': {'object_name': 'Album'},
             'album_cover': ('django.db.models.fields.files.ImageField', [], {'max_length': '400', 'null': 'True', 'blank': 'True'}),
@@ -101,6 +83,7 @@ class Migration(SchemaMigration):
             'file_name': ('django.db.models.fields.CharField', [], {'max_length': '400'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'image': ('django.db.models.fields.files.ImageField', [], {'max_length': '400'}),
+            'location': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['locations.Location']", 'null': 'True', 'blank': 'True'}),
             'slug': ('django.db.models.fields.SlugField', [], {'db_index': 'True', 'max_length': '50', 'blank': 'True'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '250'}),
             'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"})

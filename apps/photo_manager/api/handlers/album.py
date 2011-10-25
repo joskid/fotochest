@@ -1,6 +1,6 @@
 from piston.handler import BaseHandler, AnonymousBaseHandler
 from piston.utils import *
-from photo_manager.models import Photo
+from photo_manager.models import Album
 from django.http import *
 from django.shortcuts import *
 from django.db.models import Q
@@ -9,36 +9,27 @@ import logging
 from sorl.thumbnail import get_thumbnail
 
    
-class PhotoHandler(BaseHandler):
+class AlbumHandler(BaseHandler):
     allowed_methods = ('GET', 'PUT', 'DELETE', 'POST')
-    model = Photo
-    fields = ('title', 'slug', 'id', 'img', 'thumbnail', 'url', 'description', 'date_uploaded', ('location', ('city', 'country', 'longitude', 'latitude', 'default_location',),), ('user', ('user_name'),), ('album', ('id', 'title', 'slug',),),)
+    model = Album
+    fields = ('id', 'name', 'slug', 'description', ('parent_album', ('id', 'name', 'slug',),),)
     
-    def read(self, request, photo_id=None):
+    def read(self, request, album_id=None):
         
-        if photo_id == None:
-            limit = request.GET.get('limit', 'all')
+        if album_id == None:
+            limit = request.GET.get('limit', '100')
             if limit != 'all':
-                base = Photo.objects.all()[:limit]
+                base = Album.objects.all()[:limit]
             else:
-                base = Photo.objects.all()
-            for photo in base:
-                photo.img = photo.image.url
-                im = get_thumbnail(photo.image, '240x165')
-                photo.thumbnail = im.url
-                photo.url = photo.get_absolute_url()
+                base = Album.objects.all()
             return base
         else:
             try:
-                photo = get_object_or_404(Photo, pk=photo_id)
-            except Photo.DoesNotExist:
+                album = get_object_or_404(Album, pk=album_id)
+            except Album.DoesNotExist:
                 return rc.NOT_FOUND
-            photo.img = photo.image.url
-            im = get_thumbnail(photo.image, '240x165')
-            photo.thumbnail = im.url
-            photo.url = photo.get_absolute_url()
             
-            return photo
+            return album
         
     def create(self, request):
         if request.POST:

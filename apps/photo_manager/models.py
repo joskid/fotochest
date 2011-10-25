@@ -3,11 +3,12 @@ from django.contrib.auth.models import User
 from nutsbolts.utils.slugs import unique_slugify
 import os
 from django.conf import settings
+from locations.models import *
 
 class Album(models.Model):
     title = models.CharField(max_length=250)
     slug = models.SlugField(editable=False, blank=True)
-    description = models.TextField()
+    description = models.TextField(null=True, blank=True)
     date_created = models.DateTimeField(auto_now=True, auto_now_add=True)
     parent_album = models.ForeignKey('self', blank=True, null=True)
     album_cover = models.ImageField(upload_to="cover_art/", max_length=400, blank=True, null=True)
@@ -52,11 +53,12 @@ class Photo(models.Model):
     title = models.CharField(max_length=250)
     slug = models.SlugField(editable=False, blank=True)
     file_name = models.CharField(max_length=400, editable=False)
-    image = models.ImageField(upload_to=settings.PHOTO_DIRECTORY, max_length=400)
-    description = models.TextField()
+    image = models.ImageField(upload_to="images/", max_length=400)
+    description = models.TextField(null=True, blank=True)
     date_uploaded = models.DateTimeField(auto_now=True, auto_now_add=True)
     album = models.ForeignKey(Album)
     user = models.ForeignKey(User)
+    location = models.ForeignKey(Location, blank=True, null=True)
     
     def __unicode__(self):
         return self.title
@@ -65,9 +67,13 @@ class Photo(models.Model):
         unique_slugify(self, self.title)
         super(Photo, self).save()
     
+    def image_preview(self):
+        return '<img src="%s" width="150"/>'  % self.image.url
+    image_preview.allow_tags = True
     
     @models.permalink
     def get_absolute_url(self):
         return ('photo_manager.views.photo', (), {'photo_slug': self.slug, 'album_slug': self.album.slug, 'user_name': self.user.username})
 
-    
+    class Meta:
+        ordering = ['-id']

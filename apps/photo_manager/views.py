@@ -59,9 +59,9 @@ def photo_upload(request, username, location_slug, album_slug):
             for chunk in uploaded_file.chunks():
                 destination.write(chunk)
             destination.close()
-            #im = get_thumbnail(photo_new.image, '150x150', crop="center")
-            #im2 = get_thumbnail(photo_new.image, '1024x768')
-            #im3 = get_thumbnail(photo_new.image, '240x165')
+            im = get_thumbnail(photo_new.image, '150x150', crop="center")
+            im2 = get_thumbnail(photo_new.image, '1024x768')
+            im3 = get_thumbnail(photo_new.image, '240x165')
             
         # indicate that everything is OK for SWFUpload
         

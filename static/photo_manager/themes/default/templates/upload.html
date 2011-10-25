@@ -8,7 +8,7 @@
     $(document).ready(function() {
       $('#file_upload').uploadify({
         'uploader'  : '{{ domain_static }}js/uploadify/uploadify.swf',
-        'script'    : '{% url file_uploader album_slug=album_slug location_slug=location_slug %}',
+        'script'    : '{% url file_uploader username=user.username album_slug=album_slug location_slug=location_slug %}',
         'cancelImg' : '{{ STATIC_URL }}js/uploadify/cancel.png',
         'folder'    : '{{ upload_dir }}',
         'auto'      : true,

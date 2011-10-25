@@ -1,5 +1,5 @@
 from settings.common import *
-
+import os
 
 ## Database Configurations
 
@@ -38,8 +38,7 @@ STATIC_URL = 'http://localhost:8000/static/'
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
 ADMIN_MEDIA_PREFIX = 'http://localhost:8000/static_admin/'
 
-PHOTO_DIRECTORY = "/Users/Derek/Documents/code/personal/fotochest/upload"
-
+PHOTO_DIRECTORY = os.path.join(SITE_ROOT, 'uploads/images')
 
 TEMPLATE_DIRS = (
     #"/Users/Derek/Documents/code/personal/apps/fotochest/static/photo_manager/themes/default/templates"
@@ -47,8 +46,6 @@ TEMPLATE_DIRS = (
 )
 
 DOMAIN_STATIC = 'http://localhost:8000/static/'
-
-PHOTO_DIRECTORY = "/srv/www/static/uploads/images"
 
 ENABLE_MULTI_USER = False
 

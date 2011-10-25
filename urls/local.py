@@ -9,7 +9,7 @@ urlpatterns = patterns('',
     url(r'^django_admin/', include(admin.site.urls)),
     url(r'^admin/', include('photo_admin.urls')),
     url(r'^static/(?P<path>.*)$', 'django.views.static.serve',
-        {'document_root': './assets'}),
+        {'document_root': './static'}),
     
     url(r'^static_admin/(?P<path>.*)$', 'django.views.static.serve',
         {'document_root': './admin_media'}),

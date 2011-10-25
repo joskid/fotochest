@@ -1,0 +1,32 @@
+
+{% extends "base.html" %}
+{% block title %}{{ photo.title }}{% endblock %}
+
+{% block main_content %}
+{% load thumbnail %}
+{% thumbnail photo.image "1024x768" as im %}
+<img src="{{ im.url }}" class="main_image">
+{% endthumbnail %}
+            <aside>
+                {% for img in nav_photos.object_list %}
+                {% load thumbnail %}
+                {% thumbnail img.image "150x150" crop="center" as im %}
+                <img src="{{ im.url }}">
+                {% endthumbnail %}
+                {% endfor %}
+                <div class="pagination">
+            {% if nav_photos.has_previous %}
+            <a href="?page={{ nav_photos.previous_page_number }}"><< Previous</a>
+            <a href="?page={{ nav_photos.previous_page_number }}">{{ nav_photos.previous_page_number }}</a>
+            {% endif %}
+            {% if nav_photos.number %}
+            <span class="current">{{ nav_photos.number }}</span>
+            {% endif %}
+            {% if nav_photos.has_next %}
+            <a href="?page={{ nav_photos.next_page_number }}" class="inactive">{{ nav_photos.next_page_number }}</a>
+            <a href="?page={{ nav_photos.next_page_number }}" class="inactive">Next >></a>
+            {% endif %}
+       </div>
+            </aside>
+            
+{% endblock %}

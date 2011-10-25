@@ -1,0 +1,136 @@
+
+
+/* <!-- Common Form Styles --> */
+
+.form .formItem
+{
+    clear:both;
+    margin-bottom:10px;
+}
+
+.form .formItem label
+{
+    display:block;
+    color:#7A7A7A;
+    font-weight:bold;
+    width: 135px;
+    float: left;
+    margin-top: 5px;
+}
+
+.form .formItem label span
+{
+    font-size: 8pt;
+    font-weight:normal;
+    display:block;
+}
+
+.form .formItem.check label
+{
+    display:inline-block;
+}
+
+.form .formItem div
+{
+    float:left;
+    width: 82%;
+}
+
+.form .formItem input[type='text'],
+.form .formItem input[type='email'],
+.form .formItem input[type='password'],
+.form .formItem textarea
+{
+    font-size:14pt;
+    margin: 5px 0px 5px 0;
+    border:1px solid #AAAAAA;
+    background:#F8F8F8;
+    width:100%;
+    -moz-border-radius:3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.form .formItem.twoCol input[type="text"],
+.form .formItem.twoCol input[type="email"],
+.form .formItem.twoCol input[type="password"]
+{
+    width: 46%;
+}
+
+#fullEdit h2
+{
+    margin-bottom: 15px;
+}
+
+#fullEdit .form .formItem img.photo
+{
+    float:left;
+    margin-top: 0;
+    padding: 0;
+    margin: 0;
+    background: none;
+}
+
+
+#fullEdit .form .formItem.fullEditPhoto .photo
+{
+    max-height: 370px;
+    max-width: 370px;
+}
+
+
+#fullEdit .form .editControls
+{
+    position: absolute;
+    right: 193px;
+    margin: 30px 0px 0px 30px;
+    width: 217px;
+    
+}
+
+#fullEdit .editControls dt,
+#fullEdit .editControls dd
+{
+    width:42%;
+    display:inline-block;
+}
+
+
+/* <!-- End Form Styles --> */
+
+
+.form .formItem img.photo
+{
+    padding:5px;
+    background:#fff;
+}
+
+/* Edit Photo */
+
+/* On Top Over-ride styles */
+
+.form.onTop .formItem label
+{
+    display:block;
+    width:100%;
+}
+
+.form.onTop .formItem.check label
+{
+    width: auto;
+    display: inline-block;
+}
+
+.form .formItem.check span
+{
+    color: #7a7a7a;
+    font-weight: bold;
+}
+
+/* Quick Edit */
+
+#editPhoto .formItem div
+{
+    float: none;
+}

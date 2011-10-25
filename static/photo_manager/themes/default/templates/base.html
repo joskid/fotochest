@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html {% block extra_html %}{% endblock %}>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <link rel="stylesheet" href="{{ THEME_URL }}css/styles.css" type="text/css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}js/osx/css/osx.css" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Coda' rel='stylesheet' type='text/css'>
+        <title>{% block title %}{% endblock %} | FotoChest</title>
+        <meta name="description" content="Photo sharing">
+        <meta name="keywords" content="Photos, fotochest, Photo sharing">
+        <meta name="author" content="Nuts and Bolts Web Soultions">
+        <meta name="copyright" content="2011">
+        <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+        <link rel="profile" href="http://microformats.org/profile/hcard">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+        <script src="{{ STATIC_URL }}js/osx/js/jquery.simplemodal.js"></script>
+        <script src="{{ STATIC_URL }}js/osx/js/osx.js"></script>
+        {% block extra_head %}{% endblock %}
+    </head>
+    <body {% block extra_body %}{% endblock %}>
+        <div id="main" class="{% block main_class %}{% endblock %}">
+        <header>
+            <img src="https://secure.gravatar.com/avatar/fbb84daa32187f3a8e3fd25d10b625e3?s=140&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png" width="75">
+            <h1><a href="{% url photo_manager.views.user_stream user_name="dstegelman" %}">Derek Stegelman's Photos</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="{% url photo_manager.views.homepage %}">Photo Stream</a></li>
+                    <li><a href="{% url photo_manager.views.albums user_name="dstegelman" %}">Albums</a></li>
+                    <li><a href="{% url locations.views.locations %}">Map</a></li>
+                    {% if user.is_authenticated %}
+                    {% block extra_nav %}{% endblock %}
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
+        {% block main_content %}{% endblock %}
+            
+        </div>
+    </body>
+
+</html>

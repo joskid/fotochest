@@ -44,15 +44,14 @@ def photo_upload(request, username, location_slug, album_slug):
             
             photo_new = Photo(title=filename, album=album_used)
             photo_new.file_name = filename
-            # The line below needs to be changed.
             photo_new.image = 'images/' + filename
             # Set location to default location
-            photo_location = get_object_or_404(Location, slug=location_slug)
-            photo_new.location = photo_location
-            photo_new.description = "YO"
+            photo_new.location = get_object_or_404(Location, slug=location_slug)
+            #photo_new.location = photo_location
+            #photo_new.description = "YO"
             # The script isn't sending a user object back in teh request...
-            this_user = User.objects.get(username="dstegelman")
-            photo_new.user = this_user
+            photo_new.user = User.objects.get(username="dstegelman")
+            #photo_new.user = this_user
             photo_new.save()
             destination_path = settings.PHOTO_DIRECTORY + '/%s' % (filename)   
             destination = open(destination_path, 'wb+')
@@ -68,12 +67,14 @@ def photo_upload(request, username, location_slug, album_slug):
         return HttpResponse("ok", mimetype="text/plain")
         
     else:
-
-        context['upload_dir'] = settings.PHOTO_DIRECTORY
-        context['album_slug'] = album_slug
-        context['location_slug'] = location_slug
-        context['domain_static'] = settings.DOMAIN_STATIC    
-        return render(request,'upload.html', context)
+        if request.user and request.user.username == username:
+            context['upload_dir'] = settings.PHOTO_DIRECTORY
+            context['album_slug'] = album_slug
+            context['location_slug'] = location_slug
+            context['domain_static'] = settings.DOMAIN_STATIC    
+            return render(request,'upload.html', context)
+        else:
+            return render(request, 'not_authorized.html')
     
 @csrf_exempt
 def myFileHandler(request):

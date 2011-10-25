@@ -21,6 +21,7 @@
     <body {% block extra_body %}{% endblock %}>
         <div id="main" class="{% block main_class %}{% endblock %}">
         <header>
+            <img src="{{ STATIC_URL }}images/admin/FotoChestLogoSmall.png"><h1 class="logo">FotoChest</h1>
             <img src="https://secure.gravatar.com/avatar/fbb84daa32187f3a8e3fd25d10b625e3?s=140&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png" width="75">
             <h1><a href="{% url photo_manager.views.user_stream user_name="dstegelman" %}">Derek Stegelman's Photos</a></h1>
             <nav>
@@ -30,6 +31,9 @@
                     <li><a href="{% url locations.views.locations %}">Map</a></li>
                     {% if user.is_authenticated %}
                     {% block extra_nav %}{% endblock %}
+                    <li><a href="{% url django.contrib.auth.views.logout %}">Logout</a></li>
+                    {% else %}
+                    <li><a href="{% url django.contrib.auth.views.login %}">Login</a></li>    
                     {% endif %}
                 </ul>
             </nav>

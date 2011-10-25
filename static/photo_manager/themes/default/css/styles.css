@@ -70,7 +70,7 @@ div#main
     margin: 0 auto;
     width: 90%;
     max-width: 1260px;
-    margin-top: 75px;
+    margin-top: 55px;
 }
 
 div#main.map_page
@@ -104,6 +104,11 @@ header h1,
 nav
 {
     padding-left: 80px;
+}
+
+header h1.logo
+{
+    margin-bottom: 15px;
 }
 
 nav
@@ -184,6 +189,57 @@ aside img
     width: 100%;
 }
 
+/* Login Styles */
+
+form#login_form
+{
+    margin-top: 75px;
+}
+
+/* Form styles */
+
+form label
+{
+    display: block;
+    margin-top: 12px;
+}
+
+form input.text, form input.title, form input[type="email"], form input[type="text"], form input[type="password"] {
+    width: 300px;
+}
+form input.text, form input.title, form input[type="email"], form input[type="text"], form input[type="password"], form textarea, form select {
+    border: 1px solid #BBBBBB;
+}
+form input.text, form input.title, form input[type="email"], form input[type="text"], form input[type="password"] {
+    background-color: white;
+    margin: 0.5em 0;
+    padding: 5px;
+}
+
+
+input[type="submit"]
+{
+    background-image: -moz-linear-gradient(center top , #FFFFFF 0pt, #CCCCCC 100%);
+    border: 1px solid #A6A6A6;
+    border-radius: 3px 3px 3px 3px;
+    margin-top: 12px;
+    color: #4D4D4D;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: bold;
+    padding: 5px 10px;
+    text-shadow: 1px 1px white;
+    display: block;
+}
+
+input {
+    outline: medium none;
+}
+
+
+
+
+
 
 .clear
 {
@@ -215,6 +271,8 @@ aside img
     font-weight: bold;
     
 }
+
+
 
 
 

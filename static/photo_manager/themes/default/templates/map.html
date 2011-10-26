@@ -52,7 +52,7 @@ rules: [
       var content{{ location.id }} = '<div id="content">'+
           
           
-          '<p><a style="color:#2d2d2d;" href="{{ location.get_absolute_url }}">{{ location }} ({{ location.get_photo_count }})</a></p>' +
+          '<p><a style="color:#2d2d2d;" href="{% url locations.views.location location_slug=location.slug username=current_user.username %}">{{ location }} ({{ location.get_photo_count }})</a></p>' +
           
           '</div>';
       var infowindow{{ location.id }} = new google.maps.InfoWindow({

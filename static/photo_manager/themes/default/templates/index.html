@@ -29,7 +29,7 @@
                         {% endthumbnail %}
                 </a>
                 <h3>{{ photo.title }}</h3>
-                <span>Uploaded on <a href="#">{{ photo.date_uploaded }}</a></span>
+                <span>Uploaded on <a href="#">{{ photo.date_uploaded }}</a> by <a href="{% url photo_manager.views.homepage username=photo.user.username %}">{{ photo.user.username }}</a></span>
             </article>
 {% endfor %}
 <div class="pagination">

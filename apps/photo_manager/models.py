@@ -73,7 +73,10 @@ class Photo(models.Model):
     
     @models.permalink
     def get_absolute_url(self):
-        return ('photo_manager.views.photo', (), {'photo_slug': self.slug, 'album_slug': self.album.slug, 'user_name': self.user.username})
+        if settings.ENABLE_MULTI_USER:
+            return ('photo_manager.views.photo', (), {'photo_slug': self.slug, 'album_slug': self.album.slug, 'username': self.user.username})
+        else:
+            return ('photo_manager.views.photo', (), {'photo_slug': self.slug, 'album_slug': self.album.slug})
 
     class Meta:
         ordering = ['-id']

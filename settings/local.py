@@ -42,12 +42,13 @@ PHOTO_DIRECTORY = os.path.join(SITE_ROOT, 'uploads/images')
 
 TEMPLATE_DIRS = (
     #"/Users/Derek/Documents/code/personal/apps/fotochest/static/photo_manager/themes/default/templates"
-    os.path.join(SITE_ROOT, 'static/photo_manager/themes/default/templates')
+    os.path.join(SITE_ROOT, 'static/photo_manager/themes/default/templates'),
+    os.path.join(SITE_ROOT, 'templates')
 )
 
 DOMAIN_STATIC = 'http://localhost:8000/static/'
 
-ENABLE_MULTI_USER = False
+ENABLE_MULTI_USER = True
 
 ROOT_URLCONF = 'urls.local'
 

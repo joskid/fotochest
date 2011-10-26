@@ -10,7 +10,7 @@ from django.conf import settings
 import random
 from sorl.thumbnail import get_thumbnail
 from photo_manager.forms import *
-
+from django.conf import settings
 
 
 # please work on album(s) [CHILD ALBUMS{ page.
@@ -129,9 +129,12 @@ def upload(request, album_slug):
         return render(request, 'upload.html', context)
         
 
-def album(request, user_name, album_slug):
-    user = User.objects.get(username=user_name)
-    context = {'author':user}
+def album(request, album_slug, username=None):
+    context = {}
+    if settings.ENABLE_MULTI_USER:    
+        user = User.objects.get(username=username)
+        context['author'] = user
+        
     context['album_slug'] = album_slug
     # If it has child albums, show those, if not, show pictures.
     album = Album.objects.get(slug=album_slug)
@@ -154,10 +157,16 @@ def album(request, user_name, album_slug):
             context['photos'] = paginator.page(paginator.num_pages)
         return render(request, "index.html", context)
     
-def albums(request, user_name):
-    user = User.objects.get(username=user_name)
-    context = {'albums': Album.objects.filter(user=user, parent_album=None), 'author': user}
-    if request.POST:
+def albums(request, username=None):
+    if settings.ENABLE_MULTI_USER:
+        user = User.objects.get(username=username)
+        albums = Album.objects.filter(user__username=username, parent_album=None)
+    else:
+        albums = Album.objects.filter(parent_album=None)
+    context = {}
+    context['albums'] = albums
+    #context = {'author': user}
+    if request.POST and request.user.is_authenticated():
         form = AlbumForm(request.POST)
         if form.is_valid():
             album = form.save(commit=False)
@@ -190,12 +199,23 @@ def user_stream(request, user_name):
     return render(request, "index.html", context)
 
     
-def homepage(request):
-    
-    photos = Photo.objects.all()
+def homepage(request, username=None):
+    context = {}
+    if settings.ENABLE_MULTI_USER:
+
+        if username != None:
+            photos = Photo.objects.filter(user__username=username)
+            context['user_page'] = '1'
+            context['current_user'] = User.objects.get(username=username)
+        else:
+            context['user_page'] = '0'
+            photos = Photo.objects.all()
+    else:
+        photos = Photo.objects.filter(user__username=username)
+        
     paginator = Paginator(photos, 12)
     page = request.GET.get('page', 1)
-    context = {}
+    
     try:
         context['photos'] = paginator.page(page)
     except PageNotAnInteger:
@@ -205,10 +225,14 @@ def homepage(request):
     return render(request, "index.html", context)
     
 
-def photo(request, user_name, album_slug, photo_slug):
-    user = User.objects.get(username=user_name)
-    photo = get_object_or_404(Photo, slug=photo_slug, album__slug=album_slug)
-    photos = Photo.objects.filter(album__slug=album_slug, user=user)
+def photo(request, album_slug, photo_slug, username=None):
+    if settings.ENABLE_MULTI_USER:
+        user = User.objects.get(username=username)
+        photo = get_object_or_404(Photo, slug=photo_slug, album__slug=album_slug, user=user)
+        photos = Photo.objects.filter(album__slug=album_slug, user=user)
+    else:
+        photo = get_object_or_404(Photo, slug=photo_slug, album__slug=album_slug)
+        photos = Photo.objects.filter(album__slug=album_slug)
     paginator = Paginator(photos, 6)
     page = request.GET.get('page', 1)
     context = {'author': user}
@@ -222,7 +246,7 @@ def photo(request, user_name, album_slug, photo_slug):
     context['photo'] = photo
     return render(request, "photo.html", context)
     
-def slideshow(request, location_slug=None, album_slug=None):
+def slideshow(request, location_slug=None, album_slug=None, username=None):
     context = {}
     if location_slug:
         context['photos'] = Photo.objects.filter(location__slug=location_slug)

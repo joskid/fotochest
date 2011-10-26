@@ -1,5 +1,14 @@
 {% extends "base.html" %}
 {% block title %}Photostream{% endblock %}
+
+{% block header %}
+    {% if user_page == '1' %}
+        {{ block.super }}
+    {% else %}
+        
+    {% endif %}
+{% endblock %}
+
 {% block extra_nav %}
     <li><a href="#" class="osx">Upload Photos</a></li>
     {% if location_view %}

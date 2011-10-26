@@ -3,9 +3,13 @@ from locations.models import *
 from photo_manager.models import *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from locations.forms import *
+from django.contrib.auth.models import User
 
-def locations(request):
+def locations(request, username=None):
     context = {}
+    if username:
+        context['current_user'] = User.objects.get(username=username)
+        context['user_page'] = '1'
     if request.POST:
         form = LocationForm(request.POST)
         if form.is_valid():
@@ -17,11 +21,17 @@ def locations(request):
     return render(request, "map.html", context)
     
     
-def location(request, location_slug):
+def location(request, location_slug, username=None):
     location = get_object_or_404(Location, slug=location_slug)
-    photos = Photo.objects.filter(location=location)
-    paginator = Paginator(photos, 12)
     context = {}
+    if username:
+        photos = Photo.objects.filter(location=location, user__username=username)
+        context['current_user'] = User.objects.get(username=username)
+        context['user_page'] = '1'
+    else:
+        photos = Photo.objects.filter(location=location)
+    paginator = Paginator(photos, 12)
+
     page = request.GET.get('page', 1)
     context['location_view'] = True
     context['location_slug'] = location_slug

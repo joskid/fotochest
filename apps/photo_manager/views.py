@@ -231,12 +231,12 @@ def photo(request, album_slug, photo_slug, username=None):
         if username:
             user = User.objects.get(username=username)
             photo = get_object_or_404(Photo, slug=photo_slug, album__slug=album_slug, user=user)
-            photos = Photo.objects.filter(album__slug=album_slug, user=user)
+            photos = Photo.objects.filter(album__slug=album_slug, user=user, pk__lte=photo.id)
             context['user_page'] = '1'
             context['current_user'] = user
     else:
         photo = get_object_or_404(Photo, slug=photo_slug, album__slug=album_slug)
-        photos = Photo.objects.filter(album__slug=album_slug)
+        photos = Photo.objects.filter(album__slug=album_slug, pk__lte=photo.id)
     paginator = Paginator(photos, 6)
     page = request.GET.get('page', 1)
     

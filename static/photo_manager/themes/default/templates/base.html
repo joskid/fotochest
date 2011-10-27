@@ -22,6 +22,14 @@
         <div id="logo_header">
             <div id="logo_header_inner">
             <img src="{{ STATIC_URL }}images/admin/FotoChestLogoSmall.png"><h1 class="logo"><a href="{% url photo_manager.views.homepage %}">FotoChest</a></h1>
+                <nav id="logo_nav">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Explore</a></li>
+                        <li><a href="#">Map</a></li>
+                        <li><a href="#">Login</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
         <div id="main" class="{% block main_class %}{% endblock %}">

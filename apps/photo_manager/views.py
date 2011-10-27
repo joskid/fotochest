@@ -226,16 +226,20 @@ def homepage(request, username=None):
     
 
 def photo(request, album_slug, photo_slug, username=None):
+    context = {}
     if settings.ENABLE_MULTI_USER:
-        user = User.objects.get(username=username)
-        photo = get_object_or_404(Photo, slug=photo_slug, album__slug=album_slug, user=user)
-        photos = Photo.objects.filter(album__slug=album_slug, user=user)
+        if username:
+            user = User.objects.get(username=username)
+            photo = get_object_or_404(Photo, slug=photo_slug, album__slug=album_slug, user=user)
+            photos = Photo.objects.filter(album__slug=album_slug, user=user)
+            context['user_page'] = '1'
+            context['current_user'] = user
     else:
         photo = get_object_or_404(Photo, slug=photo_slug, album__slug=album_slug)
         photos = Photo.objects.filter(album__slug=album_slug)
     paginator = Paginator(photos, 6)
     page = request.GET.get('page', 1)
-    context = {'author': user}
+    
     try:
         context['nav_photos'] = paginator.page(page)
     except PageNotAnInteger:

@@ -14,7 +14,7 @@ if settings.ENABLE_MULTI_USER:
         #url(r'^map/(?P<location_slug>[-\w]+)/$', map_location),
         
         # Photo
-        url(r'^photo/(?P<username>[-\w]+)/(?P<album_slug>[-\w]+)/(?P<photo_slug>[-\w]+)/$', photo),
+        url(r'^foto/(?P<username>[-\w]+)/(?P<album_slug>[-\w]+)/(?P<photo_slug>[-\w]+)/$', photo),
         
         # Upload
         #url(r'^upload/(?P<username>[-\w]+)/(?P<album_slug>[-\w]+)/(?P<location_slug>[-\w]+)/$', upload),

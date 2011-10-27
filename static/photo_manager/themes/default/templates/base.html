@@ -26,8 +26,12 @@
                     <ul>
                         <li><a href="#">Home</a></li>
                         <li><a href="#">Explore</a></li>
-                        <li><a href="#">Map</a></li>
-                        <li><a href="#">Login</a></li>
+                        <li><a href="{% url locations.views.locations %}">Map</a></li>
+                        {% if user.is_authenticated %}
+                            <li><a href="{% url django.contrib.auth.views.logout %}">Logout</a></li>
+                        {% else %}
+                        <li><a href="{% url django.contrib.auth.views.login %}">Login</a></li>
+                        {% endif %}
                     </ul>
                 </nav>
             </div>

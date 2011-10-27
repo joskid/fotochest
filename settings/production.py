@@ -6,9 +6,6 @@ TEMPLATE_DEBUG = DEBUG
 THUMBNAIL_DEBUG = DEBUG
 ## Database Configuration
 
-ADMINS = (
-    #('Your Name', 'someone@example.com'),
-)
 
 DATABASES = {
     'default': {
@@ -62,7 +59,3 @@ TEMPLATE_DIRS = (
     #"./newapp/templates"
 )
 
-SENTRY_KEY = 'your key'
-SENTRY_REMOTE_URL = ''
-SENTRY_TESTING = True # Set to True to test sentry even when DEBUG=True
-SENTRY_SITE = ''

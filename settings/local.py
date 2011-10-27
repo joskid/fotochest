@@ -36,7 +36,7 @@ STATIC_URL = 'http://localhost:8000/static/'
 # URL prefix for admin static files -- CSS, JavaScript and images.
 # Make sure to use a trailing slash.
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
-ADMIN_MEDIA_PREFIX = 'http://localhost:8000/static_admin/'
+ADMIN_MEDIA_PREFIX = 'http://static3.derekandlindy.com/prod/stegelman/grappelli/'
 
 PHOTO_DIRECTORY = os.path.join(SITE_ROOT, 'uploads/images')
 
@@ -59,6 +59,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'grappelli',
     'django.contrib.admin',
     
     'photo_manager',

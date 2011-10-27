@@ -1,6 +1,11 @@
 from settings.common import *
 import os
 
+DEBUG = True
+TEMPLATE_DEBUG = DEBUG
+THUMBNAIL_DEBUG = DEBUG
+
+
 ## Database Configurations
 
 DATABASES = {

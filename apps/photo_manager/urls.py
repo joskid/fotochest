@@ -8,25 +8,19 @@ if settings.ENABLE_MULTI_USER:
     urlpatterns = patterns('',
         # Public URLS
         url(r'^$', homepage, name="homepage"),
-        
-        # Map
-        #url(r'^map/$', map),
-        #url(r'^map/(?P<location_slug>[-\w]+)/$', map_location),
-        
+
         # Photo
         url(r'^foto/(?P<username>[-\w]+)/(?P<album_slug>[-\w]+)/(?P<photo_slug>[-\w]+)/$', photo),
         
         # Upload
-        #url(r'^upload/(?P<username>[-\w]+)/(?P<album_slug>[-\w]+)/(?P<location_slug>[-\w]+)/$', upload),
+        url(r'^upload/(?P<username>[-\w]+)/(?P<album_slug>[-\w]+)/(?P<location_slug>[-\w]+)/$', photo_upload, name="file_uploader"),
         url(r'^choose/', choose, name="choose"),
         # Feeds
         url(r'^feed/$', StreamFeed()),
         
         # User stream
         url(r'^(?P<username>[-\w]+)/$', homepage),
-        #url(r'^(?P<username>[-\w]+)/map/$', map),
-        #url(r'^(?P<username>[-\w]+)/map/(?P<location_slug>[-\w]+)/$', map_location),
-        
+
         # Albums
         url(r'^(?P<username>[-\w]+)/albums/$', albums),
         url(r'^(?P<username>[-\w]+)/album/(?P<album_slug>[-\w]+)/$', album),

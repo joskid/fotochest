@@ -1,5 +1,9 @@
 from settings.common import *
 
+
+DEBUG = True
+TEMPLATE_DEBUG = DEBUG
+THUMBNAIL_DEBUG = DEBUG
 ## Database Configuration
 
 ADMINS = (

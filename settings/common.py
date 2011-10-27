@@ -4,10 +4,6 @@ import os
 
 SITE_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
-THUMBNAIL_DEBUG = DEBUG
-
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
@@ -82,12 +78,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    #'sentry.client.middleware.Sentry404CatchMiddleware',
 )
-
-
-
-
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

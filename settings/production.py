@@ -48,6 +48,7 @@ ADMIN_MEDIA_PREFIX = ''
 ROOT_URLCONF = 'urls.production'
 
 PHOTO_DIRECTORY = ""
+ENABLE_MULTI_USER = True
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -57,5 +58,26 @@ TEMPLATE_DIRS = (
     
     # We have added a "Master" template directory here, and below if you choose, add directories for each specific app.
     #"./newapp/templates"
+)
+
+INSTALLED_APPS = (
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'grappelli',
+    'django.contrib.admin',
+    
+    'photo_manager',
+    # Everyone should be using south.  Seriously.
+    'south',
+    'sorl.thumbnail',
+    'photo_admin',
+    'locations',
+    'profiles',
+    #'tagging',
+
 )
 

@@ -42,7 +42,7 @@ class Album(models.Model):
     
     @models.permalink
     def get_absolute_url(self):
-        return ('photo_manager.views.album', (), {'album_slug': self.slug, 'username': self.user.username})
+        return ('photo_manager.views.album', (), {'album_id': self.id, 'album_slug': self.slug, 'username': self.user.username})
 
     
 
@@ -71,9 +71,9 @@ class Photo(models.Model):
     @models.permalink
     def get_absolute_url(self):
         if settings.ENABLE_MULTI_USER:
-            return ('photo_manager.views.photo', (), {'photo_slug': self.slug, 'album_slug': self.album.slug, 'username': self.user.username})
+            return ('photo_manager.views.photo', (), {'photo_id': self.id, 'photo_slug': self.slug, 'album_slug': self.album.slug, 'username': self.user.username})
         else:
-            return ('photo_manager.views.photo', (), {'photo_slug': self.slug, 'album_slug': self.album.slug})
+            return ('photo_manager.views.photo', (), {'photo_id': self.id, 'photo_slug': self.slug, 'album_slug': self.album.slug})
 
     class Meta:
         ordering = ['-id']

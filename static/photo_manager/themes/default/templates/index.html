@@ -22,7 +22,7 @@
 {% block main_content %}
 {% for photo in photos.object_list %}
     <article class="photo stream{% if forloop.counter == 5 or forloop.counter == 9 or forloop.counter == 13 %} clear{% endif %}">
-                <a href="{{ photo.get_absolute_url }}">
+                <a href="{{ photo.get_absolute_url }}" title="{{ photo.title }} taken in {{ photo.location }}">
                     {% load thumbnail %}
                     {% thumbnail photo.image "240x165" as im %}
                     <img src="{{ im.url }}">

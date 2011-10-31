@@ -11,7 +11,7 @@ if settings.ENABLE_MULTI_USER:
 
         # Photo
         
-        url(r'^foto/(?P<username>[-\w]+)/(?P<album_slug>[-\w]+)/(?P<photo_slug>[-\w]+)/$', photo),
+        url(r'^foto/(?P<photo_id>\d+)/(?P<username>[-\w]+)/(?P<album_slug>[-\w]+)/(?P<photo_slug>[-\w]+)/$', photo),
         
         # Upload
         url(r'^upload/(?P<username>[-\w]+)/(?P<album_slug>[-\w]+)/(?P<location_slug>[-\w]+)/$', photo_upload, name="file_uploader"),
@@ -24,7 +24,7 @@ if settings.ENABLE_MULTI_USER:
 
         # Albums
         url(r'^(?P<username>[-\w]+)/albums/$', albums),
-        url(r'^(?P<username>[-\w]+)/album/(?P<album_slug>[-\w]+)/$', album),
+        url(r'^(?P<username>[-\w]+)/album/(?P<album_id>\d+)/(?P<album_slug>[-\w]+)/$', album),
         url(r'^(?P<username>[-\w]+)/album/(?P<album_slug>[-\w]+)/slideshow/$', slideshow),
         
                            

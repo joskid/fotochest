@@ -71,27 +71,45 @@ rules: [
 
 {% endblock %}
 {% block extra_body %}onLoad="initialize()"{% endblock %}
+{% block header %}{% endblock %}
 {% block main_content %}
 {% load thumbnail %}
 {% thumbnail photo.image "1024x768" as im %}
 <img src="{{ im.url }}" class="main_image">
 {% endthumbnail %}
             <aside>
-                <style>
-                    #small_map
-                    {
-                        border-radius: 5px;
-                        margin-bottom: 10px;
-                    }
-                </style>
-                <div id="small_map" style="width:100%; height:200px"></div>
-                {% for img in nav_photos.object_list %}
+
+                <h3>{{ photo.title }}</h3>
+                {% load travel_tags %}
+                <img src="{% get_gravatar current_user.email 25 %}" width="25" id="gravatar">By <a href="{% url photo_manager.views.homepage username=current_user.username %}">Derek Stegelman</a>
+                <br/>
+                <span>From <a href="{{ photo.album.get_absolute_url }}">{{ photo.album }}</a></span>
+                <p>This photo was uploaded on {{ photo.date_uploaded }}, and taken in {{ photo.location }}.</p>
+                <div id="small_map"></div>
+                {% if photo.description %}
+                <p>{{ photo.description }}</p>    
+                {% endif %}
+                <h4>Other photos from {{ photo.location }}</h4>
+                <div class="location_photos">
+                    {% for photo in photos_from_this_location %}
+                    {% load thumbnail %}
+                    {% thumbnail photo.image "75x75" crop="center" as im %}
+                    <a href="{{ photo.get_absolute_url }}"><img src="{{ im.url }}"></a>
+                    {% endthumbnail %}
+                    {% endfor %}
+                </div>
+                
+            </aside>
+            <div class="photo_nav">
+        <h3>More from <a href="{{ photo.album.get_absolute_url }}">{{ photo.album }}</a></h3>
+        
+        {% for img in nav_photos.object_list %}
                 {% load thumbnail %}
                 {% thumbnail img.image "150x150" crop="center" as im %}
                 <a href="{{ img.get_absolute_url }}"><img src="{{ im.url }}"></a>
                 {% endthumbnail %}
-                {% endfor %}
-                <div class="pagination">
+            {% endfor %}
+            <div class="pagination">
             {% if nav_photos.has_previous %}
             <a href="?page={{ nav_photos.previous_page_number }}"><< Previous</a>
             <a href="?page={{ nav_photos.previous_page_number }}">{{ nav_photos.previous_page_number }}</a>
@@ -102,8 +120,8 @@ rules: [
             {% if nav_photos.has_next %}
             <a href="?page={{ nav_photos.next_page_number }}" class="inactive">{{ nav_photos.next_page_number }}</a>
             <a href="?page={{ nav_photos.next_page_number }}" class="inactive">Next >></a>
-            {% endif %}
+        {% endif %}
+        
        </div>
-            </aside>
-            
+        </div>
 {% endblock %}

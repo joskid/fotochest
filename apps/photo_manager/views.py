@@ -135,7 +135,7 @@ def upload(request, album_slug):
         return render(request, 'upload.html', context)
         
 
-def album(request, album_slug, username=None):
+def album(request, album_id, album_slug, username=None):
     context = {}
     if settings.ENABLE_MULTI_USER:    
         user = User.objects.get(username=username)
@@ -143,7 +143,7 @@ def album(request, album_slug, username=None):
         
     context['album_slug'] = album_slug
     # If it has child albums, show those, if not, show pictures.
-    album = Album.objects.get(slug=album_slug)
+    album = get_object_or_404(Album, pk=album_id)
     if album.has_child_albums() == True:
         # Show child albums
         albums = Album.objects.filter(parent_album=album)
@@ -191,22 +191,6 @@ def child_albums(request, user_name, parent_album_slug):
     albums = Album.objects.filter(parent_album=parent_album)
     context = {'albums':albums, 'author': user}
     return render(request, "smugmug/albums.html", context)
-
-'''        
-def user_stream(request, user_name):
-    user = User.objects.get(username=user_name)
-    photos = Photo.objects.filter(user=user)
-    paginator = Paginator(photos, 12)
-    page = request.GET.get('page', 1)
-    context = {'author': user}
-    try:
-        context['photos'] = paginator.page(page)
-    except PageNotAnInteger:
-        context['photos'] = paginator.page(1)
-    except EmptyPage:
-        context['photos'] = paginator.page(paginator.num_pages)
-    return render(request, "index.html", context)
-'''
     
 def homepage(request, username=None):
     context = {}
@@ -234,19 +218,19 @@ def homepage(request, username=None):
     return render(request, "index.html", context)
     
 
-def photo(request, album_slug, photo_slug, username=None):
+def photo(request, photo_id, album_slug, photo_slug, username=None):
     context = {}
     if settings.ENABLE_MULTI_USER:
         if username:
             user = User.objects.get(username=username)
-            photo = get_object_or_404(Photo, slug=photo_slug, album__slug=album_slug, user=user)
-            photos = Photo.objects.filter(album__slug=album_slug, user=user, pk__lte=photo.id)
+            photo = get_object_or_404(Photo, pk=photo_id)
+            photos = Photo.objects.filter(album__slug=album_slug, user=user, pk__lte=photo_id)
             context['user_page'] = '1'
             context['current_user'] = user
     else:
-        photo = get_object_or_404(Photo, slug=photo_slug, album__slug=album_slug)
-        photos = Photo.objects.filter(album__slug=album_slug, pk__lte=photo.id)
-    paginator = Paginator(photos, 6)
+        photo = get_object_or_404(Photo, pk=photo_id)
+        photos = Photo.objects.filter(album__slug=album_slug, pk__lte=photo_id)
+    paginator = Paginator(photos, 5)
     page = request.GET.get('page', 1)
     
     try:
@@ -257,6 +241,7 @@ def photo(request, album_slug, photo_slug, username=None):
         context['nav_photos'] = paginator.page(paginator.num_pages)
     context['photo_id'] = photo.id
     context['photo'] = photo
+    context['photos_from_this_location'] = Photo.objects.filter(location=photo.location)[:4]
     return render(request, "photo.html", context)
     
 def slideshow(request, location_slug=None, album_slug=None, username=None):

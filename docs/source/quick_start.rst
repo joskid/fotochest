@@ -5,7 +5,7 @@ Quick Start Guide
 Requirements
 ------------
 
-Interactive API Docs requires::
+Fotochest requires::
 
     south
     django 1.3 or greater
@@ -17,9 +17,9 @@ Installation
 
 Using ``pip``::
 
-    pip install https://github.com/dstegelman/django-interactive-api-docs
+    pip install https://github.com/fotochest/fotochest
 
-Go to https://github.com/dstegelman/django-interactive-api-docs if you need to download a package or clone the repo.
+Go to https://github.com/fotochest/fotochest if you need to download a package or clone the repo.
 
 
 Setup

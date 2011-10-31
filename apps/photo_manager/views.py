@@ -28,6 +28,9 @@ def choose(request):
 @csrf_exempt
 def photo_upload(request, username, location_slug, album_slug):
     context = {}
+    
+    
+    
     if request.method == 'POST':
         #"240x165"
         #1024x768"
@@ -68,6 +71,9 @@ def photo_upload(request, username, location_slug, album_slug):
         
     else:
         if request.user and request.user.username == username:
+            user = User.objects.get(username=username)
+            context['current_user'] = user
+            context['user_page'] = '1'
             context['upload_dir'] = settings.PHOTO_DIRECTORY
             context['album_slug'] = album_slug
             context['location_slug'] = location_slug

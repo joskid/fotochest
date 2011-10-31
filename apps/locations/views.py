@@ -20,7 +20,10 @@ def locations(request, username=None):
         form = LocationForm(request.POST)
         if form.is_valid():
             location = form.save()
-            redirect("locations")
+            if username:
+                redirect("locations.views.locations", username=username)
+            else:
+                redirect("locations")
     else:
         context['location_form'] = LocationForm()
     

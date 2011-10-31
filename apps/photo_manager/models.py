@@ -44,6 +44,7 @@ class Album(models.Model):
     def get_absolute_url(self):
         return ('photo_manager.views.album', (), {'album_id': self.id, 'album_slug': self.slug, 'username': self.user.username})
 
+
     
 
 class Photo(models.Model):
@@ -74,7 +75,12 @@ class Photo(models.Model):
             return ('photo_manager.views.photo', (), {'photo_id': self.id, 'photo_slug': self.slug, 'album_slug': self.album.slug, 'username': self.user.username})
         else:
             return ('photo_manager.views.photo', (), {'photo_id': self.id, 'photo_slug': self.slug, 'album_slug': self.album.slug})
-
+    
+    @models.permalink
+    def get_fullscreen(self):
+        return ('photo_manager.views.photo_fullscreen', (), {'photo_id': self.id, 'photo_slug': self.slug, 'album_slug': self.album.slug, 'username': self.user.username})
+        
+        
     class Meta:
         ordering = ['-id']
         

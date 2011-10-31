@@ -253,6 +253,14 @@ def photo(request, photo_id, album_slug, photo_slug, username=None):
     context['photo'] = photo
     context['photos_from_this_location'] = Photo.objects.filter(location=photo.location)[:4]
     return render(request, "photo.html", context)
+
+def photo_fullscreen(request, photo_id, album_slug, photo_slug, username=None):
+    context = {}
+    context['photo'] = Photo.objects.get(pk=photo_id)
+    
+    
+    return render(request, 'fullscreen.html', context)
+
     
 def slideshow(request, location_slug=None, album_slug=None, username=None):
     context = {}

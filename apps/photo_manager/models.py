@@ -42,7 +42,7 @@ class Album(models.Model):
     
     @models.permalink
     def get_absolute_url(self):
-        return ('photo_manager.views.album', (), {'album_slug': self.slug, 'user_name': self.user.username})
+        return ('photo_manager.views.album', (), {'album_slug': self.slug, 'username': self.user.username})
 
     
 

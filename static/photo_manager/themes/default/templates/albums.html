@@ -11,14 +11,14 @@
                 <a href="{{ album.get_absolute_url }}">
                     {% if album.album_cover %}
                         {% load thumbnail %}
-                        {% thumbnail album.album_cover "240x161" as im %}
+                        {% thumbnail album.album_cover "240x165" as im %}
                         <img src="{{ im.url }}">
                         {% endthumbnail %}
                         
                     {% else %}
                         {% if album.get_album_cover %}
                             {% load thumbnail %}
-                    {% thumbnail album.get_album_cover.image "240x161" as im %}
+                    {% thumbnail album.get_album_cover.image "240x165" as im %}
                 <img src="{{ im.url }}">
                     {% endthumbnail %}
                         {% else %}

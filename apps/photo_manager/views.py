@@ -158,12 +158,14 @@ def album(request, album_slug, username=None):
         return render(request, "index.html", context)
     
 def albums(request, username=None):
+    context = {}
     if settings.ENABLE_MULTI_USER:
         user = User.objects.get(username=username)
+        context['current_user'] = user
+        context['user_page'] = '1'
         albums = Album.objects.filter(user__username=username, parent_album=None)
     else:
         albums = Album.objects.filter(parent_album=None)
-    context = {}
     context['albums'] = albums
     #context = {'author': user}
     if request.POST and request.user.is_authenticated():
@@ -183,7 +185,8 @@ def child_albums(request, user_name, parent_album_slug):
     albums = Album.objects.filter(parent_album=parent_album)
     context = {'albums':albums, 'author': user}
     return render(request, "smugmug/albums.html", context)
-        
+
+'''        
 def user_stream(request, user_name):
     user = User.objects.get(username=user_name)
     photos = Photo.objects.filter(user=user)
@@ -197,7 +200,7 @@ def user_stream(request, user_name):
     except EmptyPage:
         context['photos'] = paginator.page(paginator.num_pages)
     return render(request, "index.html", context)
-
+'''
     
 def homepage(request, username=None):
     context = {}

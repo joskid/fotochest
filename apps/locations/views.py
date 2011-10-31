@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from locations.models import *
 from photo_manager.models import *
+from profiles.models import *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from locations.forms import *
 from django.contrib.auth.models import User
@@ -8,8 +9,13 @@ from django.contrib.auth.models import User
 def locations(request, username=None):
     context = {}
     if username:
+        # OKay, get All locations associated with this user.
+        
+        context['locations'] = get_locations_for_user(username)
         context['current_user'] = User.objects.get(username=username)
         context['user_page'] = '1'
+    else:
+        context['locations'] = Location.objects.all()
     if request.POST:
         form = LocationForm(request.POST)
         if form.is_valid():
@@ -17,7 +23,7 @@ def locations(request, username=None):
             redirect("locations")
     else:
         context['location_form'] = LocationForm()
-    context['locations'] = Location.objects.all()
+    
     return render(request, "map.html", context)
     
     

@@ -4,6 +4,7 @@ from nutsbolts.utils.slugs import unique_slugify
 import os
 from django.conf import settings
 from locations.models import *
+from sorl.thumbnail import get_thumbnail
 
 class Album(models.Model):
     title = models.CharField(max_length=250)
@@ -45,8 +46,6 @@ class Album(models.Model):
         return ('photo_manager.views.album', (), {'album_id': self.id, 'album_slug': self.slug, 'username': self.user.username})
 
 
-    
-
 class Photo(models.Model):
     title = models.CharField(max_length=250)
     slug = models.SlugField(editable=False, blank=True)
@@ -57,6 +56,7 @@ class Photo(models.Model):
     album = models.ForeignKey(Album)
     user = models.ForeignKey(User)
     location = models.ForeignKey(Location, blank=True, null=True)
+    thumbs_created = models.BooleanField(default=False, editable=False)
     
     def __unicode__(self):
         return self.title
@@ -68,6 +68,17 @@ class Photo(models.Model):
     def image_preview(self):
         return '<img src="%s" width="150"/>'  % self.image.url
     image_preview.allow_tags = True
+    
+    def make_thumbnails(self):
+        # Current Thumb list
+        # 240x165 (streams)
+        # 75x75 for map (Other location photos)
+        # 1024x768 for photo.html
+        # 150x150 for thumbs on page.
+        
+        im = get_thumbnail(self.image, '150x150', crop="center")
+        im2 = get_thumbnail(self.image, '1024x768')
+        im3 = get_thumbnail(self.image, '240x165')
     
     @models.permalink
     def get_absolute_url(self):

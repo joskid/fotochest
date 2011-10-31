@@ -270,6 +270,21 @@ def slideshow(request, location_slug=None, album_slug=None, username=None):
         context['photos'] = Photo.objects.filter(album__slug=album_slug)
     
     return render(request, "slideshow.html", context)
+    
+    
+    
+### Jobs
+
+def run_thumb_job(request):
+    photos = Photo.objects.filter(thumbs_created=False)[:5]
+    for photo in photos:
+        photo.make_thumbnails()
+        photo.thumbs_created = True
+        photo.save()
+    return HttpResponse("ok", mimetype="text/plain")
+
+
+    
 '''
 homepage
 slideshow

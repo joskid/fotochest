@@ -182,7 +182,11 @@ def albums(request, username=None):
             album.save()
     else:
         context['album_form'] = AlbumForm()
-    
+        if settings.ENABLE_MULTI_USER:
+            context['parent_albums'] = Album.objects.filter(user__username=username)
+        else:
+            context['parent_albums'] = Album.objects.all()
+            
     return render(request, "albums.html", context)
     
 def child_albums(request, user_name, parent_album_slug):
@@ -196,15 +200,18 @@ def homepage(request, username=None):
     context = {}
     if settings.ENABLE_MULTI_USER:
 
-        if username != None:
+        if username:
             photos = Photo.objects.filter(user__username=username)
             context['user_page'] = '1'
             context['current_user'] = User.objects.get(username=username)
+            context['form_albums'] = Album.objects.filter(user__username=username)
         else:
             context['user_page'] = '0'
             photos = Photo.objects.all()
+            
     else:
         photos = Photo.objects.filter(user__username=username)
+        context['form_albums'] = Album.objects.all()
         
     paginator = Paginator(photos, 12)
     page = request.GET.get('page', 1)
@@ -215,6 +222,9 @@ def homepage(request, username=None):
         context['photos'] = paginator.page(1)
     except EmptyPage:
         context['photos'] = paginator.page(paginator.num_pages)
+        
+    
+    
     return render(request, "index.html", context)
     
 

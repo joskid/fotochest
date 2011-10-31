@@ -51,9 +51,26 @@
 			<div class="close"><a href="#" class="simplemodal-close">x</a></div>
 			<div id="osx-modal-data">
                             <form method="POST" action=".">{% csrf_token %}
-				{{ album_form.as_p }}
+                            {{ album_form.non_field_errors }}
+				{{ album_form.title.errors }}
+                                <label for="title">Title:</label>
+                                {{ album_form.title }}
+                                {{ album_form.description.errors }}
+                                <label for="description">Description:</label>
+                                {{ album_form.description }}
+                                <label for="parent_album">Parent Album:</label>
+                                {{ album_form.parent_album.errors }}
+                                <select id="id_parent_album" name="parent_album">
+                                    
+                                    <option selected="selected" value="">---------</option>
+                                    {% for album in parent_albums %}
+                                    <option value="{{ album.id }}">{{ album.title }}</option>
+                                    {% endfor %}
+                                </select>
+
                                 <input type="submit" value="Add Album">
                             </form>
+   
 				<p><button class="simplemodal-close">Close</button> <span>(or press ESC or click the overlay)</span></p>
 			</div>
 		</div>

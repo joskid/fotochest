@@ -11,7 +11,6 @@ def theme_files(request):
 
 def locations_albums(request):
     context = {}
-    context['form_albums'] = Album.objects.all()
     context['form_locations'] = Location.objects.all()
     
     return context

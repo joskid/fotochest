@@ -53,7 +53,7 @@ def photo_upload(request, username, location_slug, album_slug):
             #photo_new.location = photo_location
             #photo_new.description = "YO"
             # The script isn't sending a user object back in teh request...
-            photo_new.user = User.objects.get(username="dstegelman")
+            photo_new.user = User.objects.get(username=username)
             #photo_new.user = this_user
             photo_new.save()
             destination_path = settings.PHOTO_DIRECTORY + '/%s' % (filename)   

@@ -25,19 +25,7 @@
     {% include "snippets/item.html" %}
     
 {% endfor %}
-<div class="pagination">
-            {% if photos.has_previous %}
-            <a href="?page={{ photos.previous_page_number }}"><< Previous</a>    
-            <a href="?page={{ photos.previous_page_number }}">{{ photos.previous_page_number }}</a>
-            {% endif %}
-            {% if photos.number %}
-            <span class="current">{{ photos.number }}</span>
-            {% endif %}
-            {% if photos.has_next %}
-            <a href="?page={{ photos.next_page_number }}" class="inactive">{{ photos.next_page_number }}</a>
-            <a href="?page={{ photos.next_page_number }}">Next >></a>
-            {% endif %}
-       </div>
+{% include "snippets/pagination.html" %}
 {% if user.is_authenticated %}
             <!-- modal content -->
 		<div id="osx-modal-content">

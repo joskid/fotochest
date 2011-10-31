@@ -44,9 +44,6 @@ class Album(models.Model):
     def get_absolute_url(self):
         return ('photo_manager.views.album', (), {'album_slug': self.slug, 'user_name': self.user.username})
 
-def create_album_dir(album_slug):
-    parent_path = settings.PHOTO_DIRECTORY + "/albums"
-    os.mkdir(parent_path + "/" + album_slug + "/")
     
 
 class Photo(models.Model):
@@ -80,3 +77,5 @@ class Photo(models.Model):
 
     class Meta:
         ordering = ['-id']
+        
+        

@@ -10,6 +10,7 @@ if settings.ENABLE_MULTI_USER:
         url(r'^$', homepage, name="homepage"),
 
         # Photo
+        
         url(r'^foto/(?P<username>[-\w]+)/(?P<album_slug>[-\w]+)/(?P<photo_slug>[-\w]+)/$', photo),
         
         # Upload

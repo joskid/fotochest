@@ -1,5 +1,5 @@
-Quick Start Guide
-=================
+Theme Developer's Guide
+=======================
 
 
 Requirements

@@ -71,7 +71,7 @@ INSTALLED_APPS = (
     # Everyone should be using south.  Seriously.
     'south',
     'sorl.thumbnail',
-    'photo_admin',
+    #'photo_admin',
     'locations',
     'profiles',
     #'tagging',

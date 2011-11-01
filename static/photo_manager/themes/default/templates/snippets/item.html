@@ -12,6 +12,7 @@
                     <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}" class="csrf"> 
                     <input type="text" value="{{ photo.title }}" class="title_control" title="Click to edit Photo Title">
                     <input type="hidden" value="{{ photo.id }}" class="photo_id">
+                    
                         <a href="#" class="positive button photo">Save</a>
                     </div>
                     {% else %}

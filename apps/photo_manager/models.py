@@ -77,6 +77,7 @@ class Photo(models.Model):
         # 150x150 for thumbs on page.
         
         im = get_thumbnail(self.image, '150x150', crop="center")
+        im4 = get_thumbnail(self.image, '75x75', crop="center")
         im2 = get_thumbnail(self.image, '1024x768')
         im3 = get_thumbnail(self.image, '240x165')
     

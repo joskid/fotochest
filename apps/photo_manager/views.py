@@ -61,9 +61,9 @@ def photo_upload(request, username, location_slug, album_slug):
             for chunk in uploaded_file.chunks():
                 destination.write(chunk)
             destination.close()
-            im = get_thumbnail(photo_new.image, '150x150', crop="center")
-            im2 = get_thumbnail(photo_new.image, '1024x768')
-            im3 = get_thumbnail(photo_new.image, '240x165')
+            #im = get_thumbnail(photo_new.image, '150x150', crop="center")
+            #im2 = get_thumbnail(photo_new.image, '1024x768')
+            #im3 = get_thumbnail(photo_new.image, '240x165')
             
         # indicate that everything is OK for SWFUpload
         
@@ -81,7 +81,7 @@ def photo_upload(request, username, location_slug, album_slug):
             return render(request,'upload.html', context)
         else:
             return render(request, 'not_authorized.html')
-    
+'''    
 @csrf_exempt
 def myFileHandler(request):
     if request.method == 'POST':
@@ -134,7 +134,7 @@ def upload(request, album_slug):
         context['album_slug'] = album_slug
         return render(request, 'upload.html', context)
         
-
+'''
 def album(request, album_id, album_slug, username=None):
     context = {}
     if settings.ENABLE_MULTI_USER:    
@@ -222,9 +222,6 @@ def homepage(request, username=None):
         context['photos'] = paginator.page(1)
     except EmptyPage:
         context['photos'] = paginator.page(paginator.num_pages)
-        
-    
-    
     return render(request, "index.html", context)
     
 
@@ -278,10 +275,16 @@ def slideshow(request, location_slug=None, album_slug=None, username=None):
 def run_thumb_job(request):
     photos = Photo.objects.filter(thumbs_created=False)[:5]
     for photo in photos:
-        photo.make_thumbnails()
-        photo.thumbs_created = True
-        photo.save()
-    return HttpResponse("ok", mimetype="text/plain")
+        try:
+            photo.make_thumbnails()
+            photo.thumbs_created = True
+            photo.save()
+        except:
+            photo.thumbs_created = False
+            photo.save()
+            return HttpResponse("Thumb Creation Failure", mimetype="text/plain")
+        
+    return HttpResponse("Thumbs Created", mimetype="text/plain")
 
 
     

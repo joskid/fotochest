@@ -6,6 +6,10 @@ from django.conf import settings
 
 if settings.ENABLE_MULTI_USER:
     urlpatterns = patterns('',
+                           
+        # Jobs
+        url(r'^thumb_job/$', run_thumb_job),                   
+                           
         # Public URLS
         url(r'^$', homepage, name="homepage"),
 
@@ -28,8 +32,7 @@ if settings.ENABLE_MULTI_USER:
         url(r'^(?P<username>[-\w]+)/album/(?P<album_id>\d+)/(?P<album_slug>[-\w]+)/$', album),
         url(r'^(?P<username>[-\w]+)/album/(?P<album_slug>[-\w]+)/slideshow/$', slideshow),
         
-        # Jobs
-        url(r'^thumb_job/$', run_thumb_job),
+        
         
                            
                            )

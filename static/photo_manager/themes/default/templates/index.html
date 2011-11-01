@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% block title %}Photostream{% endblock %}
-
+{% block extra_head %}
+    
+{% include "snippets/live_edit.js" %}
+    
+    {% endblock %}
 {% block header %}
     {% if user_page == '1' %}
         {{ block.super }}

@@ -5,6 +5,17 @@
                     <img src="{{ im.url }}">
                         {% endthumbnail %}
                 </a>
-                <h3>{{ photo.title }}</h3>
+                
+                <h3>
+                    {% if request.user.is_authenticated and request.user == photo.user %}
+                    <div class="title_controls">    
+                    <input type="text" value="{{ photo.title }}" class="title_control" title="Click to edit Photo Title">
+                    <input type="hidden" value="{{ photo.id }}" class="photo_id">
+                        <a href="#" class="positive button">Save</a>
+                    </div>
+                    {% else %}
+                        <h3>{{ photo.title }}</h3>
+                        {% endif %}
+                </h3>
                 <span>Uploaded on <a href="#">{{ photo.date_uploaded|date:"F j Y" }}</a> by <a href="{% url photo_manager.views.homepage username=photo.user.username %}">{{ photo.user.username }}</a></span>
             </article>

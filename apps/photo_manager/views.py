@@ -286,7 +286,16 @@ def run_thumb_job(request):
         
     return HttpResponse("Thumbs Created", mimetype="text/plain")
 
-
+@csrf_exempt
+def update_photo_title(request):
+    if request.method == "POST":
+        photo_title = request.POST.get("photo_title")
+        photo_id = request.POST.get("photo_id")
+        photo = Photo.objects.get(pk=photo_id)
+        photo.title = photo_title
+        photo.save()
+        
+    return HttpResponse("ok", mimetype="text/plain")
     
 '''
 homepage

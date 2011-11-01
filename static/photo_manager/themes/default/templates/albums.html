@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 {% block title %}Albums{% endblock %}
+
 {% block extra_nav %}
     <li><a href="#" class="osx">Add Album</a></li>
 {% endblock %}
 
 {% block main_content %}
-
+{% include "snippets/live_edit.js" %}
     {% for album in albums %}
                 <article class="photo stream">
                 <a href="{{ album.get_absolute_url }}">
@@ -25,9 +26,20 @@
                         <img src="http://dummyimage.com/240x161">
                         {% endif %}
                 {% endif %}
-                
-                <h3>{{ album.title }}</h3>
                 </a>
+                <h3>
+                    {% if request.user.is_authenticated and request.user == album.user %}
+                    <div class="title_controls">
+                    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}" class="csrf"> 
+                    <input type="text" value="{{ album.title }}" class="title_control" title="Click to edit Photo Title">
+                    <input type="hidden" value="{{ album.id }}" class="album_id">
+                        <a href="#" class="positive button album">Save</a>
+                    </div>
+                    {% else %}
+                        {{ photo.title }}
+                        {% endif %}
+                </h3>
+                
                 </article>
     {% endfor %}
 

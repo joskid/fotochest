@@ -82,10 +82,11 @@ rules: [
             <aside>
                     <h3>
                 {% if request.user.is_authenticated and request.user == photo.user %}
-                    <div class="title_controls single_photo">    
+                    <div class="title_controls single_photo">
+                        <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}" class="csrf">    
                     <input type="text" value="{{ photo.title }}" class="title_control" title="Click to edit Photo Title">
                     <input type="hidden" value="{{ photo.id }}" class="photo_id">
-                        <a href="#" class="positive button">Save</a>
+                        <a href="#" class="positive button photo">Save</a>
                     </div>
                     {% else %}
                     {{ photo.title }}

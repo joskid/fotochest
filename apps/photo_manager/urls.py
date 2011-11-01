@@ -10,6 +10,7 @@ if settings.ENABLE_MULTI_USER:
         # Jobs
         url(r'^thumb_job/$', run_thumb_job),
         url(r'^update_photo_title/$', update_photo_title),
+        url(r'^update_album_title/$', update_album_title),
                            
         # Public URLS
         url(r'^$', homepage, name="homepage"),

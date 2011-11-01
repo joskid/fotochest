@@ -286,7 +286,7 @@ def run_thumb_job(request):
         
     return HttpResponse("Thumbs Created", mimetype="text/plain")
 
-@csrf_exempt
+
 def update_photo_title(request):
     if request.method == "POST":
         photo_title = request.POST.get("photo_title")
@@ -295,6 +295,17 @@ def update_photo_title(request):
         photo.title = photo_title
         photo.save()
         
+    return HttpResponse("ok", mimetype="text/plain")
+    
+
+def update_album_title(request):
+    if request.method == "POST":
+        album_title = request.POST.get("album_title")
+        album_id = request.POST.get("album_id")
+        album = Album.objects.get(pk=album_id)
+        album.title = album_title
+        album.save()
+    
     return HttpResponse("ok", mimetype="text/plain")
     
 '''

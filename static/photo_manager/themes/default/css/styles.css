@@ -238,7 +238,7 @@ aside h3
     margin-bottom: 12px;
     font-size: 18px;
     border-bottom: 1px solid #bbb;
-    padding-bottom: 7px;
+    padding-bottom: 2px;
 }
 
 aside h4
@@ -379,6 +379,58 @@ input {
     font-weight: bold;
     
 }
+
+/* Make elements look like everything else when they aren't selected */
+
+
+
+
+.title_controls input
+{
+    font-size: 15px;
+    margin-right: 5px;
+    margin-bottom: 8px;
+    width: 180px;
+}
+
+
+.title_controls input.inactive
+{
+    background: #2D2D2D;
+    color: #fff;
+    border: none;
+    margin-bottom: 0;
+    width: auto;
+}
+
+.title_controls.single_photo input
+{
+    width: 291px;
+    font-size: 17px;
+}
+
+.title_controls.single_photo .inactive
+{
+    background: #fff;
+    color: #444444;
+}
+
+.title_controls.single_photo .inactive:hover
+{
+    background: #FFFFD3;
+}
+.title_control.inactive:hover
+{
+    background: #443D41;
+}
+
+
+
+
+
+
+
+
 
 
 

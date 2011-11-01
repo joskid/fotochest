@@ -52,7 +52,7 @@ class Photo(models.Model):
     file_name = models.CharField(max_length=400, editable=False)
     image = models.ImageField(upload_to="images/", max_length=400)
     description = models.TextField(null=True, blank=True)
-    date_uploaded = models.DateTimeField(auto_now=True, auto_now_add=True)
+    date_uploaded = models.DateTimeField(auto_now=False, auto_now_add=True)
     album = models.ForeignKey(Album)
     user = models.ForeignKey(User)
     location = models.ForeignKey(Location, blank=True, null=True)

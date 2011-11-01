@@ -8,7 +8,8 @@ if settings.ENABLE_MULTI_USER:
     urlpatterns = patterns('',
                            
         # Jobs
-        url(r'^thumb_job/$', run_thumb_job),                   
+        url(r'^thumb_job/$', run_thumb_job),
+        url(r'^update_photo_title/$', update_photo_title),
                            
         # Public URLS
         url(r'^$', homepage, name="homepage"),

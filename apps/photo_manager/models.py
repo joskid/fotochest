@@ -66,7 +66,8 @@ class Photo(models.Model):
         super(Photo, self).save()
     
     def image_preview(self):
-        return '<img src="%s" width="150"/>'  % self.image.url
+        im = get_thumbnail(self.image, "150x150")
+        return '<img src="%s" width="150"/>'  % im.url
     image_preview.allow_tags = True
     
     def make_thumbnails(self):

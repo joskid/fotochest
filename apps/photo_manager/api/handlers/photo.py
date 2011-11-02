@@ -12,16 +12,13 @@ from sorl.thumbnail import get_thumbnail
 class PhotoHandler(BaseHandler):
     allowed_methods = ('GET', 'PUT', 'DELETE', 'POST')
     model = Photo
-    fields = ('title', 'slug', 'id', 'img', 'thumbnail', 'url', 'description', 'date_uploaded', ('location', ('city', 'country', 'longitude', 'latitude', 'default_location',),), ('user', ('user_name'),), ('album', ('id', 'title', 'slug',),),)
+    fields = ('title', 'slug', 'id', 'img', 'thumbnail', 'url', 'description', 'date_uploaded', ('location', ('city', 'country', 'longitude', 'latitude', 'default_location',),), ('user', ('username',),), ('album', ('id', 'title', 'slug',),),)
     
     def read(self, request, photo_id=None):
         
         if photo_id == None:
-            limit = request.GET.get('limit', 'all')
-            if limit != 'all':
-                base = Photo.objects.all()[:limit]
-            else:
-                base = Photo.objects.all()
+            limit = request.GET.get('limit', '20')
+            base = Photo.objects.all()[:limit]
             for photo in base:
                 photo.img = photo.image.url
                 im = get_thumbnail(photo.image, '240x165')

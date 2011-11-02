@@ -81,11 +81,14 @@ rules: [
     <li><a href="{{ photo.get_previous }}" class="button pill icon arrowleft">Previous</a></li>
     {% endif %}
     <li><a href="{{ photo.get_fullscreen }}" class="button pill">Full Screen</a></li>
-    <li><a href="" class="button pill">Slideshow</a></li>
+    
+    <li><a href="{{ photo.album.get_slideshow }}" class="button pill">Album Slideshow</a></li>
+    
     {% if photo.get_next %}
     <li><a href="{{ photo.get_next }}" class="button pill icon arrowright">Next</a></li>
     {% endif %}
 </ul>
+
 {% load thumbnail %}
 {% thumbnail photo.image "1024x768" as im %}
 <img src="{{ im.url }}" class="main_image">

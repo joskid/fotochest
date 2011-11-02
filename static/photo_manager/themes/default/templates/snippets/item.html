@@ -19,5 +19,5 @@
                         {{ photo.title }}
                         {% endif %}
                 </h3>
-                <span>Uploaded on <a href="#">{{ photo.date_uploaded|date:"F j Y" }}</a> by <a href="{% url photo_manager.views.homepage username=photo.user.username %}">{{ photo.user.username }}</a></span>
+                <span>Taken in <a href="{% url locations.views.location location_slug=photo.location.slug username=photo.user.username %}">{{ photo.location }}</a> by <a href="{% url photo_manager.views.homepage username=photo.user.username %}">{{ photo.user.username }}</a></span>
             </article>

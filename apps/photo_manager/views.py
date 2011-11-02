@@ -86,7 +86,8 @@ def album(request, album_id, album_slug, username=None):
     context = {}
     if settings.ENABLE_MULTI_USER:    
         user = User.objects.get(username=username)
-        context['author'] = user
+        context['current_user'] = user
+        context['user_page'] = '1'
         
     context['album_slug'] = album_slug
     # If it has child albums, show those, if not, show pictures.

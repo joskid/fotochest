@@ -81,60 +81,7 @@ def photo_upload(request, username, location_slug, album_slug):
             return render(request,'upload.html', context)
         else:
             return render(request, 'not_authorized.html')
-'''    
-@csrf_exempt
-def myFileHandler(request):
-    if request.method == 'POST':
-        # 150  150
-        # 900 700
-        for field_name in request.FILES:
-            uploaded_file = request.FILES[field_name]
-            
-            # write the file into /tmp
-            num1 = str(random.randint(0, 1000000))
-            num2 = str(random.randint(1001, 9000000))
-            
-            ext = os.path.splitext(uploaded_file.name)[1]
-            filename = str(num1 + num2) + ext
-            album_used = Album.objects.get(pk=1)
-            photo_new = Photo(title=filename, album=album_used)
-            photo_new.file_name = filename
-            # The line below needs to be changed.
-            photo_new.image = "images/" + filename
-            # Set location to default location
-            photo_location = get_object_or_404(Location, default_location=True)
-            photo_new.location = photo_location
-            photo_new.description = "YO"
-            this_user = User.objects.get(username="dstegelman")
-            photo_new.user = this_user
-            photo_new.save()
-            destination_path = settings.PHOTO_DIRECTORY + '/%s' % (filename)   
-            destination = open(destination_path, 'wb+')
-            for chunk in uploaded_file.chunks():
-                destination.write(chunk)
-            destination.close()
-                        
-        # indicate that everything is OK for SWFUpload
-        
-        return HttpResponse("ok", mimetype="text/plain")
 
-    else:
-        # show the upload UI
-        context = {'upload_dir': settings.PHOTO_DIRECTORY}
-        context['domain_static'] = settings.DOMAIN_STATIC
-        return render(request, 'upload.html', context)
-        
-def upload(request, album_slug):
-    if request.method == 'POST':
-        for field_name in request.FILES:
-            uploaded_file = request.FILES[field_name]
-    else:
-        context = {'upload_dir': settings.PHOTO_DIRECTORY}
-        context['domain_static'] = settings.DOMAIN_STATIC
-        context['album_slug'] = album_slug
-        return render(request, 'upload.html', context)
-        
-'''
 def album(request, album_id, album_slug, username=None):
     context = {}
     if settings.ENABLE_MULTI_USER:    

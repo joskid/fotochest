@@ -26,11 +26,28 @@ class Album(models.Model):
         this_photo = ""
         try:
             photos = Photo.objects.filter(album=self)[:1]
-            for photo in photos:
-                this_photo = photo
+            return photos[0]
         except:
-            pass
-            this_photo = ""
+            # Try for first Child.
+            try:
+                albums = Album.objects.filter(parent_album=self)[:1]
+                album = albums[0]
+                photos = Photo.objects.filter(album=album)[:1]
+                return photos[0]
+                    
+            except:
+                # one final layer down
+                try:
+                    albums = Album.objects.filter(parent_album=self)[:1]
+                    album = albums[0]
+                    new_album = Album.objects.filter(parent_album=album)
+                    use_album = new_album[0]
+                    photos = Photo.objects.filter(album=use_album)[:1]
+                    return photos[0]
+                except:
+                    
+                    pass
+                    this_photo = ""
         return this_photo
     
     def has_child_albums(self):
@@ -44,6 +61,10 @@ class Album(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('photo_manager.views.album', (), {'album_id': self.id, 'album_slug': self.slug, 'username': self.user.username})
+        
+    @models.permalink
+    def get_slideshow(self):
+        return ('photo_manager.views.slideshow', (), {'album_slug': self.slug, 'username': self.user.username})
 
 
 class Photo(models.Model):

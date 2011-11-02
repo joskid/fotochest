@@ -73,12 +73,24 @@ rules: [
 {% endblock %}
 {% block extra_body %}onLoad="initialize()"{% endblock %}
 {% block header %}{% endblock %}
+{% block main_class %}single_photo{% endblock %}
 {% block main_content %}
+<div id="photo_group">
+<ul class="button-group">
+    {% if photo.get_previous %}
+    <li><a href="{{ photo.get_previous }}" class="button pill icon arrowleft">Previous</a></li>
+    {% endif %}
+    <li><a href="{{ photo.get_fullscreen }}" class="button pill">Full Screen</a></li>
+    <li><a href="" class="button pill">Slideshow</a></li>
+    {% if photo.get_next %}
+    <li><a href="{{ photo.get_next }}" class="button pill icon arrowright">Next</a></li>
+    {% endif %}
+</ul>
 {% load thumbnail %}
 {% thumbnail photo.image "1024x768" as im %}
 <img src="{{ im.url }}" class="main_image">
 {% endthumbnail %}
-
+</div>
             <aside>
                     <h3>
                 {% if request.user.is_authenticated and request.user == photo.user %}
@@ -114,7 +126,6 @@ rules: [
                 
             </aside>
             <div class="photo_nav">
-                <a href="{{ photo.get_fullscreen }}" class="button">Fullscreen</a>
         <h3>More from <a href="{{ photo.album.get_absolute_url }}">{{ photo.album }}</a></h3>
         
         {% for img in nav_photos.object_list %}

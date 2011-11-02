@@ -65,6 +65,24 @@ class Photo(models.Model):
         unique_slugify(self, self.title)
         super(Photo, self).save()
     
+    @models.permalink
+    def get_next(self):
+        try:
+            next_photo = Photo.objects.filter(id__gt=self.id, user=self.user)[:1]
+            photo = next_photo[0]
+        except:
+            return None
+        return ('photo_manager.views.photo', (), {'photo_id': photo.id, 'photo_slug': photo.slug, 'album_slug': photo.album.slug, 'username': photo.user.username})
+    
+    @models.permalink
+    def get_previous(self):
+        try:
+            prev_photo = Photo.objects.filter(id__lt=self.id, user=self.user)[:1]
+            photo = prev_photo[0]
+        except:
+            return None
+        return ('photo_manager.views.photo', (), {'photo_id': photo.id, 'photo_slug': photo.slug, 'album_slug': photo.album.slug, 'username': photo.user.username})
+        
     def image_preview(self):
         im = get_thumbnail(self.image, "150x150")
         return '<img src="%s" width="150"/>'  % im.url
@@ -91,6 +109,7 @@ class Photo(models.Model):
     
     @models.permalink
     def get_fullscreen(self):
+        # update with enable multi user
         return ('photo_manager.views.photo_fullscreen', (), {'photo_id': self.id, 'photo_slug': self.slug, 'album_slug': self.album.slug, 'username': self.user.username})
         
         

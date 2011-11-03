@@ -2,6 +2,14 @@ from django.conf.urls.defaults import patterns, include, url
 from photo_manager.views import *
 from photo_manager.feeds import *
 from django.conf import settings
+from photo_manager.api import PhotoResource, UserResource, AlbumResource, LocationResource
+from tastypie.api import Api
+
+v1_api = Api(api_name='v1')
+v1_api.register(UserResource())
+v1_api.register(PhotoResource())
+v1_api.register(AlbumResource())
+v1_api.register(LocationResource())
 
 
 if settings.ENABLE_MULTI_USER:
@@ -11,6 +19,8 @@ if settings.ENABLE_MULTI_USER:
         url(r'^thumb_job/$', run_thumb_job),
         url(r'^update_photo_title/$', update_photo_title),
         url(r'^update_album_title/$', update_album_title),
+        url(r'^api/docs/$', include('api_docs.urls')),
+        url(r'^api/', include(v1_api.urls)),
                            
         # Public URLS
         url(r'^$', homepage, name="homepage"),

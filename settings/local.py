@@ -66,8 +66,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'grappelli',
     'django.contrib.admin',
-    
+    'tastypie',
     'photo_manager',
+    'api_docs',
     # Everyone should be using south.  Seriously.
     'south',
     'sorl.thumbnail',

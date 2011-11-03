@@ -3,8 +3,8 @@ south
 git+git://github.com/dstegelman/nutsbolts-utils.git
 PIL
 sorl-thumbnail
-django-piston
-git+git://github.com/kstateome/api-management.git
+
+django-tastypie
 django-sentry==1.12.1
 django-grappelli
 sphinx

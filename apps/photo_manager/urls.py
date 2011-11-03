@@ -19,7 +19,7 @@ if settings.ENABLE_MULTI_USER:
         url(r'^thumb_job/$', run_thumb_job),
         url(r'^update_photo_title/$', update_photo_title),
         url(r'^update_album_title/$', update_album_title),
-        url(r'^api/docs/$', include('api_docs.urls')),
+        url(r'^api/docs/', include('api_docs.urls')),
         url(r'^api/', include(v1_api.urls)),
                            
         # Public URLS

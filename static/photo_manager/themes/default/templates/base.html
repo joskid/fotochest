@@ -52,7 +52,7 @@
                     {% block extra_non_auth_nav %}{% endblock %}
                     {% if user.is_authenticated %}
                     {% block extra_nav %}{% endblock %}
-                      
+                      <li><a href="{% url profiles.views.edit_profile %}">Edit Profile</a></li>
                     {% endif %}
                 </ul>
             </nav>

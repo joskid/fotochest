@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render   
+from django.shortcuts import redirect, render, get_object_or_404   
 from django.conf import settings
 from django.contrib.auth.forms import *
 from profiles.forms import *
@@ -42,3 +42,30 @@ def register(request):
         context['form'] = UserCreationForm()
 
     return render(request, "registration.html", context)
+    
+# Profile
+
+def edit_profile(request):
+    context = {}
+    if request.method == "POST":
+        form = ProfileForm(request.POST)
+        if form.is_valid():
+            user = request.user
+            user.first_name = form.cleaned_data['first_name']
+            user.last_name = form.cleaned_data['last_name']
+            user.email = form.cleaned_data['email']
+            user.save()
+            return redirect('photo_manager.views.homepage', username=user.username)
+    else:
+        data = {'first_name': request.user.first_name,
+                'last_name': request.user.last_name,
+                'email': request.user.email}
+        context['form'] = ProfileForm(data)
+        return render(request, "edit_profile.html", context)
+
+    
+def view_profile(request, username):
+    user = get_object_or_404(User, username=username)
+    context = {'profile_user': user}
+    return render(request, 'profile.html', context)
+    

@@ -52,7 +52,8 @@ table {
 
 body
 {
-    background: #2D2D2D;
+    
+    background: #3A3A3A;
     color: #fff;
     font-family: Coda;
     text-align: center;
@@ -124,7 +125,8 @@ nav
     border-bottom: 1px solid #bbb;
     text-align: left;
     height: 70px;
-    margin-top: 20px;
+    padding-top: 20px;
+    background: #2D2D2D;
 }
 
 #logo_header_inner
@@ -215,9 +217,10 @@ aside
 {
     width: 347px;
     float: right;
-    background: #fff;
+    background: #096F89;
     border-radius: 10px;
-    color: #444;
+    /*color: #444;*/
+    color: #fff;
     padding: 12px;
     font-size: 14px;
     margin-top: 37px;
@@ -231,7 +234,12 @@ aside p
 }
 aside a
 {
-    color: #444;
+    color: #fff;
+}
+
+aside a:hover
+{
+    color:#aaaaaa;  
 }
 
 aside h3
@@ -245,6 +253,7 @@ aside h3
 aside h4
 {
     margin-bottom: 8px;
+    font-size: 15px;
 }
 
 aside span
@@ -274,22 +283,8 @@ aside #small_map
     margin-top: 12px;
 }
 
-div.photo_nav
-{
-    clear: both;
-    margin-top: 12px;
-}
 
-div.photo_nav h3
-{
-    margin-bottom: 8px;
-    font-size: 18px;
-}
 
-div.photo_nav img
-{
-    margin-right: 20px;
-}
 
 #map
 {
@@ -359,6 +354,16 @@ form input[type="submit"]
     
 }
 
+
+.other_photos
+{
+    margin-bottom: 14px;
+}
+
+.other_photos img
+{
+    margin-bottom: 8px;
+}
 
 .single_photo .button-group
 {

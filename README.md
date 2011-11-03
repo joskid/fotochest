@@ -35,4 +35,3 @@ Python/Django
 * This work is distributed with no warranty or any implied warranty
 * You may not sell an un-modified version of this work
 * You may not redistribute an un-modified version of this work under a new name
-

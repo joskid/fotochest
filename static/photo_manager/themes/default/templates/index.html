@@ -43,15 +43,19 @@
                                     {% for album in form_albums %}
                                     <option value="{{ album.slug }}">{{ album.title }}</option>
                                     
-                                    {% endfor %}
+                                {% endfor %}
+                                
                                 </select>
+                                <a href="#" class="button icon add">Add Album</a>
                                 <label>Location</label>
                                 <select name="location">
                                     {% for location in form_locations %}
                                     <option value="{{ location.slug }}">{{ location }}</option>
                                     
-                                    {% endfor %}
+                                {% endfor %}
+                                
                                 </select>
+                                <a href="#" class="button icon add">Add Location</a>
                                 <input type="submit" value="Proceed to Upload Photos" class="button">
                             </form>
 				

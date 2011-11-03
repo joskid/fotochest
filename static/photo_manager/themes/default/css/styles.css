@@ -421,13 +421,13 @@ form input[type="submit"]
 
 .title_controls.single_photo .inactive
 {
-    background: #fff;
-    color: #444444;
+    background: #096F89;
+    color: #fff;
 }
 
 .title_controls.single_photo .inactive:hover
 {
-    background: #FFFFD3;
+    background: #096F69;
 }
 .title_control.inactive:hover
 {

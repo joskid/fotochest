@@ -27,7 +27,7 @@ rules: [
   
     var latlng = new google.maps.LatLng({{ photo.location.latitude }},{{ photo.location.longitude }} );
     var myOptions = {
-      zoom: 8,
+      zoom: 3,
       center: latlng,
       
       mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -61,6 +61,12 @@ rules: [
 
       //bounds.extend(latlng{{ photo.id }})
  
+        google.maps.event.addListener(map, 'mouseover', function() {
+            map.setZoom(8);
+        });
+        google.maps.event.addListener(map, 'mouseout', function(){
+            map.setZoom(3);
+        });
 
       //map.fitBounds(bounds);    
       map.mapTypes.set('black_map', blackMapType);

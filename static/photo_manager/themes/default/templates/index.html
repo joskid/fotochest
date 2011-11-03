@@ -13,15 +13,16 @@
     {% endif %}
 {% endblock %}
 
-{% block extra_nav %}
-    <li><a href="#" class="osx">Upload Photos</a></li>
+{% block extra_non_auth_nav %}
+    
     {% if location_view %}
         <li><a href="{% url photo_manager.views.slideshow location_slug=location_slug %}">Slideshow</a></li>
     {% endif %}
     {% if album_view %}
         <li><a href="{% url photo_manager.views.slideshow album_slug=album_slug username=current_user.username %}">Slideshow</a></li>
     {% endif %}
-    {% endblock %}
+{% endblock %}
+{% block extra_nav %}<li><a href="#" class="osx">Upload Photos</a></li>{% endblock %}
 
 {% block main_content %}
 {% for photo in photos.object_list %}

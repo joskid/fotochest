@@ -89,7 +89,7 @@ class Photo(models.Model):
     @models.permalink
     def get_next(self):
         try:
-            next_photo = Photo.objects.filter(id__gt=self.id, user=self.user)[:1]
+            next_photo = Photo.objects.filter(id__lt=self.id, user=self.user)[:1]
             photo = next_photo[0]
         except:
             return None
@@ -98,7 +98,7 @@ class Photo(models.Model):
     @models.permalink
     def get_previous(self):
         try:
-            prev_photo = Photo.objects.filter(id__lt=self.id, user=self.user)[:1]
+            prev_photo = Photo.objects.filter(id__gt=self.id, user=self.user)[:1]
             photo = prev_photo[0]
         except:
             return None

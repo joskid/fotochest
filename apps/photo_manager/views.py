@@ -205,8 +205,13 @@ def slideshow(request, location_slug=None, album_slug=None, username=None):
     context = {}
     if location_slug:
         context['photos'] = Photo.objects.filter(location__slug=location_slug)
+        location = Location.objects.get(slug=location_slug)
+        context['what_object'] = location
     if album_slug:
         context['photos'] = Photo.objects.filter(album__slug=album_slug)
+        album = Album.objects.get(slug=album_slug)
+        context['what_object'] = album.title
+     
     
     return render(request, "slideshow.html", context)
     

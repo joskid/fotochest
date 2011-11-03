@@ -185,7 +185,7 @@ def photo(request, photo_id, album_slug, photo_slug, username=None):
     else:
         photo = get_object_or_404(Photo, pk=photo_id)
     
-    photos = Photo.objects.filter(album__slug=album_slug, pk__lte=photo_id)[:8]
+    photos = Photo.objects.filter(album__slug=album_slug, id__lt=photo_id)[:8]
     
     context['photo_id'] = photo.id
     context['photo'] = photo

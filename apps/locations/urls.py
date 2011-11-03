@@ -10,7 +10,7 @@ if settings.ENABLE_MULTI_USER:
         # Map
         url(r'^$', locations),
         url(r'^(?P<location_slug>[-\w]+)/$', location),
-        
+        url(r'^(?P<location_slug>[-\w]+)/slideshow/$', 'photo_manager.views.slideshow'),
         
         url(r'^user/(?P<username>[-\w]+)/$', locations),
         url(r'^user/(?P<username>[-\w]+)/(?P<location_slug>[-\w]+)/$', location),

@@ -52,9 +52,7 @@
                     {% block extra_non_auth_nav %}{% endblock %}
                     {% if user.is_authenticated %}
                     {% block extra_nav %}{% endblock %}
-                    <li><a href="{% url django.contrib.auth.views.logout %}">Logout</a></li>
-                    {% else %}
-                    <li><a href="{% url django.contrib.auth.views.login %}">Login</a></li>    
+                      
                     {% endif %}
                 </ul>
             </nav>

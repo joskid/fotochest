@@ -14,6 +14,7 @@ if settings.ENABLE_MULTI_USER:
                            
         # Public URLS
         url(r'^$', homepage, name="homepage"),
+        
 
         # Photo
         

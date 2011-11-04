@@ -220,7 +220,7 @@ def slideshow(request, location_slug=None, album_slug=None, username=None):
 ### Jobs
 
 def run_thumb_job(request):
-    photos = Photo.objects.filter(thumbs_created=False)[:5]
+    photos = Photo.objects.filter(thumbs_created=False)[:3]
     for photo in photos:
         try:
             photo.make_thumbnails()

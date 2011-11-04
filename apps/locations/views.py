@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 
 def locations(request, username=None):
     context = {}
+    
     if username:
         # OKay, get All locations associated with this user.
         

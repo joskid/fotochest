@@ -49,6 +49,7 @@ ROOT_URLCONF = 'urls.production'
 
 PHOTO_DIRECTORY = ""
 ENABLE_MULTI_USER = True
+ACTIVE_THEME = "default"
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -66,15 +67,16 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    #'django.contrib.staticfiles',
     'grappelli',
     'django.contrib.admin',
-    
+    'tastypie',
     'photo_manager',
+    'api_docs',
     # Everyone should be using south.  Seriously.
     'south',
     'sorl.thumbnail',
-    'photo_admin',
+    #'photo_admin',
     'locations',
     'profiles',
     #'tagging',

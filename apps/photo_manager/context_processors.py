@@ -5,7 +5,7 @@ from django.conf import settings
 def theme_files(request):
     context = {}
     context['ENABLE_MULTI_USER'] = settings.ENABLE_MULTI_USER
-    context['THEME_URL'] = "http://localhost:8000/static/photo_manager/themes/default/"
+    context['THEME_URL'] = "%sphoto_manager/themes/%s/" % (settings.STATIC_URL, settings.ACTIVE_THEME)
     
     return context
 

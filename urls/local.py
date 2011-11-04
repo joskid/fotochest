@@ -19,9 +19,12 @@ urlpatterns = patterns('',
     url(r'^accounts/profiles/(?P<username>[-\w]+)/$', 'profiles.views.view_profile'),
     url(r'^accounts/profile/edit/$', 'profiles.views.edit_profile'),
     #url(r'^api/photos/', include('photo_manager.api.urls')),
-    url(r'^', include('photo_manager.urls')),
+    
     url(r'^static_admin/(?P<path>.*)$', 'django.views.static.serve',
         {'document_root': './admin_media'}),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve',
         {'document_root': './uploads'}),
+    url(r'^docs/(?P<path>.*)$', 'django.views.static.serve',
+        {'document_root': './docs/build/html'}),
+    url(r'^', include('photo_manager.urls')),
 )

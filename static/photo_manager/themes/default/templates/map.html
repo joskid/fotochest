@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% block extra_html %}style="height: 100%"{% endblock %}
 {% block title %}Map{% endblock %}
+
+
 {% block extra_head %}
 <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script>
@@ -52,7 +54,7 @@ rules: [
       var content{{ location.id }} = '<div id="content">'+
           
           
-          '<p><a style="color:#2d2d2d;" href="{{ location.get_absolute_url }}">{{ location }} ({{ location.get_photo_count }})</a></p>' +
+          '<p><a style="color:#2d2d2d;" href="{% if current_user %}{% url locations.views.location location_slug=location.slug username=current_user.username %}{% else %}{% url locations.views.location location_slug=location.slug %}{% endif %}">{{ location }} ({{ location.get_photo_count }})</a></p>' +
           
           '</div>';
       var infowindow{{ location.id }} = new google.maps.InfoWindow({
@@ -74,6 +76,13 @@ rules: [
 </script>
 
 {% endblock %}
+{% block header %}
+    {% if user_page == '1' %}
+        {{ block.super }}
+    {% else %}
+        
+    {% endif %}
+{% endblock %}
 {% block extra_nav %}
     <li><a href="#" class="osx">Add Location</a></li>
 {% endblock %}
@@ -93,9 +102,9 @@ rules: [
 				<form method="POST" action=".">{% csrf_token %}
                                 {{ location.non_field_errors }}
                                     {{ location_form.as_p }}
-                                <input type="submit" value="Add Location">
+                                <input type="submit" value="Add Location" class="button">
                                 </form>
-				<p><button class="simplemodal-close">Close</button> <span>(or press ESC or click the overlay)</span></p>
+				
 			</div>
 		</div>
                 

@@ -1,41 +1,36 @@
 {% extends "base.html" %}
 {% block title %}Photostream{% endblock %}
-{% block extra_nav %}
-    <li><a href="#" class="osx">Upload Photos</a></li>
+{% block extra_head %}
+    
+{% include "snippets/live_edit.js" %}
+    
+    {% endblock %}
+{% block header %}
+    {% if user_page == '1' %}
+        {{ block.super }}
+    {% else %}
+        
+    {% endif %}
+{% endblock %}
+
+{% block extra_non_auth_nav %}
+    
     {% if location_view %}
-        <li><a href="{% url location_slideshow location_slug=location_slug %}">Slideshow</a></li>
+        <li><a href="{% url photo_manager.views.slideshow location_slug=location_slug %}">Slideshow</a></li>
     {% endif %}
     {% if album_view %}
-        <li><a href="{% url album_slideshow album_slug=album_slug %}">Slideshow</a></li>
+        <li><a href="{% url photo_manager.views.slideshow album_slug=album_slug username=current_user.username %}">Slideshow</a></li>
     {% endif %}
-    {% endblock %}
+{% endblock %}
+{% block extra_nav %}<li><a href="#" class="osx">Upload Photos</a></li>{% endblock %}
 
 {% block main_content %}
 {% for photo in photos.object_list %}
-    <article class="photo stream{% if forloop.counter == 5 or forloop.counter == 9 or forloop.counter == 13 %} clear{% endif %}">
-                <a href="{{ photo.get_absolute_url }}">
-                    {% load thumbnail %}
-                    {% thumbnail photo.image "240x165" as im %}
-                    <img src="{{ im.url }}">
-                        {% endthumbnail %}
-                </a>
-                <h3>{{ photo.title }}</h3>
-                <span>Uploaded on <a href="#">{{ photo.date_uploaded }}</a></span>
-            </article>
+    
+    {% include "snippets/item.html" %}
+    
 {% endfor %}
-<div class="pagination">
-            {% if photos.has_previous %}
-            <a href="?page={{ photos.previous_page_number }}"><< Previous</a>    
-            <a href="?page={{ photos.previous_page_number }}">{{ photos.previous_page_number }}</a>
-            {% endif %}
-            {% if photos.number %}
-            <span class="current">{{ photos.number }}</span>
-            {% endif %}
-            {% if photos.has_next %}
-            <a href="?page={{ photos.next_page_number }}" class="inactive">{{ photos.next_page_number }}</a>
-            <a href="?page={{ photos.next_page_number }}">Next >></a>
-            {% endif %}
-       </div>
+{% include "snippets/pagination.html" %}
 {% if user.is_authenticated %}
             <!-- modal content -->
 		<div id="osx-modal-content">
@@ -48,18 +43,22 @@
                                     {% for album in form_albums %}
                                     <option value="{{ album.slug }}">{{ album.title }}</option>
                                     
-                                    {% endfor %}
+                                {% endfor %}
+                                
                                 </select>
+                                <a href="#" class="button icon add">Add Album</a>
                                 <label>Location</label>
                                 <select name="location">
                                     {% for location in form_locations %}
                                     <option value="{{ location.slug }}">{{ location }}</option>
                                     
-                                    {% endfor %}
+                                {% endfor %}
+                                
                                 </select>
-                                <input type="submit" value="Proceed to Upload Photos">
+                                <a href="#" class="button icon add">Add Location</a>
+                                <input type="submit" value="Proceed to Upload Photos" class="button">
                             </form>
-				<p><button class="simplemodal-close">Close</button> <span>(or press ESC or click the overlay)</span></p>
+				
 			</div>
 		</div>
                 

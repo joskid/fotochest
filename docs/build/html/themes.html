@@ -1,0 +1,186 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Theme Developer’s Guide &mdash; FotoChest 2.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="FotoChest 2.0 documentation" href="index.html" />
+    <link rel="prev" title="Quick Start Guide" href="quick_start.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="quick_start.html" title="Quick Start Guide"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">FotoChest 2.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="theme-developer-s-guide">
+<h1>Theme Developer&#8217;s Guide<a class="headerlink" href="#theme-developer-s-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>Fotochest requires:</p>
+<div class="highlight-python"><pre>south
+sorl-thumbnail
+django 1.3 or greater</pre>
+</div>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>Using <tt class="docutils literal"><span class="pre">pip</span></tt>:</p>
+<div class="highlight-python"><pre>pip install git+git://github.com/fotochest/fotochest.git</pre>
+</div>
+<p>Go to <a class="reference external" href="https://github.com/fotochest/fotochest">https://github.com/fotochest/fotochest</a> if you need to download a package or clone the repo.</p>
+</div>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<p>Open <tt class="docutils literal"><span class="pre">settings.py</span></tt> and add``photo_manager``, <tt class="docutils literal"><span class="pre">'sorl.thumbnail'</span></tt>, <tt class="docutils literal"><span class="pre">locations</span></tt>, <tt class="docutils literal"><span class="pre">south</span></tt>, and <tt class="docutils literal"><span class="pre">profiles</span></tt> to your <tt class="docutils literal"><span class="pre">INSTALLED_APPS</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s">&#39;photo_manager&#39;</span><span class="p">,</span>
+    <span class="s">&#39;south&#39;</span><span class="p">,</span>
+    <span class="s">&#39;sorl.thumbnail&#39;</span><span class="p">,</span>
+    <span class="s">&#39;locations&#39;</span><span class="p">,</span>
+    <span class="s">&#39;profiles&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Open <tt class="docutils literal"><span class="pre">settings.py</span></tt> and add the following to TEMPLATE_CONTEXT_PROCESSORS:</p>
+<div class="highlight-python"><pre>TEMPLATE_CONTEXT_PROCESSORS = (
+"django.core.context_processors.auth",
+"django.core.context_processors.debug",
+"django.core.context_processors.media",
+"django.core.context_processors.static",
+"django.core.context_processors.request",
+"django.contrib.messages.context_processors.messages",
+"photo_manager.context_processors.theme_files",
+"photo_manager.context_processors.locations_albums",</pre>
+</div>
+<p>)</p>
+<p>Add URL-patterns:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">urlpatterns</span> <span class="o">=</span> <span class="n">patterns</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^fotochest/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s">&#39;photo_manager.urls&#39;</span><span class="p">)),</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^map/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s">&#39;locations.urls&#39;</span><span class="p">)),</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^accounts/login/$&#39;</span><span class="p">,</span> <span class="s">&#39;django.contrib.auth.views.login&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;template_name&#39;</span><span class="p">:</span> <span class="s">&#39;login.html&#39;</span><span class="p">}),</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^accounts/logout/$&#39;</span><span class="p">,</span> <span class="s">&#39;django.contrib.auth.views.logout&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;next_page&#39;</span><span class="p">:</span> <span class="s">&#39;/&#39;</span><span class="p">}),</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^accounts/redirect/$&#39;</span><span class="p">,</span> <span class="s">&#39;profiles.views.redirect_home&#39;</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Add custom settings parameters:</p>
+<div class="section" id="photo-directory-os-path-join-site-root-uploads-images">
+<h3>PHOTO_DIRECTORY = os.path.join(SITE_ROOT, &#8216;uploads/images&#8217;)<a class="headerlink" href="#photo-directory-os-path-join-site-root-uploads-images" title="Permalink to this headline">¶</a></h3>
+<p>Image upload location</p>
+</div>
+<div class="section" id="domain-static-http-localhost-8000-static">
+<h3>DOMAIN_STATIC = &#8216;<a class="reference external" href="http://localhost:8000/static/">http://localhost:8000/static/</a>&#8216;<a class="headerlink" href="#domain-static-http-localhost-8000-static" title="Permalink to this headline">¶</a></h3>
+<p>The same as STATIC_URL unless you have a subdomain specified for static content.  The flash uploader requires same-domai resources, so whatever domain you are serving
+Fotochest from, you must also include a static directory here.</p>
+</div>
+<div class="section" id="enable-multi-user-true">
+<h3>ENABLE_MULTI_USER = True<a class="headerlink" href="#enable-multi-user-true" title="Permalink to this headline">¶</a></h3>
+<p>Enable multiple users on the site.</p>
+</div>
+</div>
+<div class="section" id="static-files">
+<h2>Static Files<a class="headerlink" href="#static-files" title="Permalink to this headline">¶</a></h2>
+<p>If you intend on using the default template, you&#8217;ll need to grab the static files off of <a class="reference external" href="https://github.com/dstegelman/django-interactive-api-docs">https://github.com/dstegelman/django-interactive-api-docs</a> and copy them into an api_docs folder that can be seen
+by your static web server.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Theme Developer&#8217;s Guide</a><ul>
+<li><a class="reference internal" href="#requirements">Requirements</a></li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#setup">Setup</a><ul>
+<li><a class="reference internal" href="#photo-directory-os-path-join-site-root-uploads-images">PHOTO_DIRECTORY = os.path.join(SITE_ROOT, &#8216;uploads/images&#8217;)</a></li>
+<li><a class="reference internal" href="#domain-static-http-localhost-8000-static">DOMAIN_STATIC = &#8216;http://localhost:8000/static/&#8216;</a></li>
+<li><a class="reference internal" href="#enable-multi-user-true">ENABLE_MULTI_USER = True</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#static-files">Static Files</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="quick_start.html"
+                        title="previous chapter">Quick Start Guide</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/themes.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="quick_start.html" title="Quick Start Guide"
+             >previous</a> |</li>
+        <li><a href="index.html">FotoChest 2.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Derek Stegelman.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.
+    </div>
+  </body>
+</html>

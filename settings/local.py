@@ -1,6 +1,11 @@
 from settings.common import *
 import os
 
+DEBUG = True
+TEMPLATE_DEBUG = DEBUG
+THUMBNAIL_DEBUG = DEBUG
+
+
 ## Database Configurations
 
 DATABASES = {
@@ -36,18 +41,21 @@ STATIC_URL = 'http://localhost:8000/static/'
 # URL prefix for admin static files -- CSS, JavaScript and images.
 # Make sure to use a trailing slash.
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
-ADMIN_MEDIA_PREFIX = 'http://localhost:8000/static_admin/'
+ADMIN_MEDIA_PREFIX = 'http://static3.derekandlindy.com/prod/stegelman/grappelli/'
 
 PHOTO_DIRECTORY = os.path.join(SITE_ROOT, 'uploads/images')
 
 TEMPLATE_DIRS = (
     #"/Users/Derek/Documents/code/personal/apps/fotochest/static/photo_manager/themes/default/templates"
-    os.path.join(SITE_ROOT, 'static/photo_manager/themes/default/templates')
+    os.path.join(SITE_ROOT, 'static/photo_manager/themes/default/templates'),
+    os.path.join(SITE_ROOT, 'templates')
 )
 
 DOMAIN_STATIC = 'http://localhost:8000/static/'
 
-ENABLE_MULTI_USER = False
+ENABLE_MULTI_USER = True
+
+ACTIVE_THEME = "default"
 
 ROOT_URLCONF = 'urls.local'
 
@@ -58,13 +66,15 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'grappelli',
     'django.contrib.admin',
-    
+    'tastypie',
     'photo_manager',
+    'api_docs',
     # Everyone should be using south.  Seriously.
     'south',
     'sorl.thumbnail',
-    'photo_admin',
+    #'photo_admin',
     'locations',
     'profiles',
     #'tagging',

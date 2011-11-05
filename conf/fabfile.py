@@ -59,6 +59,10 @@ def quick_fix(msg):
 
 def memory():
     run("ps -u %s -o pid,rss,command" % env.deploy_user)
+    
+def build_docs():
+    local('cd docs && make html')
+    
 
 def setup():
     local("clear")
@@ -106,6 +110,7 @@ def deploy():
     print("Deployment completed.")
 
 def run_local_server():
+    build_docs()
     pip_install_req('local')
     sync_db('local')
     migrate('local')

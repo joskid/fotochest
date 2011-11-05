@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+
+{% block header %}{% endblock %}
+{% block main_content %}
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+<form method="post" action="{% url profiles.views.register %}" id="registration_form">
+{% csrf_token %}
+
+{{ form.non_field_errors }}
+<label>{{ form.username.label_tag }}</label>
+{{ form.username.errors }}
+{{ form.username }}
+
+    <label>{{ form.password1.label_tag }}</label>
+    {{ form.password1.errors }}
+    {{ form.password1 }}
+<label>{{ form.password2.label_tag }}</label>
+{{ form.password2.errors }}
+{{ form.password2 }}
+
+<input type="submit" value="Continue" class="button positive" />
+
+</form>
+{% endblock %}

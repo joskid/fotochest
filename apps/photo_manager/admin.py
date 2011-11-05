@@ -3,7 +3,7 @@ from photo_manager.models import *
 
 
 class PhotoAdmin(admin.ModelAdmin):
-    list_display = ('title', 'album', 'image_preview')
+    list_display = ('title', 'album', 'location', 'image_preview', 'thumbs_created')
     list_per_page = 10
     
 class AlbumAdmin(admin.ModelAdmin):

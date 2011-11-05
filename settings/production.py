@@ -1,10 +1,11 @@
 from settings.common import *
 
+
+DEBUG = True
+TEMPLATE_DEBUG = DEBUG
+THUMBNAIL_DEBUG = DEBUG
 ## Database Configuration
 
-ADMINS = (
-    #('Your Name', 'someone@example.com'),
-)
 
 DATABASES = {
     'default': {
@@ -47,6 +48,8 @@ ADMIN_MEDIA_PREFIX = ''
 ROOT_URLCONF = 'urls.production'
 
 PHOTO_DIRECTORY = ""
+ENABLE_MULTI_USER = True
+ACTIVE_THEME = "default"
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -58,7 +61,25 @@ TEMPLATE_DIRS = (
     #"./newapp/templates"
 )
 
-SENTRY_KEY = 'your key'
-SENTRY_REMOTE_URL = ''
-SENTRY_TESTING = True # Set to True to test sentry even when DEBUG=True
-SENTRY_SITE = ''
+INSTALLED_APPS = (
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'grappelli',
+    'django.contrib.admin',
+    'tastypie',
+    'photo_manager',
+    'api_docs',
+    # Everyone should be using south.  Seriously.
+    'south',
+    'sorl.thumbnail',
+    #'photo_admin',
+    'locations',
+    'profiles',
+    #'tagging',
+
+)
+

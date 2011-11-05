@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <link rel="stylesheet" href="{{ THEME_URL }}css/styles.css" type="text/css">
         <link rel="stylesheet" href="{{ STATIC_URL }}js/osx/css/osx.css" type="text/css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/github_buttons/gh-buttons.css" type="text/css">
         <link href='http://fonts.googleapis.com/css?family=Coda' rel='stylesheet' type='text/css'>
         <title>{% block title %}{% endblock %} | FotoChest</title>
         <meta name="description" content="Photo sharing">
@@ -19,21 +20,44 @@
         {% block extra_head %}{% endblock %}
     </head>
     <body {% block extra_body %}{% endblock %}>
+        <div id="logo_header">
+            <div id="logo_header_inner">
+            <img src="{{ STATIC_URL }}images/admin/FotoChestLogoSmall.png"><h1 class="logo"><a href="{% url photo_manager.views.homepage %}">FotoChest</a></h1>
+                <nav id="logo_nav">
+                    <ul>
+                        <li><a href="{% if request.user.is_authenticated %}{% url photo_manager.views.homepage username=request.user.username %}{% else %}{% url photo_manager.views.homepage %}{% endif %}">Home</a></li>
+                        <li><a href="{% url photo_manager.views.homepage %}">Explore</a></li>
+                        <li><a href="{% url locations.views.locations %}">Map</a></li>
+                        {% if user.is_authenticated %}
+                            <li><a href="{% url django.contrib.auth.views.logout %}">Logout</a></li>
+                        {% else %}
+                        <li><a href="{% url django.contrib.auth.views.login %}">Login</a></li>
+                        <li><a href="{% url profiles.views.register %}">Register</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
         <div id="main" class="{% block main_class %}{% endblock %}">
+            {% block header %}
         <header>
-            <img src="https://secure.gravatar.com/avatar/fbb84daa32187f3a8e3fd25d10b625e3?s=140&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png" width="75">
-            <h1><a href="{% url photo_manager.views.user_stream user_name="dstegelman" %}">Derek Stegelman's Photos</a></h1>
+            {% load travel_tags %}
+            <img src="{% get_gravatar current_user.email 75 %}" width="75">
+            <h1><a href="{% url photo_manager.views.homepage username=current_user.username %}">{{ current_user.first_name }} {{ current_user.last_name }}'s Photos</a></h1>
             <nav>
                 <ul>
-                    <li><a href="{% url photo_manager.views.homepage %}">Photo Stream</a></li>
-                    <li><a href="{% url photo_manager.views.albums user_name="dstegelman" %}">Albums</a></li>
-                    <li><a href="{% url locations.views.locations %}">Map</a></li>
+                    <li><a href="{% url photo_manager.views.homepage username=current_user.username %}">Photo Stream</a></li>
+                    <li><a href="{% url photo_manager.views.albums username=current_user.username %}">Albums</a></li>
+                    <li><a href="{% url locations.views.locations username=current_user.username %}">Map</a></li>
+                    {% block extra_non_auth_nav %}{% endblock %}
                     {% if user.is_authenticated %}
                     {% block extra_nav %}{% endblock %}
+                      <li><a href="{% url profiles.views.edit_profile %}">Edit Profile</a></li>
                     {% endif %}
                 </ul>
             </nav>
         </header>
+        {% endblock %}
         {% block main_content %}{% endblock %}
             
         </div>

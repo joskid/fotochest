@@ -6,12 +6,13 @@ from django.shortcuts import *
 from django.db.models import Q
 from api_manager.utils import *
 import logging
+from sorl.thumbnail import get_thumbnail
 
    
 class PhotoHandler(BaseHandler):
     allowed_methods = ('GET', 'PUT', 'DELETE', 'POST')
     model = Photo
-    fields = ('title', 'slug', 'id')
+    fields = ('title', 'slug', 'id', 'img', 'thumbnail', 'url', 'description', 'date_uploaded', ('location', ('city', 'country', 'longitude', 'latitude', 'default_location',),), ('user', ('user_name'),), ('album', ('id', 'title', 'slug',),),)
     
     def read(self, request, photo_id=None):
         
@@ -21,12 +22,22 @@ class PhotoHandler(BaseHandler):
                 base = Photo.objects.all()[:limit]
             else:
                 base = Photo.objects.all()
+            for photo in base:
+                photo.img = photo.image.url
+                im = get_thumbnail(photo.image, '240x165')
+                photo.thumbnail = im.url
+                photo.url = photo.get_absolute_url()
             return base
         else:
             try:
                 photo = get_object_or_404(Photo, pk=photo_id)
             except Photo.DoesNotExist:
                 return rc.NOT_FOUND
+            photo.img = photo.image.url
+            im = get_thumbnail(photo.image, '240x165')
+            photo.thumbnail = im.url
+            photo.url = photo.get_absolute_url()
+            
             return photo
         
     def create(self, request):

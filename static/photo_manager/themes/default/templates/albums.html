@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Albums{% endblock %}
+{% block extra_nav %}
+    <li><a href="#" class="osx">Add Album</a></li>
+{% endblock %}
+
+{% block main_content %}
+
+    {% for album in albums %}
+                <article class="photo stream">
+                <a href="{{ album.get_absolute_url }}">
+                    {% if album.album_cover %}
+                        {% load thumbnail %}
+                        {% thumbnail album.album_cover "240x161" as im %}
+                        <img src="{{ im.url }}">
+                        {% endthumbnail %}
+                        
+                    {% else %}
+                        {% if album.get_album_cover %}
+                            {% load thumbnail %}
+                    {% thumbnail album.get_album_cover.image "240x161" as im %}
+                <img src="{{ im.url }}">
+                    {% endthumbnail %}
+                        {% else %}
+                        <img src="http://dummyimage.com/240x161">
+                        {% endif %}
+                {% endif %}
+                
+                <h3>{{ album.title }}</h3>
+                </a>
+                </article>
+    {% endfor %}
+
+
+<div class="pagination">
+            {% if photos.has_previous %}
+            <a href="?page={{ photos.previous_page_number }}">{{ photos.previous_page_number }}</a>
+            {% endif %}
+            {% if photos.number %}
+            <span class="current">{{ photos.number }}</span>
+            {% endif %}
+            {% if photos.has_next %}
+            <a href="?page={{ photos.next_page_number }}" class="inactive">{{ photos.next_page_number }}</a>
+            {% endif %}
+       </div>
+
+{% if user.is_authenticated %}
+            <!-- modal content -->
+		<div id="osx-modal-content">
+			<div id="osx-modal-title">FotoChest - Add Album</div>
+			<div class="close"><a href="#" class="simplemodal-close">x</a></div>
+			<div id="osx-modal-data">
+                            <form method="POST" action=".">{% csrf_token %}
+				{{ album_form.as_p }}
+                                <input type="submit" value="Add Album">
+                            </form>
+				<p><button class="simplemodal-close">Close</button> <span>(or press ESC or click the overlay)</span></p>
+			</div>
+		</div>
+                
+            {% endif %}
+{% endblock %}

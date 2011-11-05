@@ -1,12 +1,12 @@
 from settings.common import *
-
+import os
 
 ## Database Configurations
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': './data.db',                      # Or path to database file if using sqlite3.
+        'NAME': SITE_ROOT + '/dev.db',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -16,7 +16,7 @@ DATABASES = {
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = '/Users/Derek/Documents/code/personal/fotochest/upload'
+MEDIA_ROOT = os.path.join(SITE_ROOT, 'uploads')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -38,9 +38,35 @@ STATIC_URL = 'http://localhost:8000/static/'
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
 ADMIN_MEDIA_PREFIX = 'http://localhost:8000/static_admin/'
 
-PHOTO_DIRECTORY = "/Users/Derek/Documents/code/personal/fotochest/upload"
+PHOTO_DIRECTORY = os.path.join(SITE_ROOT, 'uploads/images')
+
+TEMPLATE_DIRS = (
+    #"/Users/Derek/Documents/code/personal/apps/fotochest/static/photo_manager/themes/default/templates"
+    os.path.join(SITE_ROOT, 'static/photo_manager/themes/default/templates')
+)
 
 DOMAIN_STATIC = 'http://localhost:8000/static/'
 
+ENABLE_MULTI_USER = False
 
 ROOT_URLCONF = 'urls.local'
+
+INSTALLED_APPS = (
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'django.contrib.admin',
+    
+    'photo_manager',
+    # Everyone should be using south.  Seriously.
+    'south',
+    'sorl.thumbnail',
+    'photo_admin',
+    'locations',
+    'profiles',
+    #'tagging',
+
+)

@@ -30,6 +30,8 @@ if settings.ENABLE_MULTI_USER:
         
         url(r'^foto/(?P<photo_id>\d+)/(?P<username>[-\w]+)/(?P<album_slug>[-\w]+)/(?P<photo_slug>[-\w]+)/$', photo),
         url(r'^foto/(?P<photo_id>\d+)/(?P<username>[-\w]+)/(?P<album_slug>[-\w]+)/(?P<photo_slug>[-\w]+)/fullscreen/$', photo_fullscreen),
+        url(r'^foto/(?P<photo_id>\d+)/(?P<username>[-\w]+)/(?P<album_slug>[-\w]+)/(?P<photo_slug>[-\w]+)/edit/$', edit_photo),
+        url(r'^foto/(?P<photo_id>\d+)/(?P<username>[-\w]+)/(?P<album_slug>[-\w]+)/(?P<photo_slug>[-\w]+)/delete/$', delete_photo),
         
         # Upload
         url(r'^upload/(?P<username>[-\w]+)/(?P<album_slug>[-\w]+)/(?P<location_slug>[-\w]+)/$', photo_upload, name="file_uploader"),

@@ -223,7 +223,7 @@ aside
     color: #fff;
     padding: 12px;
     font-size: 14px;
-    margin-top: 37px;
+    /*margin-top: 37px;*/
 }
 
 aside p
@@ -344,6 +344,7 @@ form input[type="submit"]
 {
     clear: both;
     float:left;
+    width: 850px;
 }
 
 .main_image
@@ -368,11 +369,32 @@ form input[type="submit"]
 
 .single_photo .button-group
 {
-    display: block;
+    
     margin-bottom: 12px;
     clear:left;
     height: 25px;
 }
+
+.single_photo .button-group.edit
+{
+    float: right;
+}
+
+/* Edit form */
+
+aside.photo_meta
+{
+    float:left;
+    width: 225px;
+}
+
+div.edit_form
+{
+    float: left;
+    margin-left: 50px;
+}
+
+
 
 
 /* Pagination */

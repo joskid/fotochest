@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Edit - {{ photo.title }}{% endblock %}
+{% block header %}{% endblock %}
+{% block main_content %}
+
+<aside class="photo_meta">
+    <h3>Edit Photo</h3>
+    {% load thumbnail %}
+    {% thumbnail photo.image "240x165" as im %}
+    <img src="{{ im.url }}" class="main_image">
+    {% endthumbnail %}
+</aside>
+<div class="edit_form">
+   <form action="." method="post">
+    {% csrf_token %}
+    {{ form.errors }}
+    {{ form.non_field_errors }}
+    <label>{{ form.title.label_tag }}</label>
+    {{ form.title }}
+
+
+    <label>{{ form.description.label_tag }}</label>
+    {{ form.description }}
+    
+    <label>{{ form.album.label_tag }}</label>
+    {{ form.album }}
+
+    <input type="submit" value="Save Changes" class="button positive" />
+   </form>
+</div>
+
+
+{% endblock %}

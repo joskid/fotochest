@@ -75,7 +75,7 @@ class Photo(models.Model):
     description = models.TextField(null=True, blank=True)
     date_uploaded = models.DateTimeField(auto_now=False, auto_now_add=True)
     album = models.ForeignKey(Album)
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, blank=True, null=True)
     location = models.ForeignKey(Location, blank=True, null=True)
     thumbs_created = models.BooleanField(default=False, editable=False)
     

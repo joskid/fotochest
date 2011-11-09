@@ -74,6 +74,27 @@ rules: [
 
   }
 </script>
+<script>
+    $(document).ready(function() {
+        $(document).keypress(function(event) {
+            
+            {% if photo.get_next %}
+            if ( event.keyCode == 39 ) {
+                // right
+                window.location = "{{ photo.get_next }}"
+            }
+            {% endif %}
+            {% if photo.get_previous %}
+            
+            if ( event.keyCode == 37 ) {
+                // left
+                window.location = "{{ photo.get_previous }}"
+            }
+            
+            {% endif %}
+        });
+    });
+</script>
 {% include "snippets/live_edit.js" %}
 
 {% endblock %}

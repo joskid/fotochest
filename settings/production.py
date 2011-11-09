@@ -48,8 +48,7 @@ ADMIN_MEDIA_PREFIX = ''
 ROOT_URLCONF = 'urls.production'
 
 PHOTO_DIRECTORY = ""
-ENABLE_MULTI_USER = True
-ACTIVE_THEME = "default"
+
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".

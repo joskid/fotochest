@@ -32,7 +32,9 @@
                             <li><a href="{% url django.contrib.auth.views.logout %}">Logout</a></li>
                         {% else %}
                         <li><a href="{% url django.contrib.auth.views.login %}">Login</a></li>
+                        {% if ENABLE_REGISTRATION %}
                         <li><a href="{% url profiles.views.register %}">Register</a></li>
+                        {% endif %}
                         {% endif %}
                     </ul>
                 </nav>

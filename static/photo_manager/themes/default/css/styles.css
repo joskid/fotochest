@@ -283,6 +283,13 @@ aside #small_map
     margin-top: 12px;
 }
 
+aside dl dt,
+aside dl dd
+{
+    float:left;
+    width: 46%;
+}
+
 
 
 
@@ -306,6 +313,7 @@ form label
 {
     display: block;
     margin-top: 12px;
+    margin-bottom: 6px;
 }
 
 form input.text, form input.title, form input[type="email"], form input[type="text"], form input[type="password"] {
@@ -390,11 +398,15 @@ aside.photo_meta
 
 div.edit_form
 {
-    float: left;
     margin-left: 50px;
+    padding-left: 228px;
 }
 
-
+.edit_form form input[type="text"],
+.edit_form form textarea
+{
+    width: 80%;
+}
 
 
 /* Pagination */

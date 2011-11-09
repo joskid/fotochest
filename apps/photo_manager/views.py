@@ -234,7 +234,7 @@ def edit_photo(request, photo_id=None, album_slug=None, username=None, photo_slu
         form = PhotoForm(instance=photo)
     context['form'] = form
     context['photo'] = photo
-    
+    context['exif_data'] = photo.get_exif_data()
     return render(request, 'edit_photo.html', context)
     
 def delete_photo(request, photo_id=None, album_slug=None, username=None, photo_slug=None):

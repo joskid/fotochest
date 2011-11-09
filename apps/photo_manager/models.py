@@ -5,6 +5,8 @@ import os
 from django.conf import settings
 from locations.models import *
 from sorl.thumbnail import get_thumbnail
+from PIL import Image
+from PIL.ExifTags import TAGS
 
 class Album(models.Model):
     title = models.CharField(max_length=250)
@@ -118,6 +120,15 @@ class Photo(models.Model):
         im = get_thumbnail(self.image, '75x75', crop="center")
         im2 = get_thumbnail(self.image, '1024x768')
         im3 = get_thumbnail(self.image, '240x165')
+        
+    def get_exif_data(self):
+        exif_data = {}
+        i = Image.open(self.image)
+        info = i._getexif()
+        for tag, value in info.items():
+            decoded = TAGS.get(tag, tag)
+            exif_data[decoded] = value
+        return exif_data
     
     @models.permalink
     def get_absolute_url(self):

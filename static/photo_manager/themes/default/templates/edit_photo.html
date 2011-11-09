@@ -9,6 +9,18 @@
     {% thumbnail photo.image "240x165" as im %}
     <img src="{{ im.url }}" class="main_image">
     {% endthumbnail %}
+    <h3>Photo info</h3>
+    
+    <dl>
+        <dt>Flash:</dt><dd>{{ exif_data.Flash }}</dd>
+        <dt>Date Taken:</dt><dd>{{ exif_data.DateTime }}</dd>
+        <dt>Make:</dt><dd>{{ exif_data.Make }}</dd>
+        <dt>Model:</dt><dd>{{ exif_data.Model }}</dd>
+        
+    </dl>
+    
+    
+    
 </aside>
 <div class="edit_form">
    <form action="." method="post">

@@ -37,7 +37,7 @@ if settings.ENABLE_MULTI_USER:
         url(r'^upload/(?P<username>[-\w]+)/(?P<album_slug>[-\w]+)/(?P<location_slug>[-\w]+)/$', photo_upload, name="file_uploader"),
         url(r'^choose/', choose, name="choose"),
         # Feeds
-        url(r'^feed/$', StreamFeed()),
+        url(r'^feed/$', StreamFeed(), name="homepage_feed"),
         
         # User stream
         url(r'^(?P<username>[-\w]+)/$', homepage),

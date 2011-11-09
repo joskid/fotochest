@@ -33,6 +33,8 @@ def locations(request, username=None):
     
 def location(request, location_slug, username=None):
     location = get_object_or_404(Location, slug=location_slug)
+    # Get location object, now get more location objects where location.city = location.city?
+    # how do we know if we are asking for city, state or country?  Should we have that specified?
     context = {}
     if username:
         photos = Photo.objects.filter(location=location, user__username=username)

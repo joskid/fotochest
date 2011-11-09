@@ -408,6 +408,12 @@ div.edit_form
     width: 80%;
 }
 
+.edit_form form input:focus,
+.edit_form form textarea:focus
+{
+    background: #FFFFD3;
+}
+
 
 /* Pagination */
 .pagination

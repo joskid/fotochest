@@ -53,9 +53,7 @@ TEMPLATE_DIRS = (
 
 DOMAIN_STATIC = 'http://localhost:8000/static/'
 
-ENABLE_MULTI_USER = True
 
-ACTIVE_THEME = "default"
 
 ROOT_URLCONF = 'urls.local'
 

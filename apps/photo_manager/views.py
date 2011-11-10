@@ -216,7 +216,30 @@ def slideshow(request, location_slug=None, album_slug=None, username=None):
     return render(request, "slideshow.html", context)
     
     
+### Forms
+def edit_photo(request, photo_id=None, album_slug=None, username=None, photo_slug=None):
+    context = {}
+    context['current_user'] = User.objects.get(username=username)
+    photo = Photo.objects.get(pk=photo_id)
+    if request.user != photo.user:
+        return render(request, 'not_authorized.html')
+        
+    if request.method == "POST":
+        form = PhotoForm(request.POST, instance=photo)
+        if form.is_valid():
+            new_photo = form.save()
+            
+            return redirect(new_photo)
+    else:        
+        form = PhotoForm(instance=photo)
+    context['form'] = form
+    context['photo'] = photo
+    context['exif_data'] = photo.get_exif_data()
+    return render(request, 'edit_photo.html', context)
     
+def delete_photo(request, photo_id=None, album_slug=None, username=None, photo_slug=None):
+    return render(request, 'edit_photo.html')
+
 ### Jobs
 
 def run_thumb_job(request):

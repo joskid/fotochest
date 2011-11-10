@@ -223,7 +223,7 @@ aside
     color: #fff;
     padding: 12px;
     font-size: 14px;
-    margin-top: 37px;
+    /*margin-top: 37px;*/
 }
 
 aside p
@@ -283,6 +283,13 @@ aside #small_map
     margin-top: 12px;
 }
 
+aside dl dt,
+aside dl dd
+{
+    float:left;
+    width: 46%;
+}
+
 
 
 
@@ -306,6 +313,7 @@ form label
 {
     display: block;
     margin-top: 12px;
+    margin-bottom: 6px;
 }
 
 form input.text, form input.title, form input[type="email"], form input[type="text"], form input[type="password"] {
@@ -344,6 +352,7 @@ form input[type="submit"]
 {
     clear: both;
     float:left;
+    width: 850px;
 }
 
 .main_image
@@ -365,12 +374,44 @@ form input[type="submit"]
     margin-bottom: 8px;
 }
 
+
 .single_photo .button-group
 {
-    display: block;
+    
     margin-bottom: 12px;
     clear:left;
     height: 25px;
+}
+
+.single_photo .button-group.edit
+{
+    float: right;
+}
+
+/* Edit form */
+
+aside.photo_meta
+{
+    float:left;
+    width: 225px;
+}
+
+div.edit_form
+{
+    margin-left: 50px;
+    padding-left: 228px;
+}
+
+.edit_form form input[type="text"],
+.edit_form form textarea
+{
+    width: 80%;
+}
+
+.edit_form form input:focus,
+.edit_form form textarea:focus
+{
+    background: #FFFFD3;
 }
 
 

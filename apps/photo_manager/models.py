@@ -7,6 +7,7 @@ from locations.models import *
 from sorl.thumbnail import get_thumbnail
 from PIL import Image
 from PIL.ExifTags import TAGS
+from photo_manager.managers import *
 
 class Album(models.Model):
     title = models.CharField(max_length=250)
@@ -81,6 +82,9 @@ class Photo(models.Model):
     location = models.ForeignKey(Location, blank=True, null=True)
     thumbs_created = models.BooleanField(default=False, editable=False)
     deleted = models.BooleanField(default=False, editable=False)
+    
+    
+    objects = PhotoManager()
     
     def __unicode__(self):
         return self.title

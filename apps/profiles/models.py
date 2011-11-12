@@ -1,3 +1,5 @@
+# Add an inline to the admin Yo!
+
 from django.db import models
 from django.contrib.auth.models import User
 from photo_manager.models import Photo

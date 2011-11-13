@@ -11,7 +11,7 @@ import random
 from sorl.thumbnail import get_thumbnail
 from photo_manager.forms import *
 from django.conf import settings
-
+from django.contrib.auth.decorators import login_required
 
 # please work on album(s) [CHILD ALBUMS{ page.
 
@@ -211,7 +211,8 @@ def slideshow(request, location_slug=None, album_slug=None, username=None):
     
     
 ### Forms
-def edit_photo(request, photo_id=None, album_slug=None, username=None, photo_slug=None):
+@login_required
+def edit_photo(request, photo_id, album_slug=None, username=None, photo_slug=None):
     context = {}
     context['current_user'] = User.objects.get(username=username)
     photo = get_object_or_404(Photo, pk=photo_id, deleted=False)
@@ -230,10 +231,15 @@ def edit_photo(request, photo_id=None, album_slug=None, username=None, photo_slu
     context['photo'] = photo
     context['exif_data'] = photo.get_exif_data()
     return render(request, 'edit_photo.html', context)
+
+@login_required    
+def delete_photo(request, photo_id, album_slug=None, username=None, photo_slug=None):
+    photo = get_object_or_404(Photo, pk=photo_id, deleted=False)
+    if request.user != photo.user:
+        return render(request, 'not_authorized.html')
     
-def delete_photo(request, photo_id=None, album_slug=None, username=None, photo_slug=None):
-    
-    
+    photo.deleted = True
+    photo.save()
     return render(request, 'edit_photo.html')
 
 ### Jobs

@@ -28,9 +28,7 @@ def choose(request):
 @csrf_exempt
 def photo_upload(request, username, location_slug, album_slug):
     context = {}
-    
-    
-    
+        
     if request.method == 'POST':
         #"240x165"
         #1024x768"
@@ -61,9 +59,6 @@ def photo_upload(request, username, location_slug, album_slug):
             for chunk in uploaded_file.chunks():
                 destination.write(chunk)
             destination.close()
-            #im = get_thumbnail(photo_new.image, '150x150', crop="center")
-            #im2 = get_thumbnail(photo_new.image, '1024x768')
-            #im3 = get_thumbnail(photo_new.image, '240x165')
             
         # indicate that everything is OK for SWFUpload
         
@@ -99,7 +94,7 @@ def album(request, album_id, album_slug, username=None):
         
         return render(request, "albums.html", context)
     else:
-        photos = Photo.objects.filter(album__slug=album_slug, user=user)
+        photos = Photo.objects.active().filter(album__slug=album_slug, user=user)
         paginator = Paginator(photos, 12)
         page = request.GET.get('page', 1)
         context['album_view'] = True
@@ -149,16 +144,16 @@ def homepage(request, username=None):
     if settings.ENABLE_MULTI_USER:
 
         if username:
-            photos = Photo.objects.filter(user__username=username)
+            photos = Photo.objects.active().filter(user__username=username)
             context['user_page'] = '1'
             context['current_user'] = User.objects.get(username=username)
             context['form_albums'] = Album.objects.filter(user__username=username)
         else:
             context['user_page'] = '0'
-            photos = Photo.objects.all()
+            photos = Photo.objects.active()
             
     else:
-        photos = Photo.objects.filter(user__username=username)
+        photos = Photo.objects.active().filter(user__username=username)
         context['form_albums'] = Album.objects.all()
         
     paginator = Paginator(photos, 12)
@@ -178,25 +173,24 @@ def photo(request, photo_id, album_slug, photo_slug, username=None):
     if settings.ENABLE_MULTI_USER:
         if username:
             user = User.objects.get(username=username)
-            photo = get_object_or_404(Photo, pk=photo_id)
+            photo = get_object_or_404(Photo, pk=photo_id, deleted=False)
             
             context['user_page'] = '1'
             context['current_user'] = user
     else:
-        photo = get_object_or_404(Photo, pk=photo_id)
+        photo = get_object_or_404(Photo, pk=photo_id, deleted=False)
     
-    photos = Photo.objects.filter(album__slug=album_slug, id__lt=photo_id)[:8]
+    photos = Photo.objects.active().filter(album__slug=album_slug, id__lt=photo_id)[:8]
     
     context['photo_id'] = photo.id
     context['photo'] = photo
     context['other_photos'] = photos
-    context['photos_from_this_location'] = Photo.objects.filter(location=photo.location)[:4]
+    context['photos_from_this_location'] = Photo.objects.active().filter(location=photo.location)[:4]
     return render(request, "photo.html", context)
 
 def photo_fullscreen(request, photo_id, album_slug, photo_slug, username=None):
     context = {}
-    context['photo'] = Photo.objects.get(pk=photo_id)
-    
+    context['photo'] = get_object_or_404(Photo, pk=photo_id, deleted=False)
     
     return render(request, 'fullscreen.html', context)
 
@@ -204,11 +198,11 @@ def photo_fullscreen(request, photo_id, album_slug, photo_slug, username=None):
 def slideshow(request, location_slug=None, album_slug=None, username=None):
     context = {}
     if location_slug:
-        context['photos'] = Photo.objects.filter(location__slug=location_slug)
+        context['photos'] = Photo.objects.active().filter(location__slug=location_slug)
         location = Location.objects.get(slug=location_slug)
         context['what_object'] = location
     if album_slug:
-        context['photos'] = Photo.objects.filter(album__slug=album_slug)
+        context['photos'] = Photo.objects.active().filter(album__slug=album_slug)
         album = Album.objects.get(slug=album_slug)
         context['what_object'] = album.title
      
@@ -218,10 +212,10 @@ def slideshow(request, location_slug=None, album_slug=None, username=None):
     
 ### Forms
 @login_required
-def edit_photo(request, photo_id=None, album_slug=None, username=None, photo_slug=None):
+def edit_photo(request, photo_id, album_slug=None, username=None, photo_slug=None):
     context = {}
     context['current_user'] = User.objects.get(username=username)
-    photo = Photo.objects.get(pk=photo_id)
+    photo = get_object_or_404(Photo, pk=photo_id, deleted=False)
     if request.user != photo.user:
         return render(request, 'not_authorized.html')
         
@@ -239,13 +233,19 @@ def edit_photo(request, photo_id=None, album_slug=None, username=None, photo_slu
     return render(request, 'edit_photo.html', context)
 
 @login_required    
-def delete_photo(request, photo_id=None, album_slug=None, username=None, photo_slug=None):
+def delete_photo(request, photo_id, album_slug=None, username=None, photo_slug=None):
+    photo = get_object_or_404(Photo, pk=photo_id, deleted=False)
+    if request.user != photo.user:
+        return render(request, 'not_authorized.html')
+    
+    photo.deleted = True
+    photo.save()
     return render(request, 'edit_photo.html')
 
 ### Jobs
 
 def run_thumb_job(request):
-    photos = Photo.objects.filter(thumbs_created=False)[:3]
+    photos = Photo.objects.active().filter(thumbs_created=False)[:3]
     for photo in photos:
         try:
             photo.make_thumbnails()
@@ -263,7 +263,7 @@ def update_photo_title(request):
     if request.method == "POST":
         photo_title = request.POST.get("photo_title")
         photo_id = request.POST.get("photo_id")
-        photo = Photo.objects.get(pk=photo_id)
+        photo = get_object_or_404(Photo, pk=photo_id)
         photo.title = photo_title
         photo.save()
         
@@ -274,7 +274,7 @@ def update_album_title(request):
     if request.method == "POST":
         album_title = request.POST.get("album_title")
         album_id = request.POST.get("album_id")
-        album = Album.objects.get(pk=album_id)
+        album = get_object_or_404(Album, pk=album_id)
         album.title = album_title
         album.save()
     

@@ -110,8 +110,9 @@ def deploy():
     print("Deployment completed.")
 
 def run_local_server():
-    build_docs()
+    # Create folders for media if they don't exist
     pip_install_req('local')
+    build_docs()
     sync_db('local')
     migrate('local')
     run_local()

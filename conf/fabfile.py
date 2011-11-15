@@ -22,8 +22,6 @@ env.production_branch = "prod-2"
 env.docs_dir = "~/webapps/docs_static/fotochest"
 
 # Utility Methods
-def view_log():
-    run('cat %s' % env.log_location)
 
 # Local Development
 def run_local_server():
@@ -42,7 +40,7 @@ def test(app=None):
         local('python manage.py test --settings=settings.local')
     
 def push(branch):
-   local("git push origin %s" % branchs) 
+   local("git push origin %s" % branch) 
 
 # Helper Methods
 def virtualenv(command):
@@ -55,16 +53,6 @@ def pip_install_req(env):
     else:
         virtualenv('pip install -r conf/requirements.txt') 
 
-def get_code_latest():
-    with cd(env.directory):
-        run('git pull origin %s' % env.git_production_branch)
-        
-
-        
-def publish_docs():
-    with cd(env.directory + '/docs/build/html'):
-        run('cp -r * ' + env.docs_dir)
-
 def sync_db(env):
     if env == "local":
         local("python manage.py syncdb --settings=settings.local")
@@ -75,7 +63,7 @@ def migrate(env):
     if env == "local":
         local("python manage.py migrate --settings=settings.local")
     else:
-        virtualenv('python manage.py migrate --settings=settings.production')
+        virtualenv('python manage.py migrate --settings=settings.%s' % env)
         
 def custom_migration(app, migration):
     virtualenv('python manage.py migrate:%s %s --settings=settings.production')
@@ -90,17 +78,22 @@ def make_release(tag):
 
 # Remote Commands
 
+def memory():
+    run("ps -u %s -o pid,rss,command" % env.deploy_user)
     
-def view_log():
-    run('sudo cat /var/log/apache2/ome-error.log')
-
 def kick_apache():
     run('sudo %s graceful' % env.apache_bin_dir)
 
-
-def get_code_latest():
+def get_code_latest(branch):
     with cd(env.directory):
-        run('git pull origin %s' % env.git_production_branch)
+        run('git pull origin %s' % branch)
+        
+def view_log():
+    run('cat %s' % env.log_location)
+        
+def publish_docs():
+    with cd(env.directory + '/docs/build/html'):
+        run('cp -r * ' + env.docs_dir)
         
 def get_code_release(tag):
     with cd(env.directory):
@@ -110,11 +103,8 @@ def get_code_release(tag):
 def copy_static(env):
     with cd(env.directory + '/static'):
         run('cp -r * ' + env.static_dir)
-
 # Deployment Commands
 
-def memory():
-    run("ps -u %s -o pid,rss,command" % env.deploy_user)
 
 def production(release_tag):
     env.branch = "production"

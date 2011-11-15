@@ -15,11 +15,36 @@ env.static_dir = '~/static/prod'
 env.project_virtual = '~/.virtualenvs/%s' % PROJECT_ID
 env.activate = 'source ~/.virtualenvs/%s/bin/activate' % PROJECT_ID
 env.deploy_user = PROJECT_USER
+env.apache_bin_dir = "~/apache2/bin"
+env.log_location = "~/logs/app.log"
+env.git_repo = "git@something.git"
+env.production_branch = "prod-2"
+env.docs_dir = "~/webapps/docs_static/fotochest"
 
-def kick_apache():
-    with cd('~/apache2/bin'):
-        run("./restart")
+# Utility Methods
+def view_log():
+    run('cat %s' % env.log_location)
 
+# Local Development
+def run_local_server():
+    local("python manage.py runserver --settings=settings.local")
+    
+def run_local():
+    pip_install_req('local')
+    sync_db('local')
+    migrate('local')
+    run_local_server()
+    
+def test(app=None):
+    if app:
+        local('python manage.py test %s --settings=settings.local' % app)
+    else:
+        local('python manage.py test --settings=settings.local')
+    
+def push(branch):
+   local("git push origin %s" % branchs) 
+
+# Helper Methods
 def virtualenv(command):
     with cd(env.directory):
         run(env.activate + '&&' + command)
@@ -30,13 +55,15 @@ def pip_install_req(env):
     else:
         virtualenv('pip install -r conf/requirements.txt') 
 
-def get_code():
+def get_code_latest():
     with cd(env.directory):
-        run('git pull origin production')
+        run('git pull origin %s' % env.git_production_branch)
         
-def copy_static():
-    with cd(env.directory + 'assets'):
-        run('cp -r * ' + env.static_dir)
+
+        
+def publish_docs():
+    with cd(env.directory + '/docs/build/html'):
+        run('cp -r * ' + env.docs_dir)
 
 def sync_db(env):
     if env == "local":
@@ -49,77 +76,61 @@ def migrate(env):
         local("python manage.py migrate --settings=settings.local")
     else:
         virtualenv('python manage.py migrate --settings=settings.production')
+        
+def custom_migration(app, migration):
+    virtualenv('python manage.py migrate:%s %s --settings=settings.production')
 
 def build_migration(app):
     local("python manage.py schemamigration %s --auto --settings=settings.local" % app)
+ 
+def make_release(tag):
+    local("git tag -a %s -m 'version %s'" % (tag, tag))
+    local("git push --tags")
+    print("Release %s has been made and pushed to github." % tag)
+
+# Remote Commands
+
+    
+def view_log():
+    run('sudo cat /var/log/apache2/ome-error.log')
+
+def kick_apache():
+    run('sudo %s graceful' % env.apache_bin_dir)
+
+
+def get_code_latest():
+    with cd(env.directory):
+        run('git pull origin %s' % env.git_production_branch)
         
-def quick_fix(msg):
-    local("git add .&&git commit -m '%s'&&git checkout production&&git merge develop&&git push origin production develop&&git checkout develop" % msg)
-    deploy()
+def get_code_release(tag):
+    with cd(env.directory):
+        run('git fetch --tags')
+        run('git checkout %s' % tag)
+        
+def copy_static(env):
+    with cd(env.directory + '/static'):
+        run('cp -r * ' + env.static_dir)
+
+# Deployment Commands
 
 def memory():
     run("ps -u %s -o pid,rss,command" % env.deploy_user)
-    
-def build_docs():
-    local('cd docs && make html')
-    
 
-def setup():
-    local("clear")
-    print("Running Setup Script..I think..")
-    
-    #run("mkdir " + env.directory)
-    #with cd(env.virtual_dir):
-    #    run('virtualenv %s --no-site-packages' % PROJECT_ID)
-    #run("git clone " + env.git_repo + " " + env.directory)
-    #with cd(env.directory):
-    #    run('git checkout production')
-    virtualenv("easy_install http://downloads.sourceforge.net/project/mysql-python/mysql-python-test/1.2.3c1/MySQL-python-1.2.3c1.tar.gz?use_mirror=voxel")
-    deploy()
-
-#Local Commands
-def run_local():
-    local('python manage.py runserver --settings=settings.local')
-  
-#Utils    
-def samuel_l_jackson():
-    local('clear')
-    print('access main program')
-    time.sleep(1)
-    print('access main security')
-    time.sleep(1)    
-    print('access main program grid')
-    time.sleep(3)    
-    print('')
-    print('')
-    print('Hold on to yer butts...')
-    print('')
-    print('')
-    
-    
+def production(release_tag):
+    env.branch = "production"
+    env.release_tag = release_tag
 
 def deploy():
-    local("clear")
-    #samuel_l_jackson()
-    pip_install_req()
-    get_code()
-    #copy_static()
-    sync_db("production")
-    migrate("production")
+    if env.branch == "production":
+        get_code_release(release_tag)
+    elif env.branch == "alpha":
+        get_code_latest()
+    pip_install_req(env.branch)
+    copy_static(env.branch)
+    sync_db(env.branch)
+    migrate(env.branch)
     kick_apache()
+    # Need to find out what we are going to do to restart.
     print("Deployment completed.")
-
-def run_local_server():
-    # Create folders for media if they don't exist
-    pip_install_req('local')
-    build_docs()
-    sync_db('local')
-    migrate('local')
-    run_local()
-
-       
-    
-
-    
     
     

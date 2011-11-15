@@ -41,7 +41,7 @@ STATIC_URL = 'http://localhost:8000/static/'
 # URL prefix for admin static files -- CSS, JavaScript and images.
 # Make sure to use a trailing slash.
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
-ADMIN_MEDIA_PREFIX = 'http://static3.derekandlindy.com/prod/stegelman/grappelli/'
+ADMIN_MEDIA_PREFIX = '%sgrappelli/' % STATIC_URL
 
 PHOTO_DIRECTORY = os.path.join(SITE_ROOT, 'uploads/images')
 

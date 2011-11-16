@@ -359,8 +359,7 @@ form input[type="submit"]
 {
     max-width: 850px;
     max-height: 720px;
-    
-    
+    clear: both;
 }
 
 

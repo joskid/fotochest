@@ -33,6 +33,7 @@ class PhotoResource(ModelResource):
     class Meta:
         queryset = Photo.objects.all()
         resource_name = 'photo'
+        include_absolute_url = True
         excludes = ['thumbs_created', 'file_name']
         
     def dehydrate(self, bundle):

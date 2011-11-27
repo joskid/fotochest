@@ -36,6 +36,14 @@ class PhotoResource(ModelResource):
         include_absolute_url = True
         excludes = ['thumbs_created', 'file_name']
         
+    def build_filters(self, filters=None):
+        if filters is None:
+            filters = {}
+        orm_filters = super(PhotoResource, self).build_filters(filters)
+        if "album_id" in filters:
+            orm_filters['album__id'] = filters['album_id']
+        return orm_filters
+        
     def dehydrate(self, bundle):
         thumb_obj = get_thumbnail(bundle.obj.image, "240x165")
         thumb_square = get_thumbnail(bundle.obj.image, "75x75", crop="center")

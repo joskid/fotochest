@@ -8,6 +8,13 @@ ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
 
+import djcelery
+djcelery.setup_loader()
+
+BROKER_TRANSPORT = "django"
+CELERY_ACKS_LATE = True
+CELERYD_PREFETCH_MULTIPLIER = 1
+
 MANAGERS = ADMINS
 
 TIME_ZONE = 'America/Chicago'

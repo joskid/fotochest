@@ -116,6 +116,7 @@ class Photo(models.Model):
         return '<img src="%s" width="150"/>'  % im.url
     image_preview.allow_tags = True
     
+    
     def make_thumbnails(self):
         # Current Thumb list
         # 240x165 (streams)

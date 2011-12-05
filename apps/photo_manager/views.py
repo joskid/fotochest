@@ -12,6 +12,7 @@ from sorl.thumbnail import get_thumbnail
 from photo_manager.forms import *
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from photo_manager.tasks import ThumbnailTask
 
 # please work on album(s) [CHILD ALBUMS{ page.
 
@@ -59,6 +60,7 @@ def photo_upload(request, username, location_slug, album_slug):
             for chunk in uploaded_file.chunks():
                 destination.write(chunk)
             destination.close()
+            ThumbnailTask.delay(photo_new.id)
             
         # indicate that everything is OK for SWFUpload
         

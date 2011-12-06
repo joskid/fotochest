@@ -14,8 +14,6 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from photo_manager.tasks import ThumbnailTask
 
-# please work on album(s) [CHILD ALBUMS{ page.
-
 def choose(request):
     return redirect('file_uploader', username=request.user.username, location_slug=request.GET.get('location'), album_slug=request.GET.get("album"))
 
@@ -31,8 +29,6 @@ def photo_upload(request, username, location_slug, album_slug):
     context = {}
         
     if request.method == 'POST':
-        #"240x165"
-        #1024x768"
         for field_name in request.FILES:
             uploaded_file = request.FILES[field_name]
             
@@ -49,11 +45,7 @@ def photo_upload(request, username, location_slug, album_slug):
             photo_new.image = 'images/' + filename
             # Set location to default location
             photo_new.location = get_object_or_404(Location, slug=location_slug)
-            #photo_new.location = photo_location
-            #photo_new.description = "YO"
-            # The script isn't sending a user object back in teh request...
             photo_new.user = User.objects.get(username=username)
-            #photo_new.user = this_user
             photo_new.save()
             destination_path = settings.PHOTO_DIRECTORY + '/%s' % (filename)   
             destination = open(destination_path, 'wb+')
@@ -246,6 +238,7 @@ def delete_photo(request, photo_id, album_slug=None, username=None, photo_slug=N
 
 ### Jobs
 
+''' Consider this for removal do to celery '''
 def run_thumb_job(request):
     photos = Photo.objects.active().filter(thumbs_created=False)[:3]
     for photo in photos:
@@ -282,14 +275,3 @@ def update_album_title(request):
     
     return HttpResponse("ok", mimetype="text/plain")
     
-'''
-homepage
-slideshow
-paginated home page or page of photos
-view a single photo
-view all albums paginated
-vail an album also paginated
-
-download a photo
-
-'''

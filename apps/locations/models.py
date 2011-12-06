@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import simplejson
 import urllib
 from locations.choices import *
-from nutsbolts.utils.slugs import unique_slugify
+from hadrian.utils.slugs import unique_slugify
 
 
 class Location(models.Model):

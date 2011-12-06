@@ -78,6 +78,8 @@ INSTALLED_APPS = (
     #'photo_admin',
     'locations',
     'profiles',
+    'djcelery',
+    'djkombu',
     #'tagging',
 
 )

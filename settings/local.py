@@ -36,7 +36,7 @@ STATIC_ROOT = ''
 
 
 STATICFILES_DIRS = (
-    os.path.join(SITE_ROOT, 'themes/default/static')
+    os.path.join(SITE_ROOT, 'themes/default/static'),
 )
 
 # URL prefix for static files.
@@ -52,7 +52,7 @@ PHOTO_DIRECTORY = os.path.join(SITE_ROOT, 'uploads/images')
 
 TEMPLATE_DIRS = (
     os.path.join(SITE_ROOT, 'themes/default/templates'),
-    os.path.join(SITE_ROOT, 'templates')
+    os.path.join(SITE_ROOT, 'templates'),
 )
 
 DOMAIN_STATIC = 'http://localhost:8000/static/'

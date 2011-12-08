@@ -1,0 +1,8 @@
+*.pyc
+data.db
+upload/
+settings/local.py
+settings/production.py
+settings/staging.py
+dev.db
+uploads

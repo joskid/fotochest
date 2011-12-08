@@ -1,0 +1,202 @@
+/*
+ 
+ Modal only styles..
+*/
+
+/* Generic Modal Sytles */
+
+.modal
+{
+  color:#000;
+}
+
+.modal .pagination a
+{
+    color:blue;
+}
+
+.modal #load
+{
+  text-align:center;
+}
+
+.modal #message
+{
+  display:block !important;
+}
+
+
+/* End Common Modal Styles */
+
+/* Specific Modal Styles */
+
+/* Multi Upload Modal Styles */
+
+.modal .multiUpload select
+{
+  display:block;
+  margin-bottom:7px;
+}
+
+.modal .multiUpload .uploadifyQueue
+{
+  max-height:350px;
+  overflow-y:scroll;  
+}
+/* End Multi Upload Modal Styles */
+
+
+.addPhoto
+{
+  margin:0px 15px 0px 15px;
+}
+
+.addPhoto a.import
+{
+  width:180px;
+
+  cursor:pointer;
+}
+
+.addPhoto select
+{
+  width:250px;
+}
+
+
+/* <!-- Modal Styles for moving a photo --. */
+
+.modal .album,
+.modal .photo
+{
+    position:relative;
+    margin-top:20px;
+   
+    padding-bottom:10px;
+    border-bottom:1px solid #bbbbbb;
+}
+
+.album img,
+.photo img
+{
+    background:#fff;
+    padding:5px;
+}
+
+.album h3,
+.photo h3
+{
+    position:absolute;
+    top:0;
+    left:96px;
+}
+
+.album p,
+.photo p
+{
+    width:400px;
+    top:16px;
+    left:95px;
+    position:absolute;
+}
+
+.album dl,
+.photo dl
+{
+    width:160px;
+    top:0;
+    right:124px;
+    position:absolute;
+
+}
+
+.album dl br,
+.photo dl br
+{
+    margin-bottom:5px;
+}
+
+.album dt,
+.photo dt
+{
+    font-weight:bold;
+}
+
+
+
+.album dt,
+.album dd,
+.photo dt,
+.photo dd
+{
+    display:inline-block;
+    width:50px;
+}
+
+.album dd,
+.photo dd
+{
+    width:100px;
+}
+
+.album ul.actions,
+.photo ul.actions
+{
+    position:absolute;
+    right:0;
+    top:0;
+    width:110px;
+    display:none;
+}
+
+.album:hover ul.actions,
+.photo:hover ul.actions
+{
+    display:block;
+}
+
+.modal .album a.button
+{
+    margin:0;
+    
+}
+
+.modal.viewPhoto a
+{
+    
+    position:absolute;
+    top:50%;
+    cursor:pointer;
+}
+
+.modal.viewPhoto a.arrowLeft
+{
+    left:0;
+
+}
+
+.modal.viewPhoto a.arrowRight
+{
+    right:0;
+}
+
+.modal.viewPhoto img:hover a
+{
+    display:block;
+}
+
+
+
+.
+
+.notification.show
+{
+  display:block;
+}
+
+.notification.hide
+{
+  display:none;
+}
+
+

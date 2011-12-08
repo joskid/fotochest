@@ -1,8 +1,7 @@
-{% extends "base.html" %}
+{% extends "default/base.html" %}
 {% block title %}Photostream{% endblock %}
 {% block extra_head %}
-    
-{% include "snippets/live_edit.js" %}
+   <script src="{{ STATIC_URL }}default/js/live_edit.js"></script>
     
     {% endblock %}
 {% block header %}
@@ -27,10 +26,10 @@
 {% block main_content %}
 {% for photo in photos.object_list %}
     
-    {% include "snippets/item.html" %}
+    {% include "default/snippets/item.html" %}
     
 {% endfor %}
-{% include "snippets/pagination.html" %}
+{% include "default/snippets/pagination.html" %}
 {% if user.is_authenticated %}
             <!-- modal content -->
 		<div id="osx-modal-content">

@@ -37,6 +37,7 @@ STATIC_ROOT = ''
 
 STATICFILES_DIRS = (
     os.path.join(SITE_ROOT, 'themes/default/static'),
+    os.path.join(SITE_ROOT, 'static'),
 )
 
 # URL prefix for static files.

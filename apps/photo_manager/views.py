@@ -88,7 +88,7 @@ def album(request, album_id, album_slug, username=None):
         albums = Album.objects.filter(parent_album=album)
         context['albums'] = albums
         
-        return render(request, "albums.html", context)
+        return render(request, "%s/albums.html" % settings.ACTIVE_THEME, context)
     else:
         photos = Photo.objects.active().filter(album__slug=album_slug, user=user)
         paginator = Paginator(photos, 12)
@@ -161,7 +161,7 @@ def homepage(request, username=None):
         context['photos'] = paginator.page(1)
     except EmptyPage:
         context['photos'] = paginator.page(paginator.num_pages)
-    return render(request, "index.html", context)
+    return render(request, "%s/index.html" % settings.ACTIVE_THEME, context)
     
 
 def photo(request, photo_id, album_slug, photo_slug, username=None):

@@ -32,7 +32,7 @@ ENABLE_REGISTRATION = False
 ACTIVE_THEME = "default"
 AUTH_PROFILE_MODULE = "profiles.Profile"
 STATICFILES_DIRS = (
-
+    os.path.join(SITE_ROOT, 'static'),
 )
 
 

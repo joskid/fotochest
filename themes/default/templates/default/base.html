@@ -29,7 +29,7 @@
                     <ul>
                         <li><a href="{% if request.user.is_authenticated %}{% url photo_manager.views.homepage username=request.user.username %}{% else %}{% url photo_manager.views.homepage %}{% endif %}">Home</a></li>
                         <li><a href="{% url photo_manager.views.homepage %}">Explore</a></li>
-                        <li><a href="{% url locations.views.locations %}">Map</a></li>
+                        <li><a href="{% url photo_manager.views.locations %}">Map</a></li>
                         {% if user.is_authenticated %}
                             <li><a href="{% url django.contrib.auth.views.logout %}">Logout</a></li>
                         {% else %}
@@ -59,7 +59,7 @@
                 <ul>
                     <li><a href="{% url photo_manager.views.homepage username=current_user.username %}">Photo Stream</a></li>
                     <li><a href="{% url photo_manager.views.albums username=current_user.username %}">Albums</a></li>
-                    <li><a href="{% url locations.views.locations username=current_user.username %}">Map</a></li>
+                    <li><a href="{% url photo_manager.views.locations username=current_user.username %}">Map</a></li>
                     {% block extra_non_auth_nav %}{% endblock %}
                     {% if user.is_authenticated %}
                     {% block extra_nav %}{% endblock %}

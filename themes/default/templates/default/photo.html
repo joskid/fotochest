@@ -162,12 +162,12 @@ rules: [
                 <br/>
                 <span>From <a href="{{ photo.album.get_absolute_url }}">{{ photo.album }}</a></span>
                 
-                <p>This photo was uploaded on {{ photo.date_uploaded|date:"F j Y" }}, and taken in <a href="{{ photo.location.get_absolute_url }}">{{ photo.location }}</a>.</p>
+                <p>This photo was uploaded on {{ photo.date_uploaded|date:"F j Y" }}, and taken in <a href="{% url photo_manager.views.location location_slug=photo.location.slug %}">{{ photo.location }}</a>.</p>
                 <div id="small_map"></div>
                 {% if photo.description %}
                 <p>{{ photo.description }}</p>    
                 {% endif %}
-                <h4>Other photos from <a href="{{ photo.location.get_absolute_url }}">{{ photo.location }}</a></h4>
+                <h4>Other photos from <a href="{% url photo_manager.views.location location_slug=photo.location.slug %}">{{ photo.location }}</a></h4>
                 <div class="other_photos">
                     {% for photo in photos_from_this_location %}
                     {% load thumbnail %}

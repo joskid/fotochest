@@ -5,6 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from photo_manager.models import *
 from locations.models import *
 from locations.forms import *
+from profiles.models import get_locations_for_user
 from django.contrib.auth.models import User
 import os
 from django.conf import settings

@@ -4,7 +4,7 @@ admin.autodiscover()
 
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-urlpatterns = patterns('',
+urlpatterns = staticfiles_urlpatterns() + patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^grappelli/', include('grappelli.urls')),
@@ -22,4 +22,4 @@ urlpatterns = patterns('',
     url(r'^', include('photo_manager.urls')),
 )
 
-urlpatterns += staticfiles_urlpatterns()
+#urlpatterns += staticfiles_urlpatterns()

@@ -55,7 +55,7 @@ TEMPLATE_DIRS = (
     os.path.join(SITE_ROOT, 'templates'),
 )
 
-DOMAIN_STATIC = 'http://localhost:8000/static/'
+DOMAIN_STATIC = '/static/'
 
 
 

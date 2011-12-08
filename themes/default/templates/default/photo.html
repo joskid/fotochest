@@ -1,5 +1,5 @@
 
-{% extends "base.html" %}
+{% extends "default/base.html" %}
 {% block title %}{{ photo.title }}{% endblock %}
 {% block extra_head %}
 <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
@@ -109,7 +109,8 @@ rules: [
         
     });
 </script>
-{% include "snippets/live_edit.js" %}
+<script src="{{ STATIC_URL }}default/js/live_edit.js"></script>
+
 
 {% endblock %}
 {% block extra_body %}onLoad="initialize()"{% endblock %}

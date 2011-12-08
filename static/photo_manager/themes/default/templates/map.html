@@ -54,7 +54,7 @@ rules: [
       var content{{ location.id }} = '<div id="content">'+
           
           
-          '<p><a style="color:#2d2d2d;" href="{% if current_user %}{% url locations.views.location location_slug=location.slug username=current_user.username %}{% else %}{% url locations.views.location location_slug=location.slug %}{% endif %}">{{ location }} ({{ location.get_photo_count }})</a></p>' +
+          '<p><a style="color:#2d2d2d;" href="{% if current_user %}{% url photo_manager.views.location location_slug=location.slug username=current_user.username %}{% else %}{% url photo_manager.views.location location_slug=location.slug %}{% endif %}">{{ location }} ({{ location.get_photo_count }})</a></p>' +
           
           '</div>';
       var infowindow{{ location.id }} = new google.maps.InfoWindow({

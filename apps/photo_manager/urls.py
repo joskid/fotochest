@@ -35,9 +35,9 @@ if settings.ENABLE_MULTI_USER:
         
         # Map - This is not ideal. Should we have a maps.urls?
         
-        url(r'map/^$', locations),
+        url(r'map/$', locations),
         url(r'map/(?P<location_slug>[-\w]+)/$', location),
-        url(r'map/(?P<location_slug>[-\w]+)/slideshow/$', 'photo_manager.views.slideshow'),
+        url(r'map/(?P<location_slug>[-\w]+)/slideshow/$', slideshow),
         
         url(r'map/user/(?P<username>[-\w]+)/$', locations),
         url(r'map/user/(?P<username>[-\w]+)/(?P<location_slug>[-\w]+)/$', location),

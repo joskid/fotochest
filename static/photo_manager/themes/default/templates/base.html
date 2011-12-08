@@ -28,7 +28,7 @@
                     <ul>
                         <li><a href="{% if request.user.is_authenticated %}{% url photo_manager.views.homepage username=request.user.username %}{% else %}{% url photo_manager.views.homepage %}{% endif %}">Home</a></li>
                         <li><a href="{% url photo_manager.views.homepage %}">Explore</a></li>
-                        <li><a href="{% url locations.views.locations %}">Map</a></li>
+                        <li><a href="{% url photo_manager.views.locations %}">Map</a></li>
                         {% if user.is_authenticated %}
                             <li><a href="{% url django.contrib.auth.views.logout %}">Logout</a></li>
                         {% else %}

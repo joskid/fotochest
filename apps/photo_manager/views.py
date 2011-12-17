@@ -298,14 +298,11 @@ def rotate_photo(request, photo_id, rotate_direction, album_slug=None, username=
     im = Image.open(photo.image)
     if rotate_direction == "counter":
         rotate_image = im.rotate(90)
-        #im.rotate(-90)
     else:
         rotate_image = im.rotate(270)
     rotate_image.save(photo.image.file.name, overwrite=True)
     sorl.thumbnail.delete(photo.image, delete_file=False)
     photo.make_thumbnails()
-    
-    #photo.save()
     return redirect(photo.get_absolute_url())
 
 ### Jobs

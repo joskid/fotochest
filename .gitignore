@@ -6,3 +6,4 @@ settings/production.py
 settings/staging.py
 dev.db
 uploads
+.idea/

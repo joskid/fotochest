@@ -11,10 +11,13 @@ import os
 from django.conf import settings
 import random
 from sorl.thumbnail import get_thumbnail
+import sorl
+from PIL import Image
 from photo_manager.forms import *
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from photo_manager.tasks import ThumbnailTask
+
 
 def choose(request):
     return redirect('file_uploader', username=request.user.username, location_slug=request.GET.get('location'), album_slug=request.GET.get("album"))
@@ -298,7 +301,23 @@ def delete_photo(request, photo_id, album_slug=None, username=None, photo_slug=N
     
     photo.deleted = True
     photo.save()
+    #@todo - This needs to point somewhere else after deletion..
     return render(request, '%s/edit_photo.html' % settings.ACTIVE_THEME)
+    
+@login_required
+def rotate_photo(request, photo_id, rotate_direction, album_slug=None, username=None, photo_slug=None):
+    photo = get_object_or_404(Photo, pk=photo_id)
+    if request.user != photo.user:
+        return render(request, 'not_authorized.html')
+    im = Image.open(photo.image)
+    if rotate_direction == "counter":
+        rotate_image = im.rotate(90)
+    else:
+        rotate_image = im.rotate(270)
+    rotate_image.save(photo.image.file.name, overwrite=True)
+    sorl.thumbnail.delete(photo.image, delete_file=False)
+    photo.make_thumbnails()
+    return redirect(photo.get_absolute_url())
 
 ### Jobs
 

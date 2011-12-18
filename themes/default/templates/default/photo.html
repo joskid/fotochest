@@ -133,8 +133,10 @@ rules: [
 </ul>
     <ul class="button-group edit">
     {% if request.user.is_authenticated and request.user == photo.user %}
+    <li><a href="{% url photo_manager.views.rotate_photo photo_id=photo.id username=photo.user.username album_slug=photo.album.slug photo_slug=photo.slug rotate_direction="counter" %}" class="button icon loop">Rotate Counter</a></li>
     <li><a href="{% url photo_manager.views.edit_photo photo_id=photo.id username=photo.user.username album_slug=photo.album.slug photo_slug=photo.slug %}" class="button icon edit">Edit Photo</a></li>
     <li><a href="#" class="button icon trash danger">Delete Photo</a></li>
+    <li><a href="{% url photo_manager.views.rotate_photo photo_id=photo.id username=photo.user.username album_slug=photo.album.slug photo_slug=photo.slug rotate_direction="clockwise" %}" class="button icon loop">Rotate Right</a></li>
     {% endif %}
     </ul>
     

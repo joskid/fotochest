@@ -32,6 +32,7 @@ if settings.ENABLE_MULTI_USER:
         url(r'^foto/(?P<photo_id>\d+)/(?P<username>[-\w]+)/(?P<album_slug>[-\w]+)/(?P<photo_slug>[-\w]+)/fullscreen/$', photo_fullscreen),
         url(r'^foto/(?P<photo_id>\d+)/(?P<username>[-\w]+)/(?P<album_slug>[-\w]+)/(?P<photo_slug>[-\w]+)/edit/$', edit_photo),
         url(r'^foto/(?P<photo_id>\d+)/(?P<username>[-\w]+)/(?P<album_slug>[-\w]+)/(?P<photo_slug>[-\w]+)/delete/$', delete_photo),
+        url(r'^foto/(?P<photo_id>\d+)/(?P<username>[-\w]+)/(?P<album_slug>[-\w]+)/(?P<photo_slug>[-\w]+)/rotate/(?P<rotate_direction>[-\w]+)/$', rotate_photo),
         
         # Map - This is not ideal. Should we have a maps.urls?
         

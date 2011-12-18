@@ -29,7 +29,7 @@ def register_part_two(request, username):
     else:
         context['form'] = ProfileForm()
     
-    return render(request, "registration_part_two.html", context)
+    return render(request, "%s/registration_part_two.html" % settings.ACTIVE_THEME, context)
         
 def register(request):
     context = {}
@@ -41,7 +41,7 @@ def register(request):
     else:
         context['form'] = UserCreationForm()
 
-    return render(request, "registration.html", context)
+    return render(request, "%s/registration.html" % settings.ACTIVE_THEME, context)
     
 # Profile
 
@@ -61,11 +61,11 @@ def edit_profile(request):
                 'last_name': request.user.last_name,
                 'email': request.user.email}
         context['form'] = ProfileForm(data)
-        return render(request, "edit_profile.html", context)
+        return render(request, "%s/edit_profile.html" % settings.ACTIVE_THEME, context)
 
     
 def view_profile(request, username):
     user = get_object_or_404(User, username=username)
     context = {'profile_user': user}
-    return render(request, 'profile.html', context)
+    return render(request, '%s/profile.html' % settings.ACTIVE_THEME, context)
     

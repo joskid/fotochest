@@ -1,0 +1,15 @@
+{% extends "default/base.html" %}
+{% block title %}Edit Profile{% endblock %}
+
+{% block header %}{% endblock %}
+{% block main_content %}
+
+<form method="post" action="{% url profiles.views.edit_profile %}" id="login_form">
+{% csrf_token %}
+{{ form.as_p }}
+
+
+<input type="submit" value="Save" class="button" />
+
+</form>
+{% endblock %}

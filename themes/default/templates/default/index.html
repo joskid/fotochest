@@ -1,0 +1,65 @@
+{% extends "default/base.html" %}
+{% block title %}Photostream{% endblock %}
+{% block extra_head %}
+   <script src="{{ STATIC_URL }}default/js/live_edit.js"></script>
+    
+    {% endblock %}
+{% block header %}
+    {% if user_page == '1' %}
+        {{ block.super }}
+    {% else %}
+        
+    {% endif %}
+{% endblock %}
+
+{% block extra_non_auth_nav %}
+    
+    {% if location_view %}
+        <li><a href="{% url photo_manager.views.slideshow location_slug=location_slug %}">Slideshow</a></li>
+    {% endif %}
+    {% if album_view %}
+        <li><a href="{% url photo_manager.views.slideshow album_slug=album_slug username=current_user.username %}">Slideshow</a></li>
+    {% endif %}
+{% endblock %}
+{% block extra_nav %}<li><a href="#" class="osx">Upload Photos</a></li>{% endblock %}
+
+{% block main_content %}
+{% for photo in photos.object_list %}
+    
+    {% include "default/snippets/item.html" %}
+    
+{% endfor %}
+{% include "default/snippets/pagination.html" %}
+{% if user.is_authenticated %}
+            <!-- modal content -->
+		<div id="osx-modal-content">
+			<div id="osx-modal-title">FotoChest - Upload Photos</div>
+			<div class="close"><a href="#" class="simplemodal-close">x</a></div>
+			<div id="osx-modal-data">
+                            <form method="GET" action="{% url photo_manager.views.choose %}">
+				<label>Album Name:</label>
+                                <select name="album">
+                                    {% for album in form_albums %}
+                                    <option value="{{ album.slug }}">{{ album.title }}</option>
+                                    
+                                {% endfor %}
+                                
+                                </select>
+                                <a href="#" class="button icon add">Add Album</a>
+                                <label>Location</label>
+                                <select name="location">
+                                    {% for location in form_locations %}
+                                    <option value="{{ location.slug }}">{{ location }}</option>
+                                    
+                                {% endfor %}
+                                
+                                </select>
+                                <a href="#" class="button icon add">Add Location</a>
+                                <input type="submit" value="Proceed to Upload Photos" class="button">
+                            </form>
+				
+			</div>
+		</div>
+                
+            {% endif %}
+{% endblock %}

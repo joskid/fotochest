@@ -34,6 +34,12 @@ MEDIA_URL = '/media/'
 # Example: "/home/media/media.lawrence.com/static/"
 STATIC_ROOT = ''
 
+
+STATICFILES_DIRS = (
+    os.path.join(SITE_ROOT, 'themes/default/static'),
+    os.path.join(SITE_ROOT, 'static'),
+)
+
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'
@@ -46,9 +52,8 @@ ADMIN_MEDIA_PREFIX = '%sgrappelli/' % STATIC_URL
 PHOTO_DIRECTORY = os.path.join(SITE_ROOT, 'uploads/images')
 
 TEMPLATE_DIRS = (
-    #"/Users/Derek/Documents/code/personal/apps/fotochest/static/photo_manager/themes/default/templates"
-    os.path.join(SITE_ROOT, 'static/photo_manager/themes/default/templates'),
-    os.path.join(SITE_ROOT, 'templates')
+    os.path.join(SITE_ROOT, 'themes/default/templates'),
+    os.path.join(SITE_ROOT, 'templates'),
 )
 
 DOMAIN_STATIC = '/static/'

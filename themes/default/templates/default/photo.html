@@ -1,0 +1,195 @@
+
+{% extends "default/base.html" %}
+{% block title %}{{ photo.title }}{% endblock %}
+{% block extra_head %}
+<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script>
+  function initialize() {
+    var blackStyles = [
+{
+featureType: 'all',
+rules: [
+{visibility: 'off'}
+]
+},
+{
+featureType: 'water',
+rules: [
+{visibility: 'on'},
+{lightness: -100 }
+]
+}
+];
+    var blackMapType = new google.maps.StyledMapType(blackStyles,
+    {name: "Black Map"});
+
+  
+  
+    var latlng = new google.maps.LatLng({{ photo.location.latitude }},{{ photo.location.longitude }} );
+    var myOptions = {
+      zoom: 3,
+      center: latlng,
+      
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+       styles: blackStyles,    
+    };
+    var map = new google.maps.Map(document.getElementById("small_map"),
+        myOptions);
+
+      //var bounds = new google.maps.LatLngBounds();
+
+      
+      var latlng{{ photo.id }} = new google.maps.LatLng({{ photo.location.latitude }}, {{ photo.location.longitude }});
+      var marker{{ photo.id }} = new google.maps.Marker({
+         position: latlng{{ photo.id }},
+         map: map,
+         title: "{{ photo.title }}"
+      });
+
+      var content{{ photo.id }} = '<div id="content">'+
+          
+          
+          '<p>{{ photo.title }}</p>' +
+          
+          '</div>';
+      var infowindow{{ photo.id }} = new google.maps.InfoWindow({
+          content: content{{ photo.id }}
+      });
+      google.maps.event.addListener(marker{{ photo.id }}, 'click', function() {
+         infowindow{{ photo.id }}.open(map, marker{{ photo.id }});
+      });
+
+      //bounds.extend(latlng{{ photo.id }})
+ 
+        google.maps.event.addListener(map, 'mouseover', function() {
+            map.setZoom(8);
+        });
+        google.maps.event.addListener(map, 'mouseout', function(){
+            map.setZoom(3);
+        });
+
+      //map.fitBounds(bounds);    
+      map.mapTypes.set('black_map', blackMapType);
+      map.setMapTypeId('black_map');
+
+  }
+</script>
+<script>
+    $(document).ready(function() {
+        $(document).keypress(function(event) {
+            
+            {% if photo.get_next %}
+            if ( event.keyCode == 39 ) {
+                // right
+                window.location = "{{ photo.get_next }}"
+            }
+            {% endif %}
+            {% if photo.get_previous %}
+            
+            if ( event.keyCode == 37 ) {
+                // left
+                window.location = "{{ photo.get_previous }}"
+            }
+            
+            {% endif %}
+        });
+        
+        {% if request.user.is_authenticated and request.user == photo.user %}
+        $(".trash").click(function(){
+           var answer = confirm("Are you sure you want to delete this photo?"); 
+           if (answer) {
+                window.location = "{% url photo_manager.views.delete_photo photo_id=photo.id username=photo.user.username album_slug=photo.album.slug photo_slug=photo.slug %}"
+           } else {
+            //
+           }
+        });
+        
+        {% endif %}
+        
+        
+    });
+</script>
+<script src="{{ STATIC_URL }}default/js/live_edit.js"></script>
+
+
+{% endblock %}
+{% block extra_body %}onLoad="initialize()"{% endblock %}
+{% block header %}{% endblock %}
+{% block main_class %}single_photo{% endblock %}
+{% block main_content %}
+<div id="photo_group">
+    <ul class="button-group">
+    {% if photo.get_previous %}
+    <li><a href="{{ photo.get_previous }}" class="button pill icon arrowleft primary">Previous</a></li>
+    {% endif %}
+    <li><a href="{{ photo.get_fullscreen }}" class="button pill">Full Screen</a></li>
+    
+    <li><a href="{{ photo.album.get_slideshow }}" class="button pill">Album Slideshow</a></li>
+    
+    {% if photo.get_next %}
+    <li><a href="{{ photo.get_next }}" class="button pill icon arrowright primary">Next</a></li>
+{% endif %}
+
+</ul>
+    <ul class="button-group edit">
+    {% if request.user.is_authenticated and request.user == photo.user %}
+    <li><a href="{% url photo_manager.views.rotate_photo photo_id=photo.id username=photo.user.username album_slug=photo.album.slug photo_slug=photo.slug rotate_direction="counter" %}" class="button icon loop">Rotate Counter</a></li>
+    <li><a href="{% url photo_manager.views.edit_photo photo_id=photo.id username=photo.user.username album_slug=photo.album.slug photo_slug=photo.slug %}" class="button icon edit">Edit Photo</a></li>
+    <li><a href="#" class="button icon trash danger">Delete Photo</a></li>
+    <li><a href="{% url photo_manager.views.rotate_photo photo_id=photo.id username=photo.user.username album_slug=photo.album.slug photo_slug=photo.slug rotate_direction="clockwise" %}" class="button icon loop">Rotate Right</a></li>
+    {% endif %}
+    </ul>
+    
+    
+
+{% load thumbnail %}
+{% thumbnail photo.image "1024x768" as im %}
+<img src="{{ im.url }}" class="main_image">
+{% endthumbnail %}
+</div>
+            <aside>
+                    <h3>
+                {% if request.user.is_authenticated and request.user == photo.user %}
+                    <div class="title_controls single_photo">
+                        <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}" class="csrf">    
+                    <input type="text" value="{{ photo.title }}" class="title_control" title="Click to edit Photo Title">
+                    <input type="hidden" value="{{ photo.id }}" class="photo_id">
+                        <a href="#" class="positive button photo">Save</a>
+                    </div>
+                    {% else %}
+                    {{ photo.title }}
+                        {% endif %}
+                    </h3>
+                {% load travel_tags %}
+                <img src="{% get_gravatar current_user.email 25 %}" width="25" id="gravatar">By <a href="{% url photo_manager.views.homepage username=current_user.username %}">{{ current_user.first_name }} {{ current_user.last_name }}</a>
+                <br/>
+                <span>From <a href="{{ photo.album.get_absolute_url }}">{{ photo.album }}</a></span>
+                
+                <p>This photo was uploaded on {{ photo.date_uploaded|date:"F j Y" }}, and taken in <a href="{% url photo_manager.views.location location_slug=photo.location.slug %}">{{ photo.location }}</a>.</p>
+                <div id="small_map"></div>
+                {% if photo.description %}
+                <p>{{ photo.description }}</p>    
+                {% endif %}
+                <h4>Other photos from <a href="{% url photo_manager.views.location location_slug=photo.location.slug %}">{{ photo.location }}</a></h4>
+                <div class="other_photos">
+                    {% for photo in photos_from_this_location %}
+                    {% load thumbnail %}
+                    {% thumbnail photo.image "75x75" crop="center" as im %}
+                    <a href="{{ photo.get_absolute_url }}"><img src="{{ im.url }}"></a>
+                    {% endthumbnail %}
+                    {% endfor %}
+                </div>
+                
+                    <h4>Other photos from the <a href="{{ photo.album.get_absolute_url }}">{{ photo.album }} album</a></h4>
+                <div class="other_photos">
+                    {% for photo in other_photos %}
+                    {% load thumbnail %}
+                    {% thumbnail photo.image "75x75" crop="center" as im %}
+                    <a href="{{ photo.get_absolute_url }}"><img src="{{ im.url }}"></a>
+                    {% endthumbnail %}
+                    {% endfor %}
+                </div>
+                
+            </aside>
+            
+{% endblock %}

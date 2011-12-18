@@ -3,16 +3,21 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.decorators.csrf import csrf_exempt
 from photo_manager.models import *
-from locations.models import Location
+from locations.models import *
+from locations.forms import *
+from profiles.models import get_locations_for_user
 from django.contrib.auth.models import User
 import os
 from django.conf import settings
 import random
 from sorl.thumbnail import get_thumbnail
+import sorl
+from PIL import Image
 from photo_manager.forms import *
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from photo_manager.tasks import ThumbnailTask
+
 
 def choose(request):
     return redirect('file_uploader', username=request.user.username, location_slug=request.GET.get('location'), album_slug=request.GET.get("album"))
@@ -67,7 +72,7 @@ def photo_upload(request, username, location_slug, album_slug):
             context['album_slug'] = album_slug
             context['location_slug'] = location_slug
             context['domain_static'] = settings.DOMAIN_STATIC    
-            return render(request,'upload.html', context)
+            return render(request,'%s/upload.html' % settings.ACTIVE_THEME, context)
         else:
             return render(request, 'not_authorized.html')
 
@@ -86,7 +91,7 @@ def album(request, album_id, album_slug, username=None):
         albums = Album.objects.filter(parent_album=album)
         context['albums'] = albums
         
-        return render(request, "albums.html", context)
+        return render(request, "%s/albums.html" % settings.ACTIVE_THEME, context)
     else:
         photos = Photo.objects.active().filter(album__slug=album_slug, user=user)
         paginator = Paginator(photos, 12)
@@ -98,7 +103,7 @@ def album(request, album_id, album_slug, username=None):
             context['photos'] = paginator.page(1)
         except EmptyPage:
             context['photos'] = paginator.page(paginator.num_pages)
-        return render(request, "index.html", context)
+        return render(request, "%s/index.html" % settings.ACTIVE_THEME, context)
     
 def albums(request, username=None):
     context = {}
@@ -124,15 +129,28 @@ def albums(request, username=None):
         else:
             context['parent_albums'] = Album.objects.all()
             
-    return render(request, "albums.html", context)
+    return render(request, "%s/albums.html" % settings.ACTIVE_THEME, context)
     
+# Is this method needed??
+'''
 def child_albums(request, user_name, parent_album_slug):
     user = User.objects.get(username=user_name)
     parent_album = Album.objects.get(slug=parent_album_slug, user=user)
     albums = Album.objects.filter(parent_album=parent_album)
     context = {'albums':albums, 'author': user}
-    return render(request, "smugmug/albums.html", context)
+    if request.POST and request.user.is_authenticated():
+        form = AlbumForm(request.POST)
+        if form.is_valid():
+            album = form.save(commit=False)
+            album.user = request.user
+            album.save()
+    else:
+        context['album_form'] = AlbumForm()
     
+    
+    
+    return render(request, "smugmug/albums.html", context)
+'''    
 def homepage(request, username=None):
     context = {}
     if settings.ENABLE_MULTI_USER:
@@ -159,7 +177,7 @@ def homepage(request, username=None):
         context['photos'] = paginator.page(1)
     except EmptyPage:
         context['photos'] = paginator.page(paginator.num_pages)
-    return render(request, "index.html", context)
+    return render(request, "%s/index.html" % settings.ACTIVE_THEME, context)
     
 
 def photo(request, photo_id, album_slug, photo_slug, username=None):
@@ -180,13 +198,13 @@ def photo(request, photo_id, album_slug, photo_slug, username=None):
     context['photo'] = photo
     context['other_photos'] = photos
     context['photos_from_this_location'] = Photo.objects.active().filter(location=photo.location)[:4]
-    return render(request, "photo.html", context)
+    return render(request, "%s/photo.html" % settings.ACTIVE_THEME, context)
 
 def photo_fullscreen(request, photo_id, album_slug, photo_slug, username=None):
     context = {}
     context['photo'] = get_object_or_404(Photo, pk=photo_id, deleted=False)
     
-    return render(request, 'fullscreen.html', context)
+    return render(request, '%s/fullscreen.html' % settings.ACTIVE_THEME, context)
 
     
 def slideshow(request, location_slug=None, album_slug=None, username=None):
@@ -201,8 +219,57 @@ def slideshow(request, location_slug=None, album_slug=None, username=None):
         context['what_object'] = album.title
      
     
-    return render(request, "slideshow.html", context)
+    return render(request, "%s/slideshow.html" % settings.ACTIVE_THEME, context)
     
+### Map/Location views
+
+def locations(request, username=None):
+    context = {}
+    
+    if username:
+        # OKay, get All locations associated with this user.
+        
+        context['locations'] = get_locations_for_user(username)
+        context['current_user'] = User.objects.get(username=username)
+        context['user_page'] = '1'
+    else:
+        context['locations'] = Location.objects.all()
+    if request.POST:
+        form = LocationForm(request.POST)
+        if form.is_valid():
+            location = form.save()
+            if username:
+                redirect("locations.views.locations", username=username)
+            else:
+                redirect("locations")
+    else:
+        context['location_form'] = LocationForm()
+    
+    return render(request, "%s/map.html" % settings.ACTIVE_THEME, context)
+    
+def location(request, location_slug, username=None):
+    location = get_object_or_404(Location, slug=location_slug)
+    # Get location object, now get more location objects where location.city = location.city?
+    # how do we know if we are asking for city, state or country?  Should we have that specified?
+    context = {}
+    if username:
+        photos = Photo.objects.filter(location=location, user__username=username)
+        context['current_user'] = User.objects.get(username=username)
+        context['user_page'] = '1'
+    else:
+        photos = Photo.objects.filter(location=location)
+    paginator = Paginator(photos, 12)
+
+    page = request.GET.get('page', 1)
+    context['location_view'] = True
+    context['location_slug'] = location_slug
+    try:
+        context['photos'] = paginator.page(page)
+    except PageNotAnInteger:
+        context['photos'] = paginator.page(1)
+    except EmptyPage:
+        context['photos'] = paginator.page(paginator.num_pages)
+    return render(request, "%s/index.html" % settings.ACTIVE_THEME, context)  
     
 ### Forms
 @login_required
@@ -211,7 +278,7 @@ def edit_photo(request, photo_id, album_slug=None, username=None, photo_slug=Non
     context['current_user'] = User.objects.get(username=username)
     photo = get_object_or_404(Photo, pk=photo_id, deleted=False)
     if request.user != photo.user:
-        return render(request, 'not_authorized.html')
+        return render(request, '%s/not_authorized.html' % settings.ACTIVE_THEME)
         
     if request.method == "POST":
         form = PhotoForm(request.POST, instance=photo)
@@ -224,17 +291,33 @@ def edit_photo(request, photo_id, album_slug=None, username=None, photo_slug=Non
     context['form'] = form
     context['photo'] = photo
     context['exif_data'] = photo.get_exif_data()
-    return render(request, 'edit_photo.html', context)
+    return render(request, '%s/edit_photo.html' % settings.ACTIVE_THEME, context)
 
 @login_required    
 def delete_photo(request, photo_id, album_slug=None, username=None, photo_slug=None):
     photo = get_object_or_404(Photo, pk=photo_id, deleted=False)
     if request.user != photo.user:
-        return render(request, 'not_authorized.html')
+        return render(request, '%s/not_authorized.html' % settings.ACTIVE_THEME)
     
     photo.deleted = True
     photo.save()
-    return render(request, 'edit_photo.html')
+    #@todo - This needs to point somewhere else after deletion..
+    return render(request, '%s/edit_photo.html' % settings.ACTIVE_THEME)
+    
+@login_required
+def rotate_photo(request, photo_id, rotate_direction, album_slug=None, username=None, photo_slug=None):
+    photo = get_object_or_404(Photo, pk=photo_id)
+    if request.user != photo.user:
+        return render(request, 'not_authorized.html')
+    im = Image.open(photo.image)
+    if rotate_direction == "counter":
+        rotate_image = im.rotate(90)
+    else:
+        rotate_image = im.rotate(270)
+    rotate_image.save(photo.image.file.name, overwrite=True)
+    sorl.thumbnail.delete(photo.image, delete_file=False)
+    photo.make_thumbnails()
+    return redirect(photo.get_absolute_url())
 
 ### Jobs
 

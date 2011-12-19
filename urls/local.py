@@ -22,7 +22,7 @@ urlpatterns = staticfiles_urlpatterns() + patterns('',
     url(r'^accounts/profile/edit/$', 'profiles.views.edit_profile'),
 
     #API Docs
-    url(r'^docs/', 'api_docs.urls'),
+    url(r'^docs/', include('api_docs.urls')),
     
     # Media URLs.  
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve',

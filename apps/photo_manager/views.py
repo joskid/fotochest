@@ -90,6 +90,14 @@ def album(request, album_id, album_slug, username=None):
         # Show child albums
         albums = Album.objects.filter(parent_album=album)
         context['albums'] = albums
+        if request.POST and request.user.is_authenticated():
+            form = AlbumForm(request.POST)
+            if form.is_valid():
+                album = form.save(commit=False)
+                album.user = request.user
+                album.save()
+        else:
+            context['album_form'] = AlbumForm()
         
         return render(request, "%s/albums.html" % settings.ACTIVE_THEME, context)
     else:

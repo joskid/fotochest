@@ -1,12 +1,14 @@
 {% extends "default/base.html" %}
 {% block title %}Albums{% endblock %}
-
+{% block extra_head %}
+<script src="{{ STATIC_URL }}default/js/live_edit.js"></script>
+{% endblock %}
 {% block extra_nav %}
     <li><a href="#" class="osx">Add Album</a></li>
 {% endblock %}
 
 {% block main_content %}
-{% include "snippets/live_edit.js" %}
+
     {% for album in albums %}
                 <article class="photo stream">
                 <a href="{{ album.get_absolute_url }}">

@@ -8,6 +8,7 @@ django-kombu
 django-tastypie
 django-sentry==1.12.1
 django-grappelli
+python-memcached
 sphinx
 git+git://github.com/dstegelman/django-interactive-api-docs.git
 git+git://github.com/dstegelman/django-location.git

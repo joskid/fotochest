@@ -9,5 +9,6 @@ django-tastypie
 django-sentry==1.12.1
 django-grappelli
 sphinx
-git+git://github.com/dstegelman/django-interactive-api-docs.git
+django-api-docs
+django-mail-queue
 git+git://github.com/dstegelman/django-location.git

@@ -17,6 +17,15 @@ class AlbumResource(ModelResource):
         queryset = Album.objects.all()
         resource = 'album'
         allowed_methods=['get']
+        excludes = ['album_cover']
+        
+    def dehydrate(self, bundle):
+        album_cover = bundle.obj.get_album_cover()
+        cover_image_thumb = get_thumbnail(album_cover.image, "240x165")
+        cover_image_large = get_thumbnail(album_cover.image, "1024x768")
+        bundle.data['cover_image_thumb'] = cover_image_thumb.url
+        bundle.data['cover_image_large'] = cover_image_large.url
+        return bundle 
 
 class LocationResource(ModelResource):
     class Meta:

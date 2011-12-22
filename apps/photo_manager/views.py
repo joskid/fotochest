@@ -43,14 +43,14 @@ def photo_upload(request, username, location_slug, album_slug):
             
             ext = os.path.splitext(uploaded_file.name)[1]
             filename = str(num1 + num2) + ext
-            album_used = Album.objects.get(slug=album_slug)
+            album_used = get_object_or_404(Album, slug=album_slug)
             
             photo_new = Photo(title=filename, album=album_used)
             photo_new.file_name = filename
             photo_new.image = 'images/' + filename
             # Set location to default location
             photo_new.location = get_object_or_404(Location, slug=location_slug)
-            photo_new.user = User.objects.get(username=username)
+            photo_new.user = get_object_or_404(User, username=username)
             photo_new.save()
             destination_path = settings.PHOTO_DIRECTORY + '/%s' % (filename)   
             destination = open(destination_path, 'wb+')
@@ -65,7 +65,7 @@ def photo_upload(request, username, location_slug, album_slug):
         
     else:
         if request.user and request.user.username == username:
-            user = User.objects.get(username=username)
+            user = get_object_or_404(User, username=username)
             context['current_user'] = user
             context['user_page'] = '1'
             context['upload_dir'] = settings.PHOTO_DIRECTORY
@@ -79,7 +79,7 @@ def photo_upload(request, username, location_slug, album_slug):
 def album(request, album_id, album_slug, username=None):
     context = {}
     if settings.ENABLE_MULTI_USER:    
-        user = User.objects.get(username=username)
+        user = get_object_or_404(User, username=username)
         context['current_user'] = user
         context['user_page'] = '1'
         
@@ -116,7 +116,7 @@ def album(request, album_id, album_slug, username=None):
 def albums(request, username=None):
     context = {}
     if settings.ENABLE_MULTI_USER:
-        user = User.objects.get(username=username)
+        user = get_object_or_404(User, username=username)
         context['current_user'] = user
         context['user_page'] = '1'
         albums = Album.objects.filter(user__username=username, parent_album=None)
@@ -166,7 +166,7 @@ def homepage(request, username=None):
         if username:
             photos = Photo.objects.active().filter(user__username=username)
             context['user_page'] = '1'
-            context['current_user'] = User.objects.get(username=username)
+            context['current_user'] = get_object_or_404(User, username=username)
             context['form_albums'] = Album.objects.filter(user__username=username)
         else:
             context['user_page'] = '0'
@@ -192,7 +192,7 @@ def photo(request, photo_id, album_slug, photo_slug, username=None):
     context = {}
     if settings.ENABLE_MULTI_USER:
         if username:
-            user = User.objects.get(username=username)
+            user = get_object_or_404(User, username=username)
             photo = get_object_or_404(Photo, pk=photo_id, deleted=False)
             
             context['user_page'] = '1'
@@ -219,11 +219,11 @@ def slideshow(request, location_slug=None, album_slug=None, username=None):
     context = {}
     if location_slug:
         context['photos'] = Photo.objects.active().filter(location__slug=location_slug)
-        location = Location.objects.get(slug=location_slug)
+        location = get_object_or_404(Location, slug=location_slug)
         context['what_object'] = location
     if album_slug:
         context['photos'] = Photo.objects.active().filter(album__slug=album_slug)
-        album = Album.objects.get(slug=album_slug)
+        album = get_object_or_404(Album, slug=album_slug)
         context['what_object'] = album.title
      
     
@@ -238,7 +238,7 @@ def locations(request, username=None):
         # OKay, get All locations associated with this user.
         
         context['locations'] = get_locations_for_user(username)
-        context['current_user'] = User.objects.get(username=username)
+        context['current_user'] = get_object_or_404(User, username=username)
         context['user_page'] = '1'
     else:
         context['locations'] = Location.objects.all()
@@ -262,7 +262,7 @@ def location(request, location_slug, username=None):
     context = {}
     if username:
         photos = Photo.objects.filter(location=location, user__username=username)
-        context['current_user'] = User.objects.get(username=username)
+        context['current_user'] = get_object_or_404(User, username=username)
         context['user_page'] = '1'
     else:
         photos = Photo.objects.filter(location=location)
@@ -283,7 +283,7 @@ def location(request, location_slug, username=None):
 @login_required
 def edit_photo(request, photo_id, album_slug=None, username=None, photo_slug=None):
     context = {}
-    context['current_user'] = User.objects.get(username=username)
+    context['current_user'] = get_object_or_404(User, username=username)
     photo = get_object_or_404(Photo, pk=photo_id, deleted=False)
     if request.user != photo.user:
         return render(request, '%s/not_authorized.html' % settings.ACTIVE_THEME)

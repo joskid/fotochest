@@ -20,7 +20,7 @@ def register_part_two(request, username):
     if request.method == "POST":
         form = ProfileForm(request.POST)
         if form.is_valid():
-            user = User.objects.get(username=username)
+            user = get_object_or_404(User, username=username)
             user.first_name = form.cleaned_data['first_name']
             user.last_name = form.cleaned_data['last_name']
             user.email = form.cleaned_data['email']

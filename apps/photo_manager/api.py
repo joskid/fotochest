@@ -17,6 +17,15 @@ class AlbumResource(ModelResource):
         queryset = Album.objects.all()
         resource = 'album'
         allowed_methods=['get']
+        excludes = ['album_cover']
+        
+    def dehydrate(self, bundle):
+        album_cover = bundle.obj.get_album_cover()
+        cover_image_thumb = get_thumbnail(album_cover.image, "240x165")
+        cover_image_large = get_thumbnail(album_cover.image, "1024x768")
+        bundle.data['cover_image_thumb'] = cover_image_thumb.url
+        bundle.data['cover_image_large'] = cover_image_large.url
+        return bundle 
 
 class LocationResource(ModelResource):
     class Meta:
@@ -44,6 +53,8 @@ class PhotoResource(ModelResource):
             orm_filters['album__id'] = filters['album_id']
         if "username" in filters:
             orm_filters['user__username'] = filters['username']
+        if "location_id" in filters:
+            orm_filters['location__id'] = filters['location_id']
         return orm_filters
         
     def dehydrate(self, bundle):
@@ -53,5 +64,6 @@ class PhotoResource(ModelResource):
         bundle.data['thumb'] = thumb_obj.url
         bundle.data['thumb_square'] = thumb_square.url
         bundle.data['thumb_large'] = thumb_large.url
+        bundle.data['location'] = bundle.obj.location.__unicode__()
         return bundle
         

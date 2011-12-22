@@ -8,6 +8,7 @@ django-kombu
 django-tastypie
 django-sentry==1.12.1
 django-grappelli
+python-memcached
 sphinx
 django-api-docs
 django-mail-queue

@@ -1,5 +1,5 @@
 
-     $(document).ready(function() {
+ $(document).ready(function() {
      // Hide all save buttons.
      // Show just the one next to the input on click.
     $('.title_controls .button').hide();
@@ -48,3 +48,4 @@
    
  });
  
+});

@@ -45,7 +45,5 @@
         $(this).parent().children(".title_control").addClass("inactive");
     
    });
-   
- });
  
 });

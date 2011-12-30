@@ -12,4 +12,6 @@ python-memcached
 sphinx
 django-api-docs
 django-mail-queue
-git+git://github.com/dstegelman/django-location.git
+django-location
+django-test-utils
+

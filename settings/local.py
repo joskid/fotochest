@@ -79,6 +79,7 @@ INSTALLED_APPS = (
     'sorl.thumbnail',
     'djcelery',
     'djkombu',
+    'test_utils',
     #'photo_admin',
     'locations',
     'profiles',

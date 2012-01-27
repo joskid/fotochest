@@ -1,36 +1,32 @@
 Metadata-Version: 1.0
 Name: fotochest
-Version: 0.1
+Version: 0.1-dev
 Summary: Photo sharing application
 Home-page: http://github.com/fotochest/fotochest
 Author: Derek Stegelman
 Author-email: dstegelman@gmail.com
 License: MIT
-Description: #FotoChest
+Description: FotoChest
+        =========
         
         http://docs.derek.stegelman.com/fotochest
         
-        ##Development Team
+        Development Team
+        ================
         
         * Derek Stegelman - Lead Developer ([http://derek.stegelman.com](http://derek.stegelman.com))
         * Lindy Stegelman - QA/Design Critic ([http://blog.stegelman.com](http://blog.stegelman.com))
         
-        ##Platform
+        Platform
+        ========
         
         Python/Django
         
-        ##Installation
+        Docs
+        ====
         
-        ##Road Map
+        http://docs.fotochest.com/
         
-        ###Version 2.0 (Release in Spring of 2011) - March 1, 2011
-        
-        
-        
-        * Stability Increase - Done
-        * Some type of Themeing - Using WilliamsConcepts Template Library - Done
-        * Add Comments
-        * Update to Standard Core Libraries
         
         
 Keywords: photos

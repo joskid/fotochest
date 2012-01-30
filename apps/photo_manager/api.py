@@ -61,6 +61,7 @@ class PhotoResource(ModelResource):
         thumb_obj = get_thumbnail(bundle.obj.image, "240x165")
         thumb_square = get_thumbnail(bundle.obj.image, "75x75", crop="center")
         thumb_large = get_thumbnail(bundle.obj.image, "1024x768")
+        bundle.data['short_url'] = "/f/%s/" % bundle.obj.id 
         bundle.data['thumb'] = thumb_obj.url
         bundle.data['thumb_square'] = thumb_square.url
         bundle.data['thumb_large'] = thumb_large.url

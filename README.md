@@ -1,6 +1,7 @@
 #FotoChest
 
 http://docs.derek.stegelman.com/fotochest
+
 http://readthedocs.org/docs/fotochest/en/latest/
 
 ##Development Team

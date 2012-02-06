@@ -45,7 +45,7 @@
         <div id="main" class="{% block main_class %}{% endblock %}">
             {% block header %}
         <header>
-            {% load travel_tags %}
+            {% load gravatar_tags %}
             {% if current_user.get_profile.profile_picture %}
                 {% load thumbnail %}
                 {% thumbnail current_user.get_profile.profile_picture "75x75" crop="center" as im %}

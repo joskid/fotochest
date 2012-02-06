@@ -53,6 +53,7 @@ if settings.ENABLE_MULTI_USER:
         url(r'^choose/', choose, name="choose"),
         # Feeds
         url(r'^feed/$', StreamFeed(), name="homepage_feed"),
+        url(r'^album/(?P<album_slug>[-\w]+)/feed/$', AlbumStream(), name="album_stream"),
         
         # User stream
         url(r'^(?P<username>[-\w]+)/$', homepage),

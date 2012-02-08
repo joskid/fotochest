@@ -72,6 +72,7 @@ INSTALLED_APPS = (
     'grappelli',
     'django.contrib.admin',
     'hadrian.contrib.gravatar',
+    'hadrian.contrib.pomona',
     'tastypie',
     'photo_manager',
     'api_docs',

@@ -160,7 +160,7 @@ rules: [
                     {{ photo.title }}
                         {% endif %}
                     </h3>
-                {% load travel_tags %}
+                {% load gravatar_tags %}
                 <img src="{% get_gravatar photo.user.email 25 %}" width="25" id="gravatar">By <a href="{% url photo_manager.views.homepage username=photo.user.username %}">{{ photo.user.first_name }} {{ photo.user.last_name }}</a>
                 <br/>
                 <span>From <a href="{{ photo.album.get_absolute_url }}">{{ photo.album }}</a></span>

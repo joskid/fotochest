@@ -138,27 +138,7 @@ def albums(request, username=None):
             context['parent_albums'] = Album.objects.all()
             
     return render(request, "%s/albums.html" % settings.ACTIVE_THEME, context)
-    
-# Is this method needed??
-'''
-def child_albums(request, user_name, parent_album_slug):
-    user = User.objects.get(username=user_name)
-    parent_album = Album.objects.get(slug=parent_album_slug, user=user)
-    albums = Album.objects.filter(parent_album=parent_album)
-    context = {'albums':albums, 'author': user}
-    if request.POST and request.user.is_authenticated():
-        form = AlbumForm(request.POST)
-        if form.is_valid():
-            album = form.save(commit=False)
-            album.user = request.user
-            album.save()
-    else:
-        context['album_form'] = AlbumForm()
-    
-    
-    
-    return render(request, "smugmug/albums.html", context)
-'''    
+       
 def homepage(request, username=None):
     context = {}
     if settings.ENABLE_MULTI_USER:
